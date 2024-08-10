@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Summarising Data and ANOVA in Excel | Quantitative Skills in Biosciences I</title>
+  <meta name="description" content="2 Summarising Data and ANOVA in Excel | Quantitative Skills in Biosciences I" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Summarising Data and ANOVA in Excel | Quantitative Skills in Biosciences I" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Summarising Data and ANOVA in Excel | Quantitative Skills in Biosciences I" />
+  
+  
+  
+
+<meta name="author" content="R. E. Treharne" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="snails-and-r.html"/>
+<link rel="next" href="calibration-curves-and-linear-regression-in-excel.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="snails-and-r.html"><a href="snails-and-r.html"><i class="fa fa-check"></i><b>1</b> Snails and R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="snails-and-r.html"><a href="snails-and-r.html#estimating-the-volume-of-a-snail"><i class="fa fa-check"></i><b>1.1</b> Estimating the Volume of a Snail</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="snails-and-r.html"><a href="snails-and-r.html#download-and-import-the-csv-file"><i class="fa fa-check"></i><b>1.1.1</b> Download and Import the CSV File</a></li>
+<li class="chapter" data-level="1.1.2" data-path="snails-and-r.html"><a href="snails-and-r.html#calculate-volume-v-in-excel"><i class="fa fa-check"></i><b>1.1.2</b> Calculate Volume <span class="math inline">\(V\)</span> in Excel</a></li>
+<li class="chapter" data-level="1.1.3" data-path="snails-and-r.html"><a href="snails-and-r.html#add-a-linear-trendline-and-equation"><i class="fa fa-check"></i><b>1.1.3</b> Add a Linear Trendline and Equation</a></li>
+<li class="chapter" data-level="1.1.4" data-path="snails-and-r.html"><a href="snails-and-r.html#estimation-of-volume-for-a-snail-with-mass-10g"><i class="fa fa-check"></i><b>1.1.4</b> Estimation of Volume for a Snail with Mass 10g</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="snails-and-r.html"><a href="snails-and-r.html#getting-ready-for-r"><i class="fa fa-check"></i><b>1.2</b> Getting Ready for R</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="snails-and-r.html"><a href="snails-and-r.html#download-and-install"><i class="fa fa-check"></i><b>1.2.1</b> Download and Install</a></li>
+<li class="chapter" data-level="1.2.2" data-path="snails-and-r.html"><a href="snails-and-r.html#creating-your-first-r-project-in-rstudio"><i class="fa fa-check"></i><b>1.2.2</b> Creating Your First R Project in RStudio</a></li>
+<li class="chapter" data-level="1.2.3" data-path="snails-and-r.html"><a href="snails-and-r.html#something-more-complicated"><i class="fa fa-check"></i><b>1.2.3</b> Something More Complicated</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="snails-and-r.html"><a href="snails-and-r.html#complete-your-weekly-assignments"><i class="fa fa-check"></i><b>1.3</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html"><i class="fa fa-check"></i><b>2</b> Summarising Data and ANOVA in Excel</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#summarising-data"><i class="fa fa-check"></i><b>2.1</b> Summarising Data</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#download-and-import-the-csv-file-1"><i class="fa fa-check"></i><b>2.1.1</b> Download and Import the CSV File</a></li>
+<li class="chapter" data-level="2.1.2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#generating-a-summary-table"><i class="fa fa-check"></i><b>2.1.2</b> Generating a Summary Table</a></li>
+<li class="chapter" data-level="2.1.3" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#presenting-your-summary-table"><i class="fa fa-check"></i><b>2.1.3</b> Presenting Your Summary Table</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#analysis-of-variance-anova"><i class="fa fa-check"></i><b>2.2</b> Analysis of Variance (ANOVA)</a></li>
+<li class="chapter" data-level="2.3" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#complete-your-weekly-assignments-1"><i class="fa fa-check"></i><b>2.3</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html"><i class="fa fa-check"></i><b>3</b> Calibration Curves and Linear Regression in Excel</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#complete-your-weekly-assignments-2"><i class="fa fa-check"></i><b>3.1</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Quantitative Skills in Biosciences I</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="summarising-data-and-anova-in-excel" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Summarising Data and ANOVA in Excel<a href="summarising-data-and-anova-in-excel.html#summarising-data-and-anova-in-excel" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover <strong>all of this section’s content</strong> and complete the <a href="snails-and-r.html#complete-your-weekly-assignments"><strong>formative and summative assessments</strong></a> on Canvas before 5 PM today.</p>
+<p>In this section we will only be using Excel. No R today! You’ll have to contain your excitement for a few more weeks yet.</p>
+<p>Working on two important skills:
++ Summarising Data
++ Constructing and testing hypotheses</p>
+<p>The ultimate aim is to gain insight and learn something new about the world from the data that we have painstaking measured in our well designed lab experiments. This is a cornerstone of what being a scientist is all about. This is what we are training you to become.</p>
+<div id="summarising-data" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Summarising Data<a href="summarising-data-and-anova-in-excel.html#summarising-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Raw data is beautiful, but messy. Showing another person your raw data and expecting them to immediately understand it, not matter how proud you are of the toil expended to generate the data, is an unrealistic expectation. You need to boil it down into something that another person can grasp instantaneously.</p>
+<p>Let’s take a look at a Zebrafish dataset from an experiment that is uncannily similar to the one you generated in your lab practical this week.</p>
+<div id="download-and-import-the-csv-file-1" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Download and Import the CSV File<a href="summarising-data-and-anova-in-excel.html#download-and-import-the-csv-file-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><strong>Download the CSV File:</strong>
+<ul>
+<li>Here is an <a href="https://www.canvaswizards.org.uk/dataspell/zebrafish/999999999">example dataset</a>. Download it to your local machine.</li>
+</ul></li>
+<li><strong>Import into Excel:</strong>
+<ul>
+<li>Open Excel (Use the desktop version - you won’t be able to do this using the online version!).</li>
+<li>Go to <code>Data &gt; From Text/CSV</code> and select the downloaded CSV file.</li>
+<li>When the import wizard appears, click <code>Load</code>.</li>
+</ul></li>
+</ol>
+<p>You should now see something like that in Figure <a href="summarising-data-and-anova-in-excel.html#fig:zebrafish-data-snap">2.1</a>. There are 3 columns:
+- <code>ID</code> - A unique number to identify a measurement.
+- <code>conc_pc</code> - The ethanol concentration (%) that the each embryo was treated with.
+- <code>length_micron</code> - The measured lengths, in <span class="math inline">\(\mu m\)</span> of the embryos.</p>
+<div class="figure"><span style="display:block;" id="fig:zebrafish-data-snap"></span>
+<img src="img/02/figure_1.png" alt="Some Figure" width="238" />
+<p class="caption">
+Figure 2.1: Some Figure
+</p>
+</div>
+<p>We call this format, in which each row corresponds to a single measure mt, a <strong>long</strong> format.</p>
+</div>
+<div id="generating-a-summary-table" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Generating a Summary Table<a href="summarising-data-and-anova-in-excel.html#generating-a-summary-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><strong>Identify your Groups</strong>
+<ul>
+<li>Click anywhere in your table.</li>
+<li>Select the <code>Data</code> menu and click the <code>Advanced</code> icon in the <code>Sort &amp; Filter</code> section. This will bring up a window called “Advanced Filter”.</li>
+<li>Select the <code>Copy to another location</code> action.</li>
+<li>Your list range should already be set to <code>$B:$B</code>, but if not make it so.</li>
+<li>Set the <code>Copy to</code> cell to <code>$E:$1</code></li>
+<li>Make sure the <code>Unique records only</code> check box is selected and click OK.</li>
+<li>You should now see a complete list of your alcohol concentration groups in a column with a header <code>conc_pc</code>. Make this into a new table by clicking on any of the concentration values, and then <code>Insert &gt; New table &gt; OK</code>.</li>
+</ul></li>
+</ol>
+<p>Nice. Now you’re ready to start building out your summary table horizontally. Let’s start with calculating the mean Zebrafish length for each group.</p>
+<p>Right now, your spreadsheet should look roughly the same as the screenshot in figure <a href="summarising-data-and-anova-in-excel.html#fig:zebrafish-snap-2">2.2</a></p>
+<div class="figure"><span style="display:block;" id="fig:zebrafish-snap-2"></span>
+<img src="img/02/figure_2.png" alt="Constructing a summary table" width="100%" />
+<p class="caption">
+Figure 2.2: Constructing a summary table
+</p>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Calculating a Mean Column</strong>
+<ul>
+<li>Create a new column in your summary table by typing the word <code>Mean</code> in cell <code>F1</code>.</li>
+<li>Calculate the mean of the Zebrafish lengths for the control group (0% alcohol concentration) by entering the following formula into cell <code>F2</code>.</li>
+</ul>
+<pre class="excel"><code>=AVERAGE(IF($B1:$B161=$E2,$C1:$C161))</code></pre></li>
+</ol>
+<blockquote>
+<p><strong>A Deeper Explanation</strong></p>
+<p>The formula <code>=AVERAGE(IF($B$2:$B$161=$E2,$C$2:$C$161))</code> is an array formula that calculates the average length of Zebrafish for a specific group based on the concentration of alcohol.</p>
+<ul>
+<li><p><strong><code>$B$2:$B$161</code></strong>: The <code>$</code> symbols before both the column letter <code>B</code> and the row numbers <code>2</code> and <code>161</code> lock the entire range. This means that when you copy the formula to other cells, this range will not change; it will always refer to cells <code>B2</code> to <code>B161</code>.</p></li>
+<li><p><strong><code>$E2</code></strong>: The <code>$</code> before the column letter <code>E</code> locks the column, but since there’s no <code>$</code> before the row number <code>2</code>, the row number can change if the formula is dragged down across rows. This cell is used to compare each value in the range <code>$B$2:$B$161</code> to the specific concentration value in the corresponding row in column <code>E</code>.</p></li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><p><strong><code>$C$2:$C$161</code></strong>: Similar to the range for column <code>B</code>, this locks the range of cells in column <code>C</code> from which the values will be averaged, conditional on the <code>IF</code> statement.</p></li>
+<li><p><strong><code>AVERAGE(IF(...))</code></strong>: The <code>IF</code> function checks each row in the range <code>$B$2:$B$161</code> to see if it matches the value in the corresponding row in column <code>E</code>. If it matches, the corresponding value in column <code>$C$2:$C$161</code> is included in the average calculation. The <code>AVERAGE</code> function then calculates the mean of these filtered values.</p></li>
+</ul>
+<p>This approach is particularly useful when you want to calculate conditional averages across a dataset, ensuring that the correct cells are referenced even when copying the formula to different parts of the spreadsheet.</p>
+</blockquote>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Calculating More Columns</strong>
+<ul>
+<li>Create four more columns with headers:
+<ul>
+<li>Std. Dev.</li>
+<li>Median</li>
+<li>Min</li>
+<li>Max</li>
+</ul></li>
+<li>Drag the cell <code>F2</code> to <code>G2</code>. Change the word <code>AVERAGE</code> in the formula in <code>G2</code> to <code>STDEV</code>. This will calculate the standard deviation for the group and the remaining cells in the column should also auto complete.</li>
+<li>Do the same for the median, min and max columns. Be sure to use the corresponding function.</li>
+</ul></li>
+</ol>
+<blockquote>
+<p><strong>A Deeper Explanation</strong></p>
+<p>When analysing data, it’s important to understand the basic statistical measures that summarise the data’s distribution. Here are some key terms:</p>
+<ul>
+<li><p><strong>Mean</strong>: The mean, often referred to as the average, is the sum of all values in a dataset divided by the number of values. It provides a central value for the data. However, the mean can be influenced by outliers (extremely high or low values).</p></li>
+<li><p><strong>Standard Deviation</strong>: The standard deviation measures the amount of variation or dispersion in a dataset. It is calculated as the square root of the variance, where variance is the average of the squared differences between each data point and the mean. A low standard deviation indicates that the data points tend to be close to the mean, while a high standard deviation indicates more spread out data.</p></li>
+<li><p><strong>Median</strong>: The median is the middle value in a dataset when the values are arranged in ascending or descending order. If the dataset has an odd number of values, the median is the central value. If the dataset has an even number of values, the median is the average of the two central values. The median is less affected by outliers compared to the mean.</p></li>
+<li><p><strong>Min</strong>: The minimum (min) value is the smallest value in the dataset. It provides a measure of the lower bound of the data.</p></li>
+<li><p><strong>Max</strong>: The maximum (max) value is the largest value in the dataset. It provides a measure of the upper bound of the data.</p></li>
+</ul>
+<p>These measures are fundamental for understanding the distribution of data. The mean and median give you central tendencies, while the standard deviation tells you how spread out the data is. The minimum and maximum values provide the range within which all the data points fall.</p>
+</blockquote>
+</div>
+<div id="presenting-your-summary-table" class="section level3 hasAnchor" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Presenting Your Summary Table<a href="summarising-data-and-anova-in-excel.html#presenting-your-summary-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>At some point you may wish to include your Excel summary table in a Word document. There’s a lot of wiggle room on how you choose to format your table but there are a few <strong>unbreakable</strong> rules:</p>
+<ul>
+<li>The table <strong>MUST</strong> have a caption.</li>
+<li>The caption should be placed <strong>ABOVE</strong> the table (not below as for a figure or graph).</li>
+<li>The caption should be numbered accordingly. For example, if this is the first table in your document the figure caption should start “<strong>Figure 1: …</strong>”.</li>
+<li>The caption should be descriptive and unambiguous. The reader should be able to quickly interpret what is going on without having to read the body of the text.</li>
+<li>The table headers should be sensible and unambiguous. Any symbols or variables or units should be defined in the caption.</li>
+<li>The data should be formatted to a sensible number of decimal places (i.e. if you’re measurements are made to 1 decimal place, your summary values should not be quoted to more than this).</li>
+</ul>
+<p>Follow these rules and you can’t go wrong. Break them and I <strong>will</strong> find you. Figure <a href="summarising-data-and-anova-in-excel.html#fig:zebrafish-summary">2.3</a> shows how my summary table looks when copyied and pasted into Word. I like to make my tables span the entire width of my document using the <code>Auto-fit to window</code> command. I also like to center my columns. These are personal preferences, but you can’t deny they look great!</p>
+<div class="figure"><span style="display:block;" id="fig:zebrafish-summary"></span>
+<img src="img/02/figure_3.png" alt="Formatting a summary table in Microsoft Word." width="100%" />
+<p class="caption">
+Figure 2.3: Formatting a summary table in Microsoft Word.
+</p>
+</div>
+</div>
+</div>
+<div id="analysis-of-variance-anova" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Analysis of Variance (ANOVA)<a href="summarising-data-and-anova-in-excel.html#analysis-of-variance-anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="complete-your-weekly-assignments-1" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Complete your Weekly Assignments<a href="summarising-data-and-anova-in-excel.html#complete-your-weekly-assignments-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the BIOS103 Canvas course you will find this week’s <strong>formative</strong> and <strong>summative</strong> assignments. You should complete both of these before the end of the online workshop that corresponds to this section’s content. The assignments are identical in all but the following details:</p>
+<ul>
+<li>You can attempt the <strong>formative assignment</strong> as many times as you like. It will not contribute to your overall score for this course. Make sure you practice this assignment until you’re confident that you can get the correct answer on your own.</li>
+<li>You can attempt the <strong>summative</strong> assignment <strong>only once</strong>. It will be identical to the formative assignment but will use different values and datasets. This assignment <strong>will</strong> contribute to your overall score for this course.</li>
+<li><strong>Late submissions</strong>. You have until 5pm on the day of the workshop for this week’s content to submit your <strong>summative</strong> assignment. Late submissions will incur a 5% penalty for every part or full day beyond the deadline. Penalties will be capped at 40%.</li>
+</ul>
+
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="snails-and-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="calibration-curves-and-linear-regression-in-excel.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["my-book.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
