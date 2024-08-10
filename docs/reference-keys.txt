@@ -18,3 +18,6 @@ analysis-of-variance-anova
 complete-your-weekly-assignments-1
 calibration-curves-and-linear-regression-in-excel
 complete-your-weekly-assignments-2
+fig:zebrafish-data-snap
+fig:zebrafish-snap-2
+fig:zebrafish-summary

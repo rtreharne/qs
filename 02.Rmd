@@ -132,6 +132,8 @@ knitr::include_graphics("img/02/figure_3.png")
    
 ## Analysis of Variance (ANOVA)
 
+Yay, let's do some ANOVA
+
 ## Complete your Weekly Assignments
 
 In the BIOS103 Canvas course you will find this week's **formative** and **summative** assignments. You should complete both of these before the end of the online workshop that corresponds to this section's content. The assignments are identical in all but the following details:
