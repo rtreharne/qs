@@ -1,0 +1,25 @@
+---
+title: "Quantitative Skills in Biosciences I"
+author: "R. E. Treharne"
+site: bookdown::bookdown_site
+output:
+  bookdown::gitbook:
+    config:
+      search: yes # Enable search bar
+      sharing: null
+  #bookdown::pdf_book: default
+---
+
+
+```{r setup, echo=FALSE, include=TRUE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+\newpage
+
+# Preface {.unnumbered}
+
+This book accompanies the Quantitative Skills (QS) component of the **BIOS103 - Introductory Practical Skills in Biosciences** I course.
+
+If you are participating in the weekly timetabled QS workshops associated with this course then be sure to submit your weekly summative QS assignments via Canvas by the deadline of **5pm on the day of the workshop**.
+
+All QS workshops will be delivered online via Teams. Access the meeting link from the BIOS103 Canvas course.
