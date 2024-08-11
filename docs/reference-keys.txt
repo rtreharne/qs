@@ -1,4 +1,3 @@
-fig:coverart
 snails-and-r
 estimating-the-volume-of-a-snail
 download-and-import-the-csv-file
