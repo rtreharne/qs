@@ -4,6 +4,7 @@ author: "R. E. Treharne"
 site: bookdown::bookdown_site
 output:
   bookdown::gitbook:
+    css: styles.css
     config:
       search: yes # Enable search bar
       sharing: null
@@ -13,8 +14,15 @@ output:
 
 ```{r setup, echo=FALSE, include=TRUE}
 knitr::opts_chunk$set(echo = TRUE)
+
 ```
-\newpage
+
+# Cover{.unnumbered .ignore}
+
+
+```{r, echo=FALSE}
+knitr::include_graphics("img/front/coverart.png")
+```
 
 # Preface {.unnumbered}
 
