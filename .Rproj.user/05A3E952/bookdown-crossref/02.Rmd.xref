@@ -7,5 +7,18 @@ fig:zebrafish-snap-2 Constructing a summary table
 h3:presenting-your-summary-table Presenting Your Summary Table
 fig:zebrafish-summary Formatting a summary table in Microsoft Word.
 h2:analysis-of-variance-anova Analysis of Variance (ANOVA)
+h3:grouped-boxplot-in-excel Grouped Boxplot in Excel
+fig:zebrafish-boxplot Distribution of Zebrafish embryo lengths organised by Alcohol treatments.
+h3:constructing-hypotheses Constructing Hypotheses
+h3:performing-a-one-way-anova-in-excel Performing a One-Way ANOVA in Excel
+h4:step-1-install-the-analysis-toolpak Step 1: Install the Analysis ToolPak
+h4:step-2-set-up-the-one-way-anova Step 2: Set Up the One-Way ANOVA
+h4:step-3-input-data-and-parameters Step 3: Input Data and Parameters
+h4:step-4-select-output-options Step 4: Select Output Options
+h3:interpreting-the-results Interpreting the Results
+h4:summary-table Summary Table
+h4:anova-table ANOVA Table
+h3:performing-post-hoc-tests Performing Post-hoc Tests
+h3:summary Summary
 h2:complete-your-weekly-assignments Complete your Weekly Assignments
 
