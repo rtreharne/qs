@@ -24,10 +24,10 @@ knitr::opts_chunk$set(echo = TRUE)
 knitr::include_graphics("img/front/coverart.png")
 ```
 
-# Preface {.unnumbered}
+# Introduction {.unnumbered}
 
-This book accompanies the Quantitative Skills (QS) component of the **BIOS103 - Introductory Practical Skills in Biosciences** I course.
+This book accompanies the Quantitative Skills (QS) component of the **BIOS103 - Introductory Practical Skills in Biosciences I** course.
 
-If you are participating in the weekly timetabled QS workshops associated with this course then be sure to submit your weekly summative QS assignments via Canvas by the deadline of **5pm on the day of the workshop**.
+If you are participating in the weekly timetabled QS workshops associated with this course then be sure to submit your weekly summative QS assignments via Canvas by the deadline specified for each workshop.
 
 All QS workshops will be delivered online via Teams. Access the meeting link from the BIOS103 Canvas course.

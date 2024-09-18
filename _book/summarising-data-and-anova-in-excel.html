@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Summarising Data and ANOVA in Excel | Quantitative Skills in Biosciences I</title>
+  <meta name="description" content="2 Summarising Data and ANOVA in Excel | Quantitative Skills in Biosciences I" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Summarising Data and ANOVA in Excel | Quantitative Skills in Biosciences I" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Summarising Data and ANOVA in Excel | Quantitative Skills in Biosciences I" />
+  
+  
+  
+
+<meta name="author" content="R. E. Treharne" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="snails-and-r.html"/>
+<link rel="next" href="calibration-curves-and-linear-regression-in-excel.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Cover</a></li>
+<li class="chapter" data-level="1" data-path="snails-and-r.html"><a href="snails-and-r.html"><i class="fa fa-check"></i><b>1</b> Snails and R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="snails-and-r.html"><a href="snails-and-r.html#estimating-the-volume-of-a-snail"><i class="fa fa-check"></i><b>1.1</b> Estimating the Volume of a Snail</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="snails-and-r.html"><a href="snails-and-r.html#download-and-import-the-csv-file"><i class="fa fa-check"></i><b>1.1.1</b> Download and Import the CSV File</a></li>
+<li class="chapter" data-level="1.1.2" data-path="snails-and-r.html"><a href="snails-and-r.html#calculate-volume-v-in-excel"><i class="fa fa-check"></i><b>1.1.2</b> Calculate Volume <span class="math inline">\(V\)</span> in Excel</a></li>
+<li class="chapter" data-level="1.1.3" data-path="snails-and-r.html"><a href="snails-and-r.html#add-a-linear-trendline-and-equation"><i class="fa fa-check"></i><b>1.1.3</b> Add a Linear Trendline and Equation</a></li>
+<li class="chapter" data-level="1.1.4" data-path="snails-and-r.html"><a href="snails-and-r.html#estimation-of-volume-for-a-snail-with-mass-10g"><i class="fa fa-check"></i><b>1.1.4</b> Estimation of Volume for a Snail with Mass 10g</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="snails-and-r.html"><a href="snails-and-r.html#getting-ready-for-r"><i class="fa fa-check"></i><b>1.2</b> Getting Ready for R</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="snails-and-r.html"><a href="snails-and-r.html#download-and-install"><i class="fa fa-check"></i><b>1.2.1</b> Download and Install</a></li>
+<li class="chapter" data-level="1.2.2" data-path="snails-and-r.html"><a href="snails-and-r.html#creating-your-first-r-project-in-rstudio"><i class="fa fa-check"></i><b>1.2.2</b> Creating Your First R Project in RStudio</a></li>
+<li class="chapter" data-level="1.2.3" data-path="snails-and-r.html"><a href="snails-and-r.html#something-more-complicated"><i class="fa fa-check"></i><b>1.2.3</b> Something More Complicated</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="snails-and-r.html"><a href="snails-and-r.html#complete-your-weekly-assignments"><i class="fa fa-check"></i><b>1.3</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html"><i class="fa fa-check"></i><b>2</b> Summarising Data and ANOVA in Excel</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#summarising-data"><i class="fa fa-check"></i><b>2.1</b> Summarising Data</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#download-and-import-the-csv-file-1"><i class="fa fa-check"></i><b>2.1.1</b> Download and Import the CSV File</a></li>
+<li class="chapter" data-level="2.1.2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#generating-a-summary-table"><i class="fa fa-check"></i><b>2.1.2</b> Generating a Summary Table</a></li>
+<li class="chapter" data-level="2.1.3" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#presenting-your-summary-table"><i class="fa fa-check"></i><b>2.1.3</b> Presenting Your Summary Table</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#analysis-of-variance-anova"><i class="fa fa-check"></i><b>2.2</b> Analysis of Variance (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#grouped-boxplots-in-excel"><i class="fa fa-check"></i><b>2.2.1</b> Grouped Boxplots in Excel</a></li>
+<li class="chapter" data-level="2.2.2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#constructing-testable-hypotheses"><i class="fa fa-check"></i><b>2.2.2</b> Constructing Testable Hypotheses</a></li>
+<li class="chapter" data-level="2.2.3" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#performing-a-one-way-anova-in-excel"><i class="fa fa-check"></i><b>2.2.3</b> Performing a One-Way Anova in Excel</a></li>
+<li class="chapter" data-level="2.2.4" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#performing-post-hoc-tests-in-excel"><i class="fa fa-check"></i><b>2.2.4</b> Performing Post-hoc Tests in Excel</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#complete-your-weekly-assignments-1"><i class="fa fa-check"></i><b>2.3</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html"><i class="fa fa-check"></i><b>3</b> Calibration Curves and Linear Regression in Excel</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#calibration-curves-calibration-curves"><i class="fa fa-check"></i><b>3.1</b> Calibration Curves {calibration-curves}</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#download-and-import-the-csv-file-2"><i class="fa fa-check"></i><b>3.1.1</b> Download and Import the CSV File</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#linear-regression"><i class="fa fa-check"></i><b>3.2</b> Linear Regression</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#the-linear-regression-equation"><i class="fa fa-check"></i><b>3.2.1</b> The Linear Regression Equation</a></li>
+<li class="chapter" data-level="3.2.2" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#performing-a-linear-regression-in-excel"><i class="fa fa-check"></i><b>3.2.2</b> Performing a Linear Regression in Excel</a></li>
+<li class="chapter" data-level="3.2.3" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#interpreting-your-linear-regression"><i class="fa fa-check"></i><b>3.2.3</b> Interpreting Your Linear Regression</a></li>
+<li class="chapter" data-level="3.2.4" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#making-predictions-with-our-model"><i class="fa fa-check"></i><b>3.2.4</b> Making Predictions with Our Model</a></li>
+<li class="chapter" data-level="3.2.5" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#extending-to-multiple-variables"><i class="fa fa-check"></i><b>3.2.5</b> Extending to Multiple Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#complete-your-weekly-assignments-2"><i class="fa fa-check"></i><b>3.3</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Quantitative Skills in Biosciences I</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="summarising-data-and-anova-in-excel" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Summarising Data and ANOVA in Excel<a href="summarising-data-and-anova-in-excel.html#summarising-data-and-anova-in-excel" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover <strong>all of this section’s content</strong> and complete the <a href="snails-and-r.html#complete-your-weekly-assignments"><strong>formative and summative assessments</strong></a> on Canvas before 5 PM today.</p>
+<p>In this section we will only be using Excel. No R today! You’ll have to contain your excitement for a few more weeks yet.</p>
+<p>Working on two important skills:
++ Summarising Data
++ Constructing and testing hypotheses</p>
+<p>The ultimate aim is to gain insight and learn something new about the world from the data that we have painstaking measured in our well designed lab experiments. This is a cornerstone of what being a scientist is all about. This is what we are training you to become.</p>
+<div id="summarising-data" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Summarising Data<a href="summarising-data-and-anova-in-excel.html#summarising-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Raw data is beautiful, but messy. Showing another person your raw data and expecting them to immediately understand it, not matter how proud you are of the toil expended to generate the data, is an unrealistic expectation. You need to boil it down into something that another person can grasp instantaneously.</p>
+<p>Let’s take a look at a Zebrafish dataset from an experiment that is uncannily similar to the one you generated in your lab practical this week.</p>
+<div id="download-and-import-the-csv-file-1" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Download and Import the CSV File<a href="summarising-data-and-anova-in-excel.html#download-and-import-the-csv-file-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><strong>Download the CSV File:</strong>
+<ul>
+<li>Here is an <a href="https://canvaswizards.org.uk/dataspell/zebrafish/999999999">example dataset</a>. Download it to your local machine.</li>
+</ul></li>
+<li><strong>Import into Excel:</strong>
+<ul>
+<li>Open Excel (Use the desktop version - you won’t be able to do this using the online version!).</li>
+<li>Go to <code>Data &gt; From Text/CSV</code> and select the downloaded CSV file.</li>
+<li>When the import wizard appears, click <code>Load</code>.</li>
+</ul></li>
+</ol>
+<p>You should now see something like that in Figure <a href="summarising-data-and-anova-in-excel.html#fig:zebrafish-data-snap">2.1</a>. There are 3 columns:
+- <code>ID</code> - A unique number to identify a measurement.
+- <code>conc_pc</code> - The ethanol concentration (%) that the each embryo was treated with.
+- <code>length_micron</code> - The measured lengths, in <span class="math inline">\(\mu m\)</span> of the embryos.</p>
+<div class="figure"><span style="display:block;" id="fig:zebrafish-data-snap"></span>
+<img src="img/02/figure_1.png" alt="Some Figure" width="238" />
+<p class="caption">
+Figure 2.1: Some Figure
+</p>
+</div>
+<p>We call this format, in which each row corresponds to a single measure mt, a <strong>long</strong> format.</p>
+</div>
+<div id="generating-a-summary-table" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Generating a Summary Table<a href="summarising-data-and-anova-in-excel.html#generating-a-summary-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/wji1rnZbe08?si=U7-r_s3RjNafU71v" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<ol style="list-style-type: decimal">
+<li><strong>Identify your Groups</strong>
+<ul>
+<li>Click anywhere in your table.</li>
+<li>Select the <code>Data</code> menu and click the <code>Advanced</code> icon in the <code>Sort &amp; Filter</code> section. This will bring up a window called “Advanced Filter”.</li>
+<li>Select the <code>Copy to another location</code> action.</li>
+<li>Your list range should already be set to <code>$B:$B</code>, but if not make it so.</li>
+<li>Set the <code>Copy to</code> cell to <code>$E:$1</code></li>
+<li>Make sure the <code>Unique records only</code> check box is selected and click OK.</li>
+<li>You should now see a complete list of your alcohol concentration groups in a column with a header <code>conc_pc</code>. Make this into a new table by clicking on any of the concentration values, and then <code>Insert &gt; New table &gt; OK</code>.</li>
+</ul></li>
+</ol>
+<p>Nice. Now you’re ready to start building out your summary table horizontally. Let’s start with calculating the mean Zebrafish length for each group.</p>
+<p>Right now, your spreadsheet should look roughly the same as the screenshot in figure <a href="summarising-data-and-anova-in-excel.html#fig:zebrafish-snap-2">2.2</a></p>
+<div class="figure"><span style="display:block;" id="fig:zebrafish-snap-2"></span>
+<img src="img/02/figure_2.png" alt="Constructing a summary table" width="100%" />
+<p class="caption">
+Figure 2.2: Constructing a summary table
+</p>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Calculating a Mean Column</strong>
+<ul>
+<li>Create a new column in your summary table by typing the word <code>Mean</code> in cell <code>F1</code>.</li>
+<li>Calculate the mean of the Zebrafish lengths for the control group (0% alcohol concentration) by entering the following formula into cell <code>F2</code>.</li>
+</ul>
+<pre class="excel"><code>=AVERAGE(IF($B1:$B161=$E2,$C1:$C161))</code></pre></li>
+</ol>
+<blockquote>
+<p><strong>A Deeper Explanation</strong></p>
+<p>The formula <code>=AVERAGE(IF($B$2:$B$161=$E2,$C$2:$C$161))</code> is an array formula that calculates the average length of Zebrafish for a specific group based on the concentration of alcohol.</p>
+<ul>
+<li><p><strong><code>$B$2:$B$161</code></strong>: The <code>$</code> symbols before both the column letter <code>B</code> and the row numbers <code>2</code> and <code>161</code> lock the entire range. This means that when you copy the formula to other cells, this range will not change; it will always refer to cells <code>B2</code> to <code>B161</code>.</p></li>
+<li><p><strong><code>$E2</code></strong>: The <code>$</code> before the column letter <code>E</code> locks the column, but since there’s no <code>$</code> before the row number <code>2</code>, the row number can change if the formula is dragged down across rows. This cell is used to compare each value in the range <code>$B$2:$B$161</code> to the specific concentration value in the corresponding row in column <code>E</code>.</p></li>
+</ul>
+</blockquote>
+<blockquote>
+<ul>
+<li><p><strong><code>$C$2:$C$161</code></strong>: Similar to the range for column <code>B</code>, this locks the range of cells in column <code>C</code> from which the values will be averaged, conditional on the <code>IF</code> statement.</p></li>
+<li><p><strong><code>AVERAGE(IF(...))</code></strong>: The <code>IF</code> function checks each row in the range <code>$B$2:$B$161</code> to see if it matches the value in the corresponding row in column <code>E</code>. If it matches, the corresponding value in column <code>$C$2:$C$161</code> is included in the average calculation. The <code>AVERAGE</code> function then calculates the mean of these filtered values.</p></li>
+</ul>
+<p>This approach is particularly useful when you want to calculate conditional averages across a dataset, ensuring that the correct cells are referenced even when copying the formula to different parts of the spreadsheet.</p>
+</blockquote>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Calculating More Columns</strong>
+<ul>
+<li>Create four more columns with headers:
+<ul>
+<li>Std. Dev.</li>
+<li>Median</li>
+<li>Min</li>
+<li>Max</li>
+</ul></li>
+<li>Drag the cell <code>F2</code> to <code>G2</code>. Change the word <code>AVERAGE</code> in the formula in <code>G2</code> to <code>STDEV</code>. This will calculate the standard deviation for the group and the remaining cells in the column should also auto complete.</li>
+<li>Do the same for the median, min and max columns. Be sure to use the corresponding function.</li>
+</ul></li>
+</ol>
+<blockquote>
+<p><strong>A Deeper Explanation</strong></p>
+<p>When analysing data, it’s important to understand the basic statistical measures that summarise the data’s distribution. Here are some key terms:</p>
+<ul>
+<li><p><strong>Mean</strong>: The mean, often referred to as the average, is the sum of all values in a dataset divided by the number of values. It provides a central value for the data. However, the mean can be influenced by outliers (extremely high or low values).</p></li>
+<li><p><strong>Standard Deviation</strong>: The standard deviation measures the amount of variation or dispersion in a dataset. It is calculated as the square root of the variance, where variance is the average of the squared differences between each data point and the mean. A low standard deviation indicates that the data points tend to be close to the mean, while a high standard deviation indicates more spread out data.</p></li>
+<li><p><strong>Median</strong>: The median is the middle value in a dataset when the values are arranged in ascending or descending order. If the dataset has an odd number of values, the median is the central value. If the dataset has an even number of values, the median is the average of the two central values. The median is less affected by outliers compared to the mean.</p></li>
+<li><p><strong>Min</strong>: The minimum (min) value is the smallest value in the dataset. It provides a measure of the lower bound of the data.</p></li>
+<li><p><strong>Max</strong>: The maximum (max) value is the largest value in the dataset. It provides a measure of the upper bound of the data.</p></li>
+</ul>
+<p>These measures are fundamental for understanding the distribution of data. The mean and median give you central tendencies, while the standard deviation tells you how spread out the data is. The minimum and maximum values provide the range within which all the data points fall.</p>
+</blockquote>
+</div>
+<div id="presenting-your-summary-table" class="section level3 hasAnchor" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Presenting Your Summary Table<a href="summarising-data-and-anova-in-excel.html#presenting-your-summary-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>At some point you may wish to include your Excel summary table in a Word document. There’s a lot of wiggle room on how you choose to format your table but there are a few <strong>unbreakable</strong> rules:</p>
+<ul>
+<li>The table <strong>MUST</strong> have a caption.</li>
+<li>The caption should be placed <strong>ABOVE</strong> the table (not below as for a figure or graph).</li>
+<li>The caption should be numbered accordingly. For example, if this is the first table in your document the figure caption should start “<strong>Figure 1: …</strong>”.</li>
+<li>The caption should be descriptive and unambiguous. The reader should be able to quickly interpret what is going on without having to read the body of the text.</li>
+<li>The table headers should be sensible and unambiguous. Any symbols or variables or units should be defined in the caption.</li>
+<li>The data should be formatted to a sensible number of decimal places (i.e. if you’re measurements are made to 1 decimal place, your summary values should not be quoted to more than this).</li>
+</ul>
+<p>Follow these rules and you can’t go wrong. Break them and I <strong>will</strong> find you. Figure <a href="summarising-data-and-anova-in-excel.html#fig:zebrafish-summary">2.3</a> shows how my summary table looks when copyied and pasted into Word. I like to make my tables span the entire width of my document using the <code>Auto-fit to window</code> command. I also like to center my columns. These are personal preferences, but you can’t deny they look great!</p>
+<div class="figure"><span style="display:block;" id="fig:zebrafish-summary"></span>
+<img src="img/02/figure_3.png" alt="Formatting a summary table in Microsoft Word." width="100%" />
+<p class="caption">
+Figure 2.3: Formatting a summary table in Microsoft Word.
+</p>
+</div>
+</div>
+</div>
+<div id="analysis-of-variance-anova" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Analysis of Variance (ANOVA)<a href="summarising-data-and-anova-in-excel.html#analysis-of-variance-anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You’re about to learn a critical skill that is important for becoming a scientist: formulating hypotheses and testing them. This is a cornerstone of scientific inquiry.</p>
+<p>You’ve already summarised your data using descriptive statistics. Now, we’ll move on to another branch of statistics called inferential statistics. This involves using an appropriate statistical test to determine whether specific hypotheses that we construct should be accepted or rejected.</p>
+<p>Knowing which statistical test to use depends on the data and context. It takes time and lots of practice to become proficient at this, and it’s completely normal to forget which test you need or how to interpret the result.</p>
+<p>We’ll stick with out Zebrafish dataset and perform an Analysis of Variance (ANOVA) to determine whether there is something we can learn from our data. We’ll formulate a hypothesis and use Excel to perform the ANOVA. Then we’ll interpret the results.</p>
+<p>But before we dive into this, let’s create a boxplot to visually inspect the data and see if we can generate some gut intuition as to what might be going on.</p>
+<div id="grouped-boxplots-in-excel" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Grouped Boxplots in Excel<a href="summarising-data-and-anova-in-excel.html#grouped-boxplots-in-excel" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You might not have seen a grouped boxplot before. That’s OK. I’m confident that you’ll have a good intuition for what they show. However, for more information the key components of a boxplot read the text in the <a href="summarising-data-and-anova-in-excel.html#understanding-boxplots">Anatomy of a Boxplot</a>(<a href="summarising-data-and-anova-in-excel.html#understanding-boxplots"><strong>??</strong></a> section. Let’s dive straight in for now though.</p>
+<div id="create-the-boxplot" class="section level4 unnumbered hasAnchor">
+<h4>Create the Boxplot<a href="summarising-data-and-anova-in-excel.html#create-the-boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/c9jp3nHwutY?si=qIJMDTbjIb4xcLRf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<ol style="list-style-type: decimal">
+<li><strong>Insert a Boxplot</strong>:
+<ul>
+<li>Select your data.</li>
+<li>Go to the <strong>Insert</strong> tab, click on <strong>Insert Statistical Chart</strong>, and choose <strong>Box and Whisker</strong>.</li>
+</ul></li>
+<li><strong>Select Data</strong>:
+<ul>
+<li>Your plot will look a bit weird. That’s because we need to configure the groupings properly.</li>
+<li>Click the <strong>Select dta</strong> button.</li>
+<li>Remove the <strong>conc_pc</strong> series from the left-hand list.</li>
+<li>Click the <strong>Edit</strong> button on the (currently empty) right-hand list.</li>
+</ul></li>
+<li><strong>Boxplots in the wrong order?</strong>
+<ul>
+<li>Sort the <strong>conc_pc</strong> column from smallest to largest.</li>
+</ul></li>
+<li><strong>Re-scale y-axis</strong>:
+<ul>
+<li>It’s best to re-scale the y-axis to maximise the space used by the boxplots. This will make any effect easier to see.</li>
+<li>Double-click on the numbers in the y-axis. Set the <strong>Bounds &gt; Minimum</strong>: to 1000.</li>
+</ul></li>
+<li><strong>Add Axis Labels</strong>:
+<ul>
+<li>Click the green <strong>+</strong> icon in the top-right of your graph.</li>
+<li>Check the <strong>Axes titles</strong> box.</li>
+<li>Double-click on each label in turn and update with appropriate labels:
+<ul>
+<li>X-axis: “Alcohol Conc. (%)”</li>
+<li>Y-axis: “Embryo Length (<span class="math inline">\(\mu m\)</span>)</li>
+</ul></li>
+<li>Note: To use the <strong><span class="math inline">\(\mu\)</span></strong> symbol click <strong>Insert &gt; Symbols &gt; Symbol</strong>. Find the symbol in the list and click <strong>Insert</strong>.</li>
+</ul></li>
+<li><strong>Get Rid of Chart Title</strong>:
+<ul>
+<li>If you’re going to be presenting this figure in a report or poster then it should not have a title above the axes.</li>
+<li>Instead you should include a figure caption <strong>below</strong> the plot.</li>
+<li>The same <strong>unbreakable</strong> rules for your caption are the same as those described above for table captions. Just make sure your caption is below the figure instead of above.</li>
+</ul></li>
+<li><strong>Export Your Figure</strong>:
+<ul>
+<li>Right click on your figure anywhere outside the plot area and you should see the option to <strong>Save as picture</strong>.</li>
+<li>Save it somewhere sensible as a .png file and then insert it into a Word document with a sensible caption.</li>
+</ul></li>
+</ol>
+<div class="figure"><span style="display:block;" id="fig:zebrafish-boxplot"></span>
+<img src="img/02/figure_4.png" alt="Distribution of Zebrafish embryo lengths organised by Alcohol treatments." width="100%" />
+<p class="caption">
+Figure 2.4: Distribution of Zebrafish embryo lengths organised by Alcohol treatments.
+</p>
+</div>
+</div>
+<div id="interpret-the-boxplot" class="section level4 unnumbered hasAnchor">
+<h4>Interpret the Boxplot<a href="summarising-data-and-anova-in-excel.html#interpret-the-boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Figure <a href="summarising-data-and-anova-in-excel.html#fig:zebrafish-boxplot">2.4</a> shows our finished boxplot.</p>
+<ul>
+<li><strong>Alcohol Concentration 0%</strong>:
+<ul>
+<li>The median embryo length is approximately 2500 µm, with the mean slightly above the median.</li>
+<li>The data is relatively spread out, as shown by the wide box and long whiskers.</li>
+<li>There are no outliers in this group.</li>
+</ul></li>
+<li><strong>Alcohol Concentration 1.5%</strong>:
+<ul>
+<li>The median length is slightly lower than the 0% group, but the mean is still fairly close.</li>
+<li>The box and whiskers are narrower than in the 0% group, indicating less variability in embryo length.</li>
+<li>One outlier is present above the whisker, indicating a particularly large embryo in this concentration or possibly, a random measurement error.</li>
+</ul></li>
+<li><strong>Alcohol Concentration 2%</strong>:
+<ul>
+<li>The median and mean have both decreased, showing a reduction in embryo length as alcohol concentration increases.</li>
+<li>The box is narrower, indicating less variability, but there are several outliers both above and below the whiskers, suggesting that while most embryos were of a similar size, a few were much larger or smaller.</li>
+</ul></li>
+<li><strong>Alcohol Concentration 2.5%</strong>:
+<ul>
+<li>The median and mean lengths have further decreased, indicating a continued negative effect of alcohol concentration on embryo length.</li>
+<li>The box is of similar size to the 2% group, but with longer whiskers, indicating more variability in the data.</li>
+<li>There is one outlier below the whisker, indicating a particularly small embryo in this concentration.</li>
+</ul></li>
+</ul>
+<p>In summary, As alcohol concentration increases, the median and mean embryo lengths decrease, indicating a negative correlation between alcohol concentration and embryo length. Variability in embryo length decreases slightly up to 2% concentration but then increases again at 2.5%, as evidenced by the longer whiskers. The presence of outliers, particularly at higher concentrations, suggests that while most embryos are affected similarly, some experience more extreme changes in size.</p>
+<p>However, visual patterns alone cannot confirm the existence of a true relationship between alcohol concentration and embryo length. To rigorously explore whether the observed trends are statistically significant or merely due to chance, we must construct testable hypotheses. This process will allow us to formalise our observations and set the stage for appropriate statistical analysis.</p>
+</div>
+<div id="understanding-boxplots" class="section level4 unnumbered hasAnchor">
+<h4>Anatomy of a Boxplot<a href="summarising-data-and-anova-in-excel.html#understanding-boxplots" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<blockquote>
+<p>A boxplot is a standardised way of displaying the distribution of data based on a five-number summary: minimum, first quartile (Q1), median, third quartile (Q3), and maximum. The box in the boxplot represents the interquartile range (IQR), which is the range between Q1 and Q3. The central line within the box indicates the median, which is the middle value of the dataset.</p>
+<p>Sometimes, an “X” symbol is also included within the box, representing the mean of the dataset. However, it is important to note that the mean is not always shown in a boxplot.</p>
+<p>The “whiskers” of the boxplot extend from the box to the smallest and largest values within 1.5 times the IQR from the first and third quartiles, respectively. These whiskers help to indicate the spread of the majority of the data.</p>
+<p>Outliers are data points that fall outside the range defined by the whiskers. These are typically plotted as individual points beyond the ends of the whiskers, highlighting data points that are unusually high or low compared to the rest of the dataset.</p>
+<p>To determine whether a data point is an outlier, you compare it to the thresholds defined by the IQR:</p>
+<ul>
+<li>Any data point below Q1 - 1.5 * IQR is considered a lower outlier.</li>
+<li>Any data point above Q3 + 1.5 * IQR is considered an upper outlier.</li>
+</ul>
+<p><strong>Summary:</strong></p>
+<ul>
+<li><strong>Box</strong>: Represents the interquartile range (IQR), the middle 50% of the data.</li>
+<li><strong>Central Line</strong>: Indicates the median value.</li>
+<li><strong>X (if shown)</strong>: Indicates the mean value.</li>
+<li><strong>Whiskers</strong>: Extend to the smallest and largest values within 1.5 times the IQR from the quartiles.</li>
+<li><strong>Outliers</strong>: Data points that lie outside the whiskers, typically displayed as individual points.</li>
+</ul>
+</blockquote>
+</div>
+</div>
+<div id="constructing-testable-hypotheses" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Constructing Testable Hypotheses<a href="summarising-data-and-anova-in-excel.html#constructing-testable-hypotheses" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Given the patterns observed in the boxplot, where higher alcohol concentrations appear to be associated with shorter embryo lengths, it is essential to move from visual interpretation to a more rigorous statistical approach. This involves constructing and testing hypotheses to determine whether the observed trends are statistically significant.</p>
+<div id="formulating-the-hypotheses" class="section level4 unnumbered hasAnchor">
+<h4>Formulating the Hypotheses<a href="summarising-data-and-anova-in-excel.html#formulating-the-hypotheses" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In the context of your data, the primary goal is to determine whether different alcohol concentrations have a statistically significant effect on embryo length. To do this, we formulate a null hypothesis (<span class="math inline">\(H_{0}\)</span>) and an alternative hypothesis (<span class="math inline">\(H_{1}\)</span>):</p>
+<ul>
+<li><p><strong>Null Hypothesis (<span class="math inline">\(H_{0}\)</span>):</strong> There is no statistically significant difference in the mean embryo lengths between the different alcohol concentration groups. Any observed differences are attributed to random variation rather than an effect of alcohol concentration.</p>
+<p><span class="math display">\[
+H_0: \bar{x}_0 = \bar{x}_{1.5} = \bar{x}_2 = \bar{x}_{2.5}
+\]</span></p>
+<p>Here, <span class="math inline">\(\bar{x}_0\)</span>, <span class="math inline">\(\bar{x}_{1.5}\)</span>, <span class="math inline">\(\bar{x}_2\)</span>, and <span class="math inline">\(\bar{x}_{2.5}\)</span> represent the mean embryo lengths at 0%, 1.5%, 2%, and 2.5% alcohol concentrations, respectively.</p></li>
+<li><p><strong>Alternative Hypothesis (<span class="math inline">\(H_{1}\)</span>):</strong> At least one of the mean embryo lengths differs significantly from the others, suggesting that alcohol concentration has a measurable impact on embryo length.</p>
+<p><span class="math display">\[
+H_1: \text{At least one } \bar{x} \text{ is different}
+\]</span></p></li>
+</ul>
+</div>
+<div id="origin-of-hypothesis-testing" class="section level4 unnumbered hasAnchor">
+<h4>The Origin of Hypothesis Testing<a href="summarising-data-and-anova-in-excel.html#origin-of-hypothesis-testing" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<blockquote>
+<p>Hypothesis testing emerged in the early 20th century through the work of statisticians like Ronald A. Fisher, who applied these methods to agricultural experiments, leading to significant advancements in statistical methodology. However, Fisher’s legacy is also marred by his support for eugenics, reflecting the darker intersections of early statistical science with discriminatory ideologies.</p>
+<p>While hypothesis testing remains central to scientific research, the use of <strong>p-values</strong> has faced criticism. P-values, often misinterpreted, simply measure data compatibility with the null hypothesis, not the truth of the hypothesis itself. The conventional threshold (p &lt; 0.05) can lead to arbitrary decisions, and practices like p-hacking undermine the validity of results.</p>
+<p>Alternatives and complements to p-values include <strong>confidence intervals</strong> (which offer a range of likely values for parameters), <strong>Bayesian methods</strong> (which incorporate prior knowledge into probability assessments), and <strong>effect sizes</strong> (which quantify the magnitude of an effect). Pre-registering studies also enhances transparency, reducing the risk of biased results.</p>
+<p>Understanding these tools and their limitations enables researchers to draw more nuanced and reliable conclusions from their data.</p>
+</blockquote>
+</div>
+<div id="getting-ready-to-test" class="section level4 unnumbered hasAnchor">
+<h4>Getting Ready to Test<a href="summarising-data-and-anova-in-excel.html#getting-ready-to-test" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><strong>One-way ANOVA</strong> is a statistical test used to determine whether there are significant differences between the means of three or more independent (unrelated) groups. In this case, the groups are the different levels of alcohol concentration (0%, 1.5%, 2%, and 2.5%).</p>
+<p>The term “one-way” refers to the fact that we are analysing the effect of a single factor (alcohol concentration) on the dependent variable (embryo length). If we were interested in analysing the impact of an additional dependent variables (e.g. incubation temperature), as well as any interaction effects with alcohol concentration, we would likely want to perform a “two-way” ANOVA.</p>
+<p>We are using ANOVA in this context because:</p>
+<ul>
+<li><p><strong>Multiple Group Comparisons</strong>: We have more than two groups (four alcohol concentration levels), and ANOVA is designed to handle comparisons across multiple groups simultaneously. This is more efficient and statistically sound than performing multiple t-tests, which would increase the likelihood of Type I errors (false positives).</p></li>
+<li><p><strong>Assessing Variability</strong>: ANOVA compares the variability within each group (i.e., how much embryo lengths vary within each alcohol concentration) to the variability between groups (i.e., how much the group means differ from each other). This helps us determine if the observed differences in means are greater than what we would expect by chance alone.</p></li>
+</ul>
+</div>
+<div id="assumptions-of-anova" class="section level4 unnumbered hasAnchor">
+<h4>Assumptions of ANOVA<a href="summarising-data-and-anova-in-excel.html#assumptions-of-anova" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>For ANOVA to be valid, certain assumptions must be met:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Independence of Observations</strong>: The data points in each group are independent of each other. In other words, each data point corresponds to a unique embryo.</li>
+<li><strong>Normality</strong>: The distribution of the residuals (differences between observed and predicted values) should be approximately <strong>normal</strong>.</li>
+<li><strong>Homogeneity of Variances</strong>: The variances within each group should be <strong>roughly</strong> equal.</li>
+</ol>
+<p>In this case, I have engineered the dataset so that these assumptions are met. However, in practice, when working with real data, it is crucial to check whether these assumptions hold before applying ANOVA. If the assumptions are violated, the results of the ANOVA may not be reliable, and alternative methods may be necessary. I’ll show you how to check that the assumptions for a statistical test are met in Chapter 5 and the available alternative tests for cases where the assumptions are not met.</p>
+</div>
+</div>
+<div id="performing-a-one-way-anova-in-excel" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> Performing a One-Way Anova in Excel<a href="summarising-data-and-anova-in-excel.html#performing-a-one-way-anova-in-excel" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/tMEJjeNG998?si=zJiqgP57PZDCQMvg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<p><strong>Step 1</strong>: Install and Activate the Data Analysis ToolPak</p>
+<p>To perform a One-Way ANOVA in Excel, you need to install and activate the Analysis ToolPak add-on.</p>
+<ol style="list-style-type: decimal">
+<li>Open Excel and go to <code>File &gt; Options</code>.</li>
+<li>In the Options menu, select <code>Add-ins</code>.</li>
+<li>At the bottom, next to “Manage”, ensure <code>Excel Add-ins</code> is selected and click <code>Go</code>.</li>
+<li>In the Add-Ins box, check the <code>Analysis ToolPak</code> option and click <code>OK</code>.</li>
+<li>You should now see a <code>Data Analysis</code> button in the <code>Data</code> ribbon.</li>
+</ol>
+<p><strong>Step 2</strong>: Create a Pivot Table to Reshape Data</p>
+<p>Before performing the ANOVA, you need to reshape your long data into a wide format using a pivot table. Here’s how to do it:</p>
+<ol style="list-style-type: decimal">
+<li>Select your dataset (including headers).</li>
+<li>Go to the <code>Insert</code> tab and click on <code>PivotTable</code>.</li>
+<li>In the Create PivotTable dialog box, select where you want the PivotTable to be placed (e.g., New Worksheet).</li>
+<li>In the PivotTable Fields pane:
+<ul>
+<li>Drag <code>conc_pc</code> to the <code>Columns</code> area.</li>
+<li>Drag <code>id</code> to the <code>Rows</code> area.</li>
+<li>Drag <code>length_micron</code> to the <code>Values</code> area, ensuring it is summarized by <code>Average</code> or <code>Sum</code> (depending on your needs).</li>
+</ul></li>
+<li>The resulting pivot table will have the concentration levels as columns and the measurements as rows, which is the required format for One-Way ANOVA.</li>
+</ol>
+<p><strong>Step 3</strong>: Perform the One-Way ANOVA</p>
+<ol style="list-style-type: decimal">
+<li>Click on the <code>Data</code> ribbon and select <code>Data Analysis</code>.</li>
+<li>In the Data Analysis dialog, select <code>ANOVA: Single Factor</code> and click <code>OK</code>.</li>
+<li>In the <code>ANOVA: Single Factor</code> dialog box:
+<ul>
+<li><strong>Input Range</strong>: Select the range of your reshaped data (including the labels).</li>
+<li><strong>Grouped By</strong>: Choose <code>Columns</code> (since each group is in a separate column).</li>
+<li><strong>Labels in First Row</strong>: Check this option if you included labels.</li>
+<li><strong>Alpha</strong>: Set this to 0.05 (the default significance level).</li>
+<li><strong>Output Options</strong>: Choose where you want to display the results (e.g., New Worksheet Ply). You can name the new sheet “Results”.</li>
+</ul></li>
+<li>Click <code>OK</code> to run the analysis. You should see a new sheet that looks identical to that shown in <a href="summarising-data-and-anova-in-excel.html#fig:anova">2.5</a>.</li>
+</ol>
+<div class="figure"><span style="display:block;" id="fig:anova"></span>
+<img src="img/02/figure_5.png" alt="Results tables of one-way ANOVA in Excel" width="100%" />
+<p class="caption">
+Figure 2.5: Results tables of one-way ANOVA in Excel
+</p>
+</div>
+<p><strong>Step 4</strong>: Interpret the Results</p>
+<p>Excel will generate a new worksheet with the ANOVA results. The output includes two tables:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Summary Table</strong>:
+<ul>
+<li><strong>Count</strong>: Number of observations in each group.</li>
+<li><strong>Sum</strong>: Sum of all values in each group.</li>
+<li><strong>Average</strong>: Mean value of each group.</li>
+<li><strong>Variance</strong>: Variability within each group.</li>
+</ul></li>
+<li><strong>ANOVA Table</strong>:
+<ul>
+<li><strong>Source of Variation</strong>:
+<ul>
+<li><em>Between Groups</em>: Variability between the groups.</li>
+<li><em>Within Groups</em>: Variability within each group.</li>
+</ul></li>
+<li><strong>SS (Sum of Squares)</strong>: Measure of the total variation.</li>
+<li><strong>df (Degrees of Freedom)</strong>: Calculated as the number of groups minus 1 for between groups, and total observations minus the number of groups for within groups.</li>
+<li><strong>MS (Mean Square)</strong>: SS divided by df.</li>
+<li><strong>F (F-Statistic)</strong>: Ratio of MS between groups to MS within groups.</li>
+<li><strong>P-Value</strong>: Indicates if the results are statistically significant.</li>
+<li><strong>F crit</strong>: Critical value of F for the given alpha level.</li>
+</ul></li>
+</ol>
+<p><strong>Step 5</strong>: Make a Conclusion</p>
+<ul>
+<li>Compare the <strong>P-Value</strong> to the alpha level (0.05):
+<ul>
+<li>If <code>P-Value ≤ 0.05</code>, reject the null hypothesis and conclude that there is a significant difference between the groups.</li>
+<li>If <code>P-Value &gt; 0.05</code>, fail to reject the null hypothesis and conclude that there is no significant difference between the groups.</li>
+</ul></li>
+</ul>
+<p>In your ANOVA result, a p-value of <code>2.48E-08</code> means that the probability of observing the differences between your group means by random chance is exceedingly low (just 0.0000000248). Since this p-value is far below the common threshold of 0.05, we can reject the null hypothesis (_0), and conclude that <strong>there are statistically significant differences between the groups</strong>.</p>
+<p>While the one-way ANOVA tells us that there are significant differences between the groups, it does not specify which groups differ from each other. To determine where these differences lie, additional testing, known as <strong>post-hoc</strong> testing, is required. Post-hoc tests, allow us to compare the group means directly and identify which specific groups are significantly different. Although post-hoc testing requires a bit more work, it can significantly enhance our understanding of the data and provide deeper insights into the relationships between groups.</p>
+<div id="exponent-notation" class="section level4 unnumbered hasAnchor">
+<h4>Understanding Exponent Notation<a href="summarising-data-and-anova-in-excel.html#exponent-notation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<blockquote>
+<p>In statistical analysis, particularly when working with software like Excel or R, you might values expressed in scientific notation, often using the letter “E” followed by a number. For example, the p-value <code>2.48E-08</code> appears in your ANOVA results.</p>
+<h4 id="what-does-2.48e-08-mean" class="hasAnchor">What Does <code>2.48E-08</code> Mean?<a href="summarising-data-and-anova-in-excel.html#what-does-2.48e-08-mean" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>The notation <code>2.48E-08</code> is Excel’s way of representing the number 2.48 × 10⁻⁸. Here’s how to break it down:</p>
+<ul>
+<li><strong>2.48</strong>: This is the base number.</li>
+<li><strong>E-08</strong>: This indicates that the base number (2.48) should be multiplied by 10 raised to the power of -8.</li>
+</ul>
+<p>So, <code>2.48E-08</code> is mathematically equivalent to:</p>
+<p><span class="math display">\[
+2.48 \times 10^{-8} = 0.0000000248
+\]</span></p>
+<p>This value is extremely small, which is typical for p-values when the test results are highly significant.</p>
+<h4 id="why-use-scientific-notation" class="hasAnchor">Why Use Scientific Notation?<a href="summarising-data-and-anova-in-excel.html#why-use-scientific-notation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Scientific notation is used to conveniently express very large or very small numbers that would otherwise be cumbersome to write out in full. In the case of p-values, this format is particularly useful because significant results often involve very small numbers. Instead of writing 0.0000000248, which can be error-prone and hard to read, Excel uses <code>2.48E-08</code> to convey the same information succinctly.</p>
+</blockquote>
+</div>
+</div>
+<div id="performing-post-hoc-tests-in-excel" class="section level3 hasAnchor" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Performing Post-hoc Tests in Excel<a href="summarising-data-and-anova-in-excel.html#performing-post-hoc-tests-in-excel" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Need to perform additional tests following a significant ANOVA to determine where the differences between the groups lie. These are called <strong>Post-hoc</strong> tests.</p>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/EHwZFRx0hr0?si=x0E9QGjAmGeoBUhY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<p><strong>Step 1: Create a new table to list group comparisons</strong></p>
+<ul>
+<li>In cell <code>A19</code>, underneath your ANOVA result table, Create a new column label called <code>Groups</code>.</li>
+<li>List all the possible ways two groups can be compared to each other (there are six ways in total):
+<ul>
+<li>0% v 1.5%</li>
+<li>0% v 2.0%</li>
+<li>0% v 2.5%</li>
+<li>1.5% v 2.0%</li>
+<li>1.5% v 2.5%</li>
+<li>2.0% v 2.5%</li>
+</ul></li>
+<li>Create additional column headers <code>P-value</code> and <code>Significant?</code> in cells <code>B19</code> and <code>C19</code> respectively.</li>
+</ul>
+<p><strong>Step 2: Perform T-tests for each group comparison</strong></p>
+<ul>
+<li>Starting in cell <code>B20</code> type:</li>
+</ul>
+<pre class="excel"><code>=TTEST(wide!B$4:B$164, wide!C$4:C$164, 2, 2)</code></pre>
+<ul>
+<li>Copy the cell down for the remaining rows and update the columns in the formula to correspond with the respective groups that are being compared.</li>
+</ul>
+<div id="ttest" class="section level4 unnumbered hasAnchor">
+<h4>What is a T-test?<a href="summarising-data-and-anova-in-excel.html#ttest" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<blockquote>
+<p><strong>Unlike ANOVA</strong>, which compares multiple groups simultaneously to see if there are any significant differences in the means of the groups, a T-test can only compare two groups at a time.</p>
+<p>The assumptions for a T-test are similar to those for ANOVA: the data should be normally distributed, the samples should be independent, and the variances of the two groups should be equal if using a two-sample T-test assuming equal variances.</p>
+<p><strong>Like ANOVA</strong>, the key output of a T-test is the <strong>p-value</strong>.</p>
+<p><strong>In Excel</strong> you perform a T-test like this:</p>
+<pre class="excel"><code>=T.TEST(list1, list2, tails, type)</code></pre>
+<p>where:</p>
+<ul>
+<li><strong>list1</strong>: Corresponds to the list of values in your first group.</li>
+<li><strong>list2</strong>: Corresponds to the list of values in your second group.</li>
+<li><strong>tails</strong>: Requires a value of 1 or 2 indicating whether the test is one-tailed or two-tailed respectively.
+<ul>
+<li>A one-tailed T-test tests for a difference in a specific direction (greater or less), while a two-tailed T-test tests for any difference regardless of direction.</li>
+</ul></li>
+<li><strong>type</strong>: Requires a value of 1, 2, or 3 indicating:
+<ul>
+<li><strong>1</strong>: A paired t-test (i.e., groups are not independent).</li>
+<li><strong>2</strong>: An independent t-test with equal variances between groups.</li>
+<li><strong>3</strong>: An independent t-test with unequal variances between groups (also known as a Welch test).</li>
+</ul></li>
+</ul>
+<p><strong>T-tests are powerful for pairwise comparisons</strong> but need to be used in conjunction with corrections like Bonferroni when multiple T-tests are conducted, as performing multiple tests increases the risk of Type I errors (false positives).</p>
+</blockquote>
+<p>Let’s create a new table underneath my ANOVA table in Excel, say starting in cell <code>A19</code></p>
+<p><strong>Step 3: Calculate Bonferroni Corrected Alpha Level</strong>
+- To calculate the Bonferroni corrected alpha level divide the initil threshold value of 0.05 by the number of t-tests you are performing, i.e. 5.
+- Use the corrected value by comparing it to the p-value of each of the t-tests to determine if the difference in the means of groups is significant.</p>
+<p><strong>Step 4: Extend Your Conclusions</strong></p>
+<p>The post-hoc tests indicate that there are significant differences in embryo lengths were found between the following pairs of alcohol concentrations:</p>
+<ul>
+<li><strong>0% vs. 2%</strong></li>
+<li><strong>0% vs. 2.5%</strong></li>
+<li><strong>1.5% vs. 2%</strong></li>
+<li><strong>1.5% vs. 2.5%</strong></li>
+</ul>
+<p>These findings suggest that increases in alcohol concentration from 0% to 2%, and from 1.5% to 2.5%, lead to significant changes in embryo length.</p>
+</div>
+</div>
+</div>
+<div id="complete-your-weekly-assignments-1" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Complete your Weekly Assignments<a href="summarising-data-and-anova-in-excel.html#complete-your-weekly-assignments-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the BIOS103 Canvas course you will find this week’s <strong>formative</strong> and <strong>summative</strong> assignments. You should complete both of these before the end of the online workshop that corresponds to this section’s content. The assignments are identical in all but the following details:</p>
+<ul>
+<li>You can attempt the <strong>formative assignment</strong> as many times as you like. It will not contribute to your overall score for this course. Make sure you practice this assignment until you’re confident that you can get the correct answer on your own.</li>
+<li>You can attempt the <strong>summative</strong> assignment <strong>only once</strong>. It will be identical to the formative assignment but will use different values and datasets. This assignment <strong>will</strong> contribute to your overall score for this course.</li>
+<li><strong>Late submissions</strong>. You have until 5pm on the day of the workshop for this week’s content to submit your <strong>summative</strong> assignment. Late submissions will incur a 5% penalty for every part or full day beyond the deadline. Penalties will be capped at 40%.</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="snails-and-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="calibration-curves-and-linear-regression-in-excel.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -26,7 +26,7 @@ Let's take a look at a Zebrafish dataset from an experiment that is uncannily si
 ### Download and Import the CSV File
 
 1. **Download the CSV File:** 
-   - Here is an [example dataset](https://www.canvaswizards.org.uk/dataspell/zebrafish/999999999). Download it to your local machine.
+   - Here is an [example dataset](https://canvaswizards.org.uk/dataspell/zebrafish/999999999). Download it to your local machine.
 
 2. **Import into Excel:**
    - Open Excel (Use the desktop version - you won't be able to do this using the online version!).
@@ -47,7 +47,7 @@ We call this format, in which each row corresponds to a single measure mt, a **l
 
 ```{r, results='asis', echo=FALSE}
 if (knitr::is_html_output()) {
-  cat('<iframe width="560" height="315" src="https://www.youtube.com/embed/wji1rnZbe08?si=U7-r_s3RjNafU71v" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
+  cat('<iframe width="100%" height="400" src="https://www.youtube.com/embed/wji1rnZbe08?si=U7-r_s3RjNafU71v" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
 }
 ```
 
@@ -140,15 +140,27 @@ knitr::include_graphics("img/02/figure_3.png")
 
 You're about to learn a critical skill that is important for becoming a scientist: formulating hypotheses and testing them. This is a cornerstone of scientific inquiry.
 
-You've already summarised your data using descriptive statistics. Now, we'll move on to another branch of statistics called inferential statistics. This involves using an appropriate statistical test to determine whether your hypotheses should be accepted or rejected.
+You've already summarised your data using descriptive statistics. Now, we'll move on to another branch of statistics called inferential statistics. This involves using an appropriate statistical test to determine whether specific hypotheses that we construct should be accepted or rejected.
 
-Knowing which statistical test to use depends on the data and context. It takes time to become proficient at this, and it's completely normal to consult resources or tools like ChatGPT to decide on the best test for a given situation.
+Knowing which statistical test to use depends on the data and context. It takes time and lots of practice to become proficient at this, and it's completely normal to forget which test you need or how to interpret the result.
 
-For this example, we'll use our Zebrafish data to determine whether there is an effect of alcohol concentration on the lengths of developing Zebrafish embryos.
+We'll stick with out Zebrafish dataset and perform an Analysis of Variance (ANOVA) to determine whether there is something we can learn from our data. We'll formulate a hypothesis and use Excel to perform the ANOVA. Then we'll interpret the results.
 
-### Grouped Boxplot in Excel
+But before we dive into this, let's create a boxplot to visually inspect the data and see if we can generate some gut intuition as to what might be going on.
 
-Before diving into statistical tests, let's create a boxplot to visually inspect the data.
+### Grouped Boxplots in Excel
+
+You might not have seen a grouped boxplot before. That's OK. I'm confident that you'll have a good intuition for what they show. However, for more information the key components of a boxplot read the text in the [Anatomy of a Boxplot](\@ref(understanding-boxplots) section. Let's dive straight in for now though.
+
+
+#### Create the Boxplot {.unnumbered}
+
+```{r, results='asis', echo=FALSE}
+if (knitr::is_html_output()) {
+  cat('<iframe width="100%" height="400" src="https://www.youtube.com/embed/c9jp3nHwutY?si=qIJMDTbjIb4xcLRf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
+}
+```
+
 
 1. **Insert a Boxplot**: 
    - Select your data.
@@ -182,9 +194,36 @@ Before diving into statistical tests, let's create a boxplot to visually inspect
 ```{r zebrafish-boxplot, echo=FALSE, fig.cap="Distribution of Zebrafish embryo lengths organised by Alcohol treatments.", out.width="100%"}
 knitr::include_graphics("img/02/figure_4.png")
 ```
-    
-> **Understanding Boxplots**
-> 
+
+#### Interpret the Boxplot {.unnumbered}
+
+Figure \@ref(fig:zebrafish-boxplot) shows our finished boxplot. 
+
+- **Alcohol Concentration 0%**: 
+  - The median embryo length is approximately 2500 µm, with the mean slightly above the median.
+  - The data is relatively spread out, as shown by the wide box and long whiskers.
+  - There are no outliers in this group.
+
+- **Alcohol Concentration 1.5%**:
+  - The median length is slightly lower than the 0% group, but the mean is still fairly close.
+  - The box and whiskers are narrower than in the 0% group, indicating less variability in embryo length.
+  - One outlier is present above the whisker, indicating a particularly large embryo in this concentration or possibly, a random measurement error.
+
+- **Alcohol Concentration 2%**:
+  - The median and mean have both decreased, showing a reduction in embryo length as alcohol concentration increases.
+  - The box is narrower, indicating less variability, but there are several outliers both above and below the whiskers, suggesting that while most embryos were of a similar size, a few were much larger or smaller.
+
+- **Alcohol Concentration 2.5%**:
+  - The median and mean lengths have further decreased, indicating a continued negative effect of alcohol concentration on embryo length.
+  - The box is of similar size to the 2% group, but with longer whiskers, indicating more variability in the data.
+  - There is one outlier below the whisker, indicating a particularly small embryo in this concentration.
+
+In summary, As alcohol concentration increases, the median and mean embryo lengths decrease, indicating a negative correlation between alcohol concentration and embryo length. Variability in embryo length decreases slightly up to 2% concentration but then increases again at 2.5%, as evidenced by the longer whiskers. The presence of outliers, particularly at higher concentrations, suggests that while most embryos are affected similarly, some experience more extreme changes in size.
+
+However, visual patterns alone cannot confirm the existence of a true relationship between alcohol concentration and embryo length. To rigorously explore whether the observed trends are statistically significant or merely due to chance, we must construct testable hypotheses. This process will allow us to formalise our observations and set the stage for appropriate statistical analysis.
+
+
+#### Anatomy of a Boxplot {.unnumbered #understanding-boxplots}
 > A boxplot is a standardised way of displaying the distribution of data based on a five-number summary: minimum, first quartile (Q1), median, third quartile (Q3), and maximum. The box in the boxplot represents the interquartile range (IQR), which is the range between Q1 and Q3. The central line within the box indicates the median, which is the middle value of the dataset.
 > 
 > Sometimes, an "X" symbol is also included within the box, representing the mean of the dataset. However, it is important to note that the mean is not always shown in a boxplot.
@@ -207,93 +246,236 @@ knitr::include_graphics("img/02/figure_4.png")
 > - **Outliers**: Data points that lie outside the whiskers, typically displayed as individual points.
 
 
-    
+### Constructing Testable Hypotheses
 
-We'll revisit boxplots in more detail in Chapter 5.
+Given the patterns observed in the boxplot, where higher alcohol concentrations appear to be associated with shorter embryo lengths, it is essential to move from visual interpretation to a more rigorous statistical approach. This involves constructing and testing hypotheses to determine whether the observed trends are statistically significant.
 
-### Constructing Hypotheses
+#### Formulating the Hypotheses {.unnumbered}
 
-Formulating hypotheses involves making formal statements:
+In the context of your data, the primary goal is to determine whether different alcohol concentrations have a statistically significant effect on embryo length. To do this, we formulate a null hypothesis (\(H_{0}\)) and an alternative hypothesis (\(H_{1}\)):
 
-- **Null Hypothesis (\(H_0\))**: There is no effect of alcohol concentration on Zebrafish embryo length.
-- **Alternative Hypothesis (\(H_1\))**: There is an effect of alcohol concentration on Zebrafish embryo length.
+- **Null Hypothesis (\(H_{0}\)):** There is no statistically significant difference in the mean embryo lengths between the different alcohol concentration groups. Any observed differences are attributed to random variation rather than an effect of alcohol concentration.
 
-### Performing a One-Way ANOVA in Excel
+  \[
+  H_0: \bar{x}_0 = \bar{x}_{1.5} = \bar{x}_2 = \bar{x}_{2.5}
+  \]
 
-A one-way ANOVA allows you to test whether there are significant differences between the means of three or more independent groups.
+  Here, \(\bar{x}_0\), \(\bar{x}_{1.5}\), \(\bar{x}_2\), and \(\bar{x}_{2.5}\) represent the mean embryo lengths at 0%, 1.5%, 2%, and 2.5% alcohol concentrations, respectively.
 
-#### Step 1: Install the Analysis ToolPak
+- **Alternative Hypothesis (\(H_{1}\)):** At least one of the mean embryo lengths differs significantly from the others, suggesting that alcohol concentration has a measurable impact on embryo length.
 
-1. Go to **File** > **Options**.
-2. Select **Add-ins** from the left-hand menu.
-3. At the bottom, manage **Excel Add-ins** and click **Go**.
-4. Check the box for **Analysis ToolPak** and click **OK**.
-5. You should now see a **Data Analysis** button under the **Data** tab.
-
-#### Step 2: Set Up the One-Way ANOVA
-
-1. Click on the **Data Analysis** button in the **Data** tab.
-2. Select **ANOVA: Single Factor** and click **OK**.
-
-#### Step 3: Input Data and Parameters
-
-1. **Input Range**: Highlight the range of your data (including labels if desired).
-2. **Group By**: Choose whether your data is grouped by columns or rows. If your data is organized in columns, select **Columns**.
-3. **Labels**: If you included labels in your selection, check the **Labels in first row** option.
-4. **Alpha Level**: Set this to 0.05, which is a common significance threshold.
-
-#### Step 4: Select Output Options
-
-1. **Output Range**: Choose where the results will be displayed in your worksheet.
-2. **New Worksheet Ply**: Create a new worksheet for the results, and optionally give it a name (e.g., "ANOVA Results").
-3. **New Workbook**: Alternatively, choose to output the results to a new workbook.
-
-Click **OK** to perform the analysis.
-
-### Interpreting the Results
-
-After running the ANOVA, you will see two main tables: a summary table and an ANOVA table.
-
-#### Summary Table
-- **Count**: Number of data points in each group.
-- **Sum**: The total sum of values in each group.
-- **Average**: The mean value for each group.
-- **Variance**: A measure of how much the values in each group vary.
-
-#### ANOVA Table
-- **Between Groups**:
-  - **SS (Sum of Squares)**: Quantifies the variability between the group means.
-  - **df (Degrees of Freedom)**: Calculated as the number of groups minus one.
-  - **MS (Mean Square)**: SS divided by the df for between groups.
-  - **F**: The test statistic, calculated as the ratio of MS between groups to MS within groups.
-  - **P-value**: Used to determine the significance of the test. If \( p \leq \) 0.05, you reject the null hypothesis.
+  \[
+  H_1: \text{At least one } \bar{x} \text{ is different}
+  \]
   
-- **Within Groups**:
-  - **SS**: Quantifies the variability within each group.
-  - **df**: Calculated as the total number of observations minus the number of groups.
-  - **MS**: SS divided by the df for within groups.
-  
-- **Total**:
-  - **SS**: Sum of SS between groups and SS within groups.
-  - **df**: Sum of df between groups and df within groups.
+#### The Origin of Hypothesis Testing {.unnumbered #origin-of-hypothesis-testing}
 
-### Performing Post-hoc Tests
+> Hypothesis testing emerged in the early 20th century through the work of statisticians like Ronald A. Fisher, who applied these methods to agricultural experiments, leading to significant advancements in statistical methodology. However, Fisher's legacy is also marred by his support for eugenics, reflecting the darker intersections of early statistical science with discriminatory ideologies.
+>
+> While hypothesis testing remains central to scientific research, the use of **p-values** has faced criticism. P-values, often misinterpreted, simply measure data compatibility with the null hypothesis, not the truth of the hypothesis itself. The conventional threshold (p < 0.05) can lead to arbitrary decisions, and practices like p-hacking undermine the validity of results.
+>
+> Alternatives and complements to p-values include **confidence intervals** (which offer a range of likely values for parameters), **Bayesian methods** (which incorporate prior knowledge into probability assessments), and **effect sizes** (which quantify the magnitude of an effect). Pre-registering studies also enhances transparency, reducing the risk of biased results.
+>
+> Understanding these tools and their limitations enables researchers to draw more nuanced and reliable conclusions from their data.
 
-If your ANOVA results are significant, you might want to perform post-hoc tests to determine which specific groups are different. Common post-hoc tests include Tukey's HSD and the Bonferroni correction.
+#### Getting Ready to Test {.unnumbered}
 
-We'll cover post-hoc tests in detail in the next section.
+**One-way ANOVA** is a statistical test used to determine whether there are significant differences between the means of three or more independent (unrelated) groups. In this case, the groups are the different levels of alcohol concentration (0%, 1.5%, 2%, and 2.5%).
 
-### Summary
+The term "one-way" refers to the fact that we are analysing the effect of a single factor (alcohol concentration) on the dependent variable (embryo length). If we were interested in analysing the impact of an additional dependent variables (e.g. incubation temperature), as well as any interaction effects with alcohol concentration, we would likely want to perform a "two-way" ANOVA.
 
-ANOVA is a powerful tool for testing differences between group means. Excel makes it easy to perform a one-way ANOVA with the Analysis ToolPak, and interpreting the results allows you to draw meaningful conclusions from your data.
+We are using ANOVA in this context because:
 
+- **Multiple Group Comparisons**: We have more than two groups (four alcohol concentration levels), and ANOVA is designed to handle comparisons across multiple groups simultaneously. This is more efficient and statistically sound than performing multiple t-tests, which would increase the likelihood of Type I errors (false positives).
+
+- **Assessing Variability**: ANOVA compares the variability within each group (i.e., how much embryo lengths vary within each alcohol concentration) to the variability between groups (i.e., how much the group means differ from each other). This helps us determine if the observed differences in means are greater than what we would expect by chance alone.
+
+#### Assumptions of ANOVA {.unnumbered}
+
+For ANOVA to be valid, certain assumptions must be met:
+
+1. **Independence of Observations**: The data points in each group are independent of each other. In other words, each data point corresponds to a unique embryo.
+2. **Normality**: The distribution of the residuals (differences between observed and predicted values) should be approximately **normal**.
+3. **Homogeneity of Variances**: The variances within each group should be **roughly** equal.
+
+In this case, I have engineered the dataset so that these assumptions are met. However, in practice, when working with real data, it is crucial to check whether these assumptions hold before applying ANOVA. If the assumptions are violated, the results of the ANOVA may not be reliable, and alternative methods may be necessary. I'll show you how to check that the assumptions for a statistical test are met in Chapter 5 and the available alternative tests for cases where the assumptions are not met.
+
+### Performing a One-Way Anova in Excel
 
 ```{r, results='asis', echo=FALSE}
 if (knitr::is_html_output()) {
-  cat('<iframe src="https://www.likertysplit.com/qs" width="100%" height="400"></iframe>')
+  cat('<iframe width="100%" height="400" src="https://www.youtube.com/embed/tMEJjeNG998?si=zJiqgP57PZDCQMvg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
 }
 ```
 
+
+
+
+**Step 1**: Install and Activate the Data Analysis ToolPak
+
+To perform a One-Way ANOVA in Excel, you need to install and activate the Analysis ToolPak add-on.
+
+1. Open Excel and go to `File > Options`.
+2. In the Options menu, select `Add-ins`.
+3. At the bottom, next to "Manage", ensure `Excel Add-ins` is selected and click `Go`.
+4. In the Add-Ins box, check the `Analysis ToolPak` option and click `OK`.
+5. You should now see a `Data Analysis` button in the `Data` ribbon.
+
+**Step 2**: Create a Pivot Table to Reshape Data
+
+Before performing the ANOVA, you need to reshape your long data into a wide format using a pivot table. Here’s how to do it:
+
+1. Select your dataset (including headers).
+2. Go to the `Insert` tab and click on `PivotTable`.
+3. In the Create PivotTable dialog box, select where you want the PivotTable to be placed (e.g., New Worksheet).
+4. In the PivotTable Fields pane:
+   - Drag `conc_pc` to the `Columns` area.
+   - Drag `id` to the `Rows` area.
+   - Drag `length_micron` to the `Values` area, ensuring it is summarized by `Average` or `Sum` (depending on your needs).
+5. The resulting pivot table will have the concentration levels as columns and the measurements as rows, which is the required format for One-Way ANOVA.
+
+**Step 3**: Perform the One-Way ANOVA
+
+1. Click on the `Data` ribbon and select `Data Analysis`.
+2. In the Data Analysis dialog, select `ANOVA: Single Factor` and click `OK`.
+3. In the `ANOVA: Single Factor` dialog box:
+   - **Input Range**: Select the range of your reshaped data (including the labels).
+   - **Grouped By**: Choose `Columns` (since each group is in a separate column).
+   - **Labels in First Row**: Check this option if you included labels.
+   - **Alpha**: Set this to 0.05 (the default significance level).
+   - **Output Options**: Choose where you want to display the results (e.g., New Worksheet Ply). You can name the new sheet "Results".
+
+4. Click `OK` to run the analysis. You should see a new sheet that looks identical to that shown in \@ref(fig:anova).
+
+```{r anova, echo=FALSE, fig.cap="Results tables of one-way ANOVA in Excel", out.width="100%"}
+knitr::include_graphics("img/02/figure_5.png")
+```
+
+**Step 4**: Interpret the Results
+
+Excel will generate a new worksheet with the ANOVA results. The output includes two tables:
+
+1. **Summary Table**:
+   - **Count**: Number of observations in each group.
+   - **Sum**: Sum of all values in each group.
+   - **Average**: Mean value of each group.
+   - **Variance**: Variability within each group.
+
+2. **ANOVA Table**:
+   - **Source of Variation**:
+     - *Between Groups*: Variability between the groups.
+     - *Within Groups*: Variability within each group.
+   - **SS (Sum of Squares)**: Measure of the total variation.
+   - **df (Degrees of Freedom)**: Calculated as the number of groups minus 1 for between groups, and total observations minus the number of groups for within groups.
+   - **MS (Mean Square)**: SS divided by df.
+   - **F (F-Statistic)**: Ratio of MS between groups to MS within groups.
+   - **P-Value**: Indicates if the results are statistically significant.
+   - **F crit**: Critical value of F for the given alpha level.
+
+**Step 5**: Make a Conclusion
+
+- Compare the **P-Value** to the alpha level (0.05):
+  - If `P-Value ≤ 0.05`, reject the null hypothesis and conclude that there is a significant difference between the groups.
+  - If `P-Value > 0.05`, fail to reject the null hypothesis and conclude that there is no significant difference between the groups.
+  
+In your ANOVA result, a p-value of `2.48E-08` means that the probability of observing the differences between your group means by random chance is exceedingly low (just 0.0000000248). Since this p-value is far below the common threshold of 0.05, we can reject the null hypothesis (\H_0), and conclude that **there are statistically significant differences between the groups**.
+
+While the one-way ANOVA tells us that there are significant differences between the groups, it does not specify which groups differ from each other. To determine where these differences lie, additional testing, known as **post-hoc** testing, is required. Post-hoc tests, allow us to compare the group means directly and identify which specific groups are significantly different. Although post-hoc testing requires a bit more work, it can significantly enhance our understanding of the data and provide deeper insights into the relationships between groups.
+
+#### Understanding Exponent Notation {.unnumbered #exponent-notation}
+> In statistical analysis, particularly when working with software like Excel or R, you might values expressed in scientific notation, often using the letter "E" followed by a number. For example, the p-value `2.48E-08` appears in your ANOVA results.
+>
+> #### What Does `2.48E-08` Mean?
+>
+> The notation `2.48E-08` is Excel's way of representing the number 2.48 × 10⁻⁸. Here's how to break it down:
+>
+> - **2.48**: This is the base number.
+> - **E-08**: This indicates that the base number (2.48) should be multiplied by 10 raised to the power of -8.
+>
+> So, `2.48E-08` is mathematically equivalent to:
+>
+> \[
+> 2.48 \times 10^{-8} = 0.0000000248
+> \]
+>
+> This value is extremely small, which is typical for p-values when the test results are highly significant.
+>
+> #### Why Use Scientific Notation?
+>
+> Scientific notation is used to conveniently express very large or very small numbers that would otherwise be cumbersome to write out in full. In the case of p-values, this format is particularly useful because significant results often involve very small numbers. Instead of writing 0.0000000248, which can be error-prone and hard to read, Excel uses `2.48E-08` to convey the same information succinctly.
+>
+
+### Performing Post-hoc Tests in Excel
+
+Need to perform additional tests following a significant ANOVA to determine where the differences between the groups lie. These are called **Post-hoc** tests.
+
+```{r, results='asis', echo=FALSE}
+if (knitr::is_html_output()) {
+  cat('<iframe width="100%" height="400" src="https://www.youtube.com/embed/EHwZFRx0hr0?si=x0E9QGjAmGeoBUhY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
+}
+```
+
+**Step 1: Create a new table to list group comparisons**
+
+ - In cell `A19`, underneath your ANOVA result table, Create a new column label called `Groups`.
+ - List all the possible ways two groups can be compared to each other (there are six ways in total):
+   - 0% v 1.5%
+   - 0% v 2.0%
+   - 0% v 2.5%
+   - 1.5% v 2.0%
+   - 1.5% v 2.5%
+   - 2.0% v 2.5%
+ - Create additional column headers `P-value` and `Significant?` in cells `B19` and `C19` respectively.
+   
+**Step 2: Perform T-tests for each group comparison**
+
+   - Starting in cell `B20` type:
+   ```excel
+   =TTEST(wide!B$4:B$164, wide!C$4:C$164, 2, 2)
+   ```
+   - Copy the cell down for the remaining rows and update the columns in the formula to correspond with the respective groups that are being compared.
+   
+#### What is a T-test? {.unnumbered #ttest}
+
+> **Unlike ANOVA**, which compares multiple groups simultaneously to see if there are any significant differences in the means of the groups, a T-test can only compare two groups at a time.
+>
+>The assumptions for a T-test are similar to those for ANOVA: the data should be normally distributed, the samples should be independent, and the variances of the two groups should be equal if using a two-sample T-test assuming equal variances.
+>
+**Like ANOVA**, the key output of a T-test is the **p-value**.
+>
+>**In Excel** you perform a T-test like this:
+>```excel
+>=T.TEST(list1, list2, tails, type)
+>```
+>where:
+>
+> - **list1**: Corresponds to the list of values in your first group.
+> - **list2**: Corresponds to the list of values in your second group.
+> - **tails**: Requires a value of 1 or 2 indicating whether the test is one-tailed or two-tailed respectively.
+>   - A one-tailed T-test tests for a difference in a specific direction (greater or less), while a two-tailed T-test tests for any difference regardless of direction.
+> - **type**: Requires a value of 1, 2, or 3 indicating:
+>   - **1**: A paired t-test (i.e., groups are not independent).
+>   - **2**: An independent t-test with equal variances between groups.
+>   - **3**: An independent t-test with unequal variances between groups (also known as a Welch test).
+>
+> **T-tests are powerful for pairwise comparisons** but need to be used in conjunction with corrections like Bonferroni when multiple T-tests are conducted, as performing multiple tests increases the risk of Type I errors (false positives).
+
+Let's create a new table underneath my ANOVA table in Excel, say starting in cell `A19`
+
+**Step 3: Calculate Bonferroni Corrected Alpha Level**
+   - To calculate the Bonferroni corrected alpha level divide the initil threshold value of 0.05 by the number of t-tests you are performing, i.e. 5.
+   - Use the corrected value by comparing it to the p-value of each of the t-tests to determine if the difference in the means of groups is significant.
+   
+**Step 4: Extend Your Conclusions**
+
+The post-hoc tests indicate that there are significant differences in embryo lengths were found between the following pairs of alcohol concentrations:
+
+- **0% vs. 2%**
+- **0% vs. 2.5%**
+- **1.5% vs. 2%**
+- **1.5% vs. 2.5%**
+
+These findings suggest that increases in alcohol concentration from 0% to 2%, and from 1.5% to 2.5%, lead to significant changes in embryo length. 
 
 ## Complete your Weekly Assignments
 
