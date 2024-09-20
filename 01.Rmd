@@ -7,21 +7,28 @@ output:
 
 # Introduction to Excel and R
 
-If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover **all of this section's content** and complete the [**formative and summative assessments**](#complete-your-weekly-assignments).
+If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover **all of this section's content** and complete this week's [**formative and summative assessments**](#complete-your-weekly-assignments) in the BIOS103 Canvas Course.
 
 ## Estimating the Volume of a Snail
 
 In this section, you will learn how to import data from a CSV file into Excel, perform basic calculations, create a scatterplot including a linear trendline to make predictions. The primary objective is to estimate the volume of a snail based on its mass using a provided dataset.
 
+```{r, results='asis', echo=FALSE}
+if (knitr::is_html_output()) {
+  cat('<iframe width="100%" height="400" src="https://www.youtube.com/embed/0ShVZvl1sG0?si=q1Ve8aptT5m-1H21" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
+}
+```
+
 ### Download and Import the CSV File
 
 1. **Download the CSV File:** 
-   - Here is an [example dataset](https://www.canvaswizards.org.uk/dataspell/snails/999999999). Download it to your local machine.
+   - Here is an [example dataset](https://canvaswizards.org.uk/dataspell/snails/301). Download it to your local machine.
+   - If that link doesn't you can get the dataset in your browser [here](https://raw.githubusercontent.com/rtreharne/qs/refs/heads/main/data/01/snails_301.csv). Right click and Save as.
 
 2. **Import into Excel:**
    - Open Excel (Use the desktop version - you won't be able to do this using the online version!).
-   - Go to `Data > From Text/CSV` and select the downloaded CSV file.
-   - When the import wizard appears, click `Load`.
+   - Go to **Data > From Text/CSV** and select the downloaded CSV file.
+   - When the import wizard appears, click **Load**.
 
 ### Calculate Volume \( V \) in Excel
 
@@ -31,7 +38,7 @@ We will estimate the volume \( V \) of our snails using the formula for the volu
 where \( r \) is the radius, which we assume is equal to half the `Height L (mm)` column.
 
 1. **Add a New Column for Volume \( V \):**
-   - In the third column, label it as `Volume V (mm^3)`.
+   - In the third column, label it as **Volume V (mm^3)**.
    - In the first cell of this column, use the formula:
      ```excel
      = (4/3) * PI() * ((B2/2)^3)
@@ -41,14 +48,14 @@ where \( r \) is the radius, which we assume is equal to half the `Height L (mm)
 ### Add a Linear Trendline and Equation
 
 1. **Create a Scatter Plot:**
-   - Select the `Mass M (g)` and `Volume V (mm^3)` columns.
-   - Go to the `Insert` tab and select `Scatter Plot`.
+   - Select the **Mass M (g)** and **Volume V (mm^3)** columns.
+   - Go to the **Insert** tab and select **Scatter Plot**.
 
 2. **Add Trendline:**
    - Click on the plot
-   - Click the green `+` icon that appears at the top right of the plot.
-   - Click the `>` symbol on the `Trendline` option and click `More options...`.
-   - From the trendline options menu that appears on the right, select the `Linear` trendline and check the box `Display Equation on chart`.
+   - Click the green **+** icon that appears at the top right of the plot.
+   - Click the **>** symbol on the **Trendline** option and click **More options...**
+   - From the trendline options menu that appears on the right, select the **Linear** trendline and check the box **isplay Equation on chart**.
    - Right-click on a data point in the scatter plot.
 
 3. **Interpret the Equation:**
@@ -57,8 +64,8 @@ where \( r \) is the radius, which we assume is equal to half the `Height L (mm)
      - \( x \) is the mass.
      - \( a \) and \( b \) are coefficients.
    - For the Example dataset:
-     - a = 1366.6 \( mm^3.g^{-1} \)
-     - b = 1706.4 mm^3
+     - a = 1341.7 \( mm^3.g^{-1} \)
+     - b = 1140.2 \( mm^3 \)
 
 ### Estimation of Volume for a Snail with Mass 10g
 
@@ -67,7 +74,7 @@ where \( r \) is the radius, which we assume is equal to half the `Height L (mm)
    - Substitute \( x = 10 \) into the trendline equation to calculate the estimated volume \( V \).
    - Express the volume in \( cm^3 \) to one decimal place (Note: \( 1 cm^3 = 1000 mm^3 \)).
 2. **For the example dataset:**
-   - The estimated volume of a snail that is \( 10 g \) is **\( 15.4 cm^3 \)**
+   - The estimated volume of a snail that is \( 10 g \) is **\( 14.6 cm^3 \)**.
    
 ## Getting Ready for R
 
@@ -75,13 +82,13 @@ Over the next couple of weeks you will continue to use Excel to load, manipulate
 
 ### Download and Install
 
-`R` and `RStudio` are actually separate things, although they are often mentioned together. 
+**R** and **RStudio** are actually separate things, although they are often mentioned together. 
 
-`R` is a programming language and software environment specifically designed for statistical computing and data visualisation. Other examples of programming languages include Python, Java and Ruby. 
+**R** is a programming language and software environment specifically designed for statistical computing and data visualisation. Other examples of programming languages include Python, Java and Ruby. 
 
-`RStudio` is the integrated development environment (IDE) for R. It provides a user-friendy interface that will allow you to write all your R scripts and compile them to do stuff. I'm using it to write this handbook right now!
+**RStudio** is the integrated development environment (IDE) for R. It provides a user-friendy interface that will allow you to write all your R scripts and compile them to do stuff. I'm using it to write this handbook right now!
 
-Despite their differences, you might hear the terms `R` and `RStudio` used interchangeably, as RStudio serves as the primary interface through which users interact with the R programming language.
+Despite their differences, you might hear the terms **R** and **RStudio** used interchangeably, as RStudio serves as the primary interface through which users interact with the R programming language.
 
 **You need to download and install both R and Rstudio.**
 
@@ -90,7 +97,7 @@ Despite their differences, you might hear the terms `R` and `RStudio` used inter
    
 Once both are installed, open up RStudio and get ready to create your first **R Project**.
 
-**DON'T FOGET**. All University of Liverpool MWS machines already have R and RStudio installed and ready to use.
+**All University of Liverpool MWS machines already have R and RStudio installed and ready to use.**
 
 
 
@@ -99,14 +106,20 @@ Once both are installed, open up RStudio and get ready to create your first **R 
 
 Follow these steps to set up and manage your first R project in RStudio:
 
+```{r, results='asis', echo=FALSE}
+if (knitr::is_html_output()) {
+  cat('<iframe width="100%" height="400" src="https://www.youtube.com/embed/mzPEVgnz3GY?si=a1cjJaMrhzNgMoiZ1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
+}
+```
+
 1. **Open RStudio**
 
 - Launch RStudio from your applications menu.
 
 2. **Start a New Project**
 
-- Click on the `File` menu at the top of the RStudio window.
-- Select `New Project...` from the dropdown menu.
+- Click on the **File** menu at the top of the RStudio window.
+- Select **New Project...** from the dropdown menu.
 
 3. **Choose Project Type**
 
@@ -116,18 +129,18 @@ You will be prompted with three options:
 - **Existing Directory**: Use an existing directory as the project's folder.
 - **Version Control**: Clone a project from a version control repository (e.g., GitHub).
 
-For your first project, select `New Directory`.
+For your first project, select **New Directory**.
 
 4. **Select Project Template**
 
-- Choose `Empty Project` unless you have a specific project type in mind (e.g., Shiny Web Application, R Package).
-- Click `Next`.
+- Choose **Empty Project**. 
+- Click **Next**.
 
 5. **Set Up Project Directory**
 
 - **Directory name**: Enter a name for your project folder. This will be the name of the directory created for your project.
 - **Subdirectory of**: Choose the parent directory where the new project folder will be created. You can navigate to the desired location using the file browser.
-- Click `Create Project`.
+- Click **Create Project**.
 
 6. **RStudio Project Interface**
 
@@ -141,7 +154,7 @@ Once the project is created, you will see a new RStudio window or tab with the f
 
 7. **Create and Save an R Script**
 
-- Click `File` > `New File` > `R Script`.
+- Click **File > New File > R Script**.
 - Write some R code in the script editor. For example:
 
 ```{r eval=FALSE}
@@ -149,7 +162,7 @@ Once the project is created, you will see a new RStudio window or tab with the f
 print("Hello World!")
 
 ```
-To run your print command, click on the line and click the `Run` button at the top right of your script editor window or press `Ctrl + ENTER` (Cmd + Enter on Mac).
+To run your print command, click on the line and click the `Run` button at the top right of your script editor window or press **Ctrl + ENTER** (Cmd + Enter on Mac).
 
 You will see the following output in your console window:
 ```{r echo=FALSE}
@@ -165,7 +178,7 @@ As you delve deeper into R programming, you'll find that your scripts become mor
 
 ```{r eval=FALSE}
 # create a variable called "seed"
-seed = 999
+seed <- 999
 
 # set the seed
 set.seed(seed)
@@ -176,23 +189,10 @@ random_number <- runif(1)
 # print the random number
 print(random_number)
 ```
-Cut and paste these lines into the script file we were working on earlier (ovewrite the "Hello World" example).
+Cut and paste these lines into the script file we were working on earlier (overwrite the "Hello World" example).
 
-Now, you can run each line in turn as before (using `Ctrl + ENTER`) or you can run everything by clicking the `Source` button. You should see the following number appear in your console:
+Now, you can run each line in turn as before (using **Ctrl + ENTER**) or you can run everything by clicking the **Source** button. You should see the following number appear in your console:
 
-```{r echo=FALSE}
-# create a variable called "seed"
-seed = 999
-
-# set the seed
-set.seed(seed)
-
-# generate a random number
-random_number <- runif(1)
-
-# print the random number
-print(random_number)
-```
 Let's break down each line of the script to understand its purpose and functionality.
 
 1. **Creating a Variable Called "seed"**
@@ -208,7 +208,7 @@ seed <- 123
 # set the seed
 set.seed(seed)
 ```
-   - The set.seed() function initializes the R environment's build in random number generator with the value stored in seed. Setting a seed is essential for reproducibility, meaning that if someone else runs this code with the same seed, they will get the same random number output in their console. This is particularly useful in simulations and randomised experiments where consistent results are needed.
+   - The `set.seed()` function initializes the R environment's build in random number generator with the value stored in seed. Setting a seed is essential for reproducibility, meaning that if someone else runs this code with the same seed, they will get the same random number output in their console. This is particularly useful in simulations and randomised experiments where consistent results are needed.
    
 3. **Generating a Random Number**
 ```{r eval=FALSE}
@@ -216,7 +216,7 @@ set.seed(seed)
 random_number <- runif(1)
 ```
 
-   - random_number <- runif(1): This line generates a single random number between 0 and 1. The function runif() generates random numbers from a uniform distribution, which means that each number within the specified range has an equal probability of being selected. The 1 inside the parentheses specifies that only one random number should be generated. The resulting number is then assigned to the variable called `random_number`.
+   - `random_number <- runif(1)`: This line generates a single random number between 0 and 1. The function runif() generates random numbers from a uniform distribution, which means that each number within the specified range has an equal probability of being selected. The 1 inside the parentheses specifies that only one random number should be generated. The resulting number is then assigned to the variable called `random_number`.
 
 4. **Printing the Random Number**
 ```{r eval=FALSE}
@@ -224,7 +224,7 @@ random_number <- runif(1)
 print(random_number)
 ```
 
-   - print(random_number): The print() function outputs the value stored in `random_number` to the console. This is useful for verifying the output of your code and ensuring that the operations have been executed correctly.
+   - `print(random_number)`: The print() function outputs the value stored in `random_number` to the console. This is useful for verifying the output of your code and ensuring that the operations have been executed correctly.
 
 **Summary**
 
