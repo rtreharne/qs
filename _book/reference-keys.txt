@@ -1,0 +1,11 @@
+introduction-to-excel-and-r
+estimating-the-volume-of-a-snail
+download-and-import-the-csv-file
+calculate-volume-v-in-excel
+add-a-linear-trendline-and-equation
+estimation-of-volume-for-a-snail-with-mass-10g
+getting-ready-for-r
+download-and-install
+creating-your-first-r-project-in-rstudio
+something-more-complicated
+complete-your-weekly-assignments
