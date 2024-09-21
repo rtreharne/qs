@@ -7,21 +7,22 @@ output:
 
 # Summarising Data and ANOVA in Excel
 
-If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover **all of this section's content** and complete the [**formative and summative assessments**](#complete-your-weekly-assignments) on Canvas before 5 PM today.
+If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover **all of this section's content** and complete this week's [**formative and summative assessments**](#complete-your-weekly-assignments-02) in the BIOS103 Canvas Course.
 
-In this section we will only be using Excel. No R today! You'll have to contain your excitement for a few more weeks yet.
+In this section we will only be using Excel. No R today!
 
-Working on two important skills:
-+ Summarising Data
-+ Constructing and testing hypotheses
+Specifically, you will be developing two important skills:
 
-The ultimate aim is to gain insight and learn something new about the world from the data that we have painstaking measured in our well designed lab experiments. This is a cornerstone of what being a scientist is all about. This is what we are training you to become.
+1. **Summarising Data.**
+2. **Constructing and testing hypotheses.**
+
+The ultimate aim is to gain insight and learn something new about the world from the data that we have painstaking measured in our well designed lab experiments. This is a cornerstone of what being a scientist is all about.
 
 ## Summarising Data
 
-Raw data is beautiful, but messy. Showing another person your raw data and expecting them to immediately understand it, not matter how proud you are of the toil expended to generate the data, is an unrealistic expectation. You need to boil it down into something that another person can grasp instantaneously. 
+Raw data is beautiful, but messy. Showing another person your raw data and expecting them to immediately understand it, no matter how proud you are of the toil expended to generate the data, is an unrealistic expectation. You need to boil your data down into something that another person can grasp instantaneously. 
 
-Let's take a look at a Zebrafish dataset from an experiment that is uncannily similar to the one you generated in your lab practical this week.
+Let's take a look at a Zebrafish dataset from an experiment that is uncannily similar to the one you performed in your lab practical this week.
 
 ### Download and Import the CSV File
 
@@ -30,18 +31,18 @@ Let's take a look at a Zebrafish dataset from an experiment that is uncannily si
 
 2. **Import into Excel:**
    - Open Excel (Use the desktop version - you won't be able to do this using the online version!).
-   - Go to `Data > From Text/CSV` and select the downloaded CSV file.
-   - When the import wizard appears, click `Load`.
+   - Go to **Data > From Text/CSV** and select the downloaded CSV file.
+   - When the import wizard appears, click **Load**.
 
 You should now see something like that in Figure \@ref(fig:zebrafish-data-snap). There are 3 columns:
-   - `ID` - A unique number to identify a measurement.
-   - `conc_pc` - The ethanol concentration (%) that the each embryo was treated with.
-   - `length_micron` - The measured lengths, in \( \mu m \) of the embryos.
+   - **ID** - A unique number to identify a measurement.
+   - **conc_pc** - The ethanol concentration (%) that the each embryo was treated with.
+   - **length_micron** - The measured lengths, in \( \mu m \) of the embryos.
 
 ```{r zebrafish-data-snap, echo=FALSE, fig.cap="Some Figure"}
 knitr::include_graphics("img/02/figure_1.png")
 ```
-We call this format, in which each row corresponds to a single measure mt, a **long** format.
+We call this format, in which each row corresponds to a single measure, a **long** format.
 
 ### Generating a Summary Table
 
@@ -51,14 +52,15 @@ if (knitr::is_html_output()) {
 }
 ```
 
+
 1. **Identify your Groups**
    - Click anywhere in your table.
-   - Select the `Data` menu and click the `Advanced` icon in the `Sort & Filter` section. This will bring up a window called "Advanced Filter".
-   - Select the `Copy to another location` action.
-   - Your list range should already be set to `$B:$B`, but if not make it so.
-   - Set the `Copy to` cell to `$E:$1`
-   - Make sure the `Unique records only` check box is selected and click OK.
-   - You should now see a complete list of your alcohol concentration groups in a column with a header `conc_pc`. Make this into a new table by clicking on any of the concentration values, and then `Insert > New table > OK`.
+   - Select the **Data** menu and click the **Advanced** icon in the **Sort & Filter** section. This will bring up a window called "Advanced Filter".
+   - Select the **Copy to another location** action.
+   - Your list range should already be set to **$B:$B**, but if not make it so.
+   - Set the **Copy to** cell to **$E:$1**
+   - Make sure the **Unique records only** check box is selected and click OK.
+   - You should now see a complete list of your alcohol concentration groups in a column with a header **conc_pc**. Make this into a new table by clicking on any of the concentration values, and then **Insert > New table > OK**.
    
 Nice. Now you're ready to start building out your summary table horizontally. Let's start with calculating the mean Zebrafish length for each group.
 
@@ -69,8 +71,8 @@ knitr::include_graphics("img/02/figure_2.png")
 ```
 
 2. **Calculating a Mean Column**
-   - Create a new column in your summary table by typing the word `Mean` in cell `F1`.
-   - Calculate the mean of the Zebrafish lengths for the control group (0% alcohol concentration) by entering the following formula into cell `F2`.
+   - Create a new column in your summary table by typing the word **Mean** in cell **F1**.
+   - Calculate the mean of the Zebrafish lengths for the control group (0% alcohol concentration) by entering the following formula into cell **F2**.
    ```excel
    =AVERAGE(IF($B1:$B161=$E2,$C1:$C161))
    ```
@@ -79,14 +81,14 @@ knitr::include_graphics("img/02/figure_2.png")
 > 
 > The formula `=AVERAGE(IF($B$2:$B$161=$E2,$C$2:$C$161))` is an array formula that calculates the average length of Zebrafish for a specific group based on the concentration of alcohol.
 > 
-> - **`$B$2:$B$161`**: The `$` symbols before both the column letter `B` and the row numbers `2` and `161` lock the entire range. This means that when you copy the formula to other cells, this range will not change; it will always refer to cells `B2` to `B161`.
+> - **$B$2:$B$161**: The **$** symbols before both the column letter *B* and the row numbers *2* and `161` lock the entire range. This means that when you copy the formula to other cells, this range will not change; it will always refer to cells **B2** to **B161**.
 > 
-> - **`$E2`**: The `$` before the column letter `E` locks the column, but since there's no `$` before the row number `2`, the row number can change if the formula is dragged down across rows. This cell is used to compare each value in the range `$B$2:$B$161` to the specific concentration value in the corresponding row in column `E`.
+> - **$E2**: The *$* before the column letter *E* locks the column, but since there's no *$* before the row number *2*, the row number can change if the formula is dragged down across rows. This cell is used to compare each value in the range *$B$2:$B$161* to the specific concentration value in the corresponding row in column *E*.
 
 > 
-> - **`$C$2:$C$161`**: Similar to the range for column `B`, this locks the range of cells in column `C` from which the values will be averaged, conditional on the `IF` statement.
+> - **$C$2:$C$161**: Similar to the range for column **B**, this locks the range of cells in column **C** from which the values will be averaged, conditional on the **IF** statement.
 > 
-> - **`AVERAGE(IF(...))`**: The `IF` function checks each row in the range `$B$2:$B$161` to see if it matches the value in the corresponding row in column `E`. If it matches, the corresponding value in column `$C$2:$C$161` is included in the average calculation. The `AVERAGE` function then calculates the mean of these filtered values.
+> - **AVERAGE(IF(...))**: The **IF** function checks each row in the range **$B$2:$B$161** to see if it matches the value in the corresponding row in column **E**. If it matches, the corresponding value in column **$C$2:$C$161** is included in the average calculation. The **AVERAGE** function then calculates the mean of these filtered values.
 > 
 > This approach is particularly useful when you want to calculate conditional averages across a dataset, ensuring that the correct cells are referenced even when copying the formula to different parts of the spreadsheet.
 
@@ -96,7 +98,7 @@ knitr::include_graphics("img/02/figure_2.png")
      - Median
      - Min
      - Max
-   - Drag the cell `F2` to `G2`. Change the word `AVERAGE` in the formula in `G2` to `STDEV`. This will calculate the standard deviation for the group and the remaining cells in the column should also auto complete.
+   - Drag the cell **F2** to **G2**. Change the word **AVERAGE** in the formula in **G2** to **STDEV**. This will calculate the standard deviation for the group and the remaining cells in the column should also auto complete.
     - Do the same for the median, min and max columns. Be sure to use the corresponding function.
    
 > **A Deeper Explanation**  
@@ -122,11 +124,10 @@ At some point you may wish to include your Excel summary table in a Word documen
 + The table **MUST** have a caption. 
 + The caption should be placed **ABOVE** the table (not below as for a figure or graph).
 + The caption should be numbered accordingly. For example, if this is the first table in your document the figure caption should start "**Figure 1: ...**".
-+ The caption should be descriptive and unambiguous. The reader should be able to quickly interpret what is going on without having to read the body of the text.
-+ The table headers should be sensible and unambiguous. Any symbols or variables or units should be defined in the caption.
++ The caption should be descriptive and unambiguous. The reader should be able to quickly interpret what is going on without having to read the body of the text. Any symbols or variables or units should be defined in the caption.
 + The data should be formatted to a sensible number of decimal places (i.e. if you're measurements are made to 1 decimal place, your summary values should not be quoted to more than this).
   
-Follow these rules and you can't go wrong. Break them and I **will** find you. Figure \@ref(fig:zebrafish-summary) shows how my summary table looks when copyied and pasted into Word. I like to make my tables span the entire width of my document using the `Auto-fit to window` command. I also like to center my columns. These are personal preferences, but you can't deny they look great!
+Follow these rules and you can't go wrong. Figure \@ref(fig:zebrafish-summary) shows how my summary table looks when copied and pasted into Word. I like to make my tables span the entire width of my document using the **Auto-fit to window** command. I also like to center my columns. These are personal preferences, but you can't deny they look great!
 
 
 
@@ -138,7 +139,7 @@ knitr::include_graphics("img/02/figure_3.png")
    
 ## Analysis of Variance (ANOVA)
 
-You're about to learn a critical skill that is important for becoming a scientist: formulating hypotheses and testing them. This is a cornerstone of scientific inquiry.
+You're about to learn a **critical skill** that is important for becoming a scientist: formulating hypotheses and testing them. This is a cornerstone of scientific inquiry.
 
 You've already summarised your data using descriptive statistics. Now, we'll move on to another branch of statistics called inferential statistics. This involves using an appropriate statistical test to determine whether specific hypotheses that we construct should be accepted or rejected.
 
@@ -220,7 +221,7 @@ Figure \@ref(fig:zebrafish-boxplot) shows our finished boxplot.
 
 In summary, As alcohol concentration increases, the median and mean embryo lengths decrease, indicating a negative correlation between alcohol concentration and embryo length. Variability in embryo length decreases slightly up to 2% concentration but then increases again at 2.5%, as evidenced by the longer whiskers. The presence of outliers, particularly at higher concentrations, suggests that while most embryos are affected similarly, some experience more extreme changes in size.
 
-However, visual patterns alone cannot confirm the existence of a true relationship between alcohol concentration and embryo length. To rigorously explore whether the observed trends are statistically significant or merely due to chance, we must construct testable hypotheses. This process will allow us to formalise our observations and set the stage for appropriate statistical analysis.
+However, visual patterns alone cannot confirm the existence of a true relationship between alcohol concentration and embryo length. To rigorously explore whether the observed trends are **statistically significant** or merely due to chance, we must construct testable hypotheses. This process will allow us to formalise our observations and set the stage for appropriate statistical analysis.
 
 
 #### Anatomy of a Boxplot {.unnumbered #understanding-boxplots}
@@ -315,37 +316,37 @@ if (knitr::is_html_output()) {
 
 To perform a One-Way ANOVA in Excel, you need to install and activate the Analysis ToolPak add-on.
 
-1. Open Excel and go to `File > Options`.
-2. In the Options menu, select `Add-ins`.
-3. At the bottom, next to "Manage", ensure `Excel Add-ins` is selected and click `Go`.
-4. In the Add-Ins box, check the `Analysis ToolPak` option and click `OK`.
-5. You should now see a `Data Analysis` button in the `Data` ribbon.
+1. Open Excel and go to **File > Options**.
+2. In the Options menu, select **Add-ins**.
+3. At the bottom, next to "Manage", ensure **Excel Add-ins** is selected and click **Go**.
+4. In the Add-Ins box, check the **Analysis ToolPak** option and click **OK**.
+5. You should now see a **Data Analysis** button in the **Data** ribbon.
 
 **Step 2**: Create a Pivot Table to Reshape Data
 
 Before performing the ANOVA, you need to reshape your long data into a wide format using a pivot table. Here’s how to do it:
 
 1. Select your dataset (including headers).
-2. Go to the `Insert` tab and click on `PivotTable`.
+2. Go to the **Insert** tab and click on **PivotTable**.
 3. In the Create PivotTable dialog box, select where you want the PivotTable to be placed (e.g., New Worksheet).
 4. In the PivotTable Fields pane:
-   - Drag `conc_pc` to the `Columns` area.
-   - Drag `id` to the `Rows` area.
-   - Drag `length_micron` to the `Values` area, ensuring it is summarized by `Average` or `Sum` (depending on your needs).
+   - Drag **conc_pc** to the **Columns** area.
+   - Drag **id** to the **Rows** area.
+   - Drag **length_micron** to the **Values** area.
 5. The resulting pivot table will have the concentration levels as columns and the measurements as rows, which is the required format for One-Way ANOVA.
 
 **Step 3**: Perform the One-Way ANOVA
 
-1. Click on the `Data` ribbon and select `Data Analysis`.
-2. In the Data Analysis dialog, select `ANOVA: Single Factor` and click `OK`.
-3. In the `ANOVA: Single Factor` dialog box:
+1. Click on the **Data** ribbon and select **Data Analysis**.
+2. In the Data Analysis dialog, select **ANOVA: Single Factor** and click **OK**.
+3. In the **ANOVA: Single Factor** dialog box:
    - **Input Range**: Select the range of your reshaped data (including the labels).
-   - **Grouped By**: Choose `Columns` (since each group is in a separate column).
+   - **Grouped By**: Choose **Columns** (since each group is in a separate column).
    - **Labels in First Row**: Check this option if you included labels.
    - **Alpha**: Set this to 0.05 (the default significance level).
    - **Output Options**: Choose where you want to display the results (e.g., New Worksheet Ply). You can name the new sheet "Results".
 
-4. Click `OK` to run the analysis. You should see a new sheet that looks identical to that shown in \@ref(fig:anova).
+4. Click **OK** to run the analysis. You should see a new sheet that looks identical to that shown in \@ref(fig:anova).
 
 ```{r anova, echo=FALSE, fig.cap="Results tables of one-way ANOVA in Excel", out.width="100%"}
 knitr::include_graphics("img/02/figure_5.png")
@@ -375,24 +376,24 @@ Excel will generate a new worksheet with the ANOVA results. The output includes 
 **Step 5**: Make a Conclusion
 
 - Compare the **P-Value** to the alpha level (0.05):
-  - If `P-Value ≤ 0.05`, reject the null hypothesis and conclude that there is a significant difference between the groups.
-  - If `P-Value > 0.05`, fail to reject the null hypothesis and conclude that there is no significant difference between the groups.
+  - If **P-Value ≤ 0.05**, reject the null hypothesis and conclude that there is a significant difference between the groups.
+  - If **P-Value > 0.05**, fail to reject the null hypothesis and conclude that there is no significant difference between the groups.
   
-In your ANOVA result, a p-value of `2.48E-08` means that the probability of observing the differences between your group means by random chance is exceedingly low (just 0.0000000248). Since this p-value is far below the common threshold of 0.05, we can reject the null hypothesis (\H_0), and conclude that **there are statistically significant differences between the groups**.
+In your ANOVA result, a p-value of **2.48E-08** means that the probability of observing the differences between your group means by random chance is exceedingly low (just 0.0000000248). Since this p-value is far below the common threshold of 0.05, we can reject the null hypothesis (\H_0), and conclude that **there are statistically significant differences between the groups**.
 
 While the one-way ANOVA tells us that there are significant differences between the groups, it does not specify which groups differ from each other. To determine where these differences lie, additional testing, known as **post-hoc** testing, is required. Post-hoc tests, allow us to compare the group means directly and identify which specific groups are significantly different. Although post-hoc testing requires a bit more work, it can significantly enhance our understanding of the data and provide deeper insights into the relationships between groups.
 
 #### Understanding Exponent Notation {.unnumbered #exponent-notation}
-> In statistical analysis, particularly when working with software like Excel or R, you might values expressed in scientific notation, often using the letter "E" followed by a number. For example, the p-value `2.48E-08` appears in your ANOVA results.
+> In statistical analysis, particularly when working with software like Excel or R, you might values expressed in scientific notation, often using the letter "E" followed by a number. For example, the p-value **2.48E-08** appears in your ANOVA results.
 >
-> #### What Does `2.48E-08` Mean?
+> #### What Does **2.48E-08** Mean?
 >
-> The notation `2.48E-08` is Excel's way of representing the number 2.48 × 10⁻⁸. Here's how to break it down:
+> The notation **2.48E-08** is Excel's way of representing the number 2.48 × 10⁻⁸. Here's how to break it down:
 >
 > - **2.48**: This is the base number.
 > - **E-08**: This indicates that the base number (2.48) should be multiplied by 10 raised to the power of -8.
 >
-> So, `2.48E-08` is mathematically equivalent to:
+> So, **2.48E-08** is mathematically equivalent to:
 >
 > \[
 > 2.48 \times 10^{-8} = 0.0000000248
@@ -402,12 +403,13 @@ While the one-way ANOVA tells us that there are significant differences between 
 >
 > #### Why Use Scientific Notation?
 >
-> Scientific notation is used to conveniently express very large or very small numbers that would otherwise be cumbersome to write out in full. In the case of p-values, this format is particularly useful because significant results often involve very small numbers. Instead of writing 0.0000000248, which can be error-prone and hard to read, Excel uses `2.48E-08` to convey the same information succinctly.
+> Scientific notation is used to conveniently express very large or very small numbers that would otherwise be cumbersome to write out in full. In the case of p-values, this format is particularly useful because significant results often involve very small numbers. Instead of writing 0.0000000248, which can be error-prone and hard to read, Excel uses **2.48E-08** to convey the same information succinctly.
 >
 
 ### Performing Post-hoc Tests in Excel
 
-Need to perform additional tests following a significant ANOVA to determine where the differences between the groups lie. These are called **Post-hoc** tests.
+Following a significant ANOVA, we need to perform additional tests to determine where the differences between the groups lie. These are called **Post-hoc** tests.
+
 
 ```{r, results='asis', echo=FALSE}
 if (knitr::is_html_output()) {
@@ -417,7 +419,7 @@ if (knitr::is_html_output()) {
 
 **Step 1: Create a new table to list group comparisons**
 
- - In cell `A19`, underneath your ANOVA result table, Create a new column label called `Groups`.
+ - In cell **A19**, underneath your ANOVA result table, Create a new column label called **Groups**.
  - List all the possible ways two groups can be compared to each other (there are six ways in total):
    - 0% v 1.5%
    - 0% v 2.0%
@@ -425,11 +427,11 @@ if (knitr::is_html_output()) {
    - 1.5% v 2.0%
    - 1.5% v 2.5%
    - 2.0% v 2.5%
- - Create additional column headers `P-value` and `Significant?` in cells `B19` and `C19` respectively.
+ - Create additional column headers **P-value** and **Significant?** in cells **B19** and **C19** respectively.
    
 **Step 2: Perform T-tests for each group comparison**
 
-   - Starting in cell `B20` type:
+   - Starting in cell **B20** type:
    ```excel
    =TTEST(wide!B$4:B$164, wide!C$4:C$164, 2, 2)
    ```
@@ -460,10 +462,10 @@ if (knitr::is_html_output()) {
 >
 > **T-tests are powerful for pairwise comparisons** but need to be used in conjunction with corrections like Bonferroni when multiple T-tests are conducted, as performing multiple tests increases the risk of Type I errors (false positives).
 
-Let's create a new table underneath my ANOVA table in Excel, say starting in cell `A19`
+Let's create a new table underneath my ANOVA table in Excel, say starting in cell **A19**
 
 **Step 3: Calculate Bonferroni Corrected Alpha Level**
-   - To calculate the Bonferroni corrected alpha level divide the initil threshold value of 0.05 by the number of t-tests you are performing, i.e. 5.
+   - To calculate the Bonferroni corrected alpha level divide the initial threshold value of 0.05 by the number of t-tests you are performing, i.e. 6.
    - Use the corrected value by comparing it to the p-value of each of the t-tests to determine if the difference in the means of groups is significant.
    
 **Step 4: Extend Your Conclusions**
@@ -477,13 +479,14 @@ The post-hoc tests indicate that there are significant differences in embryo len
 
 These findings suggest that increases in alcohol concentration from 0% to 2%, and from 1.5% to 2.5%, lead to significant changes in embryo length. 
 
-## Complete your Weekly Assignments
+## Complete your Weekly Assignments {.complete-your-weekly-assignments-02}
 
-In the BIOS103 Canvas course you will find this week's **formative** and **summative** assignments. You should complete both of these before the end of the online workshop that corresponds to this section's content. The assignments are identical in all but the following details:
+In the BIOS103 Canvas course you will find this week's **formative** and **summative** QS assignments. You should aim to complete both of these before the end of the online workshop that corresponds to this section's content. The assignments are identical in all but the following details:
 
-   + You can attempt the **formative assignment** as many times as you like. It will not contribute to your overall score for this course. Make sure you practice this assignment until you're confident that you can get the correct answer on your own.
-   + You can attempt the **summative** assignment **only once**. It will be identical to the formative assignment but will use different values and datasets. This assignment **will** contribute to your overall score for this course.
-   + **Late submissions**. You have until 5pm on the day of the workshop for this week's content to submit your **summative** assignment. Late submissions will incur a 5% penalty for every part or full day beyond the deadline. Penalties will be capped at 40%.
+   + You can attempt the **formative assignment** as many times as you like. It will not contribute to your overall score for this course. You will receive immediate feedback after submitting formative assignments. Make sure you practice this assignment until you're confident that you can get the correct answer on your own.
+   + You can attempt the **summative** assignment **only once**. It will be identical to the formative assignment but will use different values and datasets. This assignment **will** contribute to your overall score for this course. Failure to complete a summative test before the stated deadline will result in a zero score. You will not receive immediate feedback after submitting summative assignments. Typically, your scores will be posted within 7 days.
+   
+In **ALL** cases, when you click the button to "begin" a test you will have two hours to complete and submit the questions. If the test times out it will automatically submit.
 
 
 

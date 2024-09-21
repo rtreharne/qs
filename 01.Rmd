@@ -7,7 +7,7 @@ output:
 
 # Introduction to Excel and R
 
-If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover **all of this section's content** and complete this week's [**formative and summative assessments**](#complete-your-weekly-assignments) in the BIOS103 Canvas Course.
+If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover **all of this section's content** and complete this week's [**formative and summative assessments**](#complete-your-weekly-assignments-01) in the BIOS103 Canvas Course.
 
 ## Estimating the Volume of a Snail
 
@@ -230,7 +230,7 @@ print(random_number)
 
 This example script demonstrates a more complex task than the basic "Hello World" script. It introduces key concepts like variable assignment with <-, setting a seed for reproducibility using set.seed(), generating random numbers with runif(), and printing results using print(). As you continue learning R, these foundational concepts will become increasingly important, enabling you to build more advanced and meaningful analyses. Remember, comments (#) are your friends! They help explain what each part of your code does, making it easier for you and others to understand and maintain your scripts. Be liberal with your comments. You'll thank yourself later (trust me).
 
-## Complete your Weekly Assignments
+## Complete your Weekly Assignments {.complete-your-weekly-assignments-01}
 
 In the BIOS103 Canvas course you will find this week's **formative** and **summative** QS assignments. You should aim to complete both of these before the end of the online workshop that corresponds to this section's content. The assignments are identical in all but the following details:
 
