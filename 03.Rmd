@@ -7,7 +7,7 @@ output:
 
 # Calibration Curves and Linear Regression in Excel 
 
-If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover **all of this section's content** and complete the [**formative and summative assessments**](#complete-your-weekly-assignments) on Canvas before 5 PM today.
+If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover **all of this section's content** and complete this week's [**formative and summative assessments**](#complete-your-weekly-assignments) in the BIOS103 Canvas Course.
 
 In this section we'll be re-visiting linear trendlines in Excel in the context of calibration curves and extending our knowledge by going deeper into the world of linear regression.
 
@@ -15,7 +15,7 @@ We will be working on two important skills:
 + Manipulating data (transposing)
 + Making predictions from linear models.
 
-## Calibration Curves {calibration-curves}
+## Calibration Curves {.calibration-curves}
 
 A **calibration curve** is a plot of a measurable quantity (in our case absorbance, as determined by spectrophotometry) against the concentration of known standards. This relationship, typically linear, allows for the determination of the concentration of unknown samples by interpolation.
 
@@ -39,8 +39,12 @@ There are a few **key considerations** to make when using this law to determine 
 
 Let's take a look at an example dataset from an experiment designed to generate a calibration curve for hemoglobin.Assume that starting from a stock solution of concentration 1.5 mg/mL a set of seven protein solutions have been created using a 1:1 serial dilution and that the absorbance of each solution has been measure at a wavelength of 560nm.
 
+```{r, results='asis', echo=FALSE}
+if (knitr::is_html_output()) {
+  cat('<iframe width="100%" height="400" src="https://www.youtube.com/embed/Dy6FmCDB2NQ?si=s9CWD0uGE14Fa1iP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
+}
+```
 
-### Download and Import the CSV File
 
 1. **Download the CSV File:** 
    - Here is an [example dataset](https://canvaswizards.org.uk/dataspell/calibration/999999999). Download it to your local machine.
@@ -153,6 +157,12 @@ In this case, we want to determine if there is a linear relationship between hou
 
 Let’s get started with the analysis in Excel!
 
+```{r, results='asis', echo=FALSE}
+if (knitr::is_html_output()) {
+  cat('<iframe width="100%" height="400" src="https://www.youtube.com/embed/xQniupalMmg?si=2cKXNSr4pNydlyDZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
+}
+```
+
 
 **1. Download the data**:
 
@@ -194,7 +204,7 @@ Wow! Your linear regression has provided so much information—it can feel like 
 
 - **Standard Error**: This measures the average distance that the observed values fall from the regression line. A smaller standard error means a better fit. Note that the units of your standard error are the same as for your dependent variable, i.e. mm.
 
-#### 2. ANOVA Table
+**2. ANOVA Table**
 
 The ANOVA table tells us whether the overall regression model is significant.
 
@@ -206,7 +216,7 @@ The ANOVA table tells us whether the overall regression model is significant.
 
 - **Significance F**: This is the p-value for the overall regression model. In our case, A p-value < 0.05 means that the model is statistically significant, and we reject the null hypothesis that there is no relationship between the dependent and independent variables.
 
-#### 3. Coefficient Table
+**3. Coefficient Table**
 
 This table is where you’ll find the key parameters for your linear regression model.
 
@@ -216,7 +226,7 @@ This table is where you’ll find the key parameters for your linear regression 
 
 - **P-values**: These tell us whether the coefficients (intercept and gradient) are statistically significant. If the p-value for the gradient is less than 0.05, we can say that the independent variable has a significant impact on the dependent variable.
 
-#### 4. Residual Plots and Additional Tables
+**4. Residual Plots and Additional Tables**
 
 - **Residual Plot**: This plot shows the differences between the observed and predicted values (residuals). Ideally, these residuals should be randomly scattered around 0, indicating a good model fit. If this is not the case then it might not be appropriate for you to be performing a linear regression.
 
@@ -286,10 +296,11 @@ Unfortunately, Excel has its limits for this. But don’t worry—we’ll tackle
 
 ## Complete your Weekly Assignments
 
-In the BIOS103 Canvas course you will find this week's **formative** and **summative** assignments. 
+In the BIOS103 Canvas course you will find this week's **formative** and **summative** QS assignments. You should aim to complete both of these before the end of the online workshop that corresponds to this section's content. The assignments are identical in all but the following details:
 
-   + You can attempt the **formative assignment** as many times as you like. It will not contribute to your overall score for this course. Make sure you practice this assignment until you're confident that you can get the correct answer on your own.
-   + You can attempt the **summative** assignment **only once**. It will be identical to the formative assignment but will use different values and datasets. This assignment **will** contribute to your overall score for this course.
-   + You have until 5pm on the day of the workshop for this week's content to submit your **summative** assignment. There will be no opportunity to submit late and you will receive a zero score for the week if you do not submit.
+   + You can attempt the **formative assignment** as many times as you like. It will not contribute to your overall score for this course. You will receive immediate feedback after submitting formative assignments. Make sure you practice this assignment until you're confident that you can get the correct answer on your own.
+   + You can attempt the **summative** assignment **only once**. It will be identical to the formative assignment but will use different values and datasets. This assignment **will** contribute to your overall score for this course. Failure to complete a summative test before the stated deadline will result in a zero score. You will not receive immediate feedback after submitting summative assignments. Typically, your scores will be posted within 7 days.
+   
+In **ALL** cases, when you click the button to "begin" a test you will have two hours to complete and submit the questions. If the test times out it will automatically submit.
    
 ##

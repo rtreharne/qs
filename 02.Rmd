@@ -9,9 +9,7 @@ output:
 
 If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover **all of this section's content** and complete this week's [**formative and summative assessments**](#complete-your-weekly-assignments-02) in the BIOS103 Canvas Course.
 
-In this section we will only be using Excel. No R today!
-
-Specifically, you will be developing two important skills:
+In this section we will only be using Excel. No R today! Specifically, you will be developing two important skills:
 
 1. **Summarising Data.**
 2. **Constructing and testing hypotheses.**
@@ -479,7 +477,7 @@ The post-hoc tests indicate that there are significant differences in embryo len
 
 These findings suggest that increases in alcohol concentration from 0% to 2%, and from 1.5% to 2.5%, lead to significant changes in embryo length. 
 
-## Complete your Weekly Assignments {.complete-your-weekly-assignments-02}
+## Complete your Weekly Assignments
 
 In the BIOS103 Canvas course you will find this week's **formative** and **summative** QS assignments. You should aim to complete both of these before the end of the online workshop that corresponds to this section's content. The assignments are identical in all but the following details:
 

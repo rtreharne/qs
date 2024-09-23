@@ -1,15 +1,11 @@
 h1:calibration-curves-and-linear-regression-in-excel Calibration Curves and Linear Regression in Excel
-h2:calibration-curves-calibration-curves Calibration Curves {calibration-curves}
-h3:download-and-import-the-csv-file Download and Import the CSV File
+h2:calibration-curves Calibration Curves
 fig:calibration-curve Calibration curve for Haemoglobin determined from a standard set generated from a 1:1 serial dilution from a starting 1.5 mg/mL solution. Values of m=0.3827 and b=0.0024 were extracted from the linear relationship A = m * C + b, where b is the systematic error associated with the measurement (detector noise).
 h2:linear-regression Linear Regression
 h3:the-linear-regression-equation The Linear Regression Equation
 h3:performing-a-linear-regression-in-excel Performing a Linear Regression in Excel
 fig:regression-output This is what you should see after performing a regression on your example sunflower dataset using Excel
 h3:interpreting-your-linear-regression Interpreting Your Linear Regression
-h4:anova-table 2. ANOVA Table
-h4:coefficient-table 3. Coefficient Table
-h4:residual-plots-and-additional-tables 4. Residual Plots and Additional Tables
 h3:making-predictions-with-our-model Making Predictions with Our Model
 h3:extending-to-multiple-variables Extending to Multiple Variables
 h2:complete-your-weekly-assignments Complete your Weekly Assignments
