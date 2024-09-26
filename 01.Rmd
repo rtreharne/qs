@@ -100,7 +100,7 @@ Despite their differences, you might hear the terms **R** and **RStudio** used i
    - Install R first from the [Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/)
    - Then install RStudio from the [RStudio website](https://posit.co/download/rstudio-desktop/)
    
-Once both are installed, open up RStudio and get ready to create your first **R Project**.
+Once both are installed, [open up RStudio](https://youtu.be/tQ227sB8YeA) and get ready to create your first **R Project**.
 
 **All University of Liverpool MWS machines already have R and RStudio installed and ready to use.**
 
