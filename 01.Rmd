@@ -80,7 +80,12 @@ where \( r \) is the radius, which we assume is equal to half the `Height L (mm)
 
 Over the next couple of weeks you will continue to use Excel to load, manipulate, analyse and visualise data. Beyond this you will be using the coding language R exclusively. To prepare for this, you need to download, install and configure R and RStudio today. 
 
-### Download and Install
+>**Chromebook Users**
+>
+>I love a chromebook. Sadly, installing R and RStudio on one involves a bit of extra work compared to Windows and Mac.
+>This YouTube video seems to have all the bases covered: ["How to Install RStudio on a Chromebook"](https://youtu.be/km4rQu6SoC0?si=YOflmxVUleCNI8kJ)
+
+### Download and Install (Windows and Mac only)
 
 **R** and **RStudio** are actually separate things, although they are often mentioned together. 
 

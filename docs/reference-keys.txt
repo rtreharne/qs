@@ -1,3 +1,10 @@
+fig:zebrafish-data-snap
+fig:zebrafish-snap-2
+fig:zebrafish-summary
+fig:zebrafish-boxplot
+fig:anova
+fig:calibration-curve
+fig:regression-output
 introduction-to-excel-and-r
 estimating-the-volume-of-a-snail
 download-and-import-the-csv-file
@@ -5,7 +12,7 @@ calculate-volume-v-in-excel
 add-a-linear-trendline-and-equation
 estimation-of-volume-for-a-snail-with-mass-10g
 getting-ready-for-r
-download-and-install
+download-and-install-windows-and-mac-only
 creating-your-first-r-project-in-rstudio
 something-more-complicated
 complete-your-weekly-assignments
@@ -29,11 +36,3 @@ interpreting-your-linear-regression
 making-predictions-with-our-model
 extending-to-multiple-variables
 complete-your-weekly-assignments-2
-fig:calibration-curve
-fig:regression-output
-section
-fig:zebrafish-data-snap
-fig:zebrafish-snap-2
-fig:zebrafish-summary
-fig:zebrafish-boxplot
-fig:anova
