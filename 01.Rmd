@@ -18,6 +18,9 @@ if (knitr::is_html_output()) {
   cat('<iframe width="100%" height="400" src="https://www.youtube.com/embed/0ShVZvl1sG0?si=q1Ve8aptT5m-1H21" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
 }
 ```
+>**Google Sheets Alternative**
+>
+>If you like, you can do everything in the above video using Google Sheets instead! Here's my [alternate video](https://youtu.be/D-URR3a7mmQ?si=mgHlelXssWuSO0SU) just for Google Sheets. 
 
 ### Download and Import the CSV File
 
