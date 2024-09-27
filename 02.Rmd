@@ -2,6 +2,10 @@
 output:
   html_document: default
   pdf_document: default
+
+  bookdown::gitbook:
+    toc: true
+    number_sections: true
 ---
 \newpage
 
