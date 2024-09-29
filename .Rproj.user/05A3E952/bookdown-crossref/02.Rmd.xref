@@ -1,7 +1,7 @@
 h1:summarising-data-and-anova-in-excel Summarising Data and ANOVA in Excel
 h2:summarising-data Summarising Data
 h3:download-and-import-the-csv-file Download and Import the CSV File
-fig:zebrafish-data-snap Some Figure
+fig:zebrafish-data-snap You should see this (or something like it) after you have imported your date into Excel.
 h3:generating-a-summary-table Generating a Summary Table
 fig:zebrafish-snap-2 Constructing a summary table
 h3:presenting-your-summary-table Presenting Your Summary Table
@@ -11,10 +11,8 @@ h3:grouped-boxplots-in-excel Grouped Boxplots in Excel
 h4:create-the-boxplot Create the Boxplot
 fig:zebrafish-boxplot Distribution of Zebrafish embryo lengths organised by Alcohol treatments.
 h4:interpret-the-boxplot Interpret the Boxplot
-h4:understanding-boxplots Anatomy of a Boxplot
 h3:constructing-testable-hypotheses Constructing Testable Hypotheses
 h4:formulating-the-hypotheses Formulating the Hypotheses
-h4:origin-of-hypothesis-testing The Origin of Hypothesis Testing
 h4:getting-ready-to-test Getting Ready to Test
 h4:assumptions-of-anova Assumptions of ANOVA
 h3:performing-a-one-way-anova-in-excel Performing a One-Way Anova in Excel

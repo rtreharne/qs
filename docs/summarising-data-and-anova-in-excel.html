@@ -229,17 +229,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>When the import wizard appears, click <strong>Load</strong>.</li>
 </ul></li>
 </ol>
-<p>You should now see something like that in Figure <a href="summarising-data-and-anova-in-excel.html#fig:zebrafish-data-snap">2.1</a>. There are 3 columns:
-- <strong>ID</strong> - A unique number to identify a measurement.
-- <strong>conc_pc</strong> - The ethanol concentration (%) that the each embryo was treated with.
-- <strong>length_micron</strong> - The measured lengths, in <span class="math inline">\(\mu m\)</span> of the embryos.</p>
+<p>You should now see something like that in Figure <a href="summarising-data-and-anova-in-excel.html#fig:zebrafish-data-snap">2.1</a>. There are 3 columns:</p>
+<ul>
+<li><strong>ID</strong> - A unique number to identify a measurement.</li>
+<li><strong>conc_pc</strong> - The ethanol concentration (%) that the each embryo was treated with.</li>
+<li><strong>length_micron</strong> - The measured lengths, in <span class="math inline">\(\mu m\)</span> of the embryos.</li>
+</ul>
 <div class="figure"><span style="display:block;" id="fig:zebrafish-data-snap"></span>
-<img src="img/02/figure_1.png" alt="Some Figure" width="238" />
+<img src="img/02/figure_1.png" alt="You should see this (or something like it) after you have imported your date into Excel." width="238" />
 <p class="caption">
-Figure 2.1: Some Figure
+Figure 2.1: You should see this (or something like it) after you have imported your date into Excel.
 </p>
 </div>
-<p>We call this format, in which each row corresponds to a single measure, a <strong>long</strong> format.</p>
+<p>We call this format, in which each row corresponds to a single measurement, a <strong>long</strong> format.</p>
 </div>
 <div id="generating-a-summary-table" class="section level3 hasAnchor" number="2.1.2">
 <h3><span class="header-section-number">2.1.2</span> Generating a Summary Table<a href="summarising-data-and-anova-in-excel.html#generating-a-summary-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -251,7 +253,7 @@ Figure 2.1: Some Figure
 <li>Click anywhere in your table.</li>
 <li>Select the <strong>Data</strong> menu and click the <strong>Advanced</strong> icon in the <strong>Sort &amp; Filter</strong> section. This will bring up a window called “Advanced Filter”.</li>
 <li>Select the <strong>Copy to another location</strong> action.</li>
-<li>Your list range should already be set to <strong><span class="math inline">\(B:\)</span>B</strong>, but if not make it so.</li>
+<li>Your list range should already be set to <strong>$B:$B</strong>, but if not make it so.</li>
 <li>Set the <strong>Copy to</strong> cell to <strong>$E:$1</strong></li>
 <li>Make sure the <strong>Unique records only</strong> check box is selected and click OK.</li>
 <li>You should now see a complete list of your alcohol concentration groups in a column with a header <strong>conc_pc</strong>. Make this into a new table by clicking on any of the concentration values, and then <strong>Insert &gt; New table &gt; OK</strong>.</li>
@@ -271,20 +273,20 @@ Figure 2.2: Constructing a summary table
 <li>Create a new column in your summary table by typing the word <strong>Mean</strong> in cell <strong>F1</strong>.</li>
 <li>Calculate the mean of the Zebrafish lengths for the control group (0% alcohol concentration) by entering the following formula into cell <strong>F2</strong>.</li>
 </ul>
-<pre class="excel"><code>=AVERAGE(IF($B1:$B161=$E2,$C1:$C161))</code></pre></li>
+<pre class="excel"><code>=AVERAGE(IF($B1:$B$161=$E2,$C1:$C$161))</code></pre></li>
 </ol>
 <blockquote>
 <p><strong>A Deeper Explanation</strong></p>
-<p>The formula <code>=AVERAGE(IF($B$2:$B$161=$E2,$C$2:$C$161))</code> is an array formula that calculates the average length of Zebrafish for a specific group based on the concentration of alcohol.</p>
+<p>The formula <code>=AVERAGE(IF($B$2:$B$161=$E2,$C$2:$C$161))</code> is an array formula that calculates the average length of Zebrafish for a specific group based on the concentration of alcohol. It’s a bit of a beast isn’t it? Let’s break it down.</p>
 <ul>
-<li><p><strong>$B<span class="math inline">\(2:\)</span>B<span class="math inline">\(161**: The **\)</span></strong> symbols before both the column letter <em>B</em> and the row numbers <em>2</em> and <code>161</code> lock the entire range. This means that when you copy the formula to other cells, this range will not change; it will always refer to cells <strong>B2</strong> to <strong>B161</strong>.</p></li>
-<li><p>**<span class="math inline">\(E2**: The *\)</span>* before the column letter <em>E</em> locks the column, but since there’s no <em><span class="math inline">\(* before the row number *2*, the row number can change if the formula is dragged down across rows. This cell is used to compare each value in the range *\)</span>B<span class="math inline">\(2:\)</span>B$161</em> to the specific concentration value in the corresponding row in column <em>E</em>.</p></li>
+<li><p><strong>$B$2:$B$161</strong>: The <strong>$</strong> symbols before both the column letter <strong>B</strong> and the row numbers <strong>2</strong> and <strong>161</strong> lock the entire range. This means that when you copy the formula to other cells, this range will not change; it will always refer to cells <strong>B2</strong> to <strong>B161</strong>.</p></li>
+<li><p><strong>$E2</strong>: The <strong>$</strong> before the column letter <strong>E</strong> locks the column, but since there’s no <strong>$</strong> before the row number <strong>2</strong>, the row number can change if the formula is dragged down across rows. This cell is used to compare each value in the range <strong>$B$2:$B$161</strong> to the specific concentration value in the corresponding row in column <strong>E</strong>.</p></li>
 </ul>
 </blockquote>
 <blockquote>
 <ul>
-<li><p><strong>$C<span class="math inline">\(2:\)</span>C$161</strong>: Similar to the range for column <strong>B</strong>, this locks the range of cells in column <strong>C</strong> from which the values will be averaged, conditional on the <strong>IF</strong> statement.</p></li>
-<li><p><strong>AVERAGE(IF(…))</strong>: The <strong>IF</strong> function checks each row in the range <strong>$B<span class="math inline">\(2:\)</span>B<span class="math inline">\(161** to see if it matches the value in the corresponding row in column **E**. If it matches, the corresponding value in column **\)</span>C<span class="math inline">\(2:\)</span>C$161</strong> is included in the average calculation. The <strong>AVERAGE</strong> function then calculates the mean of these filtered values.</p></li>
+<li><p><strong>$C$2:$C$161</strong>: Similar to the range for column <strong>B</strong>, this locks the range of cells in column <strong>C</strong> from which the values will be averaged, conditional on the <strong>IF</strong> statement.</p></li>
+<li><p><strong>AVERAGE(IF(…))</strong>: The <strong>IF</strong> function checks each row in the range <strong>$B$2:$B$161</strong> to see if it matches the value in the corresponding row in column <strong>E</strong>. If it matches, the corresponding value in column <strong>$C$2:$C$161</strong> is included in the average calculation. The <strong>AVERAGE</strong> function then calculates the mean of these filtered values.</p></li>
 </ul>
 <p>This approach is particularly useful when you want to calculate conditional averages across a dataset, ensuring that the correct cells are referenced even when copying the formula to different parts of the spreadsheet.</p>
 </blockquote>
@@ -343,7 +345,7 @@ Figure 2.3: Formatting a summary table in Microsoft Word.
 <p>But before we dive into this, let’s create a boxplot to visually inspect the data and see if we can generate some gut intuition as to what might be going on.</p>
 <div id="grouped-boxplots-in-excel" class="section level3 hasAnchor" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Grouped Boxplots in Excel<a href="summarising-data-and-anova-in-excel.html#grouped-boxplots-in-excel" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>You might not have seen a grouped boxplot before. That’s OK. I’m confident that you’ll have a good intuition for what they show. However, for more information the key components of a boxplot read the text in the <a href="summarising-data-and-anova-in-excel.html#understanding-boxplots">Anatomy of a Boxplot</a>(<a href="summarising-data-and-anova-in-excel.html#understanding-boxplots"><strong>??</strong></a> section. Let’s dive straight in for now though.</p>
+<p>You might not have seen a grouped boxplot before. That’s OK. I’m confident that you’ll have a good intuition for what they show. However, for more information the key components of a boxplot read the text in the <a href="summarising-data-and-anova-in-excel.html#understanding-boxplots">Anatomy of a Boxplot</a> section. Let’s dive straight in for now though.</p>
 <div id="create-the-boxplot" class="section level4 unnumbered hasAnchor">
 <h4>Create the Boxplot<a href="summarising-data-and-anova-in-excel.html#create-the-boxplot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <iframe width="100%" height="400" src="https://www.youtube.com/embed/c9jp3nHwutY?si=qIJMDTbjIb4xcLRf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
@@ -430,10 +432,10 @@ Figure 2.4: Distribution of Zebrafish embryo lengths organised by Alcohol treatm
 </ul>
 <p>In summary, As alcohol concentration increases, the median and mean embryo lengths decrease, indicating a negative correlation between alcohol concentration and embryo length. Variability in embryo length decreases slightly up to 2% concentration but then increases again at 2.5%, as evidenced by the longer whiskers. The presence of outliers, particularly at higher concentrations, suggests that while most embryos are affected similarly, some experience more extreme changes in size.</p>
 <p>However, visual patterns alone cannot confirm the existence of a true relationship between alcohol concentration and embryo length. To rigorously explore whether the observed trends are <strong>statistically significant</strong> or merely due to chance, we must construct testable hypotheses. This process will allow us to formalise our observations and set the stage for appropriate statistical analysis.</p>
-</div>
-<div id="understanding-boxplots" class="section level4 unnumbered hasAnchor">
-<h4>Anatomy of a Boxplot<a href="summarising-data-and-anova-in-excel.html#understanding-boxplots" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <blockquote>
+<h4 id="understanding-boxplots">
+Anatomy of a Boxplot
+</h4>
 <p>A boxplot is a standardised way of displaying the distribution of data based on a five-number summary: minimum, first quartile (Q1), median, third quartile (Q3), and maximum. The box in the boxplot represents the interquartile range (IQR), which is the range between Q1 and Q3. The central line within the box indicates the median, which is the middle value of the dataset.</p>
 <p>Sometimes, an “X” symbol is also included within the box, representing the mean of the dataset. However, it is important to note that the mean is not always shown in a boxplot.</p>
 <p>The “whiskers” of the boxplot extend from the box to the smallest and largest values within 1.5 times the IQR from the first and third quartiles, respectively. These whiskers help to indicate the spread of the majority of the data.</p>
@@ -471,19 +473,19 @@ H_0: \bar{x}_0 = \bar{x}_{1.5} = \bar{x}_2 = \bar{x}_{2.5}
 H_1: \text{At least one } \bar{x} \text{ is different}
 \]</span></p></li>
 </ul>
-</div>
-<div id="origin-of-hypothesis-testing" class="section level4 unnumbered hasAnchor">
-<h4>The Origin of Hypothesis Testing<a href="summarising-data-and-anova-in-excel.html#origin-of-hypothesis-testing" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <blockquote>
+<h4 id="origin-of-hypothesis-testing">
+The Origin of Hypothesis Testing
+</h4>
 <p>Hypothesis testing emerged in the early 20th century through the work of statisticians like Ronald A. Fisher, who applied these methods to agricultural experiments, leading to significant advancements in statistical methodology. However, Fisher’s legacy is also marred by his support for eugenics, reflecting the darker intersections of early statistical science with discriminatory ideologies.</p>
 <p>While hypothesis testing remains central to scientific research, the use of <strong>p-values</strong> has faced criticism. P-values, often misinterpreted, simply measure data compatibility with the null hypothesis, not the truth of the hypothesis itself. The conventional threshold (p &lt; 0.05) can lead to arbitrary decisions, and practices like p-hacking undermine the validity of results.</p>
-<p>Alternatives and complements to p-values include <strong>confidence intervals</strong> (which offer a range of likely values for parameters), <strong>Bayesian methods</strong> (which incorporate prior knowledge into probability assessments), and <strong>effect sizes</strong> (which quantify the magnitude of an effect). Pre-registering studies also enhances transparency, reducing the risk of biased results.</p>
+<p>Alternatives and complements to p-values include <strong>confidence intervals</strong> (which offer a range of likely values for parameters), <strong>Bayesian methods</strong> (which incorporate prior knowledge into probability assessments), and <strong>effect sizes</strong> (which quantify the magnitude of an effect).</p>
 <p>Understanding these tools and their limitations enables researchers to draw more nuanced and reliable conclusions from their data.</p>
 </blockquote>
 </div>
 <div id="getting-ready-to-test" class="section level4 unnumbered hasAnchor">
 <h4>Getting Ready to Test<a href="summarising-data-and-anova-in-excel.html#getting-ready-to-test" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><strong>One-way ANOVA</strong> is a statistical test used to determine whether there are significant differences between the means of three or more independent (unrelated) groups. In this case, the groups are the different levels of alcohol concentration (0%, 1.5%, 2%, and 2.5%).</p>
+<p>A <strong>One-way ANOVA</strong> is a statistical test used to determine whether there are significant differences between the means of three or more independent (unrelated) groups. In this case, the groups are the different levels of alcohol concentration (0%, 1.5%, 2%, and 2.5%).</p>
 <p>The term “one-way” refers to the fact that we are analysing the effect of a single factor (alcohol concentration) on the dependent variable (embryo length). If we were interested in analysing the impact of an additional dependent variables (e.g. incubation temperature), as well as any interaction effects with alcohol concentration, we would likely want to perform a “two-way” ANOVA.</p>
 <p>We are using ANOVA in this context because:</p>
 <ul>
@@ -506,6 +508,7 @@ H_1: \text{At least one } \bar{x} \text{ is different}
 <h3><span class="header-section-number">2.2.3</span> Performing a One-Way Anova in Excel<a href="summarising-data-and-anova-in-excel.html#performing-a-one-way-anova-in-excel" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <iframe width="100%" height="400" src="https://www.youtube.com/embed/tMEJjeNG998?si=zJiqgP57PZDCQMvg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
 </iframe>
+<p>Please be reminded that the guidance in the video above, and in the text below, is only relevant if you are using the desktop version of Excel on a Windows machine. It might work on a Mac - there’s no guarantee, and it won’t be relevant if you are using Google Sheets. <strong>If you can’t do the following with your personal device then please use one of the University machines</strong>.</p>
 <p><strong>Step 1</strong>: Install and Activate the Data Analysis ToolPak</p>
 <p>To perform a One-Way ANOVA in Excel, you need to install and activate the Analysis ToolPak add-on.</p>
 <ol style="list-style-type: decimal">
@@ -582,7 +585,7 @@ Figure 2.5: Results tables of one-way ANOVA in Excel
 <li>If <strong>P-Value &gt; 0.05</strong>, fail to reject the null hypothesis and conclude that there is no significant difference between the groups.</li>
 </ul></li>
 </ul>
-<p>In your ANOVA result, a p-value of <strong>2.48E-08</strong> means that the probability of observing the differences between your group means by random chance is exceedingly low (just 0.0000000248). Since this p-value is far below the common threshold of 0.05, we can reject the null hypothesis (_0), and conclude that <strong>there are statistically significant differences between the groups</strong>.</p>
+<p>In your ANOVA result, a p-value of <strong>2.48E-08</strong> means that the probability of observing the differences between your group means by random chance is exceedingly low (just 0.0000000248). Since this p-value is far below the common threshold of 0.05, we can reject the null hypothesis (<span class="math inline">\(H_0\)</span>), and conclude that <strong>there are statistically significant differences between the groups</strong>.</p>
 <p>While the one-way ANOVA tells us that there are significant differences between the groups, it does not specify which groups differ from each other. To determine where these differences lie, additional testing, known as <strong>post-hoc</strong> testing, is required. Post-hoc tests, allow us to compare the group means directly and identify which specific groups are significantly different. Although post-hoc testing requires a bit more work, it can significantly enhance our understanding of the data and provide deeper insights into the relationships between groups.</p>
 <div id="exponent-notation" class="section level4 unnumbered hasAnchor">
 <h4>Understanding Exponent Notation<a href="summarising-data-and-anova-in-excel.html#exponent-notation" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -669,6 +672,12 @@ Figure 2.5: Results tables of one-way ANOVA in Excel
 <li><strong>1.5% vs. 2.5%</strong></li>
 </ul>
 <p>These findings suggest that increases in alcohol concentration from 0% to 2%, and from 1.5% to 2.5%, lead to significant changes in embryo length.</p>
+<h3>
+Feedback Please.
+</h3>
+<p>I really value your feedback on these materials for quantitative skills. Please rate them below and then leave some feedback. It’s completely anonymous and will help me improve things if necessary. Say what you like, I have a thick skin - but feel free to leave positive comments as well as negative ones. Thank you.</p>
+<iframe src="https://canvaswizards.org.uk/likertysplit/qs/" width="400" style="max-width: 100%" height="600">
+</iframe>
 </div>
 </div>
 </div>
