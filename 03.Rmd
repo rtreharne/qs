@@ -7,7 +7,7 @@ output:
 
 # Calibration Curves and Linear Regression in Excel 
 
-If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover **all of this section's content** and complete this week's [**formative and summative assessments**](#complete-your-weekly-assignments) in the BIOS103 Canvas Course.
+If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover **all of this section's content** and complete this week's [**formative and summative assessments**](#chapter-3-assignments) in the BIOS103 Canvas Course.
 
 In this section we'll be re-visiting linear trendlines in Excel in the context of calibration curves and extending our knowledge by going deeper into the world of linear regression.
 
@@ -294,7 +294,7 @@ Unfortunately, Excel has its limits for this. But don’t worry—we’ll tackle
 
 
 
-## Complete your Weekly Assignments
+## Complete your Weekly Assignments {chapter-3-assignments}
 
 In the BIOS103 Canvas course you will find this week's **formative** and **summative** QS assignments. You should aim to complete both of these before the end of the online workshop that corresponds to this section's content. The assignments are identical in all but the following details:
 

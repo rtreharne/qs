@@ -35,4 +35,4 @@ performing-a-linear-regression-in-excel
 interpreting-your-linear-regression
 making-predictions-with-our-model
 extending-to-multiple-variables
-complete-your-weekly-assignments-2
+complete-your-weekly-assignments-chapter-3-assignments
