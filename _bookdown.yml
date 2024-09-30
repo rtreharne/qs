@@ -3,4 +3,5 @@ rmd_files: [
   "01.Rmd",
   "02.Rmd",
   "03.Rmd",
+  "04.Rmd"
 ]

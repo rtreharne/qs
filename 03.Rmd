@@ -12,8 +12,9 @@ If you are currently participating in a timetabled BIOS103 QS workshop, please e
 In this section we'll be re-visiting linear trendlines in Excel in the context of calibration curves and extending our knowledge by going deeper into the world of linear regression.
 
 We will be working on two important skills:
-+ Manipulating data (transposing)
-+ Making predictions from linear models.
+
+- Manipulating data (transposing)
+- Making predictions from linear models.
 
 ## Calibration Curves {.calibration-curves}
 
@@ -33,11 +34,11 @@ Where:
 
 There are a few **key considerations** to make when using this law to determine the concentrations of unknown solutions:
 
-- **Linear range**: the calibration curve is only valid within a certain concentration range. At very high concentrations, the relationship bay no longer be linear (due to factors like light scattering). Extrapolating concentrations from our calibration curves that are beyond those of our known standards is very, very naughty. Don't do it!
-- **Reproducibility**: It is critical that same instrument (including scan settings and wavelength) be use for both the standards and unknowns.
+- **Linear range**: the calibration curve is only valid within a certain concentration range. At very high concentrations, the relationship may no longer be linear (due to factors like light scattering). Extrapolating concentrations from our calibration curves that are beyond those of our known standards is very, very naughty. Don't do it!
+- **Reproducibility**: It is critical that the same instrument (including scan settings and wavelength) be use for both the standards and unknowns.
 
 
-Let's take a look at an example dataset from an experiment designed to generate a calibration curve for hemoglobin.Assume that starting from a stock solution of concentration 1.5 mg/mL a set of seven protein solutions have been created using a 1:1 serial dilution and that the absorbance of each solution has been measure at a wavelength of 560nm.
+Let's take a look at an example dataset from an experiment designed to generate a calibration curve for hemoglobin. Assume that starting from a stock solution of concentration 1.5 mg/mL a set of seven protein solutions have been created using a 1:1 serial dilution and that the absorbance of each solution has been measure at a wavelength of 560nm.
 
 ```{r, results='asis', echo=FALSE}
 if (knitr::is_html_output()) {
@@ -54,7 +55,7 @@ if (knitr::is_html_output()) {
    - Go to `Data > From Text/CSV` and select the downloaded CSV file.
    - When the import wizard appears, **do not** click **Load**.
    
-There's something not right about this dataset. It's sideways! The columns of data run horizontally instead of vertically. We don't like this, it make it much harder to plot figures and perform any analysis.
+There's something not right about this dataset. It's sideways! The columns of data run horizontally instead of vertically. We don't like this, it makes it much harder to plot figures and perform any analysis.
 
 We need to transform the data somehow and flip it to vertical instead of horizontal. We need to **transpose** the data.
 
@@ -101,12 +102,12 @@ Thus, the concentration of the unknown protein solution is 1.3 mg/mL.
 Note that I've expressed my answer to 2 significant figures to match the minimum level of precision available to me during the calculation (i.e. 2 s.f for both 0.5 and 0.0024).
 
    
-```{r calibration-curve, echo=FALSE, fig.cap="Calibration curve for Haemoglobin determined from a standard set generated from a 1:1 serial dilution from a starting 1.5 mg/mL solution. Values of m=0.3827 and b=0.0024 were extracted from the linear relationship A = m * C + b, where b is the systematic error associated with the measurement (detector noise).", out.width="100%"}
+```{r calibration-curve, echo=FALSE, fig.cap="Calibration curve for Hemoglobin determined from a standard set generated from a 1:1 serial dilution from a starting 1.5 mg/mL solution. Values of m=0.3827 and b=0.0024 were extracted from the linear relationship A = m * C + b, where b is the systematic error associated with the measurement (detector noise).", out.width="100%"}
 knitr::include_graphics("img/03/calibration_curve.png")
 ```
 ## Linear Regression
 
-A linear trendline is visually helpful, but what we’re actually doing is something more powerful: **linear regression**.
+A linear trendline is visually helpful, but what what Excel is actually doing behind the scenes is something more powerful: **linear regression**.
 
 Linear regression is a statistical method used to quantify how much the variation in a dependent variable can be attributed to changes in an independent variable. It helps us understand how one variable predicts or influences another. Additionally, it provides insight into how much of the variation is due to error or other unaccounted factors, and whether we need to explore other relationships or variables that may better explain the observed patterns.
 

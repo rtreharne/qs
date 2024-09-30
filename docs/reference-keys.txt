@@ -36,3 +36,5 @@ interpreting-your-linear-regression
 making-predictions-with-our-model
 extending-to-multiple-variables
 complete-your-weekly-assignments-chapter-3-assignments
+introduction-to-r-part-i
+complete-your-weekly-assignments-2
