@@ -183,7 +183,7 @@ if (knitr::is_html_output()) {
 
 2. **Select Data**: 
    - Your plot will look a bit weird. That's because we need to configure the groupings properly.
-   - Click the **Select dta** button.
+   - Click the **Select data** button.
    - Remove the **conc_pc** series from the left-hand list.
    - Click the **Edit** button on the (currently empty) right-hand list.
 3. **Boxplots in the wrong order?**
