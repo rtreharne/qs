@@ -147,7 +147,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1.3" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#add-a-linear-trendline-and-equation"><i class="fa fa-check"></i><b>1.1.3</b> Add a Linear Trendline and Equation</a></li>
 <li class="chapter" data-level="1.1.4" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#estimation-of-volume-for-a-snail-with-mass-10g"><i class="fa fa-check"></i><b>1.1.4</b> Estimation of Volume for a Snail with Mass 10g</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#getting-ready-for-r"><i class="fa fa-check"></i><b>1.2</b> Getting Ready for R</a>
+<li class="chapter" data-level="1.2" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#getting-ready-for-R"><i class="fa fa-check"></i><b>1.2</b> Getting Ready for R</a>
 <ul>
 <li class="chapter" data-level="1.2.1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#download-and-install-windows-and-mac-only"><i class="fa fa-check"></i><b>1.2.1</b> Download and Install (Windows and Mac only)</a></li>
 <li class="chapter" data-level="1.2.2" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#creating-your-first-r-project-in-rstudio"><i class="fa fa-check"></i><b>1.2.2</b> Creating Your First R Project in RStudio</a></li>
@@ -184,10 +184,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.5" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#extending-to-multiple-variables"><i class="fa fa-check"></i><b>3.2.5</b> Extending to Multiple Variables</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#complete-your-weekly-assignments-chapter-3-assignments"><i class="fa fa-check"></i><b>3.3</b> Complete your Weekly Assignments {chapter-3-assignments}</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html"><i class="fa fa-check"></i><b>4</b> Introduction to R: Part I</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#complete-your-weekly-assignments-2"><i class="fa fa-check"></i><b>4.1</b> Complete your Weekly Assignments</a></li>
 </ul></li>
 </ul>
 
@@ -296,8 +292,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </div>
 </div>
-<div id="getting-ready-for-r" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> Getting Ready for R<a href="introduction-to-excel-and-r.html#getting-ready-for-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="getting-ready-for-R" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Getting Ready for R<a href="introduction-to-excel-and-r.html#getting-ready-for-R" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Over the next couple of weeks you will continue to use Excel to load, manipulate, analyse and visualise data. Beyond this you will be using the coding language R exclusively. To prepare for this, you need to download, install and configure R and RStudio today.</p>
 <blockquote>
 <p><strong>Chromebook Users</strong></p>
@@ -379,8 +375,6 @@ This YouTube video seems to have all the bases covered: <a href="https://youtu.b
 <li>Click <strong>File &gt; New File &gt; R Script</strong>.</li>
 <li>Write some R code in the script editor. For example:</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="introduction-to-excel-and-r.html#cb2-1" tabindex="-1"></a><span class="co"># my first line of code. this is a comment!</span></span>
-<span id="cb2-2"><a href="introduction-to-excel-and-r.html#cb2-2" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Hello World!&quot;</span>)</span></code></pre></div>
 <p>To run your print command, click on the line and click the <code>Run</code> button at the top right of your script editor window or press <strong>Ctrl + ENTER</strong> (Cmd + Enter on Mac).</p>
 <p>You will see the following output in your console window:</p>
 <pre><code>## [1] &quot;Hello World!&quot;</code></pre>
@@ -389,49 +383,49 @@ This YouTube video seems to have all the bases covered: <a href="https://youtu.b
 <div id="something-more-complicated" class="section level3 hasAnchor" number="1.2.3">
 <h3><span class="header-section-number">1.2.3</span> Something More Complicated<a href="introduction-to-excel-and-r.html#something-more-complicated" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>As you delve deeper into R programming, you’ll find that your scripts become more sophisticated than the “Hello World” example above. In the following example, I’ll walk you through a script to create a random number generator. Here’s the script in its entirety:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="introduction-to-excel-and-r.html#cb4-1" tabindex="-1"></a><span class="co"># create a variable called &quot;seed&quot;</span></span>
-<span id="cb4-2"><a href="introduction-to-excel-and-r.html#cb4-2" tabindex="-1"></a>seed <span class="ot">&lt;-</span> <span class="dv">999</span></span>
-<span id="cb4-3"><a href="introduction-to-excel-and-r.html#cb4-3" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="introduction-to-excel-and-r.html#cb4-4" tabindex="-1"></a><span class="co"># set the seed</span></span>
-<span id="cb4-5"><a href="introduction-to-excel-and-r.html#cb4-5" tabindex="-1"></a><span class="fu">set.seed</span>(seed)</span>
-<span id="cb4-6"><a href="introduction-to-excel-and-r.html#cb4-6" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="introduction-to-excel-and-r.html#cb4-7" tabindex="-1"></a><span class="co"># generate a random number</span></span>
-<span id="cb4-8"><a href="introduction-to-excel-and-r.html#cb4-8" tabindex="-1"></a>random_number <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
-<span id="cb4-9"><a href="introduction-to-excel-and-r.html#cb4-9" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="introduction-to-excel-and-r.html#cb4-10" tabindex="-1"></a><span class="co"># print the random number</span></span>
-<span id="cb4-11"><a href="introduction-to-excel-and-r.html#cb4-11" tabindex="-1"></a><span class="fu">print</span>(random_number)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="introduction-to-excel-and-r.html#cb3-1" tabindex="-1"></a><span class="co"># create a variable called &quot;seed&quot;</span></span>
+<span id="cb3-2"><a href="introduction-to-excel-and-r.html#cb3-2" tabindex="-1"></a>seed <span class="ot">&lt;-</span> <span class="dv">999</span></span>
+<span id="cb3-3"><a href="introduction-to-excel-and-r.html#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="introduction-to-excel-and-r.html#cb3-4" tabindex="-1"></a><span class="co"># set the seed</span></span>
+<span id="cb3-5"><a href="introduction-to-excel-and-r.html#cb3-5" tabindex="-1"></a><span class="fu">set.seed</span>(seed)</span>
+<span id="cb3-6"><a href="introduction-to-excel-and-r.html#cb3-6" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="introduction-to-excel-and-r.html#cb3-7" tabindex="-1"></a><span class="co"># generate a random number</span></span>
+<span id="cb3-8"><a href="introduction-to-excel-and-r.html#cb3-8" tabindex="-1"></a>random_number <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
+<span id="cb3-9"><a href="introduction-to-excel-and-r.html#cb3-9" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="introduction-to-excel-and-r.html#cb3-10" tabindex="-1"></a><span class="co"># print the random number</span></span>
+<span id="cb3-11"><a href="introduction-to-excel-and-r.html#cb3-11" tabindex="-1"></a><span class="fu">print</span>(random_number)</span></code></pre></div>
 <p>Cut and paste these lines into the script file we were working on earlier (overwrite the “Hello World” example).</p>
 <p>Now, you can run each line in turn as before (using <strong>Ctrl + ENTER</strong>) or you can run everything by clicking the <strong>Source</strong> button. You should see the following number appear in your console:</p>
 <p>Let’s break down each line of the script to understand its purpose and functionality.</p>
 <ol style="list-style-type: decimal">
 <li><strong>Creating a Variable Called “seed”</strong></li>
 </ol>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="introduction-to-excel-and-r.html#cb5-1" tabindex="-1"></a><span class="co"># create a variable called &quot;seed&quot;</span></span>
-<span id="cb5-2"><a href="introduction-to-excel-and-r.html#cb5-2" tabindex="-1"></a>seed <span class="ot">&lt;-</span> <span class="dv">123</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="introduction-to-excel-and-r.html#cb4-1" tabindex="-1"></a><span class="co"># create a variable called &quot;seed&quot;</span></span>
+<span id="cb4-2"><a href="introduction-to-excel-and-r.html#cb4-2" tabindex="-1"></a>seed <span class="ot">&lt;-</span> <span class="dv">123</span></span></code></pre></div>
 <ul>
 <li><code>seed &lt;- 123</code>: Here, we are using the <code>&lt;-</code> operator to assign the value 123 to the variable named seed. In R, variables are used to store data that can be reused or manipulated later in the script. The number 123 is arbitrary in this case, but we use it to illustrate how to set a seed for random number generation.</li>
 </ul>
 <ol start="2" style="list-style-type: decimal">
 <li><strong>Setting the Seed</strong></li>
 </ol>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="introduction-to-excel-and-r.html#cb6-1" tabindex="-1"></a><span class="co"># set the seed</span></span>
-<span id="cb6-2"><a href="introduction-to-excel-and-r.html#cb6-2" tabindex="-1"></a><span class="fu">set.seed</span>(seed)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="introduction-to-excel-and-r.html#cb5-1" tabindex="-1"></a><span class="co"># set the seed</span></span>
+<span id="cb5-2"><a href="introduction-to-excel-and-r.html#cb5-2" tabindex="-1"></a><span class="fu">set.seed</span>(seed)</span></code></pre></div>
 <ul>
 <li>The <code>set.seed()</code> function initializes the R environment’s build in random number generator with the value stored in seed. Setting a seed is essential for reproducibility, meaning that if someone else runs this code with the same seed, they will get the same random number output in their console. This is particularly useful in simulations and randomised experiments where consistent results are needed.</li>
 </ul>
 <ol start="3" style="list-style-type: decimal">
 <li><strong>Generating a Random Number</strong></li>
 </ol>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="introduction-to-excel-and-r.html#cb7-1" tabindex="-1"></a><span class="co"># generate a random number</span></span>
-<span id="cb7-2"><a href="introduction-to-excel-and-r.html#cb7-2" tabindex="-1"></a>random_number <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="introduction-to-excel-and-r.html#cb6-1" tabindex="-1"></a><span class="co"># generate a random number</span></span>
+<span id="cb6-2"><a href="introduction-to-excel-and-r.html#cb6-2" tabindex="-1"></a>random_number <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span></code></pre></div>
 <ul>
 <li><code>random_number &lt;- runif(1)</code>: This line generates a single random number between 0 and 1. The function runif() generates random numbers from a uniform distribution, which means that each number within the specified range has an equal probability of being selected. The 1 inside the parentheses specifies that only one random number should be generated. The resulting number is then assigned to the variable called <code>random_number</code>.</li>
 </ul>
 <ol start="4" style="list-style-type: decimal">
 <li><strong>Printing the Random Number</strong></li>
 </ol>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="introduction-to-excel-and-r.html#cb8-1" tabindex="-1"></a><span class="co"># print the random number</span></span>
-<span id="cb8-2"><a href="introduction-to-excel-and-r.html#cb8-2" tabindex="-1"></a><span class="fu">print</span>(random_number)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="introduction-to-excel-and-r.html#cb7-1" tabindex="-1"></a><span class="co"># print the random number</span></span>
+<span id="cb7-2"><a href="introduction-to-excel-and-r.html#cb7-2" tabindex="-1"></a><span class="fu">print</span>(random_number)</span></code></pre></div>
 <ul>
 <li><code>print(random_number)</code>: The print() function outputs the value stored in <code>random_number</code> to the console. This is useful for verifying the output of your code and ensuring that the operations have been executed correctly.</li>
 </ul>

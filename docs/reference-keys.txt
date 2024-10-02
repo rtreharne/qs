@@ -11,7 +11,7 @@ download-and-import-the-csv-file
 calculate-volume-v-in-excel
 add-a-linear-trendline-and-equation
 estimation-of-volume-for-a-snail-with-mass-10g
-getting-ready-for-r
+getting-ready-for-R
 download-and-install-windows-and-mac-only
 creating-your-first-r-project-in-rstudio
 something-more-complicated
@@ -36,5 +36,3 @@ interpreting-your-linear-regression
 making-predictions-with-our-model
 extending-to-multiple-variables
 complete-your-weekly-assignments-chapter-3-assignments
-introduction-to-r-part-i
-complete-your-weekly-assignments-2

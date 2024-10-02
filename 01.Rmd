@@ -82,7 +82,7 @@ where \( r \) is the radius, which we assume is equal to half the `Height L (mm)
 2. **For the example dataset:**
    - The estimated volume of a snail that is \( 10 g \) is **\( 14.6 cm^3 \)**.
    
-## Getting Ready for R
+## Getting Ready for R {#getting-ready-for-R}
 
 Over the next couple of weeks you will continue to use Excel to load, manipulate, analyse and visualise data. Beyond this you will be using the coding language R exclusively. To prepare for this, you need to download, install and configure R and RStudio today. 
 
@@ -168,11 +168,6 @@ Once the project is created, you will see a new RStudio window or tab with the f
 - Click **File > New File > R Script**.
 - Write some R code in the script editor. For example:
 
-```{r eval=FALSE}
-# my first line of code. this is a comment!
-print("Hello World!")
-
-```
 To run your print command, click on the line and click the `Run` button at the top right of your script editor window or press **Ctrl + ENTER** (Cmd + Enter on Mac).
 
 You will see the following output in your console window:

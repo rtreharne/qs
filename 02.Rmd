@@ -41,11 +41,14 @@ You should now see something like that in Figure \@ref(fig:zebrafish-data-snap).
    - **ID** - A unique number to identify a measurement.
    - **conc_pc** - The ethanol concentration (%) that the each embryo was treated with.
    - **length_micron** - The measured lengths, in \( \mu m \) of the embryos.
+   
+ We call this format, in which each row corresponds to a single measurement, a **long** format.
 
 ```{r zebrafish-data-snap, echo=FALSE, fig.cap="You should see this (or something like it) after you have imported your date into Excel."}
 knitr::include_graphics("img/02/figure_1.png")
 ```
-We call this format, in which each row corresponds to a single measurement, a **long** format.
+
+
 
 ### Generating a Summary Table
 
@@ -54,6 +57,10 @@ if (knitr::is_html_output()) {
   cat('<iframe width="100%" height="400" src="https://www.youtube.com/embed/wji1rnZbe08?si=U7-r_s3RjNafU71v" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
 }
 ```
+>**Excel Alternative**
+>
+>If you are having trouble accessing the Desktop version of Excel then here is an alternative video.
+>["Summary Table with Google Sheets"](https://youtu.be/8k7xW01jxJo)
 
 
 1. **Identify your Groups**
@@ -164,6 +171,10 @@ if (knitr::is_html_output()) {
   cat('<iframe width="100%" height="400" src="https://www.youtube.com/embed/c9jp3nHwutY?si=qIJMDTbjIb4xcLRf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
 }
 ```
+>**Excel Alternative**
+>
+>If you are having trouble accessing the Desktop version of Excel then here is an alternative video.
+>["Boxplots with Excel Online"](https://youtu.be/v2-WdO4w5BA)
 
 
 1. **Insert a Boxplot**: 
@@ -310,6 +321,10 @@ if (knitr::is_html_output()) {
   cat('<iframe width="100%" height="400" src="https://www.youtube.com/embed/tMEJjeNG998?si=zJiqgP57PZDCQMvg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
 }
 ```
+>**Excel Alternative**
+>
+>If you are having trouble accessing the Desktop version of Excel then here is an alternative video.
+>["ANOVA with Google Sheets"](https://youtu.be/llk_wWySMTA)
 
 
 Please be reminded that the guidance in the video above, and in the text below, is only relevant if you are using the desktop version of Excel on a Windows machine. It might work on a Mac - there's no guarantee, and it won't be relevant if you are using Google Sheets. **If you can't do the following with your personal device then please use one of the University machines**.

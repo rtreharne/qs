@@ -137,7 +137,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Cover</a></li>
-<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
 <li class="chapter" data-level="1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html"><i class="fa fa-check"></i><b>1</b> Introduction to Excel and R</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#estimating-the-volume-of-a-snail"><i class="fa fa-check"></i><b>1.1</b> Estimating the Volume of a Snail</a>
@@ -147,7 +146,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1.3" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#add-a-linear-trendline-and-equation"><i class="fa fa-check"></i><b>1.1.3</b> Add a Linear Trendline and Equation</a></li>
 <li class="chapter" data-level="1.1.4" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#estimation-of-volume-for-a-snail-with-mass-10g"><i class="fa fa-check"></i><b>1.1.4</b> Estimation of Volume for a Snail with Mass 10g</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#getting-ready-for-r"><i class="fa fa-check"></i><b>1.2</b> Getting Ready for R</a>
+<li class="chapter" data-level="1.2" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#getting-ready-for-R"><i class="fa fa-check"></i><b>1.2</b> Getting Ready for R</a>
 <ul>
 <li class="chapter" data-level="1.2.1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#download-and-install-windows-and-mac-only"><i class="fa fa-check"></i><b>1.2.1</b> Download and Install (Windows and Mac only)</a></li>
 <li class="chapter" data-level="1.2.2" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#creating-your-first-r-project-in-rstudio"><i class="fa fa-check"></i><b>1.2.2</b> Creating Your First R Project in RStudio</a></li>
@@ -187,7 +186,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html"><i class="fa fa-check"></i><b>4</b> Introduction to R: Part I</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#complete-your-weekly-assignments-2"><i class="fa fa-check"></i><b>4.1</b> Complete your Weekly Assignments</a></li>
+<li class="chapter" data-level="4.1" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#reading-and-inspecting-data"><i class="fa fa-check"></i><b>4.1</b> Reading and Inspecting Data</a></li>
+<li class="chapter" data-level="4.2" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#complete-your-weekly-assignments-2"><i class="fa fa-check"></i><b>4.2</b> Complete your Weekly Assignments</a></li>
 </ul></li>
 </ul>
 
@@ -208,15 +208,140 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="introduction-to-r-part-i" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">4</span> Introduction to R: Part I<a href="introduction-to-r-part-i.html#introduction-to-r-part-i" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover <strong>all of this section’s content</strong> and complete this week’s <a href="introduction-to-excel-and-r.html#complete-your-weekly-assignments"><strong>formative and summative assessments</strong></a> in the BIOS103 Canvas Course.</p>
+<p>If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover <strong>all of this section’s content</strong> and complete this week’s <strong>formative and summative assessments</strong> in the BIOS103 Canvas Course.</p>
+<p>We are going to diverge from what you have been doing in the labs this week in order to focus on introducing you to R. Our learning objectives are as follows:</p>
+<ul>
+<li>Start a new R Project in R Studio</li>
+<li>Read a dataset to a variable</li>
+<li>Inspect a dataset</li>
+<li>Filter (subset) a dataset based on column values</li>
+<li>Create summary tables of descriptive statistics</li>
+<li>Sort a table</li>
+</ul>
+<p>You should have completed section <a href="introduction-to-excel-and-r.html#getting-ready-for-R">1.2</a> already and have R and R Studio installed on your personal machine. If you are unable to install R and RStudio then please use one of the University computers.</p>
+<div id="reading-and-inspecting-data" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Reading and Inspecting Data<a href="introduction-to-r-part-i.html#reading-and-inspecting-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This week we’re going to be using the fantastic Pantheria dataset</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Open RStudio and start a new project</strong></p></li>
+<li><p><strong>Download the data</strong> from <a href="http://canvaswizards.org.uk/dataspell/pantheria/999">here</a> (or right click, save as from <a href="https://raw.githubusercontent.com/rtreharne/qs/refs/heads/main/data/04/pantheria_999.csv">here</a>).</p></li>
+<li><p><strong>Copy the downloaded file</strong> into your RStudio project directory (folder). You should see the file appear in your <strong>Files</strong> window in the bottom-right corner of RStudio.</p></li>
+<li><p><strong>Create a new R script file</strong> and save it with a sensible filename (e.g. pantheria_summary.R)</p></li>
+<li><p><strong>Read the data</strong> to a <a href="introduction-to-r-part-i.html#what-is-a-variable">variable</a> called <code>pantheria_data</code>: In your new script file, write the following line of code on line 1:</p></li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb1-1"><a href="introduction-to-r-part-i.html#cb1-1"></a>pantheria_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;pantheria_999.csv&quot;</span>)</span></code></pre></div>
+<p>Run the line by clicking anywhere on the line and clicking the <strong>run</strong> button or by pressing <strong>Ctrl+Enter</strong> on your keyboard. You should see a new line appear in your <strong>Environment</strong> window in the top-right of your RStudio like in figure <a href="introduction-to-r-part-i.html#fig:environment-window">4.1</a>. If you don’t see it then the here are the most common reasons as to why:</p>
+<ul>
+<li>You haven’t used quotation marks around your data filename</li>
+<li>You’ve mis-spelled your filename</li>
+<li>You haven’t put your data file in the correct folder</li>
+<li>You didn’t create an R project first.</li>
+</ul>
+<div class="figure"><span style="display:block;" id="fig:environment-window"></span>
+<img src="img/04/environment.png" alt="Details of your data variable should appear in your environment window after running line 1." width="100%" />
+<p class="caption">
+Figure 4.1: Details of your data variable should appear in your environment window after running line 1.
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:pantheria"></span>
+<img src="img/04/pantheria.png" alt="By clicking on your data variable in your environment window you can inspect the data in RStudio" width="100%" />
+<p class="caption">
+Figure 4.2: By clicking on your data variable in your environment window you can inspect the data in RStudio
+</p>
+</div>
+<blockquote>
+<h3 id="what-is-a-variable">
+What is a variable in R?
+</h3>
+<p>A variable in R is a symbolic name representing a value stored in memory. Variables are created by assigning values using <code>&lt;-</code>.</p>
+<p><strong>Naming Convention</strong>
+I prefer using lowercase words for variable names. If multiple words are needed, I separate them with an underscore (_), avoiding spaces. For example: my_variable.</p>
+<p><strong>Best Practices</strong></p>
+<ul>
+<li>Descriptive Names: Choose clear, meaningful names.</li>
+<li>Consistency: Use the same naming style throughout your code.</li>
+<li>Avoid Reserved Words: Don’t use R’s reserved keywords (<code>if</code>, <code>else</code>, <code>for</code>, etc.)</li>
+<li>Uniqueness: Ensure variable names are unique within your environment.</li>
+</ul>
+<p>These practices enhance code readability and maintainability.</p>
+</blockquote>
+<p>Well done if you can see your data! Now the world is your oyster, as they say. From here you can go in any number of directions and use R to summarise, visualise and analyse your data in order to gain novel insights.</p>
+<p>Let’s start small by asking the very simple question - “What <strong>order</strong> of mammal occurs the most frequently (has the most number of rows) in the dataset?”.</p>
+<p>To answer this question, I need to go through my data row by row and count how many times a row corresponding to each order (e.g. Dermoptera, Chiroptera, Rodentia etc …) appears. Let’s extend my R script as follows:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb2-1"><a href="introduction-to-r-part-i.html#cb2-1"></a>pantheria_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;pantheria_999.csv&quot;</span>)</span>
+<span id="cb2-2"><a href="introduction-to-r-part-i.html#cb2-2"></a></span>
+<span id="cb2-3"><a href="introduction-to-r-part-i.html#cb2-3"></a>orders <span class="ot">&lt;-</span> <span class="fu">table</span>(data<span class="sc">$</span>Order)</span>
+<span id="cb2-4"><a href="introduction-to-r-part-i.html#cb2-4"></a></span>
+<span id="cb2-5"><a href="introduction-to-r-part-i.html#cb2-5"></a><span class="fu">print</span>(orders)</span></code></pre></div>
+<p>Let’s break these additional lines down, step-by-step:</p>
+<ul>
+<li><p><strong>Firstly</strong>, you’ll notice that I’ve left lines 2 and 5 blank. You don’t need to do this, but I like to because it gives my code a bit of breathing space and is often easier to identify a problem later.</p></li>
+<li><p><strong>In line 3</strong>, I’m using the <code>table()</code> <a href="introduction-to-r-part-i.html#what-is-a-function">function</a> to count the number of times a unique value in my order column appears. By putting <code>data$Order</code> inside the table function’s brackets we are “passing” it all of the values in the <strong>order</strong> column as a big list. I’m then assigning the output of the table function to a new variable called <code>orders</code> so that I can refer to it later.</p></li>
+<li><p><strong>Lastly in line 5</strong>, I’m using a print function to output the contents <code>orders</code> to my console as shown in figure <a href="introduction-to-r-part-i.html#fig:console-output-order">4.3</a></p></li>
+</ul>
+<div class="figure"><span style="display:block;" id="fig:console-output-order"></span>
+<img src="img/04/orders-output.png" alt="When using `print(orders)` the following should appear in my RStudio console." width="100%" />
+<p class="caption">
+Figure 4.3: When using <code>print(orders)</code> the following should appear in my RStudio console.
+</p>
+</div>
+<blockquote>
+<h3 id="what-is-a-function">
+What is a function in R?
+</h3>
+<p>A function in R is a set of instructions that performs a specific task or calculation, taking inputs (arguments) and returning an output (result). So far in this course, we have used three pre-defined functions: read.csv() to read data from a CSV file, table() to summarise categorical data, and print() to display output in the console. While these functions are built into R, we can also create our own functions when we need to perform customised tasks—more on this later in the course.</p>
+</blockquote>
+<p>You can see by inspecting your console output that the order <strong>Rodentia</strong> is the most frequently occurring order with <strong>549</strong> rows in the data.</p>
+<p>But what if there were lots more orders? It might not be so straightforward. Let’s get our R script to pick out the most frequently occurring order for us:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb3-1"><a href="introduction-to-r-part-i.html#cb3-1"></a>pantheria_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;pantheria_999.csv&quot;</span>)</span>
+<span id="cb3-2"><a href="introduction-to-r-part-i.html#cb3-2"></a></span>
+<span id="cb3-3"><a href="introduction-to-r-part-i.html#cb3-3"></a>orders <span class="ot">&lt;-</span> <span class="fu">table</span>(data<span class="sc">$</span>Order)</span>
+<span id="cb3-4"><a href="introduction-to-r-part-i.html#cb3-4"></a></span>
+<span id="cb3-5"><a href="introduction-to-r-part-i.html#cb3-5"></a>most_common_order <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">which.max</span>(orders))</span>
+<span id="cb3-6"><a href="introduction-to-r-part-i.html#cb3-6"></a></span>
+<span id="cb3-7"><a href="introduction-to-r-part-i.html#cb3-7"></a><span class="fu">print</span>(most_common_order)</span></code></pre></div>
+<p>I’ve inserted the line <code>most_common_order &lt;- names(which.max(orders))</code> at line 5. Let’s break it down:</p>
+<ol style="list-style-type: decimal">
+<li><code>which.max(orders)</code>:</li>
+</ol>
+<ul>
+<li><strong>Function</strong>: <code>which.max()</code> is a build-in R function that returns the index of the first maximum value in its input.</li>
+<li><strong>Input</strong>: In this case, the input is <code>orders</code>, which is the table we created earlier containing the counts of each order in the dataset.</li>
+<li><strong>Output</strong>: The function identifies the <strong>index</strong> position of the maximum count (i.e., the highest frequency) in the <code>orders</code> table. In our case “Rodentia” is at position 24 in the table.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><code>names(...)</code>:</li>
+</ol>
+<ul>
+<li><strong>Function</strong>: The <code>names()</code> function retrieves the names (or labels) associated with the elements of an object. For example if I used <code>names(orders)</code> the function would simply return a list of all the unique orders.</li>
+<li><strong>Usage</strong>: By wrapping <code>which.max(orders)</code> inside <code>names()</code>, we are saying, “give me the name of the order that corresponds to the maximum frequency index returned by <code>which.max()</code>.”</li>
+<li><strong>Output</strong>: In our case the name “Rodentia” is returned.</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li><code>most_common_order</code>: I’ve assigned the result of my <code>names(which.max(orders))</code> to a new variable using <code>&lt;-</code>.</li>
+</ol>
+<p>Finally, I’ve updated my print statement to `print(most_common_order)’. This should now print out “Rodentia” in my console when I re-run my script.</p>
+<p>Phew! That took a bit of explaining. Make sure you understand what just happened. The wrapping of a function in a function is a common practice in R and things can quickly become obfuscated. It’s good practice to comment your code so that you (or someone else) can quickly make sense of what is going on. Here is my final code, with comments!</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb4-1"><a href="introduction-to-r-part-i.html#cb4-1"></a><span class="co"># Read the CSV file and store its contents in &#39;data&#39;.</span></span>
+<span id="cb4-2"><a href="introduction-to-r-part-i.html#cb4-2"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;pantheria_999.csv&quot;</span>)</span>
+<span id="cb4-3"><a href="introduction-to-r-part-i.html#cb4-3"></a></span>
+<span id="cb4-4"><a href="introduction-to-r-part-i.html#cb4-4"></a><span class="co"># Create a frequency table of the &#39;Order&#39; column.</span></span>
+<span id="cb4-5"><a href="introduction-to-r-part-i.html#cb4-5"></a>orders <span class="ot">&lt;-</span> <span class="fu">table</span>(data<span class="sc">$</span>Order)</span>
+<span id="cb4-6"><a href="introduction-to-r-part-i.html#cb4-6"></a></span>
+<span id="cb4-7"><a href="introduction-to-r-part-i.html#cb4-7"></a><span class="co"># Get the name of the most common order.</span></span>
+<span id="cb4-8"><a href="introduction-to-r-part-i.html#cb4-8"></a>most_common_order <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">which.max</span>(orders))</span>
+<span id="cb4-9"><a href="introduction-to-r-part-i.html#cb4-9"></a></span>
+<span id="cb4-10"><a href="introduction-to-r-part-i.html#cb4-10"></a><span class="co"># Print the most common order to the console.</span></span>
+<span id="cb4-11"><a href="introduction-to-r-part-i.html#cb4-11"></a><span class="fu">print</span>(most_common_order)</span></code></pre></div>
 <h3>
 Feedback Please.
 </h3>
 <p>I really value your feedback on these materials for quantitative skills. Please rate them below and then leave some feedback. It’s completely anonymous and will help me improve things if necessary. Say what you like, I have a thick skin - but feel free to leave positive comments as well as negative ones. Thank you.</p>
 <iframe src="https://canvaswizards.org.uk/likertysplit/qs/" width="400" style="max-width: 100%" height="600">
 </iframe>
-<div id="complete-your-weekly-assignments-2" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> Complete your Weekly Assignments<a href="introduction-to-r-part-i.html#complete-your-weekly-assignments-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="complete-your-weekly-assignments-2" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Complete your Weekly Assignments<a href="introduction-to-r-part-i.html#complete-your-weekly-assignments-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the BIOS103 Canvas course you will find this week’s <strong>formative</strong> and <strong>summative</strong> QS assignments. You should aim to complete both of these before the end of the online workshop that corresponds to this section’s content. The assignments are identical in all but the following details:</p>
 <ul>
 <li>You can attempt the <strong>formative assignment</strong> as many times as you like. It will not contribute to your overall score for this course. You will receive immediate feedback after submitting formative assignments. Make sure you practice this assignment until you’re confident that you can get the correct answer on your own.</li>
