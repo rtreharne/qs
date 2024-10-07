@@ -5,6 +5,11 @@ fig:zebrafish-boxplot
 fig:anova
 fig:calibration-curve
 fig:regression-output
+fig:environment-window
+fig:pantheria
+fig:console-output-order
+fig:slice-table
+fig:logplot
 introduction-to-excel-and-r
 estimating-the-volume-of-a-snail
 download-and-import-the-csv-file
@@ -36,3 +41,11 @@ interpreting-your-linear-regression
 making-predictions-with-our-model
 extending-to-multiple-variables
 complete-your-weekly-assignments-chapter-3-assignments
+introduction-to-r-part-i
+reading-and-inspecting-data
+subsetting
+slicing
+filtering
+so-what
+summarising-data-in-r
+complete-your-weekly-assignments-2

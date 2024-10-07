@@ -1,0 +1,39 @@
+---
+title: "Appendix I"
+author: "R. E. Treharne"
+date: "2024-10-07"
+output: html_document
+---
+
+# Appendix: Teach yourself R. {.unnumbered #appendix}
+
+## LinkedIn Learning {.unnumbered}
+
+Can you believe it!? As a student at the University of Liverpool you have free and full access to the [LinkedIn Learning platform](https://www.linkedin.com/learning). Login using your UoL credentials. It's completely choc-o-bloc with coding resources and you often get a neat little certificate every time you complete a course. 
+
++ **Complete guide to R: Wrangling, Visualizing, and Modeling Data**. Barton Poulson
++ **Data Wrangling in R**. Mike Chapple
++ **R for Data Science: Analysis and Visualization**. Barton Poulson
++ **Coding Exercises: R Data Science**. Mark Niemann-Ross
++ **Complete Your First Project in R**. Megan Silvey
++ **R for Data Science: Lunch Break Lessons**. Mark Neimann-Ross
+
+## YouTube {.unnumbered}
+
+Ah, YouTube. How I love you. But not shorts. Shorts are evil and rot your brain. Here are some great YouTube playlists that will introduce you to R.
+
++ [Introduction to R](https://www.youtube.com/playlist?list=PLiC1doDIe9rDjk9tSOIUZJU4s5NpEyYtE). DataDaft
++ [Statistics and Statistics with R Tutorials](https://www.youtube.com/playlist?list=PLqzoL9-eJTNBDdKgJgJzaQcY6OXmsXAHU). MarinStatsLectures
++ [R tutorial - Learn R Programming](https://www.youtube.com/playlist?list=PLjgj6kdf_snYBkIsWQYcYtUZiDpam7ygg). DataCamp
++ [Introduction to R Programming](https://www.youtube.com/playlist?list=PL8eNk_zTBST8j2BU5HYFQogdCjtrHyQAx). Data Science Dojo
+
+
+## Books {.unnumbered}
+
+Do people read books anymore? Yes they do. Here are 5 titles that are available to you in the [University of Liverpool](https://libguides.liverpool.ac.uk/library/) library right now.
+
++ **Hands-on programming with R**. Garret Grolemund
++ **R in action: data analysis and graphics with R and Tidyverse**. Robert Kabacoff
++ **R for Data Science**. Christopher Lortie
++ **Introduction to Statistics Using R**. Mustapha Akinkunmi
++ **An Introduction to Data Analysis in R**: Hands-on Coding, Data Mining and Statistics from Scratch. Zamora Alfonso *et. al*

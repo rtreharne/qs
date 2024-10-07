@@ -1,10 +1,15 @@
 .ignore h1 {
   display: none;
 }
+
+.numberLines {
+  padding-left: 40px !important;
+}
+
 /* Grey column for line numbers */
 pre.numberLines {
   counter-reset: linenum;
-  padding-left: 3em; /* Space for line numbers */
+  padding-left: 5em; /* Adjust the padding-left for the line number space */
   position: relative;
 }
 
@@ -16,15 +21,13 @@ pre.numberLines code {
 pre.numberLines code:before {
   content: counter(linenum);
   counter-increment: linenum;
-  width: 2.5em; /* Adjust width for the grey column */
+  width: 3em; /* Increased width for multi-digit line numbers */
   position: absolute;
-  left: 0;
+  left: -3.5em; /* Adjust left to accommodate the new width */
   text-align: right;
   padding-right: 0.5em;
-  background-color: #f0f0f0; /* Grey background */
-  color: #888; /* Line number color */
-  border-right: 1px solid #ccc;
-  margin-right: 0.5em;
-  margin-left: 1em;
-  padding-left: 10px;
+  background-color: red; /* Grey background */
+  color: red; /* Line number color */
+  border-right: 1px solid red;
+  padding-left: 0.5em;
 }
