@@ -259,7 +259,7 @@ In summary, the code creates a new data frame, `filtered`, which contains only t
 
 ### So what?
 
-Well, being as you've got to all that trouble to slice and filter your data we should probably do something spectacular with it! Try adding the following code to your script to and running it.
+Well, being as you've gone to all that trouble to slice and filter your data we should probably do something spectacular with it! Try adding the following code to your script to and running it.
 
 ```{R eval=FALSE}
 plot(subset$AdultBodyMass_g, subset$BasalMetRate_mLO2hr,
@@ -269,19 +269,19 @@ plot(subset$AdultBodyMass_g, subset$BasalMetRate_mLO2hr,
      main = "")
 ```
 
-You should see something that looks like what is shown in figure \@ref{fig:logplot}. Notice that I've used the argument `log="xy"` within my `plot()` function to make both the x and y axes scale logarithmically. This means that instead of the axes increasing in equal increments (e.g., 1, 2, 3), they increase by factors of ten (e.g., 10, 100, 1000).
+You should see something that looks like what is shown in figure \@ref(fig:logplot). 
+
+```{r logplot, echo=FALSE, fig.cap="An all species log-log scatterplot of mammal adult body mass (g) vs basal metabolic rate (mLO$_2$/hr)", out.width="100%"}
+knitr::include_graphics("img/04/plot.png")
+```
+
+Notice that I've used the argument `log="xy"` within my `plot()` function to make both the x and y axes scale logarithmically. This means that instead of the axes increasing in equal increments (e.g., 1, 2, 3), they increase by factors of ten (e.g., 10, 100, 1000).
 
 This is particularly useful when the relationship between two variables spans several orders of magnitude, as is often the case in biological data. When both axes are scaled logarithmically, relationships that might look curved on a linear scale can appear as straight lines, making it easier to identify patterns.
 
 In this case, the plot reveals a linear relationship between the two variables (e.g., adult body mass and basal metabolic rate) when viewed on a log-log scale. This linearity indicates that as one variable increases by a certain percentage, the other variable increases by a consistent percentage, rather than by a fixed amount. This relationship is described as **allometric** scaling and is remarkably common in nature.
 
 What's fascinating is that this log-log linearity holds across all mammals! From the smallest mouse to the largest whale, body mass and metabolic rate follow a consistent scaling relationship when plotted logarithmically. This insight allows scientists to understand fundamental principles about how biological processes like metabolism are related to size in the animal kingdom.
-
-```{r logplot, echo=FALSE, fig.cap="An all species log-log scatterplot of mammal adult body mass (g) vs basal metabolic rate (mLO$_2$/hr)", out.width="100%"}
-knitr::include_graphics("img/04/plot.png")
-```
-
-
 
 
 ## Summarising Data in R
@@ -320,7 +320,7 @@ summary_table <- summary_table[order(-summary_table$Count), ][1:10, ]
 write.csv(summary_table, "summary_table.csv", row.names = FALSE)
 print(summary_table)
 ```
-See if you can reproduce the output by creating a new script file in your project, copying and pasting the code above and clicking the "Source" button in the top right of your script editor window.
+See if you can reproduce the output by creating a new script file in your project, copying and pasting the code above and clicking the **Source** button in the top right of your script editor window.
 
 <h3>What Next?</h3>
 I don't need you to understand every line in the script. In fact there are some lines (6 -7 in particular) that are doing some seriously funky stuff that took me years to learn and understand fully. Nonetheless, ask yourselves what would you need to tweak to get the code to generate a summary table for another variable (e.g. *AdultBodyMass_g*) or group the results by **Order** instead of **Family**.

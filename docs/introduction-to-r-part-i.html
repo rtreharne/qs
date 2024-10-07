@@ -447,22 +447,23 @@ Figure 4.4: You’ve sliced your data but you’ll need to be able to filter in 
 </div>
 <div id="so-what" class="section level3 hasAnchor" number="4.2.3">
 <h3><span class="header-section-number">4.2.3</span> So what?<a href="introduction-to-r-part-i.html#so-what" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Well, being as you’ve got to all that trouble to slice and filter your data we should probably do something spectacular with it! Try adding the following code to your script to and running it.</p>
+<p>Well, being as you’ve gone to all that trouble to slice and filter your data we should probably do something spectacular with it! Try adding the following code to your script to and running it.</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="introduction-to-r-part-i.html#cb20-1" tabindex="-1"></a><span class="fu">plot</span>(subset<span class="sc">$</span>AdultBodyMass_g, subset<span class="sc">$</span>BasalMetRate_mLO2hr,</span>
 <span id="cb20-2"><a href="introduction-to-r-part-i.html#cb20-2" tabindex="-1"></a>     <span class="at">log=</span><span class="st">&quot;xy&quot;</span>,</span>
 <span id="cb20-3"><a href="introduction-to-r-part-i.html#cb20-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Adult Body Mass (g)&quot;</span>, </span>
 <span id="cb20-4"><a href="introduction-to-r-part-i.html#cb20-4" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Basal Metabolic Rate (mLO2/hr)&quot;</span>,</span>
 <span id="cb20-5"><a href="introduction-to-r-part-i.html#cb20-5" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
-<p>You should see something that looks like what is shown in figure @ref{fig:logplot}. Notice that I’ve used the argument <code>log="xy"</code> within my <code>plot()</code> function to make both the x and y axes scale logarithmically. This means that instead of the axes increasing in equal increments (e.g., 1, 2, 3), they increase by factors of ten (e.g., 10, 100, 1000).</p>
-<p>This is particularly useful when the relationship between two variables spans several orders of magnitude, as is often the case in biological data. When both axes are scaled logarithmically, relationships that might look curved on a linear scale can appear as straight lines, making it easier to identify patterns.</p>
-<p>In this case, the plot reveals a linear relationship between the two variables (e.g., adult body mass and basal metabolic rate) when viewed on a log-log scale. This linearity indicates that as one variable increases by a certain percentage, the other variable increases by a consistent percentage, rather than by a fixed amount. This relationship is described as <strong>allometric</strong> scaling and is remarkably common in nature.</p>
-<p>What’s fascinating is that this log-log linearity holds across all mammals! From the smallest mouse to the largest whale, body mass and metabolic rate follow a consistent scaling relationship when plotted logarithmically. This insight allows scientists to understand fundamental principles about how biological processes like metabolism are related to size in the animal kingdom.</p>
+<p>You should see something that looks like what is shown in figure <a href="introduction-to-r-part-i.html#fig:logplot">4.5</a>.</p>
 <div class="figure"><span style="display:block;" id="fig:logplot"></span>
 <img src="img/04/plot.png" alt="An all species log-log scatterplot of mammal adult body mass (g) vs basal metabolic rate (mLO$_2$/hr)" width="100%" />
 <p class="caption">
 Figure 4.5: An all species log-log scatterplot of mammal adult body mass (g) vs basal metabolic rate (mLO<span class="math inline">\(_2\)</span>/hr)
 </p>
 </div>
+<p>Notice that I’ve used the argument <code>log="xy"</code> within my <code>plot()</code> function to make both the x and y axes scale logarithmically. This means that instead of the axes increasing in equal increments (e.g., 1, 2, 3), they increase by factors of ten (e.g., 10, 100, 1000).</p>
+<p>This is particularly useful when the relationship between two variables spans several orders of magnitude, as is often the case in biological data. When both axes are scaled logarithmically, relationships that might look curved on a linear scale can appear as straight lines, making it easier to identify patterns.</p>
+<p>In this case, the plot reveals a linear relationship between the two variables (e.g., adult body mass and basal metabolic rate) when viewed on a log-log scale. This linearity indicates that as one variable increases by a certain percentage, the other variable increases by a consistent percentage, rather than by a fixed amount. This relationship is described as <strong>allometric</strong> scaling and is remarkably common in nature.</p>
+<p>What’s fascinating is that this log-log linearity holds across all mammals! From the smallest mouse to the largest whale, body mass and metabolic rate follow a consistent scaling relationship when plotted logarithmically. This insight allows scientists to understand fundamental principles about how biological processes like metabolism are related to size in the animal kingdom.</p>
 </div>
 </div>
 <div id="summarising-data-in-r" class="section level2 hasAnchor" number="4.3">
@@ -505,7 +506,7 @@ Figure 4.5: An all species log-log scatterplot of mammal adult body mass (g) vs 
 ## 93       Sciuridae    10.3     6.1    33.0    3.3      10.0    13
 ## 41         Felidae   186.4   161.6   409.9   72.0     102.4    12
 ## 56       Leporidae    74.4    90.0   123.0   25.9      39.0    11</code></pre>
-<p>See if you can reproduce the output by creating a new script file in your project, copying and pasting the code above and clicking the “Source” button in the top right of your script editor window.</p>
+<p>See if you can reproduce the output by creating a new script file in your project, copying and pasting the code above and clicking the <strong>Source</strong> button in the top right of your script editor window.</p>
 <h3>
 What Next?
 </h3>
