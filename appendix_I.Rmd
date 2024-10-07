@@ -1,5 +1,5 @@
 ---
-title: "Appendix I"
+title: "Quantiative Skills in Biosciences I"
 author: "R. E. Treharne"
 date: "2024-10-07"
 output: html_document
