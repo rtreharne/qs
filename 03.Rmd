@@ -102,7 +102,7 @@ Thus, the concentration of the unknown protein solution is 1.3 mg/mL.
 Note that I've expressed my answer to 2 significant figures to match the minimum level of precision available to me during the calculation (i.e. 2 s.f for both 0.5 and 0.0024).
 
    
-```{r calibration-curve, echo=FALSE, fig.cap="Calibration curve for Hemoglobin determined from a standard set generated from a 1:1 serial dilution from a starting 1.5 mg/mL solution. Values of m=0.3827 and b=0.0024 were extracted from the linear relationship A = m * C + b, where b is the systematic error associated with the measurement (detector noise).", out.width="100%"}
+```{r calibration-curve, echo=FALSE, fig.cap="Calibration curve for Hemoglobin determined from a standard set generated from a 1:1 serial dilution from a starting 1.5 mg/mL solution. Values of m=0.3827 and b=0.0024 were extracted from the linear relationship A = m * C + b, where b is the systematic error associated with the measurement (most likely related pipetting inaccuracies).", out.width="100%"}
 knitr::include_graphics("img/03/calibration_curve.png")
 ```
 ## Linear Regression
@@ -295,7 +295,7 @@ Unfortunately, Excel has its limits for this. But don’t worry—we’ll tackle
 
 
 
-## Complete your Weekly Assignments {chapter-3-assignments}
+## Complete your Weekly Assignments 
 
 In the BIOS103 Canvas course you will find this week's **formative** and **summative** QS assignments. You should aim to complete both of these before the end of the online workshop that corresponds to this section's content. The assignments are identical in all but the following details:
 

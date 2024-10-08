@@ -184,7 +184,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.4" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#making-predictions-with-our-model"><i class="fa fa-check"></i><b>3.2.4</b> Making Predictions with Our Model</a></li>
 <li class="chapter" data-level="3.2.5" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#extending-to-multiple-variables"><i class="fa fa-check"></i><b>3.2.5</b> Extending to Multiple Variables</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#complete-your-weekly-assignments-chapter-3-assignments"><i class="fa fa-check"></i><b>3.3</b> Complete your Weekly Assignments {chapter-3-assignments}</a></li>
+<li class="chapter" data-level="3.3" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#complete-your-weekly-assignments-2"><i class="fa fa-check"></i><b>3.3</b> Complete your Weekly Assignments</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html"><i class="fa fa-check"></i><b>4</b> Introduction to R: Part I</a>
 <ul>
@@ -196,7 +196,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.3" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#so-what"><i class="fa fa-check"></i><b>4.2.3</b> So what?</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#summarising-data-in-r"><i class="fa fa-check"></i><b>4.3</b> Summarising Data in R</a></li>
-<li class="chapter" data-level="4.4" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#complete-your-weekly-assignments-2"><i class="fa fa-check"></i><b>4.4</b> Complete your Weekly Assignments</a></li>
+<li class="chapter" data-level="4.4" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#complete-your-weekly-assignments-3"><i class="fa fa-check"></i><b>4.4</b> Complete your Weekly Assignments</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i>Appendix: Teach yourself R.</a>
 <ul>
@@ -302,9 +302,9 @@ C = \frac{0.50 + 0.0024}{0.3827} = 1.3 \, \text{mg/mL}
 <p>Thus, the concentration of the unknown protein solution is 1.3 mg/mL.</p>
 <p>Note that I’ve expressed my answer to 2 significant figures to match the minimum level of precision available to me during the calculation (i.e. 2 s.f for both 0.5 and 0.0024).</p>
 <div class="figure"><span style="display:block;" id="fig:calibration-curve"></span>
-<img src="img/03/calibration_curve.png" alt="Calibration curve for Hemoglobin determined from a standard set generated from a 1:1 serial dilution from a starting 1.5 mg/mL solution. Values of m=0.3827 and b=0.0024 were extracted from the linear relationship A = m * C + b, where b is the systematic error associated with the measurement (detector noise)." width="100%" />
+<img src="img/03/calibration_curve.png" alt="Calibration curve for Hemoglobin determined from a standard set generated from a 1:1 serial dilution from a starting 1.5 mg/mL solution. Values of m=0.3827 and b=0.0024 were extracted from the linear relationship A = m * C + b, where b is the systematic error associated with the measurement (most likely related pipetting inaccuracies)." width="100%" />
 <p class="caption">
-Figure 3.1: Calibration curve for Hemoglobin determined from a standard set generated from a 1:1 serial dilution from a starting 1.5 mg/mL solution. Values of m=0.3827 and b=0.0024 were extracted from the linear relationship A = m * C + b, where b is the systematic error associated with the measurement (detector noise).
+Figure 3.1: Calibration curve for Hemoglobin determined from a standard set generated from a 1:1 serial dilution from a starting 1.5 mg/mL solution. Values of m=0.3827 and b=0.0024 were extracted from the linear relationship A = m * C + b, where b is the systematic error associated with the measurement (most likely related pipetting inaccuracies).
 </p>
 </div>
 </div>
@@ -456,8 +456,8 @@ Figure 3.2: This is what you should see after performing a regression on your ex
 <p>Unfortunately, Excel has its limits for this. But don’t worry—we’ll tackle multiple regression using R in <strong>Week 5</strong>!</p>
 </div>
 </div>
-<div id="complete-your-weekly-assignments-chapter-3-assignments" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Complete your Weekly Assignments {chapter-3-assignments}<a href="calibration-curves-and-linear-regression-in-excel.html#complete-your-weekly-assignments-chapter-3-assignments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="complete-your-weekly-assignments-2" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Complete your Weekly Assignments<a href="calibration-curves-and-linear-regression-in-excel.html#complete-your-weekly-assignments-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the BIOS103 Canvas course you will find this week’s <strong>formative</strong> and <strong>summative</strong> QS assignments. You should aim to complete both of these before the end of the online workshop that corresponds to this section’s content. The assignments are identical in all but the following details:</p>
 <ul>
 <li>You can attempt the <strong>formative assignment</strong> as many times as you like. It will not contribute to your overall score for this course. You will receive immediate feedback after submitting formative assignments. Make sure you practice this assignment until you’re confident that you can get the correct answer on your own.</li>

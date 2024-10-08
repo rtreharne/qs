@@ -40,7 +40,7 @@ performing-a-linear-regression-in-excel
 interpreting-your-linear-regression
 making-predictions-with-our-model
 extending-to-multiple-variables
-complete-your-weekly-assignments-chapter-3-assignments
+complete-your-weekly-assignments-2
 introduction-to-r-part-i
 reading-and-inspecting-data
 subsetting
@@ -48,4 +48,4 @@ slicing
 filtering
 so-what
 summarising-data-in-r
-complete-your-weekly-assignments-2
+complete-your-weekly-assignments-3
