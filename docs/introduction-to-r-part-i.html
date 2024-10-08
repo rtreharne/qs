@@ -229,7 +229,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Start a new R Project in R Studio</li>
 <li>Read a dataset to a variable</li>
 <li>Inspect a dataset</li>
-<li>Filter (subset) a dataset based on column values</li>
+<li>Subset a dataset by slicing and filtering</li>
 <li>Create summary tables of descriptive statistics</li>
 <li>Sort a table</li>
 </ul>
@@ -254,6 +254,8 @@ OMG. Why, are you making me learn to code?
 <div id="reading-and-inspecting-data" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Reading and Inspecting Data<a href="introduction-to-r-part-i.html#reading-and-inspecting-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Let’s dive in then! This week we’re going to be introducing you to some fundamental data handling concepts in R using the fantastic <a href="https://esajournals.onlinelibrary.wiley.com/doi/10.1890/08-1494.1">Pantheria</a> dataset of extant and recently extinct mammals.</p>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/ReFt0oM49UA?si=Z0seJdmGXTOZRtgI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
 <ol style="list-style-type: decimal">
 <li><p><strong>Open RStudio and start a new project</strong></p></li>
 <li><p><strong>Download the data</strong> from <a href="http://canvaswizards.org.uk/dataspell/pantheria/999">here</a> (or right click, save as from <a href="https://raw.githubusercontent.com/rtreharne/qs/refs/heads/main/data/04/pantheria_999.csv">here</a>).</p></li>
@@ -370,6 +372,8 @@ What is a function in R?
 <div id="subsetting" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Subsetting<a href="introduction-to-r-part-i.html#subsetting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In data analysis, subsetting refers to the process of extracting a portion of a dataset based on specific criteria. This allows you to focus on the most relevant information, making analysis more efficient and tailored to your needs. There are two key methods for subsetting data in R: <strong>Slicing</strong> and <strong>Filtering</strong>.</p>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/umjznd-sCRI?si=QBDhIErUU9c7-_gN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
 <div id="slicing" class="section level3 hasAnchor" number="4.2.1">
 <h3><span class="header-section-number">4.2.1</span> Slicing<a href="introduction-to-r-part-i.html#slicing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Slicing is a crucial operation in data analysis, enabling you to extract specific rows, columns or both from an existing data frame. This technique helps streamline workflows, especially when working with large datasets, by narrowing down data to focus on relevant sections.</p>
@@ -448,7 +452,7 @@ Figure 4.4: You’ve sliced your data but you’ll need to be able to filter in 
 <div id="so-what" class="section level3 hasAnchor" number="4.2.3">
 <h3><span class="header-section-number">4.2.3</span> So what?<a href="introduction-to-r-part-i.html#so-what" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Well, being as you’ve gone to all that trouble to slice and filter your data we should probably do something spectacular with it! Try adding the following code to your script to and running it.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="introduction-to-r-part-i.html#cb20-1" tabindex="-1"></a><span class="fu">plot</span>(subset<span class="sc">$</span>AdultBodyMass_g, subset<span class="sc">$</span>BasalMetRate_mLO2hr,</span>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="introduction-to-r-part-i.html#cb20-1" tabindex="-1"></a><span class="fu">plot</span>(slice<span class="sc">$</span>AdultBodyMass_g, slice<span class="sc">$</span>BasalMetRate_mLO2hr,</span>
 <span id="cb20-2"><a href="introduction-to-r-part-i.html#cb20-2" tabindex="-1"></a>     <span class="at">log=</span><span class="st">&quot;xy&quot;</span>,</span>
 <span id="cb20-3"><a href="introduction-to-r-part-i.html#cb20-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Adult Body Mass (g)&quot;</span>, </span>
 <span id="cb20-4"><a href="introduction-to-r-part-i.html#cb20-4" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Basal Metabolic Rate (mLO2/hr)&quot;</span>,</span>
@@ -507,6 +511,8 @@ Figure 4.5: An all species log-log scatterplot of mammal adult body mass (g) vs 
 ## 41         Felidae   186.4   161.6   409.9   72.0     102.4    12
 ## 56       Leporidae    74.4    90.0   123.0   25.9      39.0    11</code></pre>
 <p>See if you can reproduce the output by creating a new script file in your project, copying and pasting the code above and clicking the <strong>Source</strong> button in the top right of your script editor window.</p>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/sSV2hECLflY?si=X-NdWvY04uZe3WrJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
 <h3>
 What Next?
 </h3>

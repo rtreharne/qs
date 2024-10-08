@@ -14,7 +14,7 @@ We are going to diverge from what you have been doing in the labs this week in o
 - Start a new R Project in R Studio
 - Read a dataset to a variable
 - Inspect a dataset
-- Filter (subset) a dataset based on column values
+- Subset a dataset by slicing and filtering
 - Create summary tables of descriptive statistics
 - Sort a table
 
@@ -58,6 +58,12 @@ Have you accepted your fate then? Good. Now lets get something else straight: **
 ## Reading and Inspecting Data
 
 Let's dive in then! This week we're going to be introducing you to some fundamental data handling concepts in R using the fantastic [Pantheria](https://esajournals.onlinelibrary.wiley.com/doi/10.1890/08-1494.1) dataset of extant and recently extinct mammals.
+
+```{r, results='asis', echo=FALSE}
+if (knitr::is_html_output()) {
+  cat('<iframe width="100%" height="400" src="https://www.youtube.com/embed/ReFt0oM49UA?si=Z0seJdmGXTOZRtgI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
+}
+```
 
 1. **Open RStudio and start a new project**
 
@@ -184,6 +190,12 @@ print(most_common_order)
 
 In data analysis, subsetting refers to the process of extracting a portion of a dataset based on specific criteria. This allows you to focus on the most relevant information, making analysis more efficient and tailored to your needs. There are two key methods for subsetting data in R: **Slicing** and **Filtering**.
 
+```{r, results='asis', echo=FALSE}
+if (knitr::is_html_output()) {
+  cat('<iframe width="100%" height="400" src="https://www.youtube.com/embed/umjznd-sCRI?si=QBDhIErUU9c7-_gN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
+}
+```
+
 ### Slicing
 Slicing is a crucial operation in data analysis, enabling you to extract specific rows, columns or both from an existing data frame. This technique helps streamline workflows, especially when working with large datasets, by narrowing down data to focus on relevant sections.
 
@@ -262,7 +274,7 @@ In summary, the code creates a new data frame, `filtered`, which contains only t
 Well, being as you've gone to all that trouble to slice and filter your data we should probably do something spectacular with it! Try adding the following code to your script to and running it.
 
 ```{R eval=FALSE}
-plot(subset$AdultBodyMass_g, subset$BasalMetRate_mLO2hr,
+plot(slice$AdultBodyMass_g, slice$BasalMetRate_mLO2hr,
      log="xy",
      xlab = "Adult Body Mass (g)", 
      ylab = "Basal Metabolic Rate (mLO2/hr)",
@@ -321,6 +333,12 @@ write.csv(summary_table, "summary_table.csv", row.names = FALSE)
 print(summary_table)
 ```
 See if you can reproduce the output by creating a new script file in your project, copying and pasting the code above and clicking the **Source** button in the top right of your script editor window.
+
+```{r, results='asis', echo=FALSE}
+if (knitr::is_html_output()) {
+  cat('<iframe width="100%" height="400" src="https://www.youtube.com/embed/sSV2hECLflY?si=X-NdWvY04uZe3WrJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
+}
+```
 
 <h3>What Next?</h3>
 I don't need you to understand every line in the script. In fact there are some lines (6 -7 in particular) that are doing some seriously funky stuff that took me years to learn and understand fully. Nonetheless, ask yourselves what would you need to tweak to get the code to generate a summary table for another variable (e.g. *AdultBodyMass_g*) or group the results by **Order** instead of **Family**.
