@@ -31,3 +31,8 @@ pre.numberLines code:before {
   border-right: 1px solid red;
   padding-left: 0.5em;
 }
+
+pre {
+    overflow-x: auto;
+    white-space: pre;  /* Keeps formatting */
+}

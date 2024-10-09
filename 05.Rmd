@@ -24,7 +24,7 @@ You have been hired as an independent bioscience data consultant and have been t
 
 Specifically, you have been asked to generate the following for incorporation into a report that will be presented by the chief technical officer of the company to the extended board of directors:
 
-+ A summary table that shows the mean and standard deviations of the composting temperature, moisture, and viable bacterial count, *VBC* (cfu.g-1), at each site.
++ A summary table that shows the mean and standard deviations of the composting temperature, moisture, and viable bacterial count, *VBC* (cfu/g), at each site.
 + A histogram showing the distribution of estimated viable bacterial count, *VBC* from across all samples.
 + A grouped boxplot showing the distributions of estimated *VBC* for each site.
 + A scatterplot that shows the relationship between temperature and *VBC*.
@@ -40,24 +40,36 @@ The compost **temperature** and **moisture content** were measured directly duri
 
 After collection, samples were immediately placed into sterile containers to prevent cross-contamination and transported to the central laboratory under refrigerated conditions at 4°C. To ensure the integrity of microbial counts, all samples were processed within 24 hours of collection.
 
-In the laboratory, **0.5g** each compost sample was dissolved in **10mL** of sterile reagent and mixed thoroughly to create the starting solution for subsequent serial dilution. In each case, a **1/1000** serial dilution was performed and **0.1mL** of the diluted sample was plated onto selective agar media. Plates were incubated for 48 hrs at 30°C before the number of viable colonies were counted.
+In the laboratory, **0.5g** of each compost sample was dissolved in **10mL** of sterile reagent and mixed thoroughly to create the starting solution for subsequent serial dilution. In each case, a **1/1000** serial dilution was performed and **0.1mL** of the diluted sample was plated onto selective agar media. Plates were incubated for 48 hrs at 30°C before the number of viable colonies were counted.
 
 This procedure was performed regularly for each site, ensuring consistent data collection on microbial counts, temperature, and moisture content across all locations over the course of a year.
 
-### Report Template
+Your tables and figures need to be formatted according to the [MegaMush report template](https://raw.githubusercontent.com/rtreharne/qs/main/data/05/Megamush_template.docx)
 
 
+## Inspecting and Summarising
 
-### Start a new R Project
+Right then, let's start. You know the drill by now:
 
-### Inspect the data
++ **Create a New R Project**
++ **Download the dataset and move to project folder**
++ **Create a new script file and save it with a sensible filename**
++ **Read your dataset to a new variable called `data`**
+
+That should create a `data` variable in my environment window. I could click on it and look at the data, but that method was so "last week". This time I'm going to simply add the line `head(data)` to my script and run it to spit out the first 5 rows of my data (including headers) in my console. Here's what my script (and its output) looks like so far:
 
 ```{R}
+# Script File: mushroom_summary.R
+
+# Read the data
 data <- read.csv("compost_999.csv")
 
+# Output the first 5 rows in console
 head(data)
 ```
+OK. So it doesn't look too pretty in my console, but I can glean the important information - i.e. the data headers and the types of data that are in each column. The headers are self explanatory , except perhaps for **Viable.counts** which is a direct count of the number of observed colonies formed on each sample plate. This is not to be confused with **Viable Bacterial Count**, VBC, defined as the number of colony forming units per gram (cfu/g).
 
+<h3>Calculating VBC from Viable Counts</h3>
 
 
 ### Summary Table
