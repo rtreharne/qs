@@ -291,7 +291,7 @@ Where:
 
 Multiple regression allows us to assess the combined effect of several factors, which is crucial when studying complex systems where multiple variables might influence the outcome.
 
-Unfortunately, Excel has its limits for this. But don’t worry—we’ll tackle multiple regression using R in **Week 5**!
+Unfortunately, Excel has its limits for this. But don’t worry—we’ll tackle multiple regression using R later!
 
 
 

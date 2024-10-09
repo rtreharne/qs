@@ -1,0 +1,251 @@
+# Introduction to R part II: Visualisation
+
+If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover **all of this section's content** and complete this week's **formative and summative assessments** in the BIOS103 Canvas Course.
+
+Our brains are hardwired to recognise patterns, which means we can understand information much more easily when it's presented visually rather than as raw numbers. In today’s data-driven world, the ability to visualise information effectively is more important than ever. Learning to visualise data will equip you with essential skills for analysing and interpreting information, allowing you to communicate insights clearly and persuasively.
+
+Effective visualisation also fosters critical thinking. It helps you identify trends, relationships, and anomalies within datasets, enhancing your analytical abilities and preparing you for future roles in research, industry, and beyond, where data-driven decision-making is key.
+
+This week, we’re going to explore visualisation in R, focusing on creating impactful graphics using its native capabilities. Our objectives include:
+
++ **Histograms**: Visualising the distribution of continuous variables.
++ **Boxplots**: Showing data spread between groups and highlighting outliers.
++ **Scatterplots**: Displaying relationships between two continuous variables.
+
+By the end of this chapter, you will be equipped to create these essential visualisations, enhancing your analytical skills and bringing your data to life!
+
+In an effort to ensure that this week's chapter is relevant to your microbiology lab practicals, I have carefully crafted the following scenario to provide a bit more context for our visualisation.
+
+## Mushroom Compost Scenario
+
+**MegaMush**, a mushroom compost company based in the Netherlands, is trying to identify an issue with its pre-pasteurisation composting process across its five operational production sites.
+
+You have been hired as an independent bioscience data consultant and have been tasked with summarising and visualising a dataset compiled over a period of 1 year and consolidated from each location.
+
+Specifically, you have been asked to generate the following for incorporation into a report that will be presented by the chief technical officer of the company to the extended board of directors:
+
++ A summary table that shows the mean and standard deviations of the composting temperature, moisture, and viable bacterial count, *VBC* (cfu.g-1), at each site.
++ A histogram showing the distribution of estimated viable bacterial count, *VBC* from across all samples.
++ A grouped boxplot showing the distributions of estimated *VBC* for each site.
++ A scatterplot that shows the relationship between temperature and *VBC*.
++ Any additional visualisations (histogram, boxplot or scatterplot) that identify other interesting features in the data.
+
+### The dataset
+
+You can download the raw data [here](https://canvaswizards.org.uk/dataspell/compost/999) or from the [backup link](https://raw.githubusercontent.com/rtreharne/qs/main/data/05/compost_999.csv).
+
+### Further information
+
+The compost **temperature** and **moisture content** were measured directly during the sampling process using calibrated thermometers and moisture probes.
+
+After collection, samples were immediately placed into sterile containers to prevent cross-contamination and transported to the central laboratory under refrigerated conditions at 4°C. To ensure the integrity of microbial counts, all samples were processed within 24 hours of collection.
+
+In the laboratory, **0.5g** each compost sample was dissolved in **10mL** of sterile reagent and mixed thoroughly to create the starting solution for subsequent serial dilution. In each case, a **1/1000** serial dilution was performed and **0.1mL** of the diluted sample was plated onto selective agar media. Plates were incubated for 48 hrs at 30°C before the number of viable colonies were counted.
+
+This procedure was performed regularly for each site, ensuring consistent data collection on microbial counts, temperature, and moisture content across all locations over the course of a year.
+
+### Report Template
+
+
+
+### Start a new R Project
+
+### Inspect the data
+
+```{R}
+data <- read.csv("compost_999.csv")
+
+head(data)
+```
+
+
+
+### Summary Table
+
+Yoink the script from chapter 4. 
+
+Augment. What does cbind do?
+
+Don't worry about headers or formatting this time. Will do in Excel.
+```{R}
+data <- read.csv("compost_999.csv")
+
+# Calculate summary statistics for Temperature, Moisture, and Viable counts for each Location
+summary_table <- aggregate(cbind(Temperature, Moisture, Viable.counts) ~ Location, 
+                           data, 
+                           function(x) c(Mean = mean(x), SD = sd(x)))
+
+summary_table <- do.call(data.frame, summary_table)
+
+print(summary_table)
+
+write.csv(summary_table, "mushroom_summary.csv", row.names = FALSE)
+```
+
+## Histogram
+
+Start a new script!
+
+```{R, fig.cap="This is my figure caption"}
+# Load the data
+data <- read.csv("compost_999.csv")
+
+# Calculate the conversion factor
+factor <- 2e5 / 1e7
+
+# Calculate cfu per gram
+data$cfu_per_g <- data$Viable.counts * factor
+
+# Calculate the mean of cfu_per_g
+mean_cfu_per_g <- mean(data$cfu_per_g, na.rm = TRUE)
+
+# Generate a simple histogram for all "Viable counts"
+hist(data$cfu_per_g,
+     breaks = 20,
+     main = "", 
+     xlab = expression(cfu ~ g^{-1} ~ (x ~ 10^7)), 
+     ylab = "Frequency",
+     col = "lightblue",
+     border = "black")
+
+# Add a vertical line for the mean
+abline(v = mean_cfu_per_g, col = "red", lwd = 2, lty = 2)
+
+# I like a box around my figures
+box()
+```
+How should I interpret this? How useful is it?
+
+## Boxplots
+
+Start a new script!
+
+```{R, fig.caption="Boxplot"}
+# Load the data
+data <- read.csv("compost_999.csv")
+
+# Calculate the conversion factor
+factor <- 2e5 / 1e7
+
+# Calculate cfu per gram
+data$cfu_per_g <- data$Viable.counts * factor
+
+# Adjust the margins to prevent y-axis label from being cut off
+par(mar = c(5, 5, 4, 2))  # Increase the second value for left margin
+
+# Generate a grouped boxplot for Viable counts across different Locations
+boxplot(cfu_per_g ~ Location, 
+        data = data, 
+        main = "", 
+        xlab = "Location", 
+        ylab = expression(cfu.g^{-1} ~ (x ~ 10^7)),
+        col = "lightblue", 
+        border = "black",
+        cex.axis = 0.8)
+```
+
+Interpretation. Far more useful than a histogram.
+
+Tells us that there is something definitely going on at Rotterdam and Utrecht sites.
+
+
+## Scatterplot
+
+Start a new script
+
+```{R}
+
+# Load the data
+data <- read.csv("compost_999.csv")
+
+# Calculate the conversion factor for cfu per gram
+factor <- 2e5 / 1e7
+data$cfu_per_g <- data$Viable.counts * factor
+
+# Create a scatterplot of cfu vs. temperature, colored by location
+plot(data$Temperature, data$cfu_per_g,
+     main = "",
+     xlab = "Temperature (°C)",
+     ylab = expression(cfu.g^{-1} ~ (x ~ 10^7))
+)
+
+```
+
+```{R}
+
+# Load the data
+data <- read.csv("compost_999.csv")
+
+# Calculate the conversion factor for cfu per gram
+factor <- 2e5 / 1e7
+data$cfu_per_g <- data$Viable.counts * factor
+
+# Define a color palette using base R rainbow palette
+colors <- rainbow(length(unique(data$Location)), alpha = 0.6)
+
+# Adjust the margins to prevent y-axis label from being cut off
+par(mar = c(5, 5, 4, 2))  # Increase the second value for the left margin
+
+# Create a scatterplot of cfu vs. temperature, colored by location
+plot(data$Temperature, data$cfu_per_g,
+     main = "",
+     xlab = "Temperature (°C)",
+     ylab = expression(VBC ~ (x ~ 10^{7} ~ cfu.g^{-1})),
+     pch = 19,  # solid circles for points
+     cex = 1.5,  # increase point size
+     col = colors[as.numeric(factor(data$Location))])  # color by location with transparency
+
+# Add faint gridlines
+grid(col = "gray90", lty = "dotted")
+
+# Add a legend without a border
+legend("bottomleft", 
+       legend = unique(data$Location), 
+       col = colors, 
+       pch = 19,  # same symbol as in the plot
+       bty = "n",  # no box around the legend
+       pt.cex = 1.5)  # match point size in the legend
+```
+What about moisture? Can you?
+
+
+## Funky Stuff
+
+One last script
+
+```{R, warning=FALSE, message=FALSE}
+library(plotly)
+
+# Load the data
+data <- read.csv("compost_999.csv")
+
+# Calculate the conversion factor for cfu per gram
+factor <- 2e5 / 1e7
+data$cfu_per_g <- data$Viable.counts * factor
+
+# Create an interactive 3D scatterplot
+fig <- plot_ly(data = data, 
+               x = ~Temperature, 
+               y = ~Moisture,
+               z = ~cfu_per_g, 
+
+               color = ~Location,
+               colors = "Set1",  # Choose a color palette
+               type = 'scatter3d',
+               mode = 'markers',
+               marker = list(size = 5)) %>%
+  layout(scene = list(xaxis = list(title = 'Temperature (°C)'),
+                      zaxis = list(title = 'VBC'),
+                      yaxis = list(title = 'Moisture (%)')))
+
+# Show the figure
+fig
+```
+
+## Complete your Weekly Assignments
+
+In the BIOS103 Canvas course you will find this week's **summative** QS assignments. There is no **formative** assignment this week! You should aim to complete the summative assignment before the end of the online workshop that corresponds to this section's content.
+
+ + You can attempt the **summative** assignment **only once**. This assignment **will** contribute to your overall score for this course. Failure to complete a summative test before the stated deadline will result in a zero score. You will not receive immediate feedback after submitting summative assignments. Typically, your scores will be posted within 7 days.
+   
+In **ALL** cases, when you click the button to "begin" a test you will have two hours to complete and submit the questions. If the test times out it will automatically submit.

@@ -10,6 +10,7 @@ fig:pantheria
 fig:console-output-order
 fig:slice-table
 fig:logplot
+fig:unnamed-chunk-35
 introduction-to-excel-and-r
 estimating-the-volume-of-a-snail
 download-and-import-the-csv-file
@@ -49,3 +50,16 @@ filtering
 so-what
 summarising-data-in-r
 complete-your-weekly-assignments-3
+introduction-to-r-part-ii-visualisation
+mushroom-compost-scenario
+the-dataset
+further-information
+report-template
+start-a-new-r-project
+inspect-the-data
+summary-table
+histogram
+boxplots
+scatterplot
+funky-stuff
+complete-your-weekly-assignments-4
