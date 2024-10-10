@@ -67,7 +67,7 @@ if (knitr::is_html_output()) {
 
 1. **Open RStudio and start a new project**
 
-2. **Download the data** from [here](http://canvaswizards.org.uk/dataspell/pantheria/999) (or right click, save as from [here](https://raw.githubusercontent.com/rtreharne/qs/refs/heads/main/data/04/pantheria_999.csv)). 
+2. **Download the data** from [here](https://canvaswizards.org.uk/dataspell/pantheria/999) (or right click, save as from [here](https://raw.githubusercontent.com/rtreharne/qs/refs/heads/main/data/04/pantheria_999.csv)). 
 
 3. **Copy the downloaded file** into your RStudio project directory (folder). You should see the file appear in your **Files** window in the bottom-right corner of RStudio.
 

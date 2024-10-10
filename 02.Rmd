@@ -68,7 +68,7 @@ if (knitr::is_html_output()) {
    - Select the **Data** menu and click the **Advanced** icon in the **Sort & Filter** section. This will bring up a window called "Advanced Filter".
    - Select the **Copy to another location** action.
    - Your list range should already be set to **\$B:\$B**, but if not make it so.
-   - Set the **Copy to** cell to **$E:$1**
+   - Set the **Copy to** cell to **E1**
    - Make sure the **Unique records only** check box is selected and click OK.
    - You should now see a complete list of your alcohol concentration groups in a column with a header **conc_pc**. Make this into a new table by clicking on any of the concentration values, and then **Insert > New table > OK**.
    
