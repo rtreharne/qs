@@ -46,11 +46,14 @@ if (knitr::is_html_output()) {
 }
 ```
 >**Mac Users**
+>
 >It might not be possible for you to transpose the data like in the video above. If you can't, try this:
 >
 >1. Select the range of data you want to rearrange, including any row or column labels, and **Cmd+C** to copy.
->2.Select the first cell where you want to paste the data, and on the Home tab, click the arrow next to Paste, and then click Transpose.
->Watch [this](https://youtu.be/pBcPJp-BdjE?si=GYw5sguCCM64Zcpl) video if you're still stuck.
+>
+>2. Select the first cell where you want to paste the data, and on the Home tab, click the arrow next to Paste, and then click Transpose.
+>
+>3. Watch [this](https://youtu.be/pBcPJp-BdjE?si=GYw5sguCCM64Zcpl) video if you're still stuck.
 
 1. **Download the CSV File:** 
    - Here is an [example dataset](https://canvaswizards.org.uk/dataspell/calibration/999999999). Download it to your local machine.
