@@ -1,6 +1,16 @@
+---
+title: "Chapter 5"
+output:
+  bookdown::html_document2:   # for HTML output
+    number_sections: true
+    fig_caption: true
+  bookdown::pdf_document2:    # for PDF output
+    number_sections: true
+---
+
 # Introduction to R part II: Visualisation
 
-If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover **all of this section's content** and complete this week's **formative and summative assessments** in the BIOS103 Canvas Course.
+If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover **all of this section's content** and complete this week's **summative assessment** in the BIOS103 Canvas Course. There is no formative assessment this week.
 
 Our brains are hardwired to recognise patterns, which means we can understand information much more easily when it's presented visually rather than as raw numbers. In today’s data-driven world, the ability to visualise information effectively is more important than ever. Learning to visualise data will equip you with essential skills for analysing and interpreting information, allowing you to communicate insights clearly and persuasively.
 
@@ -20,14 +30,14 @@ In an effort to ensure that this week's chapter is relevant to your microbiology
 
 **MegaMush**, a mushroom compost company based in the Netherlands, is trying to identify an issue with its pre-pasteurisation composting process across its five operational production sites.
 
-You have been hired as an independent bioscience data consultant and have been tasked with summarising and visualising a dataset compiled over a period of 1 year and consolidated from each location.
+You have been hired as an **independent bioscience data consultant** and have been tasked with summarising and visualising a dataset compiled over a period of 1 year and consolidated from each location.
 
 Specifically, you have been asked to generate the following for incorporation into a report that will be presented by the chief technical officer of the company to the extended board of directors:
 
-+ A summary table that shows the mean and standard deviations of the composting temperature, moisture, and viable bacterial count, *VBC* (cfu/g), at each site.
-+ A histogram showing the distribution of estimated viable bacterial count, *VBC* from across all samples.
-+ A grouped boxplot showing the distributions of estimated *VBC* for each site.
-+ A scatterplot that shows the relationship between temperature and *VBC*.
++ A **summary table** that shows the mean and standard deviations of the composting temperature, moisture, and viable bacterial count, *VBC* (cfu/g), at each site.
++ A **histogram** showing the distribution of estimated viable bacterial count, *VBC* from across all samples.
++ A grouped **boxplot** showing the distributions of estimated *VBC* for each site.
++ A **scatterplot** that shows the relationship between temperature and *VBC*.
 + Any additional visualisations (histogram, boxplot or scatterplot) that identify other interesting features in the data.
 
 ### The dataset
@@ -71,14 +81,67 @@ OK. So it doesn't look too pretty in my console, but I can glean the important i
 
 <h3>Calculating VBC from Viable Counts</h3>
 
+To calculate the **Viable Bacterial Count (VBC)** from the **Viable Counts** observed on the agar plates, we need to consider the specific parameters of the laboratory procedure. Here's how the calculation works step-by-step:
+
+1. **Viable Counts**: The number of colonies observed on an agar plate after incubation. Let's denote this **VC**
+2. **Dilution Factor**: Remember, all starting solutions have undergone a **1/1000** serial dilution. 
+3. **Volume Plated**: From each diluted sample, **0.1 mL** was plated onto the agar. This means that only **0.1mL** of the diluted solution contributes the visible colonies counted. To express the counts in terms of **1mL**, we must multiply by a factor of **10**
+4. **Weight of Sample**: Finally, since **0.5 g** of each compost sample was used in the initial preparation, we need to express the results per gram. To convert out counts to reflect the weight of the sample, we divide by the weight used, which is **0.5 g**. This can be expressed as multiplying by a factor of **2**.
+
+Putting all this together, the equation to calculate **VBC** from the observed **Viable Counts** can be expressed as:
+
+\[
+\text{VBC (cfu/g)} = \text{VC} \times 1000 \times 10 \times 2
+\]
+
+Thus, the final calculation simplifies to:
+
+\[
+\text{VBC (cfu/g)} = \text{VC} \times 20,000
+\]
+
+This equation indicates that for every viable colony observed, the equivalent VBC is determined by multiplying by a factor of 20,000 to account for the dilution, volume plated, and sample weight, providing a standardised measure of viable bacteria per gram of compost.
+
 
 ### Summary Table
 
-Yoink the script from chapter 4. 
+```{r, results='asis', echo=FALSE}
+if (knitr::is_html_output()) {
+  cat('<iframe width="100%" height="400" src="https://www.youtube.com/embed/RajQptd1m30?si=ez-g13JaBEfUEmN1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
+}
+```
+<br>
 
-Augment. What does cbind do?
+Let's tick the first task from the scenario off our list of things to do. Let's **create a summary table that shows the mean and standard deviations of the composting temperature, moisture, and viable bacterial count, VBC (cfu/g), at each site**.
 
-Don't worry about headers or formatting this time. Will do in Excel.
+Curses! I've completely forgotten how to create a summary table in R. It's the end of the world!
+
+No it's not. Let's do the obvious (and easy) thing and revisit the script we used in the last chapter to generate a summary table and see if we can tweak things to make it work for us again.
+
+Here's the original script (or the first couple of lines at least).
+
+```{R}
+# Read and filter data
+data <- read.csv("pantheria_999.csv")
+data_filtered <- data[data$NeonateBodyMass_g != -999, ]
+
+# Calculate summary statistics for each Family
+summary_table <- aggregate(NeonateBodyMass_g ~ Family, data_filtered, function(x) 
+  c(Mean = mean(x), Median = median(x), Max = max(x), Min = min(x), SD = sd(x), Count = length(x)))
+
+# Convert the list columns to individual columns
+summary_table <- do.call(data.frame, summary_table)
+```
+
+To adapt this script to work for my new "compost_999.csv" I need to consider the following things:
+
+1. **Update the dataset**: I need to update my `read.csv()` function by replacing `pantheria_999.csv` with `compost_999.csv`.
+2. **Filter step removal**: I know that my compost_999.csv dataset has no missing or erroneous data (please take my word for this) so I don't need to worry about creating a new `data_filtered` variable. I can delete the line and update the rest of the code to just use my initial `data` variable throughout.
+3. **Adjust the grouping and variables**: In my aggregate function I no longer need to summarise the `NeonateBodyMass_g` by `Family`. Instead I want to summarise `Temperature`, `Moisture`, and `Viable.counts` by `Location`.
+4. **Simplify descriptive statistics**: I only need to calculate the mean and standard deviation within my aggregate function this time (forget about median, min and max).
+
+With all that in mind, here's how I'd update the script:
+
 ```{R}
 data <- read.csv("compost_999.csv")
 
@@ -87,145 +150,376 @@ summary_table <- aggregate(cbind(Temperature, Moisture, Viable.counts) ~ Locatio
                            data, 
                            function(x) c(Mean = mean(x), SD = sd(x)))
 
+# Convert the list columns to individual columns
 summary_table <- do.call(data.frame, summary_table)
 
+# Output table in console
+print(summary_table)
+```
+The biggest difference between the new and old scripts is the use of the `cbind()` function within my `aggregate()` function. The `cbind()` function allows me to group together multiple variables (Temperature, Moisure, Viable Counts) in order to calculate and present their descriptive stats simultaneously. Nice.
+
+Our summary table is nearly complete. The last thing I need to do is calculate two more columns for the mean and standard deviations of the VBC (cfu/g). As I explained above, to get values of VBC I need to multiply my viable counts by a factor of 20,000. Here's how I'd update my summary table script:
+
+```{R}
+data <- read.csv("compost_999.csv")
+
+# Calculate summary statistics for Temperature, Moisture, and Viable counts for each Location
+summary_table <- aggregate(cbind(Temperature, Moisture, Viable.counts) ~ Location, 
+                           data, 
+                           function(x) c(Mean = mean(x), SD = sd(x)))
+
+# Convert the list columns to individual columns
+summary_table <- do.call(data.frame, summary_table)
+
+# Define variable factor according to calculation for VBC. Divide by 1e7 to express answers in standard form.
+factor <- 2e5 / 1e7
+
+# Calculate additional columns vbc_mean and vbc_sd using factor
+summary_table$vbc_mean <- summary_table$Viable.counts.Mean * factor
+summary_table$vbc_sd <- summary_table$Viable.counts.SD * factor
+
+# Save table to file
+write.csv(summary_table, "compost_summary.csv", row.names = FALSE)
+
+# Output table in console
 print(summary_table)
 
-write.csv(summary_table, "mushroom_summary.csv", row.names = FALSE)
 ```
+This script should work for you too. Update your existing script with the code above and check that you get the same output as that above for the example dataset.
+
+Did you notice that I used the `write.csv()` in the penultimate line? This means that you should now see a file called **summary_table**.csv in your **Files** window. You should import this file into a new Excel workbook, format the numbers to a sensible precision, style it how you like, and then cut and paste it into your [MegaMush report template](https://raw.githubusercontent.com/rtreharne/qs/main/data/05/Megamush_template.docx). Don't forget to include a table caption according to the **unbreakable rules** stated in Chatper 1.
 
 ## Histogram
 
-Start a new script!
+```{r, results='asis', echo=FALSE}
+if (knitr::is_html_output()) {
+  cat('<iframe width="100%" height="400" src="https://www.youtube.com/embed/2hzo4nY0vIw?si=p6YTZcx6eda7LTMv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
+}
+```
+<br>
 
-```{R, fig.cap="This is my figure caption"}
+Let's complete the second task on our list: Create a **histogram showing the distribution of estimated viable bacterial count, VBC from across all samples**.
+
+
+Create a new script file, copy and paste the code below and run the whole file (click the **Source** button). You should see something like that in figure 5.1 in your **Plots** window.
+```{r fig.cap="Histogram of *VBC* of samples taken from all sites over a period of 1 year. The mean *VBC* (dotted red line) is $2.9 \\times 10^7$ cfu/g.", fig.label="fig:histogram-vbc"}
+# Your R code for generating the histogram
+
 # Load the data
 data <- read.csv("compost_999.csv")
 
 # Calculate the conversion factor
 factor <- 2e5 / 1e7
 
-# Calculate cfu per gram
-data$cfu_per_g <- data$Viable.counts * factor
+# Calculate VBC column
+data$vbc <- data$Viable.counts * factor
 
-# Calculate the mean of cfu_per_g
-mean_cfu_per_g <- mean(data$cfu_per_g, na.rm = TRUE)
+# Calculate the mean VBC
+vbc_mean <- mean(data$vbc)
 
-# Generate a simple histogram for all "Viable counts"
-hist(data$cfu_per_g,
+# Generate a simple histogram for all "VBC"
+hist(data$vbc,
      breaks = 20,
      main = "", 
-     xlab = expression(cfu ~ g^{-1} ~ (x ~ 10^7)), 
+     xlab = expression(VBC ~ "(" ~ x10^7 ~ cfu/g ~ ")"), 
      ylab = "Frequency",
      col = "lightblue",
      border = "black")
 
 # Add a vertical line for the mean
-abline(v = mean_cfu_per_g, col = "red", lwd = 2, lty = 2)
+abline(v = vbc_mean, col = "red", lwd = 2, lty = 2)
 
 # I like a box around my figures
 box()
 ```
-How should I interpret this? How useful is it?
+Let's break this code down comment by comment:
 
-## Boxplots
+1. **Load the Data**
 
-Start a new script!
+```{r eval=FALSE}
+data <- read.csv("compost_999.csv")
+```
 
-```{R, fig.caption="Boxplot"}
+  - **Purpose**: This line uses the `read.csv()` function to read in a CSV file named "compost_999.csv" and stores its content in a data frame variable called `data`
+  
+2. **Calculate the Conversion Factor**
+
+```{r eval=FALSE}
+factor <- 2e5 / 1e7
+```
+
+ - **Purpose**: As for the summary table in the section above, this line calculates a conversion factor to convert viable counts into *VBC* in units of $\times 10^7$ cfu/g.
+ - **Scientific Notation**: `2e5` means $2 \times 10^5$ and `1e7` means $1 \times 10^7$.
+ - **Why divide by 1e7?**: So that I can quote all VBC values in standard form, e.g. $1.2 \times 10^7$ cfu/g.
+ 
+3. **Calculate VBC column**:
+
+```{R eval=FALSE}
+data$vbc <- data$Viable.counts * factor
+```
+
+ - **Purpose**: This line creates a new column `vbc` in the `data` data frame. It calculates *VBM* by multiplying the `Viable.counts` column by the conversion factor.
+ - **New Column**: `data$vbc` stores the calculated *VBC* for each row in the data frame.
+ 
+4. **Calculate the mean VBC**
+
+```{R eval=FALSE}
+vbc_mean <- mean(data$vbc)
+```
+
+ - **Purpose**: This line computes the mean of the values in the `vbc` column and stores it to a new variable called `vbc_mean`. I'll use this later shortly when I make my histrogram plot.
+
+5. **Generate a Simple Histogram for all VBC**
+
+```{R eval=FALSE}
+hist(data$vbc,
+     breaks = 20,
+     main = "", 
+     xlab = expression(VBC ~ "(" ~ x10^7 ~ cfu/g ~ ")"), 
+     ylab = "Frequency",
+     col = "lightblue",
+     border = "black")
+```
+  - **Purpose**: This block generates a histogram of the `vbc` values.
+  - **Parameters**:
+    - `breaks = 20`: Specifies the number of bins (bars) in the histogram.
+    - `main = ""`: Prevents a title from showing (I'll use a caption later when I import the image to a document).
+    - `xlab`: Customises the x-label. The `expression()` function is used to format it, which displays the label as $VBC (\times 10^7 cfu/g)$.
+    - `ylab = Frequency`: Sets the y-axis label to "Frequency".
+    - `col = "lightblue"`: Sets the color of the bars in the histogram to light blue.
+    - `border = "black"`: Sets the border color of the bars to black
+    
+6. **Add a vertical line for the mean**
+```{R eval=FALSE}
+abline(v = vbc_mean, col = "red", lwd = 2, lty = 2)
+```
+  - **Purpose**: This line adds a vertical dashed line to the histogram at the mean value `vbc_mean`.
+  - **Parameters**:
+    - `v = vbc_mean`: Specifies the x-coordinate where the line is drawn (at the mean value).
+    - `col = red`: Sets the color of the line to red.
+    - `lwd = 2`: Sets the line width to 2 (give a thicker line than the default).
+    - `lty = 2`: Specifies the line type as dashed.
+    
+7. **I like a box around my histogram**
+```{R eval=FALSE}
+box()
+```
+  - **Purpose**: This command make sure there is a full box around the histogram. By default, only the x and y axes will show otherwise.
+
+
+<h3>How useful is this histogram?</h3>
+
+Honestly? Not very. If you were hoping for a nice bell-curve (normal) distribution then you will be disappointed. All the histogram really tells us is that values of *VBC* are broadly distributed in the range $2.5 - 3.2 \times 10^7$ cfu/g and that there seems to be a slight "skew" towards higher values in the range.
+
+Oh well, at least you now know how to make a histogram using R in the future. Perhaps we could learn a bit more from our second type of visualisation: The Grouped Boxplot.
+
+**Feedback Please!**
+
+I really value your feedback on these materials for quantitative skills. Please rate them below and then leave some feedback. It's completely anonymous and will help me improve things if necessary. Say what you like, I have a thick skin - but feel free to leave positive comments as well as negative ones. Thank you.
+
+```{r, results='asis', echo=FALSE}
+if (knitr::is_html_output()) {
+  cat('<iframe src="https://canvaswizards.org.uk/likertysplit/qs/" width="400" style="max-width: 100%" height="600"></iframe>')
+}
+```
+
+## Grouped Boxplot
+
+I love boxplots. There, I said it. They offer such a great way to visualise how your data is distributed, highlighting clear statistics like the median, quartiles, and potential outliers. But the real clincher is the their ability to compare multiple groups within your dataset at once to let you see if something interesting is going on between them.
+
+Take a look at the script below. Start a new script, copy/paste the code and run all lines. You should see something similar to that shown in figure 5.2 appear.
+
+```{R, fig.cap="Viable bacterial counts (VBC) across five production sites. Rotterdam and Utrecht exhibit noticeably lower median VBC values compared to the other sites, indicating potential issues at these locations that may require further investigation.",  fig.label="fig:boxplot"}
+# Your R code for generating a grouped boxplot.
+
 # Load the data
 data <- read.csv("compost_999.csv")
 
 # Calculate the conversion factor
 factor <- 2e5 / 1e7
 
-# Calculate cfu per gram
-data$cfu_per_g <- data$Viable.counts * factor
+# Calculate VBC column
+data$vbc <- data$Viable.counts * factor
 
 # Adjust the margins to prevent y-axis label from being cut off
-par(mar = c(5, 5, 4, 2))  # Increase the second value for left margin
+par(mar = c(5, 5, 4, 2))  # Increase the second value for the left margin
 
-# Generate a grouped boxplot for Viable counts across different Locations
-boxplot(cfu_per_g ~ Location, 
+# Generate a grouped boxplot for VBC and group by location
+boxplot(vbc ~ Location, 
         data = data, 
         main = "", 
         xlab = "Location", 
-        ylab = expression(cfu.g^{-1} ~ (x ~ 10^7)),
+        ylab = expression(VBC ~ "(" ~ x10^7 ~ cfu/g ~ ")"), 
         col = "lightblue", 
         border = "black",
         cex.axis = 0.8)
 ```
 
-Interpretation. Far more useful than a histogram.
+You'll notice that the first three lines of code are identical to the previous histogram example. Let's break down the boxplot function.
 
-Tells us that there is something definitely going on at Rotterdam and Utrecht sites.
+1. **Adjust the margins to prevent y-axis label superscripts from being cut off**
+```{r eval=FALSE}
+par(mar = c(5, 5, 4, 2))  # Increase the second value for left margin
+```
+  - **Purpose**: Annoyingly, if I use any label on the y-axis that has superscript elements then the default plot area in R isn't quite big enough and they get cut off. The `par(mar = c(bottom, left, top, right))` function adjusts the margins of the plot. By using a value of 5 for the second value (left margin), I'm ensuring that the y-axis is fully visible.
+
+2. **Generate a grouped boxplot for VBC and group by location**
+```{R eval=FALSE}
+boxplot(vbc ~ Location, 
+        data = data, 
+        main = "", 
+        ylab = "Location", 
+        xlab = expression(VBC ~ "(" ~ x10^7 ~ cfu/g ~ ")"), 
+        col = "lightblue", 
+        border = "black",
+        cex.axis = 0.8)
+```
+  - **Purpose**:
+  - **Parameters**:
+    - `vbc ~ Location`: This specifies the formula for the boxplot. It creates boxplots of the `vbc` column data and groups it by the `Location` factor.
+    - `data = data`: The `data` argument specifies the data frame containing the variables in the above formula.
+    - `cex.axis = 0.8`: This adjusts the size of the boxplot label text, making it 80% of the default size. I like to do this as it improves readability.
+
+<h3>Interpreting the Boxplot</h3>
+
+For a reminder of the important features of a boxplot please refer to **Anatomy of a Boxplot** section in Chapter 2.
+
+The key comparative insight gained from the boxplot is that there is a noticeable trend of lower VBC values at the Rotterdam and Utrecht sites. Whether this trend is statistically significant and the reasons behind the lower values at these two locations remain to be determined. However, if I were the CTO of MegaMush and you presented me with this boxplot, I would likely be making urgent phone calls to my colleagues at the Rotterdam and Utrecht sites to investigate the underlying causes of these discrepancies.
+
+I hope you'll agree that, unlike the histogram, which provides a general overview of data distribution, the boxplot offers a concise summary of central tendency and variability, making it easier to identify specific trends and outliers across different groups. This clarity is particularly valuable for decision-making, as it allows us to quickly pinpoint areas that require further exploration or intervention.
+
+<h3>Ideas for Further Exploration</h3>
+
+  + Boxplot to show distribution of **Temperature** values grouped by **Location**.
+  + Boxplot to show distribution of **Moisture** values grouped by **Location**.
+  + Boxplots of **VBC/Temperature/Moisture** grouped by **DayOfWeek**
 
 
 ## Scatterplot
 
-Start a new script
+The last thing on our todo list is a scatterplot. Remember, you've been asked to plot the relationship between **Temperature** and *VBC*. I also want to colour code the points by location. Here's how I'd do this with native R.
 
-```{R}
-
-# Load the data
-data <- read.csv("compost_999.csv")
-
-# Calculate the conversion factor for cfu per gram
-factor <- 2e5 / 1e7
-data$cfu_per_g <- data$Viable.counts * factor
-
-# Create a scatterplot of cfu vs. temperature, colored by location
-plot(data$Temperature, data$cfu_per_g,
-     main = "",
-     xlab = "Temperature (°C)",
-     ylab = expression(cfu.g^{-1} ~ (x ~ 10^7))
-)
-
-```
-
-```{R}
+```{R, fig.cap="Viable bacterial counts (VBC) vs Temperature. A strong negative correlation is observed. Points are colour coded according to location (see key).",  fig.label="fig:scatterplot"}
+# Your R code for generating a scatterplot.
 
 # Load the data
 data <- read.csv("compost_999.csv")
 
-# Calculate the conversion factor for cfu per gram
+# Calculate the conversion factor
 factor <- 2e5 / 1e7
-data$cfu_per_g <- data$Viable.counts * factor
 
-# Define a color palette using base R rainbow palette
-colors <- rainbow(length(unique(data$Location)), alpha = 0.6)
+# Calculate VBC column
+data$vbc <- data$Viable.counts * factor
 
 # Adjust the margins to prevent y-axis label from being cut off
 par(mar = c(5, 5, 4, 2))  # Increase the second value for the left margin
 
-# Create a scatterplot of cfu vs. temperature, colored by location
-plot(data$Temperature, data$cfu_per_g,
+# Define unique locations and corresponding colors
+unique_locations <- sort(unique(data$Location))
+colors <- rainbow(length(unique_locations), alpha=0.8)  # Or use your predefined colors
+
+# Create a scatterplot of VBC vs. temperature, colored by location
+plot(data$Temperature, data$vbc,
      main = "",
-     xlab = "Temperature (°C)",
-     ylab = expression(VBC ~ (x ~ 10^{7} ~ cfu.g^{-1})),
+     ylab = "Temperature (°C)",
+     xlab = expression(VBC ~ "(" ~ x10^7 ~ cfu/g ~ ")"),
      pch = 19,  # solid circles for points
      cex = 1.5,  # increase point size
-     col = colors[as.numeric(factor(data$Location))])  # color by location with transparency
-
-# Add faint gridlines
-grid(col = "gray90", lty = "dotted")
+     col = colors[as.numeric(factor(data$Location, levels = unique_locations))])  # color by location with transparency
 
 # Add a legend without a border
 legend("bottomleft", 
-       legend = unique(data$Location), 
-       col = colors, 
+       legend = unique_locations,  # Use the unique locations
+       col = colors,  # Ensure the correct color mapping
        pch = 19,  # same symbol as in the plot
        bty = "n",  # no box around the legend
        pt.cex = 1.5)  # match point size in the legend
+
+# Add faint gridlines
+grid(col = "gray90", lty = "dotted")
 ```
-What about moisture? Can you?
+Create a new script file in your existing project, copy/paste the code above and then run as source. Hopefully, you should be able to recreate the scatterplot in your plots window. The first three lines of code are the same as for our boxplot example. Let's break down the rest comment-by-comment:
 
+1. **Define Unique Locations and Colors**:
 
-## Funky Stuff
+```{R eval=FALSE}
+unique_locations <- sort(unique(data$Location))
+colors <- rainbow(length(unique_locations), alpha = 0.8)  # Or use your predefined colors
+```
 
-One last script
+  - **Purpose**: to extract the unique production site locations from the data, sort them alphabetically, and assign each location a distinct colour for visualisation.
+  - **Explanation**:
+    - `unique(data$Location)`: finds all distinct location values (e.g., Amsterdam, Groningen, etc ...).
+    - `sort()`: ensures the locations are listed in alphabetical order, which will also affect how they are represented in the legend.
+    - `rainbow(length(unique), alpha =0.8)`: assigns a unique color to each location, creating a colour palette based on the number of unique locations. The `alpha = 0.8` parameter makes the points slightly transparent.
+    
+2. **Create a Scatterplot of VBC vs. Temperature, coloured by Location**:
+```{R eval=FALSE}
+plot(data$Temperature, data$vbc,
+     main = "",
+     xlab = "Temperature (°C)",
+     ylab = expression(VBC ~ "(" ~ x10^7 ~ cfu/g ~ ")"),
+     pch = 19,  # solid circles for points
+     cex = 1.5,  # increase point size
+     col = colors[as.numeric(factor(data$Location, levels = unique_locations))])
 
-```{R, warning=FALSE, message=FALSE}
+```
+  - **Purpose**: To create a scatterplot that visualises the relationship between temperature and VBC, with points coloured according to the location of the data.
+  - **Explanation**:
+    - `plot(data$Temperature, data$vbc)` creates a basic scatterplot of VBC values (on the y-axis) versus temperature (on the x-axis).
+    - `xlab` and `ylab` provide the axis labels.
+    - `pch = 19` specifies solid circular points for the scatterplot.
+    - `cex = 1.5` increases the size of points for better visibility.
+    - `factor(data$Location, levels = unique_locations)` ensures that the points are coloured by location in the correct, alphabetically sorted order. The `as.numeric()` converts the factor levels into numeric indices to match with the `colors` vector.
+3. **Add a Legend**:
+```{R eval=FALSE}
+legend("bottomleft", 
+       legend = unique_locations,  # Use the unique locations
+       col = colors,  # Ensure the correct color mapping
+       pch = 19,  # same symbol as in the plot
+       bty = "n",  # no box around the legend
+       pt.cex = 1.5)
+```
+  - **Purpose**: To add a legend to the plot that identifies the colours representing each location, ensuring the viewer can easily distinguish between the locations.
+  - **Explanation**:
+    - `bottom-left` determines the location of the legend on your plot.
+    - `legend = unique_locations` ensures the correct, alphabetically sorted location names are shown in the legend.
+    - `col = colors` maps the same colours used in the plot to the corresponding locations in the legend.
+    - `pch = 19` matches the symbol style of the points in the plot with those in the legend.
+    - `bty = "n"` removes the default box around the legend to keep the visual clean.
+    - `pt.cex = 1.5` adjusts the size of the symbols in the legend to match this size of the points in the scatterplot.
+    
+4. **Add Gridlines**:
+```{R eval=FALSE}
+grid(col = "gray90", lty = "dotted")
+```
+  - **Purpose**: Pretty self-explanitory this one I think. I like to have gridlines on my scatterplot as a guide to for the eye, but I leave it as optional for you.
+
+<h3>Interpreting the Scatterplot</h3>
+
+There's lots of information radiating out of this plot. Let's interpret what we're seeing:
+
+  - **Overall Trend**: A clear negative correlation between temperature and VBC.
+  - **Utrecht (purple)**: Highest temperatures (65 - 75<sup>o</sup>C) and lowest VBC values.
+  - **Rotterdam (blue)**: Slightly lower VBC values for the same range of temperatures as Amsterdam and Groningen. This suggests that there may be another factor affecting VBC at Rotterdam.
+
+After seeing this scatterplot I'd be advising the Utrecht site that they were "running hot!" and that they need to cool their compost by about 15<sup>o</sup>C in order to bring their VBCs back in line with the other sites. 
+
+<h3>Ideas for Further Exploration</h3>
+
+  - Scatterplot of VBC vs Moisture
+  - Scatterplot of Moisture vs Temperature.
+
+## Just for Fun
+
+In this last sub-section I just wanted to show you something really cool. The code below uses the fantastlic **Plotly** library to generate a 3D scatterplot so that I can see the impact of both Temperature and Moisture on VBC at the same time. Plotly is not included in your RStudio by default, you'll need to install it first. Go to your **Console** window and type:
+```{R, eval=FALSE}
+install.packages("plotly")
+```
+Hit enter and then wait while the Plotly package is installed. Then start a new script file, copy/past the script below and run it as source.
+
+```{R, warning=FALSE, message=FALSE, fig.cap="A 3D scatterplot showing Viable bacterial counts (VBC) vs both Temperature AND Moisture using the fantastic Plotly package.",  fig.label="fig:plotly"}
+# Include the plotly library in your environment
 library(plotly)
 
 # Load the data
@@ -233,16 +527,16 @@ data <- read.csv("compost_999.csv")
 
 # Calculate the conversion factor for cfu per gram
 factor <- 2e5 / 1e7
-data$cfu_per_g <- data$Viable.counts * factor
+data$vbc <- data$Viable.counts * factor
 
 # Create an interactive 3D scatterplot
 fig <- plot_ly(data = data, 
                x = ~Temperature, 
                y = ~Moisture,
-               z = ~cfu_per_g, 
+               z = ~vbc, 
 
                color = ~Location,
-               colors = "Set1",  # Choose a color palette
+               colors = "Set2",  # Choose a color palette
                type = 'scatter3d',
                mode = 'markers',
                marker = list(size = 5)) %>%
@@ -253,6 +547,8 @@ fig <- plot_ly(data = data,
 # Show the figure
 fig
 ```
+
+How cool is that? You have an interactive, 3D graph that you can fiddle with and investigate the relationship between VBC, Temperature and Moisture. 
 
 ## Complete your Weekly Assignments
 
