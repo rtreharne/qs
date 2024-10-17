@@ -298,9 +298,9 @@ What's fascinating is that this log-log linearity holds across all mammals! From
 
 ## Summarising Data in R
 
-Remember how in chapter 2 we generated a summary table or descriptive statistics using Excel? We can do it in R too! 
+Remember how in chapter 2 we generated a summary table of descriptive statistics using Excel? We can do it in R too! 
 
-As an example let's answer the following question:
+As an example, let's answer the following question:
 
 **What are the top 10 families with the highest number of neonate body mass observations, along with their summary statistics (mean, median, max, min, and standard deviation)?**
 
@@ -355,7 +355,7 @@ The process of experimenting with the code helps deepen your understanding over 
 >
 >However, **using it to understand existing code**? Yes! Do it! What a fantastic way to learn. I use it every day when it comes to code.
 >
->I cut and paste the script above into Chat-GPT and give it the following prompt: "Explain in detail".
+>I cut and pasted the script above into Chat-GPT and gave it the following prompt: "Explain in detail".
 >
 >You can see the result [here](https://chatgpt.com/share/6703dee6-7f58-800a-baf0-fedc569fcc59). Isn't that amazing?
 
