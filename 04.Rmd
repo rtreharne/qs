@@ -246,28 +246,28 @@ knitr::include_graphics("img/04/slice_table.png")
 
 Hmmm, that's weird. What's with all the *-999* values? In this dataset the value -999 has been used to indicate where a value wasn't measured. I can remove these -999 values in my `slice` dataframe like this:
 ```{R eval=FALSE}
-filtered <- slice[slice$AdultBodyMass_g >=0 & slice$BasalMetRate_mlO2hr >=0, ]
+filtered <- slice[slice$AdultBodyMass_g >=0 & slice$BasalMetRate_mLO2hr >=0, ]
 ```
 Let's break this down:
 
 1. `filtered <-`:
   - This assigns the result of the filtering operation to a new variable called filtered. This variable will contain only the rows from the slice data frame that meet certain conditions.
-2. `slice[slice$AdultBodyMass_g >= 0 & slice$BasalMetRate_mlO2hr >= 0, ]`:
+2. `slice[slice$AdultBodyMass_g >= 0 & slice$BasalMetRate_mLO2hr >= 0, ]`:
   - This part performs the actual filtering operation on the slice data frame.
     + `slice$AdultBodyMass_g`:
       - This accesses the *AdultBodyMass_g* column of the slice data frame. The $ operator is used to refer to a specific column.
-    + `slice$BasalMetRate_mlO2hr`:
-      - Similarly, this accesses the *BasalMetRate_mlO2hr* column of the slice data frame.
+    + `slice$BasalMetRate_mLO2hr`:
+      - Similarly, this accesses the *BasalMetRate_mLO2hr* column of the slice data frame.
     + `slice$AdultBodyMass_g >= 0`:
       - This condition checks each value in the *AdultBodyMass_g* column to see if it is greater than or equal to 0, generating a logical vector (TRUE or FALSE) for each row.
-    + `slice$BasalMetRate_mlO2hr >= 0`:
-      - This condition checks each value in the *BasalMetRate_mlO2hr* column to see if it is greater than or equal to 0, producing another logical vector.
+    + `slice$BasalMetRate_mLO2hr >= 0`:
+      - This condition checks each value in the *BasalMetRate_mLO2hr* column to see if it is greater than or equal to 0, producing another logical vector.
     + `&`:
       - This is the logical AND operator, which combines the two logical vectors created by the previous conditions. The result is a new logical vector that is TRUE only for rows where both conditions are TRUE.
     + slice[... , ]:
       - The entire expression inside the square brackets is used to subset the slice data frame. The rows for which the combined condition is TRUE are selected, and all columns (indicated by the empty space after the comma) are returned.
       
-In summary, the code creates a new data frame, `filtered`, which contains only the rows from the slice data frame where both the *AdultBodyMass_g* and *BasalMetRate_mlO2hr* values are greater than or equal to 0.
+In summary, the code creates a new data frame, `filtered`, which contains only the rows from the slice data frame where both the *AdultBodyMass_g* and *BasalMetRate_mLO2hr* values are greater than or equal to 0.
 
 ### So what?
 

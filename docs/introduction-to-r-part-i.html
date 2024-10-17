@@ -432,7 +432,7 @@ Figure 4.4: You’ve sliced your data but you’ll need to be able to filter in 
 </p>
 </div>
 <p>Hmmm, that’s weird. What’s with all the <em>-999</em> values? In this dataset the value -999 has been used to indicate where a value wasn’t measured. I can remove these -999 values in my <code>slice</code> dataframe like this:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="introduction-to-r-part-i.html#cb19-1" tabindex="-1"></a>filtered <span class="ot">&lt;-</span> slice[slice<span class="sc">$</span>AdultBodyMass_g <span class="sc">&gt;=</span><span class="dv">0</span> <span class="sc">&amp;</span> slice<span class="sc">$</span>BasalMetRate_mlO2hr <span class="sc">&gt;=</span><span class="dv">0</span>, ]</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="introduction-to-r-part-i.html#cb19-1" tabindex="-1"></a>filtered <span class="ot">&lt;-</span> slice[slice<span class="sc">$</span>AdultBodyMass_g <span class="sc">&gt;=</span><span class="dv">0</span> <span class="sc">&amp;</span> slice<span class="sc">$</span>BasalMetRate_mLO2hr <span class="sc">&gt;=</span><span class="dv">0</span>, ]</span></code></pre></div>
 <p>Let’s break this down:</p>
 <ol style="list-style-type: decimal">
 <li><code>filtered &lt;-</code>:</li>
@@ -441,7 +441,7 @@ Figure 4.4: You’ve sliced your data but you’ll need to be able to filter in 
 <li>This assigns the result of the filtering operation to a new variable called filtered. This variable will contain only the rows from the slice data frame that meet certain conditions.</li>
 </ul>
 <ol start="2" style="list-style-type: decimal">
-<li><code>slice[slice$AdultBodyMass_g &gt;= 0 &amp; slice$BasalMetRate_mlO2hr &gt;= 0, ]</code>:</li>
+<li><code>slice[slice$AdultBodyMass_g &gt;= 0 &amp; slice$BasalMetRate_mLO2hr &gt;= 0, ]</code>:</li>
 </ol>
 <ul>
 <li>This part performs the actual filtering operation on the slice data frame.
@@ -450,17 +450,17 @@ Figure 4.4: You’ve sliced your data but you’ll need to be able to filter in 
 <ul>
 <li>This accesses the <em>AdultBodyMass_g</em> column of the slice data frame. The $ operator is used to refer to a specific column.</li>
 </ul></li>
-<li><code>slice$BasalMetRate_mlO2hr</code>:
+<li><code>slice$BasalMetRate_mLO2hr</code>:
 <ul>
-<li>Similarly, this accesses the <em>BasalMetRate_mlO2hr</em> column of the slice data frame.</li>
+<li>Similarly, this accesses the <em>BasalMetRate_mLO2hr</em> column of the slice data frame.</li>
 </ul></li>
 <li><code>slice$AdultBodyMass_g &gt;= 0</code>:
 <ul>
 <li>This condition checks each value in the <em>AdultBodyMass_g</em> column to see if it is greater than or equal to 0, generating a logical vector (TRUE or FALSE) for each row.</li>
 </ul></li>
-<li><code>slice$BasalMetRate_mlO2hr &gt;= 0</code>:
+<li><code>slice$BasalMetRate_mLO2hr &gt;= 0</code>:
 <ul>
-<li>This condition checks each value in the <em>BasalMetRate_mlO2hr</em> column to see if it is greater than or equal to 0, producing another logical vector.</li>
+<li>This condition checks each value in the <em>BasalMetRate_mLO2hr</em> column to see if it is greater than or equal to 0, producing another logical vector.</li>
 </ul></li>
 <li><code>&amp;</code>:
 <ul>
@@ -472,7 +472,7 @@ Figure 4.4: You’ve sliced your data but you’ll need to be able to filter in 
 </ul></li>
 </ul></li>
 </ul>
-<p>In summary, the code creates a new data frame, <code>filtered</code>, which contains only the rows from the slice data frame where both the <em>AdultBodyMass_g</em> and <em>BasalMetRate_mlO2hr</em> values are greater than or equal to 0.</p>
+<p>In summary, the code creates a new data frame, <code>filtered</code>, which contains only the rows from the slice data frame where both the <em>AdultBodyMass_g</em> and <em>BasalMetRate_mLO2hr</em> values are greater than or equal to 0.</p>
 </div>
 <div id="so-what" class="section level3 hasAnchor" number="4.2.3">
 <h3><span class="header-section-number">4.2.3</span> So what?<a href="introduction-to-r-part-i.html#so-what" class="anchor-section" aria-label="Anchor link to header"></a></h3>
