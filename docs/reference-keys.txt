@@ -11,9 +11,9 @@ fig:console-output-order
 fig:slice-table
 fig:logplot
 fig:histogram-vbc
-fig:unnamed-chunk-48
-fig:unnamed-chunk-51
-fig:unnamed-chunk-57
+fig:grouped-boxplot
+fig:scatterplot
+fig:unnamed-chunk-59
 introduction-to-excel-and-r
 estimating-the-volume-of-a-snail
 download-and-import-the-csv-file

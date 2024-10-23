@@ -324,11 +324,18 @@ if (knitr::is_html_output()) {
 
 ## Grouped Boxplot
 
+```{r, results='asis', echo=FALSE}
+if (knitr::is_html_output()) {
+  cat('<iframe width="100%" height="400" src="https://www.youtube.com/embed/M163St9JPKg?si=UoxNtNpQXyh0H7Ho" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
+}
+```
+<br>
+
 I love boxplots. There, I said it. They offer such a great way to visualise how your data is distributed, highlighting clear statistics like the median, quartiles, and potential outliers. But the real clincher is the their ability to compare multiple groups within your dataset at once to let you see if something interesting is going on between them.
 
-Take a look at the script below. Start a new script, copy/paste the code and run all lines. You should see something similar to that shown in figure 5.2 appear.
+Take a look at the script below. Start a new script, copy/paste the code and run all lines. You should see something similar to that shown in figure \@ref(fig:grouped-boxplot) appear.
 
-```{R, fig.cap="Viable bacterial counts (VBC) across five production sites. Rotterdam and Utrecht exhibit noticeably lower median VBC values compared to the other sites, indicating potential issues at these locations that may require further investigation.",  fig.label="fig:boxplot"}
+```{R eval=FALSE}
 # Your R code for generating a grouped boxplot.
 
 # Load the data
@@ -352,6 +359,9 @@ boxplot(vbc ~ Location,
         col = "lightblue", 
         border = "black",
         cex.axis = 0.8)
+```
+```{r grouped-boxplot, echo=FALSE, fig.cap="Viable bacterial counts (VBC) across five production sites. Rotterdam and Utrecht exhibit noticeably lower median VBC values compared to the other sites, indicating potential issues at these locations that may require further investigation.", out.width="100%"}
+knitr::include_graphics("img/05/boxplot.png")
 ```
 
 You'll notice that the first three lines of code are identical to the previous histogram example. Let's break down the boxplot function.
@@ -396,9 +406,17 @@ I hope you'll agree that, unlike the histogram, which provides a general overvie
 
 ## Scatterplot
 
-The last thing on our todo list is a scatterplot. Remember, you've been asked to plot the relationship between **Temperature** and *VBC*. I also want to colour code the points by location. Here's how I'd do this with native R.
+```{r, results='asis', echo=FALSE}
+if (knitr::is_html_output()) {
+  cat('<iframe width="100%" height="400" src="https://www.youtube.com/embed/mC5nkDb5s14?si=98MHviet5Jpi1i8W" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
+}
+```
 
-```{R, fig.cap="Viable bacterial counts (VBC) vs Temperature. A strong negative correlation is observed. Points are colour coded according to location (see key).",  fig.label="fig:scatterplot"}
+<br>
+
+The last thing on our todo list is a scatterplot. Remember, you've been asked to plot the relationship between **Temperature** and *VBC*. I also want to colour code the points by location. The code below shows how I'd do this with native R. Figure \@ref(fig:scatterplot) shows your expected output.
+
+```{R eval=FALSE}
 # Your R code for generating a scatterplot.
 
 # Load the data
@@ -436,6 +454,9 @@ legend("bottomleft",
 
 # Add faint gridlines
 grid(col = "gray90", lty = "dotted")
+```
+```{r scatterplot, echo=FALSE, fig.cap="Viable bacterial counts (VBC) vs Temperature. A strong negative correlation is observed. Points are colour coded according to location (see key).", out.width="100%"}
+knitr::include_graphics("img/05/scatterplot.png")
 ```
 Create a new script file in your existing project, copy/paste the code above and then run as source. Hopefully, you should be able to recreate the scatterplot in your plots window. The first three lines of code are the same as for our boxplot example. Let's break down the rest comment-by-comment:
 
