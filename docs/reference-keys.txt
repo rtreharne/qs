@@ -10,7 +10,7 @@ fig:pantheria
 fig:console-output-order
 fig:slice-table
 fig:logplot
-fig:unnamed-chunk-39
+fig:histogram-vbc
 fig:unnamed-chunk-48
 fig:unnamed-chunk-51
 fig:unnamed-chunk-57

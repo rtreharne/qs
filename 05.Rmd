@@ -197,8 +197,8 @@ if (knitr::is_html_output()) {
 Let's complete the second task on our list: Create a **histogram showing the distribution of estimated viable bacterial count, VBC from across all samples**.
 
 
-Create a new script file, copy and paste the code below and run the whole file (click the **Source** button). You should see something like that in figure 5.1 in your **Plots** window.
-```{r fig.cap="Histogram of *VBC* of samples taken from all sites over a period of 1 year. The mean *VBC* (dotted red line) is $2.9 \\times 10^7$ cfu/g.", fig.label="fig:histogram-vbc"}
+Create a new script file, copy and paste the code below and run the whole file (click the **Source** button). You should see something like that in figure \@ref(fig:histogram-vbc) in your **Plots** window.
+```{r eval=FALSE}
 # Your R code for generating the histogram
 
 # Load the data
@@ -227,6 +227,9 @@ abline(v = vbc_mean, col = "red", lwd = 2, lty = 2)
 
 # I like a box around my figures
 box()
+```
+```{r histogram-vbc, echo=FALSE, fig.cap="Histogram of *VBC* of samples taken from all sites over a period of 1 year. The mean *VBC* (dotted red line) is $2.9 \\times 10^7$ cfu/g.", out.width="100%"}
+knitr::include_graphics("img/05/histogram.png")
 ```
 Let's break this code down comment by comment:
 
