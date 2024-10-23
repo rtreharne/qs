@@ -10,6 +10,12 @@ Rscript -e "bookdown::render_book('02.Rmd')" && echo "02.Rmd knitted successfull
 echo "Knitting 03.Rmd..."
 Rscript -e "bookdown::render_book('03.Rmd')" && echo "03.Rmd knitted successfully." || echo "Error knitting 03.Rmd."
 
+echo "Knitting 04.Rmd..."
+Rscript -e "bookdown::render_book('04.Rmd')" && echo "04.Rmd knitted successfully." || echo "Error knitting 04.Rmd."
+
+echo "Knitting 05.Rmd..."
+Rscript -e "bookdown::render_book('05.Rmd')" && echo "05.Rmd knitted successfully." || echo "Error knitting 05.Rmd."
+
 echo "Knitting index.Rmd (last)..."
 Rscript -e "bookdown::render_book('index.Rmd')" && echo "index.Rmd knitted successfully." || echo "Error knitting index.Rmd."
 
