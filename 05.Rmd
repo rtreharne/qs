@@ -1,13 +1,3 @@
----
-title: "Chapter 5"
-output:
-  bookdown::html_document2:   # for HTML output
-    number_sections: true
-    fig_caption: true
-  bookdown::pdf_document2:    # for PDF output
-    number_sections: true
----
-
 # Introduction to R part II: Visualisation
 
 If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover **all of this section's content** and complete this week's **summative assessment** in the BIOS103 Canvas Course. There is no formative assessment this week.
