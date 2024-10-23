@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 Introduction to Excel and R | Quantiative Skills in Biosciences I</title>
+  <meta name="description" content="1 Introduction to Excel and R | Quantiative Skills in Biosciences I" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 Introduction to Excel and R | Quantiative Skills in Biosciences I" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 Introduction to Excel and R | Quantiative Skills in Biosciences I" />
+  
+  
+  
+
+<meta name="author" content="R. E. Treharne" />
+
+
+<meta name="date" content="2024-10-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction.html"/>
+<link rel="next" href="summarising-data-and-anova-in-excel.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Cover</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html"><i class="fa fa-check"></i><b>1</b> Introduction to Excel and R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#estimating-the-volume-of-a-snail"><i class="fa fa-check"></i><b>1.1</b> Estimating the Volume of a Snail</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#download-and-import-the-csv-file"><i class="fa fa-check"></i><b>1.1.1</b> Download and Import the CSV File</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#calculate-volume-v-in-excel"><i class="fa fa-check"></i><b>1.1.2</b> Calculate Volume <span class="math inline">\(V\)</span> in Excel</a></li>
+<li class="chapter" data-level="1.1.3" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#add-a-linear-trendline-and-equation"><i class="fa fa-check"></i><b>1.1.3</b> Add a Linear Trendline and Equation</a></li>
+<li class="chapter" data-level="1.1.4" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#estimation-of-volume-for-a-snail-with-mass-10g"><i class="fa fa-check"></i><b>1.1.4</b> Estimation of Volume for a Snail with Mass 10g</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#getting-ready-for-R"><i class="fa fa-check"></i><b>1.2</b> Getting Ready for R</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#download-and-install-windows-and-mac-only"><i class="fa fa-check"></i><b>1.2.1</b> Download and Install (Windows and Mac only)</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#creating-your-first-r-project-in-rstudio"><i class="fa fa-check"></i><b>1.2.2</b> Creating Your First R Project in RStudio</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#something-more-complicated"><i class="fa fa-check"></i><b>1.2.3</b> Something More Complicated</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#complete-your-weekly-assignments"><i class="fa fa-check"></i><b>1.3</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html"><i class="fa fa-check"></i><b>2</b> Summarising Data and ANOVA in Excel</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#summarising-data"><i class="fa fa-check"></i><b>2.1</b> Summarising Data</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#download-and-import-the-csv-file-1"><i class="fa fa-check"></i><b>2.1.1</b> Download and Import the CSV File</a></li>
+<li class="chapter" data-level="2.1.2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#generating-a-summary-table"><i class="fa fa-check"></i><b>2.1.2</b> Generating a Summary Table</a></li>
+<li class="chapter" data-level="2.1.3" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#presenting-your-summary-table"><i class="fa fa-check"></i><b>2.1.3</b> Presenting Your Summary Table</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#analysis-of-variance-anova"><i class="fa fa-check"></i><b>2.2</b> Analysis of Variance (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#grouped-boxplots-in-excel"><i class="fa fa-check"></i><b>2.2.1</b> Grouped Boxplots in Excel</a></li>
+<li class="chapter" data-level="2.2.2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#constructing-testable-hypotheses"><i class="fa fa-check"></i><b>2.2.2</b> Constructing Testable Hypotheses</a></li>
+<li class="chapter" data-level="2.2.3" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#performing-a-one-way-anova-in-excel"><i class="fa fa-check"></i><b>2.2.3</b> Performing a One-Way Anova in Excel</a></li>
+<li class="chapter" data-level="2.2.4" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#performing-post-hoc-tests-in-excel"><i class="fa fa-check"></i><b>2.2.4</b> Performing Post-hoc Tests in Excel</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#complete-your-weekly-assignments-1"><i class="fa fa-check"></i><b>2.3</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html"><i class="fa fa-check"></i><b>3</b> Calibration Curves and Linear Regression in Excel</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#calibration-curves"><i class="fa fa-check"></i><b>3.1</b> Calibration Curves</a></li>
+<li class="chapter" data-level="3.2" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#linear-regression"><i class="fa fa-check"></i><b>3.2</b> Linear Regression</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#the-linear-regression-equation"><i class="fa fa-check"></i><b>3.2.1</b> The Linear Regression Equation</a></li>
+<li class="chapter" data-level="3.2.2" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#performing-a-linear-regression-in-excel"><i class="fa fa-check"></i><b>3.2.2</b> Performing a Linear Regression in Excel</a></li>
+<li class="chapter" data-level="3.2.3" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#interpreting-your-linear-regression"><i class="fa fa-check"></i><b>3.2.3</b> Interpreting Your Linear Regression</a></li>
+<li class="chapter" data-level="3.2.4" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#making-predictions-with-our-model"><i class="fa fa-check"></i><b>3.2.4</b> Making Predictions with Our Model</a></li>
+<li class="chapter" data-level="3.2.5" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#extending-to-multiple-variables"><i class="fa fa-check"></i><b>3.2.5</b> Extending to Multiple Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#complete-your-weekly-assignments-2"><i class="fa fa-check"></i><b>3.3</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html"><i class="fa fa-check"></i><b>4</b> Introduction to R: Part I</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#reading-and-inspecting-data"><i class="fa fa-check"></i><b>4.1</b> Reading and Inspecting Data</a></li>
+<li class="chapter" data-level="4.2" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#subsetting"><i class="fa fa-check"></i><b>4.2</b> Subsetting</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#slicing"><i class="fa fa-check"></i><b>4.2.1</b> Slicing</a></li>
+<li class="chapter" data-level="4.2.2" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#filtering"><i class="fa fa-check"></i><b>4.2.2</b> Filtering</a></li>
+<li class="chapter" data-level="4.2.3" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#so-what"><i class="fa fa-check"></i><b>4.2.3</b> So what?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#summarising-data-in-r"><i class="fa fa-check"></i><b>4.3</b> Summarising Data in R</a></li>
+<li class="chapter" data-level="4.4" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#complete-your-weekly-assignments-3"><i class="fa fa-check"></i><b>4.4</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html"><i class="fa fa-check"></i><b>5</b> Introduction to R part II: Visualisation</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#mushroom-compost-scenario"><i class="fa fa-check"></i><b>5.1</b> Mushroom Compost Scenario</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#the-dataset"><i class="fa fa-check"></i><b>5.1.1</b> The dataset</a></li>
+<li class="chapter" data-level="5.1.2" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#further-information"><i class="fa fa-check"></i><b>5.1.2</b> Further information</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#inspecting-and-summarising"><i class="fa fa-check"></i><b>5.2</b> Inspecting and Summarising</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#summary-table"><i class="fa fa-check"></i><b>5.2.1</b> Summary Table</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#histogram"><i class="fa fa-check"></i><b>5.3</b> Histogram</a></li>
+<li class="chapter" data-level="5.4" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#grouped-boxplot"><i class="fa fa-check"></i><b>5.4</b> Grouped Boxplot</a></li>
+<li class="chapter" data-level="5.5" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#scatterplot"><i class="fa fa-check"></i><b>5.5</b> Scatterplot</a></li>
+<li class="chapter" data-level="5.6" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#just-for-fun"><i class="fa fa-check"></i><b>5.6</b> Just for Fun</a></li>
+<li class="chapter" data-level="5.7" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#complete-your-weekly-assignments-4"><i class="fa fa-check"></i><b>5.7</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i>Appendix: Teach yourself R.</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#linkedin-learning"><i class="fa fa-check"></i>LinkedIn Learning</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#youtube"><i class="fa fa-check"></i>YouTube</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#books"><i class="fa fa-check"></i>Books</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Quantiative Skills in Biosciences I</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introduction-to-excel-and-r" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> Introduction to Excel and R<a href="introduction-to-excel-and-r.html#introduction-to-excel-and-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover <strong>all of this section’s content</strong> and complete this week’s <a href="#complete-your-weekly-assignments-01"><strong>formative and summative assessments</strong></a> in the BIOS103 Canvas Course.</p>
+<div id="estimating-the-volume-of-a-snail" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Estimating the Volume of a Snail<a href="introduction-to-excel-and-r.html#estimating-the-volume-of-a-snail" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In this section, you will learn how to import data from a CSV file into Excel, perform basic calculations, create a scatterplot including a linear trendline to make predictions. The primary objective is to estimate the volume of a snail based on its mass using a provided dataset.</p>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/0ShVZvl1sG0?si=q1Ve8aptT5m-1H21" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<blockquote>
+<p><strong>Google Sheets Alternative</strong></p>
+<p>If you like, you can do everything in the above video using Google Sheets instead! Here’s my <a href="https://youtu.be/D-URR3a7mmQ?si=mgHlelXssWuSO0SU">alternate video</a> just for Google Sheets.</p>
+</blockquote>
+<div id="download-and-import-the-csv-file" class="section level3 hasAnchor" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> Download and Import the CSV File<a href="introduction-to-excel-and-r.html#download-and-import-the-csv-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><strong>Download the CSV File:</strong>
+<ul>
+<li>Here is an <a href="https://canvaswizards.org.uk/dataspell/snails/301">example dataset</a>. Download it to your local machine.</li>
+<li>If that link doesn’t you can get the dataset in your browser <a href="https://raw.githubusercontent.com/rtreharne/qs/refs/heads/main/data/01/snails_301.csv">here</a>. Right click and Save as.</li>
+</ul></li>
+<li><strong>Import into Excel:</strong>
+<ul>
+<li>Open Excel (Use the desktop version - you won’t be able to do this using the online version!).</li>
+<li>Go to <strong>Data &gt; From Text/CSV</strong> and select the downloaded CSV file.</li>
+<li>When the import wizard appears, click <strong>Load</strong>.</li>
+</ul></li>
+</ol>
+</div>
+<div id="calculate-volume-v-in-excel" class="section level3 hasAnchor" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> Calculate Volume <span class="math inline">\(V\)</span> in Excel<a href="introduction-to-excel-and-r.html#calculate-volume-v-in-excel" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We will estimate the volume <span class="math inline">\(V\)</span> of our snails using the formula for the volume of a sphere:
+<span class="math display">\[ V = \frac{4}{3} \pi r^3 \]</span></p>
+<p>where <span class="math inline">\(r\)</span> is the radius, which we assume is equal to half the <code>Height L (mm)</code> column.</p>
+<ol style="list-style-type: decimal">
+<li><strong>Add a New Column for Volume <span class="math inline">\(V\)</span>:</strong>
+<ul>
+<li><p>In the third column, label it as <strong>Volume V (mm^3)</strong>.</p></li>
+<li><p>In the first cell of this column, use the formula:</p>
+<pre class="excel"><code>= (4/3) * PI() * ((B2/2)^3)</code></pre></li>
+<li><p>Drag the formula down to apply it to all rows.</p></li>
+</ul></li>
+</ol>
+</div>
+<div id="add-a-linear-trendline-and-equation" class="section level3 hasAnchor" number="1.1.3">
+<h3><span class="header-section-number">1.1.3</span> Add a Linear Trendline and Equation<a href="introduction-to-excel-and-r.html#add-a-linear-trendline-and-equation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><strong>Create a Scatter Plot:</strong>
+<ul>
+<li>Select the <strong>Mass M (g)</strong> and <strong>Volume V (mm^3)</strong> columns.</li>
+<li>Go to the <strong>Insert</strong> tab and select <strong>Scatter Plot</strong>.</li>
+</ul></li>
+<li><strong>Add Trendline:</strong>
+<ul>
+<li>Click on the plot</li>
+<li>Click the green <strong>+</strong> icon that appears at the top right of the plot.</li>
+<li>Click the <strong>&gt;</strong> symbol on the <strong>Trendline</strong> option and click <strong>More options…</strong></li>
+<li>From the trendline options menu that appears on the right, select the <strong>Linear</strong> trendline and check the box <strong>isplay Equation on chart</strong>.</li>
+<li>Right-click on a data point in the scatter plot.</li>
+</ul></li>
+<li><strong>Interpret the Equation:</strong>
+<ul>
+<li>The trendline equation will appear on the chart in the form of <span class="math inline">\(y = ax + b\)</span>, where:
+<ul>
+<li><span class="math inline">\(y\)</span> is the volume.</li>
+<li><span class="math inline">\(x\)</span> is the mass.</li>
+<li><span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are coefficients.</li>
+</ul></li>
+<li>For the Example dataset:
+<ul>
+<li>a = 1341.7 <span class="math inline">\(mm^3.g^{-1}\)</span></li>
+<li>b = 1140.2 <span class="math inline">\(mm^3\)</span></li>
+</ul></li>
+</ul></li>
+</ol>
+</div>
+<div id="estimation-of-volume-for-a-snail-with-mass-10g" class="section level3 hasAnchor" number="1.1.4">
+<h3><span class="header-section-number">1.1.4</span> Estimation of Volume for a Snail with Mass 10g<a href="introduction-to-excel-and-r.html#estimation-of-volume-for-a-snail-with-mass-10g" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><strong>Use the Trendline Equation:</strong>
+<ul>
+<li>Substitute <span class="math inline">\(x = 10\)</span> into the trendline equation to calculate the estimated volume <span class="math inline">\(V\)</span>.</li>
+<li>Express the volume in <span class="math inline">\(cm^3\)</span> to one decimal place (Note: <span class="math inline">\(1 cm^3 = 1000 mm^3\)</span>).</li>
+</ul></li>
+<li><strong>For the example dataset:</strong>
+<ul>
+<li>The estimated volume of a snail that is <span class="math inline">\(10 g\)</span> is <strong><span class="math inline">\(14.6 cm^3\)</span></strong>.</li>
+</ul></li>
+</ol>
+</div>
+</div>
+<div id="getting-ready-for-R" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Getting Ready for R<a href="introduction-to-excel-and-r.html#getting-ready-for-R" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Over the next couple of weeks you will continue to use Excel to load, manipulate, analyse and visualise data. Beyond this you will be using the coding language R exclusively. To prepare for this, you need to download, install and configure R and RStudio today.</p>
+<blockquote>
+<p><strong>Chromebook Users</strong></p>
+<p>I love a chromebook. Sadly, installing R and RStudio on one involves a bit of extra work compared to Windows and Mac.
+This YouTube video seems to have all the bases covered: <a href="https://youtu.be/km4rQu6SoC0?si=YOflmxVUleCNI8kJ">“How to Install RStudio on a Chromebook”</a></p>
+</blockquote>
+<div id="download-and-install-windows-and-mac-only" class="section level3 hasAnchor" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Download and Install (Windows and Mac only)<a href="introduction-to-excel-and-r.html#download-and-install-windows-and-mac-only" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><strong>R</strong> and <strong>RStudio</strong> are actually separate things, although they are often mentioned together.</p>
+<p><strong>R</strong> is a programming language and software environment specifically designed for statistical computing and data visualisation. Other examples of programming languages include Python, Java and Ruby.</p>
+<p><strong>RStudio</strong> is the integrated development environment (IDE) for R. It provides a user-friendy interface that will allow you to write all your R scripts and compile them to do stuff. I’m using it to write this handbook right now!</p>
+<p>Despite their differences, you might hear the terms <strong>R</strong> and <strong>RStudio</strong> used interchangeably, as RStudio serves as the primary interface through which users interact with the R programming language.</p>
+<p><strong>You need to download and install both R and Rstudio.</strong></p>
+<ul>
+<li>Install R first from the <a href="https://cran.r-project.org/">Comprehensive R Archive Network (CRAN)</a></li>
+<li>Then install RStudio from the <a href="https://posit.co/download/rstudio-desktop/">RStudio website</a></li>
+</ul>
+<p>Once both are installed, <a href="https://youtu.be/tQ227sB8YeA">open up RStudio</a> and get ready to create your first <strong>R Project</strong>.</p>
+<p><strong>All University of Liverpool MWS machines already have R and RStudio installed and ready to use.</strong></p>
+</div>
+<div id="creating-your-first-r-project-in-rstudio" class="section level3 hasAnchor" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Creating Your First R Project in RStudio<a href="introduction-to-excel-and-r.html#creating-your-first-r-project-in-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Follow these steps to set up and manage your first R project in RStudio:</p>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/mzPEVgnz3GY?si=a1cjJaMrhzNgMoiZ1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<ol style="list-style-type: decimal">
+<li><strong>Open RStudio</strong></li>
+</ol>
+<ul>
+<li>Launch RStudio from your applications menu.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Start a New Project</strong></li>
+</ol>
+<ul>
+<li>Click on the <strong>File</strong> menu at the top of the RStudio window.</li>
+<li>Select <strong>New Project…</strong> from the dropdown menu.</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Choose Project Type</strong></li>
+</ol>
+<p>You will be prompted with three options:</p>
+<ul>
+<li><strong>New Directory</strong>: Create a new project in a new directory.</li>
+<li><strong>Existing Directory</strong>: Use an existing directory as the project’s folder.</li>
+<li><strong>Version Control</strong>: Clone a project from a version control repository (e.g., GitHub).</li>
+</ul>
+<p>For your first project, select <strong>New Directory</strong>.</p>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Select Project Template</strong></li>
+</ol>
+<ul>
+<li>Choose <strong>Empty Project</strong>.</li>
+<li>Click <strong>Next</strong>.</li>
+</ul>
+<ol start="5" style="list-style-type: decimal">
+<li><strong>Set Up Project Directory</strong></li>
+</ol>
+<ul>
+<li><strong>Directory name</strong>: Enter a name for your project folder. This will be the name of the directory created for your project.</li>
+<li><strong>Subdirectory of</strong>: Choose the parent directory where the new project folder will be created. You can navigate to the desired location using the file browser.</li>
+<li>Click <strong>Create Project</strong>.</li>
+</ul>
+<ol start="6" style="list-style-type: decimal">
+<li><strong>RStudio Project Interface</strong></li>
+</ol>
+<p>Once the project is created, you will see a new RStudio window or tab with the following components:</p>
+<ul>
+<li><strong>Files pane</strong>: Displays the files and folders in your project directory.</li>
+<li><strong>Script editor</strong>: Where you write and edit your R scripts.</li>
+<li><strong>Console</strong>: Where you can directly enter and execute R commands.</li>
+<li><strong>Environment/History</strong>: Shows your workspace objects and command history.</li>
+<li><strong>Plots/Packages/Help/Viewer</strong>: Various tabs for viewing plots, managing packages, accessing help documentation, and viewing other outputs.</li>
+</ul>
+<ol start="7" style="list-style-type: decimal">
+<li><strong>Create and Save an R Script</strong></li>
+</ol>
+<ul>
+<li>Click <strong>File &gt; New File &gt; R Script</strong>.</li>
+<li>Write some R code in the script editor. For example:</li>
+</ul>
+<p>To run your print command, click on the line and click the <code>Run</code> button at the top right of your script editor window or press <strong>Ctrl + ENTER</strong> (Cmd + Enter on Mac).</p>
+<p>You will see the following output in your console window:</p>
+<pre><code>## [1] &quot;Hello World!&quot;</code></pre>
+<p>And there it is! You’ve just successfully compiled your first line of R. Congratulations!</p>
+</div>
+<div id="something-more-complicated" class="section level3 hasAnchor" number="1.2.3">
+<h3><span class="header-section-number">1.2.3</span> Something More Complicated<a href="introduction-to-excel-and-r.html#something-more-complicated" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>As you delve deeper into R programming, you’ll find that your scripts become more sophisticated than the “Hello World” example above. In the following example, I’ll walk you through a script to create a random number generator. Here’s the script in its entirety:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="introduction-to-excel-and-r.html#cb3-1" tabindex="-1"></a><span class="co"># create a variable called &quot;seed&quot;</span></span>
+<span id="cb3-2"><a href="introduction-to-excel-and-r.html#cb3-2" tabindex="-1"></a>seed <span class="ot">&lt;-</span> <span class="dv">999</span></span>
+<span id="cb3-3"><a href="introduction-to-excel-and-r.html#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="introduction-to-excel-and-r.html#cb3-4" tabindex="-1"></a><span class="co"># set the seed</span></span>
+<span id="cb3-5"><a href="introduction-to-excel-and-r.html#cb3-5" tabindex="-1"></a><span class="fu">set.seed</span>(seed)</span>
+<span id="cb3-6"><a href="introduction-to-excel-and-r.html#cb3-6" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="introduction-to-excel-and-r.html#cb3-7" tabindex="-1"></a><span class="co"># generate a random number</span></span>
+<span id="cb3-8"><a href="introduction-to-excel-and-r.html#cb3-8" tabindex="-1"></a>random_number <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span>
+<span id="cb3-9"><a href="introduction-to-excel-and-r.html#cb3-9" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="introduction-to-excel-and-r.html#cb3-10" tabindex="-1"></a><span class="co"># print the random number</span></span>
+<span id="cb3-11"><a href="introduction-to-excel-and-r.html#cb3-11" tabindex="-1"></a><span class="fu">print</span>(random_number)</span></code></pre></div>
+<p>Cut and paste these lines into the script file we were working on earlier (overwrite the “Hello World” example).</p>
+<p>Now, you can run each line in turn as before (using <strong>Ctrl + ENTER</strong>) or you can run everything by clicking the <strong>Source</strong> button. You should see the following number appear in your console:</p>
+<p>Let’s break down each line of the script to understand its purpose and functionality.</p>
+<ol style="list-style-type: decimal">
+<li><strong>Creating a Variable Called “seed”</strong></li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="introduction-to-excel-and-r.html#cb4-1" tabindex="-1"></a><span class="co"># create a variable called &quot;seed&quot;</span></span>
+<span id="cb4-2"><a href="introduction-to-excel-and-r.html#cb4-2" tabindex="-1"></a>seed <span class="ot">&lt;-</span> <span class="dv">123</span></span></code></pre></div>
+<ul>
+<li><code>seed &lt;- 123</code>: Here, we are using the <code>&lt;-</code> operator to assign the value 123 to the variable named seed. In R, variables are used to store data that can be reused or manipulated later in the script. The number 123 is arbitrary in this case, but we use it to illustrate how to set a seed for random number generation.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Setting the Seed</strong></li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="introduction-to-excel-and-r.html#cb5-1" tabindex="-1"></a><span class="co"># set the seed</span></span>
+<span id="cb5-2"><a href="introduction-to-excel-and-r.html#cb5-2" tabindex="-1"></a><span class="fu">set.seed</span>(seed)</span></code></pre></div>
+<ul>
+<li>The <code>set.seed()</code> function initializes the R environment’s build in random number generator with the value stored in seed. Setting a seed is essential for reproducibility, meaning that if someone else runs this code with the same seed, they will get the same random number output in their console. This is particularly useful in simulations and randomised experiments where consistent results are needed.</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Generating a Random Number</strong></li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="introduction-to-excel-and-r.html#cb6-1" tabindex="-1"></a><span class="co"># generate a random number</span></span>
+<span id="cb6-2"><a href="introduction-to-excel-and-r.html#cb6-2" tabindex="-1"></a>random_number <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1</span>)</span></code></pre></div>
+<ul>
+<li><code>random_number &lt;- runif(1)</code>: This line generates a single random number between 0 and 1. The function runif() generates random numbers from a uniform distribution, which means that each number within the specified range has an equal probability of being selected. The 1 inside the parentheses specifies that only one random number should be generated. The resulting number is then assigned to the variable called <code>random_number</code>.</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Printing the Random Number</strong></li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="introduction-to-excel-and-r.html#cb7-1" tabindex="-1"></a><span class="co"># print the random number</span></span>
+<span id="cb7-2"><a href="introduction-to-excel-and-r.html#cb7-2" tabindex="-1"></a><span class="fu">print</span>(random_number)</span></code></pre></div>
+<ul>
+<li><code>print(random_number)</code>: The print() function outputs the value stored in <code>random_number</code> to the console. This is useful for verifying the output of your code and ensuring that the operations have been executed correctly.</li>
+</ul>
+<p><strong>Summary</strong></p>
+<p>This example script demonstrates a more complex task than the basic “Hello World” script. It introduces key concepts like variable assignment with &lt;-, setting a seed for reproducibility using set.seed(), generating random numbers with runif(), and printing results using print(). As you continue learning R, these foundational concepts will become increasingly important, enabling you to build more advanced and meaningful analyses. Remember, comments (#) are your friends! They help explain what each part of your code does, making it easier for you and others to understand and maintain your scripts. Be liberal with your comments. You’ll thank yourself later (trust me).</p>
+<p><strong>Give me feedback</strong></p>
+<p>I really value your feedback on these materials for quantitative skills. Please rate them below and then leave some feedback. It’s completely anonymous and will help me improve things if necessary. Say what you like, I have a thick skin - but feel free to leave positive comments as well as negative ones. Thank you.</p>
+<iframe src="https://canvaswizards.org.uk/likertysplit/qs/" width="400" style="max-width: 100%" height="600">
+</iframe>
+</div>
+</div>
+<div id="complete-your-weekly-assignments" class="section level2 complete-your-weekly-assignments-01 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Complete your Weekly Assignments<a href="introduction-to-excel-and-r.html#complete-your-weekly-assignments" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the BIOS103 Canvas course you will find this week’s <strong>formative</strong> and <strong>summative</strong> QS assignments. You should aim to complete both of these before the end of the online workshop that corresponds to this section’s content. The assignments are identical in all but the following details:</p>
+<ul>
+<li>You can attempt the <strong>formative assignment</strong> as many times as you like. It will not contribute to your overall score for this course. You will receive immediate feedback after submitting formative assignments. Make sure you practice this assignment until you’re confident that you can get the correct answer on your own.</li>
+<li>You can attempt the <strong>summative</strong> assignment <strong>only once</strong>. It will be identical to the formative assignment but will use different values and datasets. This assignment <strong>will</strong> contribute to your overall score for this course. Failure to complete a summative test before the stated deadline will result in a zero score. You will not receive immediate feedback after submitting summative assignments. Typically, your scores will be posted within 7 days.</li>
+</ul>
+<p>In <strong>ALL</strong> cases, when you click the button to “begin” a test you will have two hours to complete and submit the questions. If the test times out it will automatically submit.</p>
+
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="summarising-data-and-anova-in-excel.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
