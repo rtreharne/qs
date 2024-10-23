@@ -83,24 +83,30 @@ OK. So it doesn't look too pretty in my console, but I can glean the important i
 
 To calculate the **Viable Bacterial Count (VBC)** from the **Viable Counts** observed on the agar plates, we need to consider the specific parameters of the laboratory procedure. Here's how the calculation works step-by-step:
 
-1. **Viable Counts**: The number of colonies observed on an agar plate after incubation. Let's denote this **VC**
-2. **Dilution Factor**: Remember, all starting solutions have undergone a **1/1000** serial dilution. 
-3. **Volume Plated**: From each diluted sample, **0.1 mL** was plated onto the agar. This means that only **0.1mL** of the diluted solution contributes the visible colonies counted. To express the counts in terms of **1mL**, we must multiply by a factor of **10**
+1. **Viable Counts**: The number of colonies (cfu) observed on an agar plate after incubation. Let's denote this **VC**
+2. **Dilution Factor**: Remember, all starting solutions have undergone a **1/1000** serial dilution, we must first multiply by a factor of **1000**.
+3. **Volume Plated**: From each diluted sample, **0.1 mL** was plated onto the agar. This means that only **0.1mL** of the diluted solution contributes the visible colonies counted. To express the counts in terms of **1mL**, we must multiply by another factor of **10**.
+4. **Volume of Starting Solution**: At this points we have units of cfu/mL. To figure out how many cfu there were in the starting solution of 10 mL we need to multiply by yet another factor of **10**.
 4. **Weight of Sample**: Finally, since **0.5 g** of each compost sample was used in the initial preparation, we need to express the results per gram. To convert out counts to reflect the weight of the sample, we divide by the weight used, which is **0.5 g**. This can be expressed as multiplying by a factor of **2**.
 
 Putting all this together, the equation to calculate **VBC** from the observed **Viable Counts** can be expressed as:
 
 \[
-\text{VBC (cfu/g)} = \text{VC} \times 1000 \times 10 \times 2
+\text{VBC (cfu/g)} = \frac{\text{VC} \times (dilution\ factor)}{(spread\ plated\ volume)} \times \frac{(starting\ solution\ volume)}{(sample\ mass)}
 \]
+
+\[
+\text{VBC (cfu/g)} = \frac{\text{VC} \times (1000)}{(0.1)} \times \frac{(10)}{(0.5)}
+\]
+
 
 Thus, the final calculation simplifies to:
 
 \[
-\text{VBC (cfu/g)} = \text{VC} \times 20,000
+\text{VBC (cfu/g)} = \text{VC} \times 1000 \times 10 \times 10 \times 2 = \text{VC} \times 200,000
 \]
 
-This equation indicates that for every viable colony observed, the equivalent VBC is determined by multiplying by a factor of 20,000 to account for the dilution, volume plated, and sample weight, providing a standardised measure of viable bacteria per gram of compost.
+This equation indicates that for every viable colony observed, the equivalent VBC is determined by multiplying by a factor of 200,000 to account for the dilution, volume plated, and sample weight, providing a standardised measure of viable bacteria per gram of compost.
 
 
 ### Summary Table
@@ -421,8 +427,8 @@ colors <- rainbow(length(unique_locations), alpha=0.8)  # Or use your predefined
 # Create a scatterplot of VBC vs. temperature, colored by location
 plot(data$Temperature, data$vbc,
      main = "",
-     ylab = "Temperature (°C)",
-     xlab = expression(VBC ~ "(" ~ x10^7 ~ cfu/g ~ ")"),
+     xlab = "Temperature (°C)",
+     ylab = expression(VBC ~ "(" ~ x10^7 ~ cfu/g ~ ")"),
      pch = 19,  # solid circles for points
      cex = 1.5,  # increase point size
      col = colors[as.numeric(factor(data$Location, levels = unique_locations))])  # color by location with transparency
