@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2 Summarising Data and ANOVA in Excel | Quantiative Skills in Biosciences I</title>
-  <meta name="description" content="2 Summarising Data and ANOVA in Excel | Quantiative Skills in Biosciences I" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+  <title>2 Summarising Data and ANOVA in Excel | Quantitative Skills in Biosciences I</title>
+  <meta name="description" content="2 Summarising Data and ANOVA in Excel | Quantitative Skills in Biosciences I" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="2 Summarising Data and ANOVA in Excel | Quantiative Skills in Biosciences I" />
+  <meta property="og:title" content="2 Summarising Data and ANOVA in Excel | Quantitative Skills in Biosciences I" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2 Summarising Data and ANOVA in Excel | Quantiative Skills in Biosciences I" />
+  <meta name="twitter:title" content="2 Summarising Data and ANOVA in Excel | Quantitative Skills in Biosciences I" />
   
   
   
@@ -23,7 +23,6 @@
 <meta name="author" content="R. E. Treharne" />
 
 
-<meta name="date" content="2024-10-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,80 +51,8 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
-<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
 
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <style type="text/css">
   
@@ -146,7 +73,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Cover</a></li>
-<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
 <li class="chapter" data-level="1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html"><i class="fa fa-check"></i><b>1</b> Introduction to Excel and R</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#estimating-the-volume-of-a-snail"><i class="fa fa-check"></i><b>1.1</b> Estimating the Volume of a Snail</a>
@@ -223,6 +149,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.6" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#just-for-fun"><i class="fa fa-check"></i><b>5.6</b> Just for Fun</a></li>
 <li class="chapter" data-level="5.7" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#complete-your-weekly-assignments-4"><i class="fa fa-check"></i><b>5.7</b> Complete your Weekly Assignments</a></li>
 </ul></li>
+<li class="chapter" data-level="6" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html"><i class="fa fa-check"></i><b>6</b> Statistics in R: Part I</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#one-way-anova-in-r"><i class="fa fa-check"></i><b>6.1</b> One-Way ANOVA in R</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#importing-data-from-an-online-source"><i class="fa fa-check"></i><b>6.1.1</b> Importing Data from an Online Source</a></li>
+<li class="chapter" data-level="6.1.2" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#conducting-a-one-way-anova"><i class="fa fa-check"></i><b>6.1.2</b> Conducting a One-Way ANOVA</a></li>
+<li class="chapter" data-level="6.1.3" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#post-hoc-tests"><i class="fa fa-check"></i><b>6.1.3</b> Post-Hoc Tests</a></li>
+<li class="chapter" data-level="6.1.4" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#visualising-the-data"><i class="fa fa-check"></i><b>6.1.4</b> Visualising the Data</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#two-way-anova-in-r"><i class="fa fa-check"></i><b>6.2</b> Two-way ANOVA in R</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#importing-and-cleaning-the-data"><i class="fa fa-check"></i><b>6.2.1</b> Importing and Cleaning the Data</a></li>
+<li class="chapter" data-level="6.2.2" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#performing-a-two-way-anova"><i class="fa fa-check"></i><b>6.2.2</b> Performing a Two-Way ANOVA</a></li>
+<li class="chapter" data-level="6.2.3" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#conducting-post-hoc-tests-with-tukeys-hsd"><i class="fa fa-check"></i><b>6.2.3</b> Conducting Post-Hoc Tests with Tukey’s HSD</a></li>
+<li class="chapter" data-level="6.2.4" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#visualising-the-data-1"><i class="fa fa-check"></i><b>6.2.4</b> Visualising the Data</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i>Appendix: Teach yourself R.</a>
 <ul>
 <li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#linkedin-learning"><i class="fa fa-check"></i>LinkedIn Learning</a></li>
@@ -238,7 +181,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Quantiative Skills in Biosciences I</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Quantitative Skills in Biosciences I</a>
           </h1>
         </div>
 
@@ -385,7 +328,7 @@ Figure 2.3: Formatting a summary table in Microsoft Word.
 </div>
 </div>
 </div>
-<div id="analysis-of-variance-anova" class="section level2 hasAnchor" number="2.2">
+<div id="analysis-of-variance-anova" class="section level2 anova hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Analysis of Variance (ANOVA)<a href="summarising-data-and-anova-in-excel.html#analysis-of-variance-anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You’re about to learn a <strong>critical skill</strong> that is important for becoming a scientist: formulating hypotheses and testing them. This is a cornerstone of scientific inquiry.</p>
 <p>You’ve already summarised your data using descriptive statistics. Now, we’ll move on to another branch of statistics called inferential statistics. This involves using an appropriate statistical test to determine whether specific hypotheses that we construct should be accepted or rejected.</p>
@@ -749,7 +692,6 @@ Feedback Please.
 </ul>
 <p>In <strong>ALL</strong> cases, when you click the button to “begin” a test you will have two hours to complete and submit the questions. If the test times out it will automatically submit.</p>
 
-<div style="page-break-after: always;"></div>
 </div>
 </div>
             </section>

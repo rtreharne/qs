@@ -5,5 +5,6 @@ rmd_files: [
   "03.Rmd",
   "04.Rmd",
   "05.Rmd",
+  "08.Rmd",
   "appendix_I.Rmd"
 ]

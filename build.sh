@@ -39,5 +39,5 @@ git add . && echo "Changes staged successfully." || echo "Error staging changes.
 echo "Committing changes..."
 git commit -m "Update bookdown files" && echo "Changes committed." || echo "Error committing changes."
 
-echo "Pushing changes to remote repository..."
-git push && echo "Changes pushed to remote successfully." || echo "Error pushing changes."
+#echo "Pushing changes to remote repository..."
+#git push && echo "Changes pushed to remote successfully." || echo "Error pushing changes."

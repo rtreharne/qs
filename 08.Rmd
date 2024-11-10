@@ -1,0 +1,99 @@
+# Statistics in R: Part I
+
+If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover **all of this section's content** and complete this week's **formative and summative assessments** in the BIOS103 Canvas Course.
+
+## One-Way ANOVA in R
+
+This section is almost a complete re-run of section \@ref(analysis-of-variance-anova). Except what we did in Excel, we'll learn to do in R. 
+
+### Importing Data from an Online Source
+
+```{r eval=TRUE}
+zebrafish_data <- read.csv("https://raw.githubusercontent.com/rtreharne/qs/refs/heads/main/data/02/zebrafish_999.csv")
+
+zebrafish_data$conc_pc <- as.factor(zebrafish_data$conc_pc)
+
+head(zebrafish_data)
+```
+```{R eval=True}
+# Calculate summary statistics for each group
+zebrafish_summary <- aggregate(length_micron ~ conc_pc, zebrafish_data, function(x) 
+  c(Mean = mean(x), Median = median(x), Max = max(x), Min = min(x), SD = sd(x)))
+
+# Convert the list to data frame
+zebrafish_summary <- do.call(data.frame, zebrafish_summary)
+
+print(zebrafish_summary)
+```
+
+### Conducting a One-Way ANOVA
+
+```{R eval=True}
+# Perform a One-Way ANOVA (OMG).
+zebrafish_aov <- aov(length_micron ~ conc_pc, data = zebrafish_data)
+
+# Get the key results.
+summary(zebrafish_aov)
+```
+### Post-Hoc Tests
+
+```{R eval=True}
+tukey_result <- TukeyHSD(zebrafish_aov)
+
+print(tukey_result)
+```
+
+### Visualising the Data
+
+```{R eval=True}
+
+boxplot(
+  length_micron ~ conc_pc, data = zebrafish_data,
+  main = "",
+  xlab = "Alcohol Conc. (%)",
+  ylab = "Embryo Length (microns)",
+  col = "lightblue"
+  
+)
+```
+
+## Two-way ANOVA in R
+
+### Importing and Cleaning the Data
+
+```{R eval=True}
+activity_data <- read.csv("https://raw.githubusercontent.com/rtreharne/qs/main/data/08/activity_999.csv")
+
+head(activity_data)
+```
+```{R eval=TRUE}
+activity_data$ph <- as.factor(activity_data$ph)
+activity_data$temperature <- as.factor(activity_data$temperature)
+
+activity_data$activity <- as.numeric(activity_data$activity) 
+#activity_data <- na.omit(activity_data)
+
+activity_data <- activity_data[activity_data$activity >= 0,]
+
+head(activity_data)
+```
+```{R eval=True}
+# anova_result
+anova_result <- aov(activity ~ ph * temperature, data = activity_data)
+
+summary(anova_result)
+```
+```{R eval=True}
+# Perform Tukey's HSD test
+tukey_result <- TukeyHSD(anova_result)
+
+tukey_df <- as.data.frame(tukey_result[["ph:temperature"]])
+
+max(abs(tukey_df$diff))
+```
+### Performing a Two-Way ANOVA
+### Conducting Post-Hoc Tests with Tukey's HSD
+### Visualising the Data
+
+
+
