@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Introduction to R: Part I | Quantiative Skills in Biosciences I</title>
+  <meta name="description" content="4 Introduction to R: Part I | Quantiative Skills in Biosciences I" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Introduction to R: Part I | Quantiative Skills in Biosciences I" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Introduction to R: Part I | Quantiative Skills in Biosciences I" />
+  
+  
+  
+
+<meta name="author" content="R. E. Treharne" />
+
+
+<meta name="date" content="2024-10-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="calibration-curves-and-linear-regression-in-excel.html"/>
+<link rel="next" href="introduction-to-r-part-ii-visualisation.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Cover</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html"><i class="fa fa-check"></i><b>1</b> Introduction to Excel and R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#estimating-the-volume-of-a-snail"><i class="fa fa-check"></i><b>1.1</b> Estimating the Volume of a Snail</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#download-and-import-the-csv-file"><i class="fa fa-check"></i><b>1.1.1</b> Download and Import the CSV File</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#calculate-volume-v-in-excel"><i class="fa fa-check"></i><b>1.1.2</b> Calculate Volume <span class="math inline">\(V\)</span> in Excel</a></li>
+<li class="chapter" data-level="1.1.3" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#add-a-linear-trendline-and-equation"><i class="fa fa-check"></i><b>1.1.3</b> Add a Linear Trendline and Equation</a></li>
+<li class="chapter" data-level="1.1.4" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#estimation-of-volume-for-a-snail-with-mass-10g"><i class="fa fa-check"></i><b>1.1.4</b> Estimation of Volume for a Snail with Mass 10g</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#getting-ready-for-R"><i class="fa fa-check"></i><b>1.2</b> Getting Ready for R</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#download-and-install-windows-and-mac-only"><i class="fa fa-check"></i><b>1.2.1</b> Download and Install (Windows and Mac only)</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#creating-your-first-r-project-in-rstudio"><i class="fa fa-check"></i><b>1.2.2</b> Creating Your First R Project in RStudio</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#something-more-complicated"><i class="fa fa-check"></i><b>1.2.3</b> Something More Complicated</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#complete-your-weekly-assignments"><i class="fa fa-check"></i><b>1.3</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html"><i class="fa fa-check"></i><b>2</b> Summarising Data and ANOVA in Excel</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#summarising-data"><i class="fa fa-check"></i><b>2.1</b> Summarising Data</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#download-and-import-the-csv-file-1"><i class="fa fa-check"></i><b>2.1.1</b> Download and Import the CSV File</a></li>
+<li class="chapter" data-level="2.1.2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#generating-a-summary-table"><i class="fa fa-check"></i><b>2.1.2</b> Generating a Summary Table</a></li>
+<li class="chapter" data-level="2.1.3" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#presenting-your-summary-table"><i class="fa fa-check"></i><b>2.1.3</b> Presenting Your Summary Table</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#anova"><i class="fa fa-check"></i><b>2.2</b> Analysis of Variance (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#grouped-boxplots-in-excel"><i class="fa fa-check"></i><b>2.2.1</b> Grouped Boxplots in Excel</a></li>
+<li class="chapter" data-level="2.2.2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#constructing-testable-hypotheses"><i class="fa fa-check"></i><b>2.2.2</b> Constructing Testable Hypotheses</a></li>
+<li class="chapter" data-level="2.2.3" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#performing-a-one-way-anova-in-excel"><i class="fa fa-check"></i><b>2.2.3</b> Performing a One-Way Anova in Excel</a></li>
+<li class="chapter" data-level="2.2.4" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#post-hoc-tests"><i class="fa fa-check"></i><b>2.2.4</b> Performing Post-hoc Tests in Excel</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#complete-your-weekly-assignments-1"><i class="fa fa-check"></i><b>2.3</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html"><i class="fa fa-check"></i><b>3</b> Calibration Curves and Linear Regression in Excel</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#calibration-curves"><i class="fa fa-check"></i><b>3.1</b> Calibration Curves</a></li>
+<li class="chapter" data-level="3.2" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#linear-regression"><i class="fa fa-check"></i><b>3.2</b> Linear Regression</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#the-linear-regression-equation"><i class="fa fa-check"></i><b>3.2.1</b> The Linear Regression Equation</a></li>
+<li class="chapter" data-level="3.2.2" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#performing-a-linear-regression-in-excel"><i class="fa fa-check"></i><b>3.2.2</b> Performing a Linear Regression in Excel</a></li>
+<li class="chapter" data-level="3.2.3" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#interpreting-your-linear-regression"><i class="fa fa-check"></i><b>3.2.3</b> Interpreting Your Linear Regression</a></li>
+<li class="chapter" data-level="3.2.4" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#making-predictions-with-our-model"><i class="fa fa-check"></i><b>3.2.4</b> Making Predictions with Our Model</a></li>
+<li class="chapter" data-level="3.2.5" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#extending-to-multiple-variables"><i class="fa fa-check"></i><b>3.2.5</b> Extending to Multiple Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#complete-your-weekly-assignments-2"><i class="fa fa-check"></i><b>3.3</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html"><i class="fa fa-check"></i><b>4</b> Introduction to R: Part I</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#reading-and-inspecting-data"><i class="fa fa-check"></i><b>4.1</b> Reading and Inspecting Data</a></li>
+<li class="chapter" data-level="4.2" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#subsetting"><i class="fa fa-check"></i><b>4.2</b> Subsetting</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#slicing"><i class="fa fa-check"></i><b>4.2.1</b> Slicing</a></li>
+<li class="chapter" data-level="4.2.2" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#filtering"><i class="fa fa-check"></i><b>4.2.2</b> Filtering</a></li>
+<li class="chapter" data-level="4.2.3" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#so-what"><i class="fa fa-check"></i><b>4.2.3</b> So what?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#summarising-data-in-r"><i class="fa fa-check"></i><b>4.3</b> Summarising Data in R</a></li>
+<li class="chapter" data-level="4.4" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#complete-your-weekly-assignments-3"><i class="fa fa-check"></i><b>4.4</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html"><i class="fa fa-check"></i><b>5</b> Introduction to R part II: Visualisation</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#mushroom-compost-scenario"><i class="fa fa-check"></i><b>5.1</b> Mushroom Compost Scenario</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#the-dataset"><i class="fa fa-check"></i><b>5.1.1</b> The dataset</a></li>
+<li class="chapter" data-level="5.1.2" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#further-information"><i class="fa fa-check"></i><b>5.1.2</b> Further information</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#inspecting-and-summarising"><i class="fa fa-check"></i><b>5.2</b> Inspecting and Summarising</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#summary-table"><i class="fa fa-check"></i><b>5.2.1</b> Summary Table</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#histogram"><i class="fa fa-check"></i><b>5.3</b> Histogram</a></li>
+<li class="chapter" data-level="5.4" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#grouped-boxplot"><i class="fa fa-check"></i><b>5.4</b> Grouped Boxplot</a></li>
+<li class="chapter" data-level="5.5" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#scatterplot"><i class="fa fa-check"></i><b>5.5</b> Scatterplot</a></li>
+<li class="chapter" data-level="5.6" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#just-for-fun"><i class="fa fa-check"></i><b>5.6</b> Just for Fun</a></li>
+<li class="chapter" data-level="5.7" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#complete-your-weekly-assignments-4"><i class="fa fa-check"></i><b>5.7</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html"><i class="fa fa-check"></i><b>6</b> Statistics in R: Part I</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#one-way-anova-in-r"><i class="fa fa-check"></i><b>6.1</b> One-Way ANOVA in R</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#importing-data-from-an-online-source"><i class="fa fa-check"></i><b>6.1.1</b> Importing Data from an Online Source</a></li>
+<li class="chapter" data-level="6.1.2" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#summarising-descriptive-statistics"><i class="fa fa-check"></i><b>6.1.2</b> Summarising (Descriptive Statistics)</a></li>
+<li class="chapter" data-level="6.1.3" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#grouped-boxplots-in-r"><i class="fa fa-check"></i><b>6.1.3</b> Grouped Boxplots in R</a></li>
+<li class="chapter" data-level="6.1.4" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#conducting-a-one-way-anova"><i class="fa fa-check"></i><b>6.1.4</b> Conducting a One-Way ANOVA</a></li>
+<li class="chapter" data-level="6.1.5" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#post-hoc-tests-1"><i class="fa fa-check"></i><b>6.1.5</b> Post-Hoc Tests</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#two-way-anova-in-r"><i class="fa fa-check"></i><b>6.2</b> Two-way ANOVA in R</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#importing-and-cleaning-the-data"><i class="fa fa-check"></i><b>6.2.1</b> Importing and Cleaning the Data</a></li>
+<li class="chapter" data-level="6.2.2" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#visualising-the-data"><i class="fa fa-check"></i><b>6.2.2</b> Visualising the data</a></li>
+<li class="chapter" data-level="6.2.3" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#conducting-a-two-way-anova"><i class="fa fa-check"></i><b>6.2.3</b> Conducting a Two-Way ANOVA</a></li>
+<li class="chapter" data-level="6.2.4" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>6.2.4</b> Post-Hoc tests</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i>Appendix: Teach yourself R.</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#linkedin-learning"><i class="fa fa-check"></i>LinkedIn Learning</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#youtube"><i class="fa fa-check"></i>YouTube</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#books"><i class="fa fa-check"></i>Books</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Quantiative Skills in Biosciences I</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introduction-to-r-part-i" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Introduction to R: Part I<a href="introduction-to-r-part-i.html#introduction-to-r-part-i" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover <strong>all of this section’s content</strong> and complete this week’s <strong>formative and summative assessments</strong> in the BIOS103 Canvas Course.</p>
+<p>We are going to diverge from what you have been doing in the labs this week in order to focus on introducing you to R. Our learning objectives are as follows:</p>
+<ul>
+<li>Start a new R Project in R Studio</li>
+<li>Read a dataset to a variable</li>
+<li>Inspect a dataset</li>
+<li>Subset a dataset by slicing and filtering</li>
+<li>Create summary tables of descriptive statistics</li>
+<li>Sort a table</li>
+</ul>
+<p>You should have completed section <a href="introduction-to-excel-and-r.html#getting-ready-for-R">1.2</a> already and have R and R Studio installed on your personal machine. If you are unable to install R and RStudio then please use one of the University computers.</p>
+<h3>
+OMG. Why, are you making me learn to code?
+</h3>
+<p>In my experience, at least half of you will love learning to code. The rest of you will hate my guts. I’m OK with that. That’s because I truly believe that in the near future you will see that even a basic understanding of coding gives you a huge advantage in your studies and future careers. However, if you really need me to give you explicit reasons as to why I’m making you learn to code then here are six:</p>
+<p><strong>1. Data Literacy</strong></p>
+<p>All the biosciences rely heavily on data analysis. Learning to code will equip you the skills to efficiently manipulate and interpret complex datasets. R, in particular, is well-suited for handling bioscientific data, from genomic sequences to clinical trials and environmental modelling.</p>
+<p><strong>2. Reproducibility</strong></p>
+<p>Coding promotes transparency and reproducibility in scientific analyses. Unlike manual methods, where calculations or procedures may be difficult to replicate, scripts provide a clear, step-by-step record that can be easily shared and re-run. This is vital for ensuring the integrity of scientific research.</p>
+<p><strong>3. Automation</strong></p>
+<p>Bioscientists often work with large datasets, and coding enables the automation of repetitive tasks such as data cleaning, statistical analyses, and reporting. This not only saves time but also minimises human error, allowing students and researchers to focus on interpreting their results.</p>
+<p><strong>4. Career Readiness</strong></p>
+<p>Coding has become an indispensable skill in the biosciences. Whether working in research, biotechnology, or environmental consultancy, understanding how to work with data in R (or similar tools) will give you a competitive edge when applying for jobs or pursuing further academic research.</p>
+<p><strong>5. Critical Thinking</strong></p>
+<p>Writing code fosters critical thinking and problem-solving skills. While learning to code you will have to break down complex problems, troubleshoot errors, and develop logical workflows. These skills are not only useful for coding but are also vital for scientific thinking and research.</p>
+<p><strong>6. Integration with Lab Skills</strong></p>
+<p>Coding complements traditional lab skills. In the era of bioinformatics and systems biology, being able to analyse experimental data computationally can provide additional insights that are often not apparent from lab experiments alone.</p>
+<p>Have you accepted your fate then? Good. Now lets get something else straight: <strong>I am NOT going to teach you to code</strong>. You are going to do that yourself, over many months (and probably years). This book represents a mere “dipping of the toes” into the world of R coding and is by no means comprehensive. In fact, it is completely and utterly incomplete. You will need to fill in many of the blanks yourself as you encounter them. How you go about this is up to you, but checkout the <a href="appendix.html#appendix">Appendix</a> for good places to start.</p>
+<div id="reading-and-inspecting-data" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Reading and Inspecting Data<a href="introduction-to-r-part-i.html#reading-and-inspecting-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s dive in then! This week we’re going to be introducing you to some fundamental data handling concepts in R using the fantastic <a href="https://esajournals.onlinelibrary.wiley.com/doi/10.1890/08-1494.1">Pantheria</a> dataset of extant and recently extinct mammals.</p>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/ReFt0oM49UA?si=Z0seJdmGXTOZRtgI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<ol style="list-style-type: decimal">
+<li><p><strong>Open RStudio and start a new project</strong></p></li>
+<li><p><strong>Download the data</strong> from <a href="https://canvaswizards.org.uk/dataspell/pantheria/999">here</a> (or right click, save as from <a href="https://raw.githubusercontent.com/rtreharne/qs/refs/heads/main/data/04/pantheria_999.csv">here</a>).</p></li>
+<li><p><strong>Copy the downloaded file</strong> into your RStudio project directory (folder). You should see the file appear in your <strong>Files</strong> window in the bottom-right corner of RStudio.</p></li>
+<li><p><strong>Create a new R script file</strong> and save it with a sensible filename (e.g. pantheria_summary.R)</p></li>
+<li><p><strong>Read the data</strong> to a <a href="introduction-to-r-part-i.html#what-is-a-variable">variable</a> called <code>pantheria_data</code>: In your new script file, write the following line of code on line 1:</p></li>
+</ol>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb12-1"><a href="introduction-to-r-part-i.html#cb12-1"></a>pantheria_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;pantheria_999.csv&quot;</span>)</span></code></pre></div>
+<p>Run the line by clicking anywhere on the line and then clicking the <strong>run</strong> button (in the top-right corner of your script window) or by pressing <strong>Ctrl+Enter</strong> on your keyboard. You should see a new line appear in your <strong>Environment</strong> window in the top-right of your RStudio like in figure <a href="introduction-to-r-part-i.html#fig:environment-window">4.1</a>. If you don’t see it then the here are the most common reasons as to why:</p>
+<ul>
+<li>You haven’t used quotation marks around your data filename</li>
+<li>You’ve mis-spelled your filename</li>
+<li>You haven’t put your data file in the correct folder</li>
+<li>You didn’t create an R project first.</li>
+</ul>
+<div class="figure"><span style="display:block;" id="fig:environment-window"></span>
+<img src="img/04/environment.png" alt="Details of your data variable should appear in your environment window after running line 1." width="100%" />
+<p class="caption">
+Figure 4.1: Details of your data variable should appear in your environment window after running line 1.
+</p>
+</div>
+<div class="figure"><span style="display:block;" id="fig:pantheria"></span>
+<img src="img/04/pantheria.png" alt="By clicking on your data variable in your environment window you can inspect the data in RStudio" width="100%" />
+<p class="caption">
+Figure 4.2: By clicking on your data variable in your environment window you can inspect the data in RStudio
+</p>
+</div>
+<blockquote>
+<h3 id="what-is-a-variable">
+What is a variable in R?
+</h3>
+<p>A variable in R is a symbolic name representing a value stored in memory. Variables are created by assigning values using <code>&lt;-</code>.</p>
+<p><strong>Naming Convention</strong></p>
+<p>I prefer using lowercase words for variable names. If multiple words are needed, I separate them with an underscore “_“, avoiding spaces. For example: my_variable.</p>
+<p><strong>Best Practices</strong></p>
+<ul>
+<li>Descriptive Names: Choose clear, meaningful names.</li>
+<li>Consistency: Use the same naming style throughout your code.</li>
+<li>Avoid Reserved Words: Don’t use R’s reserved keywords (<code>if</code>, <code>else</code>, <code>for</code>, etc.)</li>
+<li>Uniqueness: Ensure variable names are unique within your environment.</li>
+</ul>
+<p>These practices enhance code readability and maintainability.</p>
+</blockquote>
+<p>Well done if you can see your data variable! You can click on your variable (in the environment window) and inspect your data directly. You should see something like that shown in figure <a href="introduction-to-r-part-i.html#fig:pantheria">4.2</a>. Wow! Look at all that data. Yummy. Now the world is your oyster, as they say. From here you can go in any number of directions and use R to summarise, visualise and analyse your data in order to gain novel insights.</p>
+<p>Let’s start small by asking the very simple question:</p>
+<p><strong>“What order of mammal occurs the most frequently (has the most number of rows) in the dataset?”.</strong></p>
+<p>To answer this question, I need to go through my data row by row and count how many times a row corresponding to each order (e.g. Dermoptera, Chiroptera, Rodentia etc …) appears. Let’s extend my R script as follows:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb13-1"><a href="introduction-to-r-part-i.html#cb13-1"></a>pantheria_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;pantheria_999.csv&quot;</span>)</span>
+<span id="cb13-2"><a href="introduction-to-r-part-i.html#cb13-2"></a></span>
+<span id="cb13-3"><a href="introduction-to-r-part-i.html#cb13-3"></a>orders <span class="ot">&lt;-</span> <span class="fu">table</span>(data<span class="sc">$</span>Order)</span>
+<span id="cb13-4"><a href="introduction-to-r-part-i.html#cb13-4"></a></span>
+<span id="cb13-5"><a href="introduction-to-r-part-i.html#cb13-5"></a><span class="fu">print</span>(orders)</span></code></pre></div>
+<p>Let’s break these additional lines down, step-by-step:</p>
+<ul>
+<li><p><strong>Firstly</strong>, you’ll notice that I’ve left lines 2 and 5 blank. You don’t need to do this, but I like to because it gives my code a bit of breathing space and is often easier to identify a problem later.</p></li>
+<li><p><strong>In line 3</strong>, I’m using the <code>table()</code> <a href="introduction-to-r-part-i.html#what-is-a-function">function</a> to count the number of times a unique value in my order column appears. By putting <code>data$Order</code> inside the table function’s brackets we are “passing” it all of the values in the <strong>Order</strong> column as a big list. I’m then assigning the output of the table function to a new variable called <code>orders</code> so that I can refer to it later.</p></li>
+<li><p><strong>Lastly in line 5</strong>, I’m using a print function to output the contents of the variable <code>orders</code> to my console as shown in figure <a href="introduction-to-r-part-i.html#fig:console-output-order">4.3</a></p></li>
+</ul>
+<div class="figure"><span style="display:block;" id="fig:console-output-order"></span>
+<img src="img/04/orders-output.png" alt="When using `print(orders)` the following should appear in my RStudio console." width="100%" />
+<p class="caption">
+Figure 4.3: When using <code>print(orders)</code> the following should appear in my RStudio console.
+</p>
+</div>
+<blockquote>
+<h3 id="what-is-a-function">
+What is a function in R?
+</h3>
+<p>A function in R is a set of instructions that performs a specific task or calculation, taking inputs (arguments) and returning an output (result). So far in this course, we have used three pre-defined functions: read.csv() to read data from a CSV file, table() to summarise categorical data, and print() to display output in the console. While these functions are built into R, we can also create our own functions when we need to perform customised tasks—more on this later in the course.</p>
+</blockquote>
+<p>You can see by inspecting your console output that the order <strong>Rodentia</strong> is the most frequently occurring order with <strong>549</strong> rows in the data.</p>
+<p>But what if there were lots more orders? It might not be so straightforward. Let’s get our R script to pick out the most frequently occurring order for us:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb14-1"><a href="introduction-to-r-part-i.html#cb14-1"></a>pantheria_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;pantheria_999.csv&quot;</span>)</span>
+<span id="cb14-2"><a href="introduction-to-r-part-i.html#cb14-2"></a></span>
+<span id="cb14-3"><a href="introduction-to-r-part-i.html#cb14-3"></a>orders <span class="ot">&lt;-</span> <span class="fu">table</span>(data<span class="sc">$</span>Order)</span>
+<span id="cb14-4"><a href="introduction-to-r-part-i.html#cb14-4"></a></span>
+<span id="cb14-5"><a href="introduction-to-r-part-i.html#cb14-5"></a>most_common_order <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">which.max</span>(orders))</span>
+<span id="cb14-6"><a href="introduction-to-r-part-i.html#cb14-6"></a></span>
+<span id="cb14-7"><a href="introduction-to-r-part-i.html#cb14-7"></a><span class="fu">print</span>(most_common_order)</span></code></pre></div>
+<p>I’ve inserted the line <code>most_common_order &lt;- names(which.max(orders))</code> at line 5. Let’s break it down:</p>
+<ol style="list-style-type: decimal">
+<li><code>which.max(orders)</code>:</li>
+</ol>
+<ul>
+<li><strong>Function</strong>: <code>which.max()</code> is a built-in R function that returns the index of the first maximum value in its input.</li>
+<li><strong>Input</strong>: In this case, the input is <code>orders</code>, which is the table we created earlier containing the counts of each order in the dataset.</li>
+<li><strong>Output</strong>: The function identifies the <strong>index</strong> position of the maximum count (i.e., the highest frequency) in the <code>orders</code> table. In our case “Rodentia” is at position 24 in the table.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><code>names(...)</code>:</li>
+</ol>
+<ul>
+<li><strong>Function</strong>: The <code>names()</code> function retrieves the names (or labels) associated with the elements of an object. For example if I used <code>names(orders)</code> the function would simply return a list of all the unique orders.</li>
+<li><strong>Usage</strong>: By wrapping <code>which.max(orders)</code> inside <code>names()</code>, we are saying, “give me the name of the order that corresponds to the maximum frequency index returned by <code>which.max()</code>.”</li>
+<li><strong>Output</strong>: In our case the name “Rodentia” is returned.</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li><p><code>most_common_order</code>: I’ve assigned the result of my <code>names(which.max(orders))</code> to a new variable using <code>&lt;-</code>.</p></li>
+<li><p>Finally, I’ve updated my print statement to `print(most_common_order)’. This should now print out “Rodentia” in my console when I re-run my script.</p></li>
+</ol>
+<p>Phew! That took a bit of explaining. Make sure you understand what just happened. The wrapping of a function in a function is a common practice in R and things can quickly become obfuscated. It’s good practice to comment your code so that you (or someone else) can quickly make sense of what is going on. Here is my final code, with comments!</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb15-1"><a href="introduction-to-r-part-i.html#cb15-1"></a><span class="co"># Read the CSV file and store its contents in &#39;data&#39;.</span></span>
+<span id="cb15-2"><a href="introduction-to-r-part-i.html#cb15-2"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;pantheria_999.csv&quot;</span>)</span>
+<span id="cb15-3"><a href="introduction-to-r-part-i.html#cb15-3"></a></span>
+<span id="cb15-4"><a href="introduction-to-r-part-i.html#cb15-4"></a><span class="co"># Create a frequency table of the &#39;Order&#39; column.</span></span>
+<span id="cb15-5"><a href="introduction-to-r-part-i.html#cb15-5"></a>orders <span class="ot">&lt;-</span> <span class="fu">table</span>(data<span class="sc">$</span>Order)</span>
+<span id="cb15-6"><a href="introduction-to-r-part-i.html#cb15-6"></a></span>
+<span id="cb15-7"><a href="introduction-to-r-part-i.html#cb15-7"></a><span class="co"># Get the name of the most common order.</span></span>
+<span id="cb15-8"><a href="introduction-to-r-part-i.html#cb15-8"></a>most_common_order <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">which.max</span>(orders))</span>
+<span id="cb15-9"><a href="introduction-to-r-part-i.html#cb15-9"></a></span>
+<span id="cb15-10"><a href="introduction-to-r-part-i.html#cb15-10"></a><span class="co"># Print the most common order to the console.</span></span>
+<span id="cb15-11"><a href="introduction-to-r-part-i.html#cb15-11"></a><span class="fu">print</span>(most_common_order)</span></code></pre></div>
+</div>
+<div id="subsetting" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Subsetting<a href="introduction-to-r-part-i.html#subsetting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In data analysis, subsetting refers to the process of extracting a portion of a dataset based on specific criteria. This allows you to focus on the most relevant information, making analysis more efficient and tailored to your needs. There are two key methods for subsetting data in R: <strong>Slicing</strong> and <strong>Filtering</strong>.</p>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/umjznd-sCRI?si=QBDhIErUU9c7-_gN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<div id="slicing" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Slicing<a href="introduction-to-r-part-i.html#slicing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Slicing is a crucial operation in data analysis, enabling you to extract specific rows, columns or both from an existing data frame. This technique helps streamline workflows, especially when working with large datasets, by narrowing down data to focus on relevant sections.</p>
+<p><strong>Slicing Example</strong></p>
+<p>Let’s add a new line to our earlier script file:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="introduction-to-r-part-i.html#cb16-1" tabindex="-1"></a>slice <span class="ot">&lt;-</span> data[<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<p>This code creates a new variable called <code>slice</code> and assigns to it the first 1,000 rows and the first 10 columns of the dataset <code>data</code>.</p>
+<p>Run the line and you should see a new dataframe called <code>slice</code> appear in your <strong>Environment</strong> window (top-right).</p>
+<p>What if I’d wanted to select ALL the rows but still slice off the first 10 columns?
+Well, that would look like this:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="introduction-to-r-part-i.html#cb17-1" tabindex="-1"></a>slice <span class="ot">&lt;-</span> data[, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<p>And what if I don’t want to use index values to select the columns (i.e., 1:10) and I want to select them by name? For example let’s say I’ve inspected the column headers and I specifically want to select the following columns:</p>
+<ul>
+<li><strong>Order</strong></li>
+<li><strong>AdultBodyMass_g</strong></li>
+<li><strong>BasalMetRate_mLO2hr</strong></li>
+</ul>
+<p>I can do that using this code:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="introduction-to-r-part-i.html#cb18-1" tabindex="-1"></a>slice <span class="ot">&lt;-</span> data[, <span class="fu">c</span>(<span class="st">&quot;Order&quot;</span>, <span class="st">&quot;AdultBodyMass_g&quot;</span>, <span class="st">&quot;BasalMetRate_mLO2hr&quot;</span>)]</span></code></pre></div>
+<p>Here I’ve defined a vector using the <code>c()</code> function containing the verbatim names of columns I want and used this instead of specifying a range of column indices.</p>
+</div>
+<div id="filtering" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Filtering<a href="introduction-to-r-part-i.html#filtering" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Unlike slicing, which selects a subset of rows and columns based on their position, filtering involves evaluating each row against a set of <strong>logical conditions</strong> and including only those that meet the criteria.</p>
+<p><strong>Filtering Example</strong></p>
+<p>In the above slicing example we created a dataframe variable called <code>slice</code> which contains three columns. If you click on the variable in the environment window to select it you’ll see something like that shown in <a href="introduction-to-r-part-i.html#fig:slice-table">4.4</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:slice-table"></span>
+<img src="img/04/slice_table.png" alt="You've sliced your data but you'll need to be able to filter in order to remove the -999 values." width="100%" />
+<p class="caption">
+Figure 4.4: You’ve sliced your data but you’ll need to be able to filter in order to remove the -999 values.
+</p>
+</div>
+<p>Hmmm, that’s weird. What’s with all the <em>-999</em> values? In this dataset the value -999 has been used to indicate where a value wasn’t measured. I can remove these -999 values in my <code>slice</code> dataframe like this:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="introduction-to-r-part-i.html#cb19-1" tabindex="-1"></a>filtered <span class="ot">&lt;-</span> slice[slice<span class="sc">$</span>AdultBodyMass_g <span class="sc">&gt;=</span><span class="dv">0</span> <span class="sc">&amp;</span> slice<span class="sc">$</span>BasalMetRate_mLO2hr <span class="sc">&gt;=</span><span class="dv">0</span>, ]</span></code></pre></div>
+<p>Let’s break this down:</p>
+<ol style="list-style-type: decimal">
+<li><code>filtered &lt;-</code>:</li>
+</ol>
+<ul>
+<li>This assigns the result of the filtering operation to a new variable called filtered. This variable will contain only the rows from the slice data frame that meet certain conditions.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><code>slice[slice$AdultBodyMass_g &gt;= 0 &amp; slice$BasalMetRate_mLO2hr &gt;= 0, ]</code>:</li>
+</ol>
+<ul>
+<li>This part performs the actual filtering operation on the slice data frame.
+<ul>
+<li><code>slice$AdultBodyMass_g</code>:
+<ul>
+<li>This accesses the <em>AdultBodyMass_g</em> column of the slice data frame. The $ operator is used to refer to a specific column.</li>
+</ul></li>
+<li><code>slice$BasalMetRate_mLO2hr</code>:
+<ul>
+<li>Similarly, this accesses the <em>BasalMetRate_mLO2hr</em> column of the slice data frame.</li>
+</ul></li>
+<li><code>slice$AdultBodyMass_g &gt;= 0</code>:
+<ul>
+<li>This condition checks each value in the <em>AdultBodyMass_g</em> column to see if it is greater than or equal to 0, generating a logical vector (TRUE or FALSE) for each row.</li>
+</ul></li>
+<li><code>slice$BasalMetRate_mLO2hr &gt;= 0</code>:
+<ul>
+<li>This condition checks each value in the <em>BasalMetRate_mLO2hr</em> column to see if it is greater than or equal to 0, producing another logical vector.</li>
+</ul></li>
+<li><code>&amp;</code>:
+<ul>
+<li>This is the logical AND operator, which combines the two logical vectors created by the previous conditions. The result is a new logical vector that is TRUE only for rows where both conditions are TRUE.</li>
+</ul></li>
+<li>slice[… , ]:
+<ul>
+<li>The entire expression inside the square brackets is used to subset the slice data frame. The rows for which the combined condition is TRUE are selected, and all columns (indicated by the empty space after the comma) are returned.</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>In summary, the code creates a new data frame, <code>filtered</code>, which contains only the rows from the slice data frame where both the <em>AdultBodyMass_g</em> and <em>BasalMetRate_mLO2hr</em> values are greater than or equal to 0.</p>
+</div>
+<div id="so-what" class="section level3 hasAnchor" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> So what?<a href="introduction-to-r-part-i.html#so-what" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Well, being as you’ve gone to all that trouble to slice and filter your data we should probably do something spectacular with it! Try adding the following code to your script to and running it.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="introduction-to-r-part-i.html#cb20-1" tabindex="-1"></a><span class="fu">plot</span>(slice<span class="sc">$</span>AdultBodyMass_g, slice<span class="sc">$</span>BasalMetRate_mLO2hr,</span>
+<span id="cb20-2"><a href="introduction-to-r-part-i.html#cb20-2" tabindex="-1"></a>     <span class="at">log=</span><span class="st">&quot;xy&quot;</span>,</span>
+<span id="cb20-3"><a href="introduction-to-r-part-i.html#cb20-3" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Adult Body Mass (g)&quot;</span>, </span>
+<span id="cb20-4"><a href="introduction-to-r-part-i.html#cb20-4" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&quot;Basal Metabolic Rate (mLO2/hr)&quot;</span>,</span>
+<span id="cb20-5"><a href="introduction-to-r-part-i.html#cb20-5" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p>You should see something that looks like what is shown in figure <a href="introduction-to-r-part-i.html#fig:logplot">4.5</a>.</p>
+<div class="figure"><span style="display:block;" id="fig:logplot"></span>
+<img src="img/04/plot.png" alt="An all species log-log scatterplot of mammal adult body mass (g) vs basal metabolic rate (mLO$_2$/hr)" width="100%" />
+<p class="caption">
+Figure 4.5: An all species log-log scatterplot of mammal adult body mass (g) vs basal metabolic rate (mLO<span class="math inline">\(_2\)</span>/hr)
+</p>
+</div>
+<p>Notice that I’ve used the argument <code>log="xy"</code> within my <code>plot()</code> function to make both the x and y axes scale logarithmically. This means that instead of the axes increasing in equal increments (e.g., 1, 2, 3), they increase by factors of ten (e.g., 10, 100, 1000).</p>
+<p>This is particularly useful when the relationship between two variables spans several orders of magnitude, as is often the case in biological data. When both axes are scaled logarithmically, relationships that might look curved on a linear scale can appear as straight lines, making it easier to identify patterns.</p>
+<p>In this case, the plot reveals a linear relationship between the two variables (e.g., adult body mass and basal metabolic rate) when viewed on a log-log scale. This linearity indicates that as one variable increases by a certain percentage, the other variable increases by a consistent percentage, rather than by a fixed amount. This relationship is described as <strong>allometric</strong> scaling and is remarkably common in nature.</p>
+<p>What’s fascinating is that this log-log linearity holds across all mammals! From the smallest mouse to the largest whale, body mass and metabolic rate follow a consistent scaling relationship when plotted logarithmically. This insight allows scientists to understand fundamental principles about how biological processes like metabolism are related to size in the animal kingdom.</p>
+</div>
+</div>
+<div id="summarising-data-in-r" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Summarising Data in R<a href="introduction-to-r-part-i.html#summarising-data-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Remember how in chapter 2 we generated a summary table of descriptive statistics using Excel? We can do it in R too!</p>
+<p>As an example, let’s answer the following question:</p>
+<p><strong>What are the top 10 families with the highest number of neonate body mass observations, along with their summary statistics (mean, median, max, min, and standard deviation)?</strong></p>
+<p>The following script will do the job, as you can see by the accompanying output.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb21-1"><a href="introduction-to-r-part-i.html#cb21-1"></a><span class="co"># Read the CSV and filter out invalid rows</span></span>
+<span id="cb21-2"><a href="introduction-to-r-part-i.html#cb21-2"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;pantheria_999.csv&quot;</span>)</span>
+<span id="cb21-3"><a href="introduction-to-r-part-i.html#cb21-3"></a>data_filtered <span class="ot">&lt;-</span> data[data<span class="sc">$</span>NeonateBodyMass_g <span class="sc">!=</span> <span class="sc">-</span><span class="dv">999</span>, ]</span>
+<span id="cb21-4"><a href="introduction-to-r-part-i.html#cb21-4"></a></span>
+<span id="cb21-5"><a href="introduction-to-r-part-i.html#cb21-5"></a><span class="co"># Calculate summary statistics for each Family</span></span>
+<span id="cb21-6"><a href="introduction-to-r-part-i.html#cb21-6"></a>summary_table <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(NeonateBodyMass_g <span class="sc">~</span> Family, data_filtered, <span class="cf">function</span>(x) </span>
+<span id="cb21-7"><a href="introduction-to-r-part-i.html#cb21-7"></a>  <span class="fu">c</span>(<span class="at">Mean =</span> <span class="fu">mean</span>(x), <span class="at">Median =</span> <span class="fu">median</span>(x), <span class="at">Max =</span> <span class="fu">max</span>(x), <span class="at">Min =</span> <span class="fu">min</span>(x), <span class="at">SD =</span> <span class="fu">sd</span>(x), <span class="at">Count =</span> <span class="fu">length</span>(x)))</span>
+<span id="cb21-8"><a href="introduction-to-r-part-i.html#cb21-8"></a></span>
+<span id="cb21-9"><a href="introduction-to-r-part-i.html#cb21-9"></a><span class="co"># Convert the list columns to individual columns</span></span>
+<span id="cb21-10"><a href="introduction-to-r-part-i.html#cb21-10"></a>summary_table <span class="ot">&lt;-</span> <span class="fu">do.call</span>(data.frame, summary_table)</span>
+<span id="cb21-11"><a href="introduction-to-r-part-i.html#cb21-11"></a></span>
+<span id="cb21-12"><a href="introduction-to-r-part-i.html#cb21-12"></a><span class="co"># Rename the columns</span></span>
+<span id="cb21-13"><a href="introduction-to-r-part-i.html#cb21-13"></a><span class="fu">colnames</span>(summary_table) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Family&quot;</span>, <span class="st">&quot;Mean&quot;</span>, <span class="st">&quot;Median&quot;</span>, <span class="st">&quot;Max&quot;</span>, <span class="st">&quot;Min&quot;</span>, <span class="st">&quot;Std. Dev.&quot;</span>, <span class="st">&quot;Count&quot;</span>)</span>
+<span id="cb21-14"><a href="introduction-to-r-part-i.html#cb21-14"></a></span>
+<span id="cb21-15"><a href="introduction-to-r-part-i.html#cb21-15"></a><span class="co"># Format all numeric values to 1 decimal place (except Count)</span></span>
+<span id="cb21-16"><a href="introduction-to-r-part-i.html#cb21-16"></a>summary_table[, <span class="dv">2</span><span class="sc">:</span><span class="dv">6</span>] <span class="ot">&lt;-</span> <span class="fu">round</span>(summary_table[, <span class="dv">2</span><span class="sc">:</span><span class="dv">6</span>], <span class="dv">1</span>)</span>
+<span id="cb21-17"><a href="introduction-to-r-part-i.html#cb21-17"></a></span>
+<span id="cb21-18"><a href="introduction-to-r-part-i.html#cb21-18"></a><span class="co"># Sort by Count in decreasing order and return top 10 most frequently occurring families in data</span></span>
+<span id="cb21-19"><a href="introduction-to-r-part-i.html#cb21-19"></a>summary_table <span class="ot">&lt;-</span> summary_table[<span class="fu">order</span>(<span class="sc">-</span>summary_table<span class="sc">$</span>Count), ][<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, ]</span>
+<span id="cb21-20"><a href="introduction-to-r-part-i.html#cb21-20"></a></span>
+<span id="cb21-21"><a href="introduction-to-r-part-i.html#cb21-21"></a><span class="co"># Write to CSV and print</span></span>
+<span id="cb21-22"><a href="introduction-to-r-part-i.html#cb21-22"></a><span class="fu">write.csv</span>(summary_table, <span class="st">&quot;summary_table.csv&quot;</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb21-23"><a href="introduction-to-r-part-i.html#cb21-23"></a><span class="fu">print</span>(summary_table)</span></code></pre></div>
+<pre><code>##             Family    Mean  Median     Max    Min Std. Dev. Count
+## 9          Bovidae  8291.2  4819.6 39843.1  500.0    8521.8    36
+## 17 Cercopithecidae   465.9   450.0   890.0  240.7     156.7    19
+## 69      Mustelidae   149.7    30.0  1894.4    2.0     429.0    19
+## 18        Cervidae  4252.0  3082.2 13500.0  400.0    4027.9    18
+## 13         Canidae   167.6   102.1   412.3   28.0     127.6    14
+## 47    Heteromyidae     3.1     3.0     7.7    1.0       1.9    14
+## 80        Phocidae 16490.5 15122.7 39393.0 3050.0   10434.1    14
+## 93       Sciuridae    10.3     6.1    33.0    3.3      10.0    13
+## 41         Felidae   186.4   161.6   409.9   72.0     102.4    12
+## 56       Leporidae    74.4    90.0   123.0   25.9      39.0    11</code></pre>
+<p>See if you can reproduce the output by creating a new script file in your project, copying and pasting the code above and clicking the <strong>Source</strong> button in the top right of your script editor window.</p>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/sSV2hECLflY?si=X-NdWvY04uZe3WrJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<h3>
+What Next?
+</h3>
+<p>I don’t need you to understand every line in the script. In fact there are some lines (6 -7 in particular) that are doing some seriously funky stuff that took me years to learn and understand fully. Nonetheless, ask yourselves what would you need to tweak to get the code to generate a summary table for another variable (e.g. <em>AdultBodyMass_g</em>) or group the results by <strong>Order</strong> instead of <strong>Family</strong>.</p>
+<p>Often, when learning to code, it can feel overwhelming trying to understand every single detail of a script before running it. However, there’s value in a <strong>“run it and see what happens”</strong> approach, especially when you’re starting out. The beauty of coding is that you don’t need to fully grasp every element in order to get results.</p>
+<p>In fact, many experienced coders begin with scripts they might not completely understand. The key is knowing just enough to use the script to answer your question. Once you see the output and observe how the code works, you can begin to tweak and modify it to suit a different dataset or to refine your results.</p>
+<p>The process of experimenting with the code helps deepen your understanding over time. You’ll gradually learn how each part of the script contributes to the output, and that’s where real learning happens.</p>
+<blockquote>
+<p><strong>Turbo charge your learning with Chat-GPT</strong></p>
+<p>I have serious mis-givings about asking generative AI to generate code out of thin air. In my experience, GAI likes to show off and often over-complicate things. This can seriously confuse students who are just starting to learn to code.</p>
+<p>However, <strong>using it to understand existing code</strong>? Yes! Do it! What a fantastic way to learn. I use it every day when it comes to code.</p>
+<p>I cut and pasted the script above into Chat-GPT and gave it the following prompt: “Explain in detail”.</p>
+<p>You can see the result <a href="https://chatgpt.com/share/6703dee6-7f58-800a-baf0-fedc569fcc59">here</a>. Isn’t that amazing?</p>
+</blockquote>
+<h3>
+Feedback Please.
+</h3>
+<p>I really value your feedback on these materials for quantitative skills. Please rate them below and then leave some feedback. It’s completely anonymous and will help me improve things if necessary. Say what you like, I have a thick skin - but feel free to leave positive comments as well as negative ones. Thank you.</p>
+<iframe src="https://canvaswizards.org.uk/likertysplit/qs/" width="400" style="max-width: 100%" height="600">
+</iframe>
+</div>
+<div id="complete-your-weekly-assignments-3" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Complete your Weekly Assignments<a href="introduction-to-r-part-i.html#complete-your-weekly-assignments-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the BIOS103 Canvas course you will find this week’s <strong>formative</strong> and <strong>summative</strong> QS assignments. You should aim to complete both of these before the end of the online workshop that corresponds to this section’s content. The assignments are identical in all but the following details:</p>
+<ul>
+<li>You can attempt the <strong>formative assignment</strong> as many times as you like. It will not contribute to your overall score for this course. You will receive immediate feedback after submitting formative assignments. Make sure you practice this assignment until you’re confident that you can get the correct answer on your own.</li>
+<li>You can attempt the <strong>summative</strong> assignment <strong>only once</strong>. It will be identical to the formative assignment but will use different values and datasets. This assignment <strong>will</strong> contribute to your overall score for this course. Failure to complete a summative test before the stated deadline will result in a zero score. You will not receive immediate feedback after submitting summative assignments. Typically, your scores will be posted within 7 days.</li>
+</ul>
+<p>In <strong>ALL</strong> cases, when you click the button to “begin” a test you will have two hours to complete and submit the questions. If the test times out it will automatically submit.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="calibration-curves-and-linear-regression-in-excel.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introduction-to-r-part-ii-visualisation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

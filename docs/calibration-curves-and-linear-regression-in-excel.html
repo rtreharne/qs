@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3 Calibration Curves and Linear Regression in Excel | Quantiative Skills in Biosciences I</title>
+  <meta name="description" content="3 Calibration Curves and Linear Regression in Excel | Quantiative Skills in Biosciences I" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3 Calibration Curves and Linear Regression in Excel | Quantiative Skills in Biosciences I" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3 Calibration Curves and Linear Regression in Excel | Quantiative Skills in Biosciences I" />
+  
+  
+  
+
+<meta name="author" content="R. E. Treharne" />
+
+
+<meta name="date" content="2024-10-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="summarising-data-and-anova-in-excel.html"/>
+<link rel="next" href="introduction-to-r-part-i.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Cover</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html"><i class="fa fa-check"></i><b>1</b> Introduction to Excel and R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#estimating-the-volume-of-a-snail"><i class="fa fa-check"></i><b>1.1</b> Estimating the Volume of a Snail</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#download-and-import-the-csv-file"><i class="fa fa-check"></i><b>1.1.1</b> Download and Import the CSV File</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#calculate-volume-v-in-excel"><i class="fa fa-check"></i><b>1.1.2</b> Calculate Volume <span class="math inline">\(V\)</span> in Excel</a></li>
+<li class="chapter" data-level="1.1.3" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#add-a-linear-trendline-and-equation"><i class="fa fa-check"></i><b>1.1.3</b> Add a Linear Trendline and Equation</a></li>
+<li class="chapter" data-level="1.1.4" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#estimation-of-volume-for-a-snail-with-mass-10g"><i class="fa fa-check"></i><b>1.1.4</b> Estimation of Volume for a Snail with Mass 10g</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#getting-ready-for-R"><i class="fa fa-check"></i><b>1.2</b> Getting Ready for R</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#download-and-install-windows-and-mac-only"><i class="fa fa-check"></i><b>1.2.1</b> Download and Install (Windows and Mac only)</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#creating-your-first-r-project-in-rstudio"><i class="fa fa-check"></i><b>1.2.2</b> Creating Your First R Project in RStudio</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#something-more-complicated"><i class="fa fa-check"></i><b>1.2.3</b> Something More Complicated</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#complete-your-weekly-assignments"><i class="fa fa-check"></i><b>1.3</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html"><i class="fa fa-check"></i><b>2</b> Summarising Data and ANOVA in Excel</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#summarising-data"><i class="fa fa-check"></i><b>2.1</b> Summarising Data</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#download-and-import-the-csv-file-1"><i class="fa fa-check"></i><b>2.1.1</b> Download and Import the CSV File</a></li>
+<li class="chapter" data-level="2.1.2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#generating-a-summary-table"><i class="fa fa-check"></i><b>2.1.2</b> Generating a Summary Table</a></li>
+<li class="chapter" data-level="2.1.3" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#presenting-your-summary-table"><i class="fa fa-check"></i><b>2.1.3</b> Presenting Your Summary Table</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#anova"><i class="fa fa-check"></i><b>2.2</b> Analysis of Variance (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#grouped-boxplots-in-excel"><i class="fa fa-check"></i><b>2.2.1</b> Grouped Boxplots in Excel</a></li>
+<li class="chapter" data-level="2.2.2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#constructing-testable-hypotheses"><i class="fa fa-check"></i><b>2.2.2</b> Constructing Testable Hypotheses</a></li>
+<li class="chapter" data-level="2.2.3" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#performing-a-one-way-anova-in-excel"><i class="fa fa-check"></i><b>2.2.3</b> Performing a One-Way Anova in Excel</a></li>
+<li class="chapter" data-level="2.2.4" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#post-hoc-tests"><i class="fa fa-check"></i><b>2.2.4</b> Performing Post-hoc Tests in Excel</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#complete-your-weekly-assignments-1"><i class="fa fa-check"></i><b>2.3</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html"><i class="fa fa-check"></i><b>3</b> Calibration Curves and Linear Regression in Excel</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#calibration-curves"><i class="fa fa-check"></i><b>3.1</b> Calibration Curves</a></li>
+<li class="chapter" data-level="3.2" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#linear-regression"><i class="fa fa-check"></i><b>3.2</b> Linear Regression</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#the-linear-regression-equation"><i class="fa fa-check"></i><b>3.2.1</b> The Linear Regression Equation</a></li>
+<li class="chapter" data-level="3.2.2" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#performing-a-linear-regression-in-excel"><i class="fa fa-check"></i><b>3.2.2</b> Performing a Linear Regression in Excel</a></li>
+<li class="chapter" data-level="3.2.3" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#interpreting-your-linear-regression"><i class="fa fa-check"></i><b>3.2.3</b> Interpreting Your Linear Regression</a></li>
+<li class="chapter" data-level="3.2.4" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#making-predictions-with-our-model"><i class="fa fa-check"></i><b>3.2.4</b> Making Predictions with Our Model</a></li>
+<li class="chapter" data-level="3.2.5" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#extending-to-multiple-variables"><i class="fa fa-check"></i><b>3.2.5</b> Extending to Multiple Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#complete-your-weekly-assignments-2"><i class="fa fa-check"></i><b>3.3</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html"><i class="fa fa-check"></i><b>4</b> Introduction to R: Part I</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#reading-and-inspecting-data"><i class="fa fa-check"></i><b>4.1</b> Reading and Inspecting Data</a></li>
+<li class="chapter" data-level="4.2" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#subsetting"><i class="fa fa-check"></i><b>4.2</b> Subsetting</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#slicing"><i class="fa fa-check"></i><b>4.2.1</b> Slicing</a></li>
+<li class="chapter" data-level="4.2.2" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#filtering"><i class="fa fa-check"></i><b>4.2.2</b> Filtering</a></li>
+<li class="chapter" data-level="4.2.3" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#so-what"><i class="fa fa-check"></i><b>4.2.3</b> So what?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#summarising-data-in-r"><i class="fa fa-check"></i><b>4.3</b> Summarising Data in R</a></li>
+<li class="chapter" data-level="4.4" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#complete-your-weekly-assignments-3"><i class="fa fa-check"></i><b>4.4</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html"><i class="fa fa-check"></i><b>5</b> Introduction to R part II: Visualisation</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#mushroom-compost-scenario"><i class="fa fa-check"></i><b>5.1</b> Mushroom Compost Scenario</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#the-dataset"><i class="fa fa-check"></i><b>5.1.1</b> The dataset</a></li>
+<li class="chapter" data-level="5.1.2" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#further-information"><i class="fa fa-check"></i><b>5.1.2</b> Further information</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#inspecting-and-summarising"><i class="fa fa-check"></i><b>5.2</b> Inspecting and Summarising</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#summary-table"><i class="fa fa-check"></i><b>5.2.1</b> Summary Table</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#histogram"><i class="fa fa-check"></i><b>5.3</b> Histogram</a></li>
+<li class="chapter" data-level="5.4" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#grouped-boxplot"><i class="fa fa-check"></i><b>5.4</b> Grouped Boxplot</a></li>
+<li class="chapter" data-level="5.5" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#scatterplot"><i class="fa fa-check"></i><b>5.5</b> Scatterplot</a></li>
+<li class="chapter" data-level="5.6" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#just-for-fun"><i class="fa fa-check"></i><b>5.6</b> Just for Fun</a></li>
+<li class="chapter" data-level="5.7" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#complete-your-weekly-assignments-4"><i class="fa fa-check"></i><b>5.7</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html"><i class="fa fa-check"></i><b>6</b> Statistics in R: Part I</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#one-way-anova-in-r"><i class="fa fa-check"></i><b>6.1</b> One-Way ANOVA in R</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#importing-data-from-an-online-source"><i class="fa fa-check"></i><b>6.1.1</b> Importing Data from an Online Source</a></li>
+<li class="chapter" data-level="6.1.2" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#summarising-descriptive-statistics"><i class="fa fa-check"></i><b>6.1.2</b> Summarising (Descriptive Statistics)</a></li>
+<li class="chapter" data-level="6.1.3" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#grouped-boxplots-in-r"><i class="fa fa-check"></i><b>6.1.3</b> Grouped Boxplots in R</a></li>
+<li class="chapter" data-level="6.1.4" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#conducting-a-one-way-anova"><i class="fa fa-check"></i><b>6.1.4</b> Conducting a One-Way ANOVA</a></li>
+<li class="chapter" data-level="6.1.5" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#post-hoc-tests-1"><i class="fa fa-check"></i><b>6.1.5</b> Post-Hoc Tests</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#two-way-anova-in-r"><i class="fa fa-check"></i><b>6.2</b> Two-way ANOVA in R</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#importing-and-cleaning-the-data"><i class="fa fa-check"></i><b>6.2.1</b> Importing and Cleaning the Data</a></li>
+<li class="chapter" data-level="6.2.2" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#visualising-the-data"><i class="fa fa-check"></i><b>6.2.2</b> Visualising the data</a></li>
+<li class="chapter" data-level="6.2.3" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#conducting-a-two-way-anova"><i class="fa fa-check"></i><b>6.2.3</b> Conducting a Two-Way ANOVA</a></li>
+<li class="chapter" data-level="6.2.4" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>6.2.4</b> Post-Hoc tests</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i>Appendix: Teach yourself R.</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#linkedin-learning"><i class="fa fa-check"></i>LinkedIn Learning</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#youtube"><i class="fa fa-check"></i>YouTube</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#books"><i class="fa fa-check"></i>Books</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Quantiative Skills in Biosciences I</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="calibration-curves-and-linear-regression-in-excel" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Calibration Curves and Linear Regression in Excel<a href="calibration-curves-and-linear-regression-in-excel.html#calibration-curves-and-linear-regression-in-excel" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover <strong>all of this section’s content</strong> and complete this week’s <a href="#chapter-3-assignments"><strong>formative and summative assessments</strong></a> in the BIOS103 Canvas Course.</p>
+<p>In this section we’ll be re-visiting linear trendlines in Excel in the context of calibration curves and extending our knowledge by going deeper into the world of linear regression.</p>
+<p>We will be working on two important skills:</p>
+<ul>
+<li>Manipulating data (transposing)</li>
+<li>Making predictions from linear models.</li>
+</ul>
+<div id="calibration-curves" class="section level2 calibration-curves hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Calibration Curves<a href="calibration-curves-and-linear-regression-in-excel.html#calibration-curves" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A <strong>calibration curve</strong> is a plot of a measurable quantity (in our case absorbance, as determined by spectrophotometry) against the concentration of known standards. This relationship, typically linear, allows for the determination of the concentration of unknown samples by interpolation.</p>
+<p>The Beer-Lambert Law provides the foundation for generating calibration curves in spectrophotometry. It describes the relationship between absorbance (A) and the concentration (C) of a substance in solution. The law is given by the equation:</p>
+<p><span class="math display">\[
+A = m \cdot C
+\]</span></p>
+<p>Where:</p>
+<ul>
+<li><strong>A</strong> is the absorbance (a dimensionless quantity, i.e. no units!).</li>
+<li><strong>m</strong> is the slope (related to molar absorptivity and path length).</li>
+<li><strong>C</strong> is the protein concentration (in mg/mL).</li>
+</ul>
+<p>There are a few <strong>key considerations</strong> to make when using this law to determine the concentrations of unknown solutions:</p>
+<ul>
+<li><strong>Linear range</strong>: the calibration curve is only valid within a certain concentration range. At very high concentrations, the relationship may no longer be linear (due to factors like light scattering). Extrapolating concentrations from our calibration curves that are beyond those of our known standards is very, very naughty. Don’t do it!</li>
+<li><strong>Reproducibility</strong>: It is critical that the same instrument (including scan settings and wavelength) be use for both the standards and unknowns.</li>
+</ul>
+<p>Let’s take a look at an example dataset from an experiment designed to generate a calibration curve for hemoglobin. Assume that starting from a stock solution of concentration 1.5 mg/mL a set of seven protein solutions have been created using a 1:1 serial dilution and that the absorbance of each solution has been measured at a wavelength of 560nm (yellow-green light).</p>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/Dy6FmCDB2NQ?si=s9CWD0uGE14Fa1iP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<blockquote>
+<p><strong>Mac Users</strong></p>
+<p>It might not be possible for you to transpose the data like in the video above. If you can’t, try this:</p>
+<ol style="list-style-type: decimal">
+<li><p>Select the range of data you want to rearrange, including any row or column labels, and <strong>Cmd+C</strong> to copy.</p></li>
+<li><p>Select the first cell where you want to paste the data, and on the Home tab, click the arrow next to Paste, and then click Transpose.</p></li>
+<li><p>Watch <a href="https://youtu.be/pBcPJp-BdjE?si=GYw5sguCCM64Zcpl">this</a> video if you’re still stuck.</p></li>
+</ol>
+</blockquote>
+<ol style="list-style-type: decimal">
+<li><strong>Download the CSV File:</strong>
+<ul>
+<li>Here is an <a href="https://canvaswizards.org.uk/dataspell/calibration/999999999">example dataset</a>. Download it to your local machine.</li>
+</ul></li>
+<li><strong>Import into Excel:</strong>
+<ul>
+<li>Open Excel (Use the desktop version - you won’t be able to do this using the online version!).</li>
+<li>Go to <code>Data &gt; From Text/CSV</code> and select the downloaded CSV file.</li>
+<li>When the import wizard appears, <strong>do not</strong> click <strong>Load</strong>.</li>
+</ul></li>
+</ol>
+<p>There’s something not right about this dataset. It’s sideways! The columns of data run horizontally instead of vertically. We don’t like this, it makes it much harder to plot figures and perform any analysis.</p>
+<p>We need to transform the data somehow and flip it to vertical instead of horizontal. We need to <strong>transpose</strong> the data.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Transpose the data:</strong>
+<ul>
+<li>On the import wizard click the <strong>Transform Data</strong> button. This will open up a new window called <strong>Power Query Editor</strong>.</li>
+<li>Click the <strong>Transform</strong> tab and then click the <strong>Transpose</strong> button.</li>
+<li>Click the <strong>Use First Row as Headers</strong> button.</li>
+<li>Return to the <strong>Home</strong> tab and click <strong>Close &amp; Load</strong> to import your transposed data.</li>
+</ul></li>
+<li><strong>Generate a Calibration Curve:</strong>
+<ul>
+<li>Click anywhere on your data table.</li>
+<li>Click the <strong>Insert</strong> tab and select the <strong>Scatter</strong> chart from the charts option.</li>
+<li>Get rid of the title.</li>
+<li>Label the x-axis: “Protein Conc. (mg/mL)”.</li>
+<li>Label the y-axis: “Absorbance (Arb. units)”.</li>
+<li>Click the green plus (chart elements) icon at the top-right of the graph and select <strong>More options</strong> from <strong>Trendline</strong>.</li>
+<li>Add a linear trendline and check the box to “Display Equation on Chart”.</li>
+<li>If you’re including your figure in a report it’s better practice to include details of the <span class="math inline">\(m\)</span> and <span class="math inline">\(b\)</span> values that you extract in your figure caption like in figure <a href="calibration-curves-and-linear-regression-in-excel.html#fig:calibration-curve">3.1</a>.</li>
+</ul></li>
+<li><strong>Use the Calibration Curve:</strong></li>
+</ol>
+<p>Now that you’ve extracted the m and b values from your calibration curve’s linear trendline you can use it to find the concentration of an unknown sample by measuring its absorbance.</p>
+<p>Our calibration curve for the dataset gives us the equation:</p>
+<p><span class="math display">\[
+A = 0.3827 \cdot C - 0.0024
+\]</span></p>
+<p>If an unknown protein solution has an absorbance of 0.50, you can rearrange the equation to solve for concentration <span class="math inline">\(C\)</span>:</p>
+<p><span class="math display">\[
+0.50 = 0.3827 \cdot C - 0.0024
+\]</span></p>
+<p>Solving for <span class="math inline">\(C\)</span>:</p>
+<p><span class="math display">\[
+C = \frac{0.50 + 0.0024}{0.3827} = 1.3 \, \text{mg/mL}
+\]</span></p>
+<p>Thus, the concentration of the unknown protein solution is 1.3 mg/mL.</p>
+<p>Note that I’ve expressed my answer to 2 significant figures to match the minimum level of precision available to me during the calculation (i.e. 2 s.f for both 0.5 and 0.0024).</p>
+<div class="figure"><span style="display:block;" id="fig:calibration-curve"></span>
+<img src="img/03/calibration_curve.png" alt="Calibration curve for Hemoglobin determined from a standard set generated from a 1:1 serial dilution from a starting 1.5 mg/mL solution. Values of m=0.3827 and b=0.0024 were extracted from the linear relationship A = m * C + b, where b is the systematic error associated with the measurement (most likely related pipetting inaccuracies)." width="100%" />
+<p class="caption">
+Figure 3.1: Calibration curve for Hemoglobin determined from a standard set generated from a 1:1 serial dilution from a starting 1.5 mg/mL solution. Values of m=0.3827 and b=0.0024 were extracted from the linear relationship A = m * C + b, where b is the systematic error associated with the measurement (most likely related pipetting inaccuracies).
+</p>
+</div>
+</div>
+<div id="linear-regression" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Linear Regression<a href="calibration-curves-and-linear-regression-in-excel.html#linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A linear trendline is visually helpful, but what what Excel is actually doing behind the scenes is something more powerful: <strong>linear regression</strong>.</p>
+<p>Linear regression is a statistical method used to quantify how much the variation in a dependent variable can be attributed to changes in an independent variable. It helps us understand how one variable predicts or influences another. Additionally, it provides insight into how much of the variation is due to error or other unaccounted factors, and whether we need to explore other relationships or variables that may better explain the observed patterns.</p>
+<p>Linear regression models are valuable because they offer an estimation of the relationship between variables, and by extension, help in predicting future outcomes based on known values of independent variables.</p>
+<p><strong>Why “Linear”?</strong></p>
+<p>In nature, over relatively small ranges of dependent and independent variables, the relationship between them can often be approximated as linear. This means that as one variable increases or decreases, the other responds in a predictable and proportional manner. While not always the case, assuming linearity can be useful for many applications, especially for the scope of this course.</p>
+<blockquote>
+<p><strong>Independent and Dependent Variables:</strong><br />
+- The <strong>independent variable</strong> is the one you manipulate or change to see its effect (e.g., hours of sunlight).<br />
+- The <strong>dependent variable</strong> is the one being measured or observed (e.g., sunflower growth).<br />
+These are sometimes referred to as explanatory and response variables, respectively.</p>
+</blockquote>
+<p><strong>Linear Regression as a Hypothesis Test</strong></p>
+<p>Performing a linear regression is also a test of a hypothesis. This time, our <strong>null hypothesis</strong> is that there is no linear relationship between the dependent and independent variables. In other words, any observed association between the two is just due to random chance.</p>
+<p>More formally:</p>
+<ul>
+<li><strong>Null Hypothesis (H₀):</strong> There is no linear relationship between the independent variable and the dependent variable. The slope of the regression line is equal to zero.
+<ul>
+<li>H₀: β₁ = 0<br />
+(where β₁ represents the slope of the regression line)</li>
+</ul></li>
+<li><strong>Alternative Hypothesis (H₁):</strong> There is a linear relationship between the independent variable and the dependent variable. The slope of the regression line is not equal to zero.
+<ul>
+<li>H₁: β₁ ≠ 0</li>
+</ul></li>
+</ul>
+<div id="the-linear-regression-equation" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> The Linear Regression Equation<a href="calibration-curves-and-linear-regression-in-excel.html#the-linear-regression-equation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The linear regression equation provides a way to express the relationship between the independent variable (predictor) and the dependent variable (outcome) as a straight line:</p>
+<p><span class="math display">\[
+Y = β₀ + β₁X + ε
+\]</span></p>
+<ul>
+<li><strong>Y</strong>: The dependent variable (outcome) we are trying to predict.</li>
+<li><strong>X</strong>: The independent variable (predictor) we use to make predictions.</li>
+<li><strong>β₀</strong>: The intercept, or the value of <strong>Y</strong> when <strong>X</strong> is 0. This represents the starting point of the relationship.</li>
+<li><strong>β₁</strong>: The slope, or the change in <strong>Y</strong> for every one-unit increase in <strong>X</strong>. It tells us how steep the relationship is.</li>
+<li><strong>ε</strong>: The error term, which accounts for the variance in <strong>Y</strong> that cannot be explained by <strong>X</strong>.</li>
+</ul>
+</div>
+<div id="performing-a-linear-regression-in-excel" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Performing a Linear Regression in Excel<a href="calibration-curves-and-linear-regression-in-excel.html#performing-a-linear-regression-in-excel" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let’s work through an example using a full linear regression with Excel’s Analysis ToolPak. Suppose we’re investigating the <strong>growth per day</strong> of sunflowers (dependent variable) based on the <strong>number of hours of direct sunlight</strong> they receive each day (independent variable).</p>
+<p>In this case, we want to determine if there is a linear relationship between hours of sunlight and sunflower growth. By performing the regression analysis, we’ll be able to assess if and how sunlight impacts sunflower growth, and how strong that relationship is.</p>
+<p>Let’s get started with the analysis in Excel!</p>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/xQniupalMmg?si=2cKXNSr4pNydlyDZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<p><strong>1. Download the data</strong>:</p>
+<ul>
+<li>Here is an <a href="https://canvaswizards.org.uk/dataspell/sunflowers/999999999">example sunflower dataset</a>. Download it to your local machine.</li>
+</ul>
+<p><strong>2. Import the data</strong>:</p>
+<ul>
+<li>Open up a new Excel workbook.</li>
+<li>Go to the <strong>Data</strong> tab and select the <strong>Import from csv/txt</strong> icon.</li>
+<li>Once the wizards has loaded click <strong>Load</strong>.</li>
+</ul>
+<p><strong>3. Perform Regression</strong>:</p>
+<ul>
+<li>Click anywhere on the sheet, select the <strong>Data</strong> tab again and select the <strong>Data Analysis</strong> button in the “Analysis” area of the tools ribbon.</li>
+<li>If you can’t see the button then you probably need to configure the Analysis ToolPak Add-In.</li>
+<li>Select “Regression” and click “OK”.</li>
+<li>Select the “Input Y Range” - This is your dependent variable, i.e. how much your sunflowers grew per day (column B). Include the header.</li>
+<li>Select the “Input X Range” - This is your independent variable, i.e. number of hours of direct sunlight per day (column A). Include the header.</li>
+<li>Tick the **Labels” box.</li>
+<li>Select the <strong>New Worksheet Ply</strong> output option</li>
+<li>Check <strong>all</strong> the remaining boxes for <strong>Residuals</strong> and <strong>Normal Probability</strong> sections.</li>
+<li>Click <strong>OK</strong>. Hopefully, you’ll see something like that shown in figure <a href="calibration-curves-and-linear-regression-in-excel.html#fig:regression-output">3.2</a>.</li>
+</ul>
+<div class="figure"><span style="display:block;" id="fig:regression-output"></span>
+<img src="img/03/regression_output.png" alt="This is what you should see after performing a regression on your example sunflower dataset using Excel's Analysis ToolPak Add-In." width="100%" />
+<p class="caption">
+Figure 3.2: This is what you should see after performing a regression on your example sunflower dataset using Excel’s Analysis ToolPak Add-In.
+</p>
+</div>
+</div>
+<div id="interpreting-your-linear-regression" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Interpreting Your Linear Regression<a href="calibration-curves-and-linear-regression-in-excel.html#interpreting-your-linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Wow! Your linear regression has provided so much information—it can feel like an avalanche at first. But don’t worry, not all of it is important for our purposes. Let’s focus on what <strong>is</strong> interesting and useful.</p>
+<p><strong>1. Summary Output Table</strong>:</p>
+<ul>
+<li><p><strong>Multiple R</strong>: This is the correlation coefficient between your observed and predicted values. It ranges from -1 to 1. A value closer to 1 or -1 indicates a strong relationship, whereas a value close to 0 means a weak relationship. In our case, a value of 0.65 indicates a reasonably strong correlation between growth and sunlight.</p></li>
+<li><p><strong>R Square (R²)</strong>: This tells us how much of the variance in the dependent variable is explained by the independent variable(s). In our case, an R² of 0.42 means that 42% of the variation in the dependent variable is explained by the model. Conversely, it means that approx 58%, i.e. the majority, of the variance is explained by other unknown variables. In this context, these unknown variables could include things like daily average temperature, rainfall, humidity etc.</p></li>
+<li><p><strong>Adjusted R Square</strong>: This adjusts the R² value for the number of predictors in your model. It’s more useful when dealing with multiple independent variables as it accounts for any unnecessary complexity added by too many variables.</p></li>
+<li><p><strong>Standard Error</strong>: This measures the average distance that the observed values fall from the regression line. A smaller standard error means a better fit. Note that the units of your standard error are the same as for your dependent variable, i.e. mm.</p></li>
+</ul>
+<p><strong>2. ANOVA Table</strong></p>
+<p>The ANOVA table tells us whether the overall regression model is significant.</p>
+<ul>
+<li><p><strong>Degrees of Freedom (df)</strong>: This refers to the number of independent pieces of information that went into calculating the estimates. It’s a balance between the number of observations and the number of predictors in the model.</p></li>
+<li><p><strong>SS Regression (Sum of Squares due to Regression)</strong>: This represents the variance in the dependent variable explained by the model.</p></li>
+<li><p><strong>SS Residual (Sum of Squares of Residuals)</strong>: This represents the variance that the model doesn’t explain.</p></li>
+<li><p><strong>Significance F</strong>: This is the p-value for the overall regression model. In our case, A p-value &lt; 0.05 means that the model is statistically significant, and we reject the null hypothesis that there is no relationship between the dependent and independent variables.</p></li>
+</ul>
+<p><strong>3. Coefficient Table</strong></p>
+<p>This table is where you’ll find the key parameters for your linear regression model.</p>
+<ul>
+<li><p><strong>Intercept (β₀)</strong>: This is the expected value of the dependent variable when the independent variable is zero. In other words, it’s your y-intercept value.</p></li>
+<li><p><strong>Gradient (β₁)</strong>: This is the slope of your line, showing how much the dependent variable changes with each unit increase in the independent variable.</p></li>
+<li><p><strong>P-values</strong>: These tell us whether the coefficients (intercept and gradient) are statistically significant. If the p-value for the gradient is less than 0.05, we can say that the independent variable has a significant impact on the dependent variable.</p></li>
+</ul>
+<p><strong>4. Residual Plots and Additional Tables</strong></p>
+<ul>
+<li><p><strong>Residual Plot</strong>: This plot shows the differences between the observed and predicted values (residuals). Ideally, these residuals should be randomly scattered around 0, indicating a good model fit. If this is not the case then it might not be appropriate for you to be performing a linear regression.</p></li>
+<li><p><strong>Normal Probability Plot</strong>: This checks if the residuals follow a normal distribution. If the points follow a straight line, the residuals are normally distributed. Again, if this is not the case then you should seek an alternative analysis.</p></li>
+<li><p><strong>Residual Output</strong>: This provides detailed information about each residual (the error for each observation).</p></li>
+<li><p><strong>Probability Output</strong>: Provides the probabilities of observing these residuals given the model fit.</p></li>
+</ul>
+</div>
+<div id="making-predictions-with-our-model" class="section level3 hasAnchor" number="3.2.4">
+<h3><span class="header-section-number">3.2.4</span> Making Predictions with Our Model<a href="calibration-curves-and-linear-regression-in-excel.html#making-predictions-with-our-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>With the insights from our linear regression analysis, we can now use our model to make predictions using the equation</p>
+<p><span class="math display">\[ \hat{Y} = \beta_0 + \beta_1 \hat{X} \]</span></p>
+<p>where:
+- <span class="math inline">\(\hat{Y}\)</span> is the predicted value of the dependent variable.
+- <span class="math inline">\(\beta_0\)</span> is the intercept, representing the expected value of <span class="math inline">\(Y\)</span> when <span class="math inline">\(X\)</span> is zero.
+- <span class="math inline">\(\beta_1\)</span> is the gradient (or slope), indicating how much <span class="math inline">\(Y\)</span> changes with a one-unit change in <span class="math inline">\(X\)</span>.
+- <span class="math inline">\(\hat{X}\)</span> is the value of the independent variable for which we want to make a prediction.</p>
+<p>For example, to predict the daily growth of our sunflowers when they’ve received six hours of sunlight:</p>
+<p><span class="math display">\[ \hat{Y} = 2.449 + ( 0.898  \times 6 )= 7.836 \]</span></p>
+<p>So, the predicted value of <span class="math inline">\(\hat{Y}\)</span> for <span class="math inline">\(\hat{X} = 6\)</span> is <span class="math inline">\(7.836\)</span> <span class="math inline">\(mm\)</span>.</p>
+<p>But wait! Couldn’t I have achieved this by simply adding a trend line to a plot of <span class="math inline">\(X\)</span> vs. <span class="math inline">\(Y\)</span>, as discussed in section @ref{section:calibration-curves}? Yes, you could have extracted the coefficients <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> from the equation of the line, and even added the <span class="math inline">\(R^2\)</span> value to the plot. So why go through all this additional work?</p>
+<p>The full regression analysis allows us to determine the <strong>standard error</strong> (<span class="math inline">\(SE\)</span>) of the model, which enables us to calculate the uncertainty associated with a predicted value <span class="math inline">\(\hat{Y}\)</span>. This is something we couldn’t do with a simple trend line!</p>
+<p>This uncertainty, often referred to as the <strong>margin of error</strong> (<span class="math inline">\(ME\)</span>), provides the range within which future individual observations are expected to fall.</p>
+<p>To calculate <span class="math inline">\(ME\)</span>:</p>
+<p><span class="math display">\[ ME = t \times SE \]</span></p>
+<p>where <span class="math inline">\(t\)</span> is the t-statistic which, in this context, can be drawn from a <strong>Student’s t-distribution</strong> and accounts for the uncertainty in estimating the population parameters from a sample. In excel you can calculate <span class="math inline">\(t\)</span> using:</p>
+<pre class="excel"><code>=T.INV.2T(alpha, df)</code></pre>
+<ul>
+<li><strong>alpha</strong> is the significance level, in this case 0.05.</li>
+<li><strong>df</strong> is the degrees of freedom which can be calculated as <span class="math inline">\(df = n - k - 1\)</span> where <span class="math inline">\(n\)</span> is the number of data points (observables) and <span class="math inline">\(k\)</span> is the number of independent variables. In our case, <span class="math inline">\(n=24\)</span> and <span class="math inline">\(k=1\)</span> so <span class="math inline">\(df=24-1-1=22\)</span>.</li>
+</ul>
+</div>
+<div id="extending-to-multiple-variables" class="section level3 hasAnchor" number="3.2.5">
+<h3><span class="header-section-number">3.2.5</span> Extending to Multiple Variables<a href="calibration-curves-and-linear-regression-in-excel.html#extending-to-multiple-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Right now, we’re focusing on simple linear regression (one dependent and one independent variable). However, what if we wanted to examine the effect of <strong>multiple independent variables</strong> (e.g., sunlight <strong>and</strong> temperature on sunflower growth)? This is called <strong>multiple regression</strong> and we’d consider the following linear regression equation instead:</p>
+<p><span class="math display">\[ Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \dots + \beta_n X_n + \epsilon \]</span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(X_1, X_2, ..., X_n\)</span>: The independent variables (e.g., sunlight, temperature, etc.).</li>
+<li><span class="math inline">\(\beta_0\)</span>: As before, this is the intercept, representing the expected value of <span class="math inline">\(Y\)</span> when all independent variables are 0.</li>
+<li><span class="math inline">\(\beta_1, \beta_2, ..., \beta_n\)</span>: The coefficients of the independent variables, representing the change in <span class="math inline">\(Y\)</span> for a one-unit change in <span class="math inline">\(X\)</span>, assuming all other variables remain constant.</li>
+</ul>
+<p>Multiple regression allows us to assess the combined effect of several factors, which is crucial when studying complex systems where multiple variables might influence the outcome.</p>
+<p>Unfortunately, Excel has its limits for this. But don’t worry—we’ll tackle multiple regression using R later!</p>
+</div>
+</div>
+<div id="complete-your-weekly-assignments-2" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Complete your Weekly Assignments<a href="calibration-curves-and-linear-regression-in-excel.html#complete-your-weekly-assignments-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In the BIOS103 Canvas course you will find this week’s <strong>formative</strong> and <strong>summative</strong> QS assignments. You should aim to complete both of these before the end of the online workshop that corresponds to this section’s content. The assignments are identical in all but the following details:</p>
+<ul>
+<li>You can attempt the <strong>formative assignment</strong> as many times as you like. It will not contribute to your overall score for this course. You will receive immediate feedback after submitting formative assignments. Make sure you practice this assignment until you’re confident that you can get the correct answer on your own.</li>
+<li>You can attempt the <strong>summative</strong> assignment <strong>only once</strong>. It will be identical to the formative assignment but will use different values and datasets. This assignment <strong>will</strong> contribute to your overall score for this course. Failure to complete a summative test before the stated deadline will result in a zero score. You will not receive immediate feedback after submitting summative assignments. Typically, your scores will be posted within 7 days.</li>
+</ul>
+<p>In <strong>ALL</strong> cases, when you click the button to “begin” a test you will have two hours to complete and submit the questions. If the test times out it will automatically submit.</p>
+
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="summarising-data-and-anova-in-excel.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introduction-to-r-part-i.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
