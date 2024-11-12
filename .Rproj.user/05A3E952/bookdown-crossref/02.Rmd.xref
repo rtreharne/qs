@@ -6,7 +6,7 @@ h3:generating-a-summary-table Generating a Summary Table
 fig:zebrafish-snap-2 Constructing a summary table
 h3:presenting-your-summary-table Presenting Your Summary Table
 fig:zebrafish-summary Formatting a summary table in Microsoft Word.
-h2:analysis-of-variance-anova Analysis of Variance (ANOVA)
+h2:anova Analysis of Variance (ANOVA)
 h3:grouped-boxplots-in-excel Grouped Boxplots in Excel
 h4:create-the-boxplot Create the Boxplot
 fig:zebrafish-boxplot Distribution of Zebrafish embryo lengths organised by Alcohol treatments.
@@ -18,7 +18,7 @@ h4:assumptions-of-anova Assumptions of ANOVA
 h3:performing-a-one-way-anova-in-excel Performing a One-Way Anova in Excel
 fig:anova Results tables of one-way ANOVA in Excel
 h4:exponent-notation Understanding Exponent Notation
-h3:performing-post-hoc-tests-in-excel Performing Post-hoc Tests in Excel
+h3:post-hoc-tests Performing Post-hoc Tests in Excel
 h4:ttest What is a T-test?
 h2:complete-your-weekly-assignments Complete your Weekly Assignments
 

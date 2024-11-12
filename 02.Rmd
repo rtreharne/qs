@@ -147,7 +147,7 @@ knitr::include_graphics("img/02/figure_3.png")
 
 
    
-## Analysis of Variance (ANOVA)
+## Analysis of Variance (ANOVA) {#anova}
 
 You're about to learn a **critical skill** that is important for becoming a scientist: formulating hypotheses and testing them. This is a cornerstone of scientific inquiry.
 
@@ -423,7 +423,7 @@ While the one-way ANOVA tells us that there are significant differences between 
 > Scientific notation is used to conveniently express very large or very small numbers that would otherwise be cumbersome to write out in full. In the case of p-values, this format is particularly useful because significant results often involve very small numbers. Instead of writing 0.0000000248, which can be error-prone and hard to read, Excel uses **2.48E-08** to convey the same information succinctly.
 >
 
-### Performing Post-hoc Tests in Excel
+### Performing Post-hoc Tests in Excel {#post-hoc-tests}
 
 Following a significant ANOVA, we need to perform additional tests to determine where the differences between the groups lie. These are called **Post-hoc** tests.
 
