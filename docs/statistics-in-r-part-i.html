@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="introduction-to-r-part-ii-visualisation.html"/>
-<link rel="next" href="appendix.html"/>
+<link rel="next" href="statistics-in-r-part-ii.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -241,12 +241,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.2.4" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>6.2.4</b> Post-Hoc tests</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="7" data-path="statistics-in-r-part-ii.html"><a href="statistics-in-r-part-ii.html"><i class="fa fa-check"></i><b>7</b> Statistics in R: Part II</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="statistics-in-r-part-ii.html"><a href="statistics-in-r-part-ii.html#linear-regression-in-r"><i class="fa fa-check"></i><b>7.1</b> Linear Regression in R</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="statistics-in-r-part-ii.html"><a href="statistics-in-r-part-ii.html#reading-and-inspecting-the-data"><i class="fa fa-check"></i><b>7.1.1</b> Reading and inspecting the data</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i>Appendix: Teach yourself R.</a>
 <ul>
 <li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#linkedin-learning"><i class="fa fa-check"></i>LinkedIn Learning</a></li>
 <li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#youtube"><i class="fa fa-check"></i>YouTube</a></li>
 <li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#books"><i class="fa fa-check"></i>Books</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="feedback.html"><a href="feedback.html"><i class="fa fa-check"></i>Appendix II: Feedback.</a></li>
 </ul>
 
       </nav>
@@ -450,10 +458,10 @@ contributions to data analysis and multiple comparison techniques. Interestingly
 <span id="cb58-3"><a href="statistics-in-r-part-i.html#cb58-3" tabindex="-1"></a><span class="fu">head</span>(activity_data)</span></code></pre></div>
 <pre><code>##   group ph temperature activity
 ## 1    10  7          20   0.0448
-## 2     5  7          20   0.0425
+## 2     5  7          20         
 ## 3     9  9          40   0.0558
 ## 4     9  7          20    ERROR
-## 5     4  9          20   0.0359
+## 5     4  9          20       -1
 ## 6     7  5          30   0.0423</code></pre>
 <p>The dataset includes some key columns:</p>
 <ul>
@@ -482,13 +490,13 @@ contributions to data analysis and multiple comparison techniques. Interestingly
 <span id="cb63-6"><a href="statistics-in-r-part-i.html#cb63-6" tabindex="-1"></a></span>
 <span id="cb63-7"><a href="statistics-in-r-part-i.html#cb63-7" tabindex="-1"></a><span class="co"># Re-inspect the data</span></span>
 <span id="cb63-8"><a href="statistics-in-r-part-i.html#cb63-8" tabindex="-1"></a><span class="fu">head</span>(activity_data)</span></code></pre></div>
-<pre><code>##   group ph temperature activity
-## 1    10  7          20   0.0448
-## 2     5  7          20   0.0425
-## 3     9  9          40   0.0558
-## 5     4  9          20   0.0359
-## 6     7  5          30   0.0423
-## 9     3  7          40   0.0418</code></pre>
+<pre><code>##    group ph temperature activity
+## 1     10  7          20   0.0448
+## 3      9  9          40   0.0558
+## 6      7  5          30   0.0423
+## 9      3  7          40   0.0418
+## 11     8  5          20   0.0441
+## 12     7  9          20   0.0256</code></pre>
 <p>Great! Now we should only have numerical data in our activity column. Before we learn how to perform a <strong>two-way</strong> ANOVA let’s try and visualise our data.</p>
 </div>
 <div id="visualising-the-data" class="section level3 hasAnchor" number="6.2.2">
@@ -593,10 +601,10 @@ Figure 6.3: Heat map showing the interaction between temperature and pH on enzym
 <span id="cb67-6"><a href="statistics-in-r-part-i.html#cb67-6" tabindex="-1"></a><span class="co"># View a summary of the ANOVA</span></span>
 <span id="cb67-7"><a href="statistics-in-r-part-i.html#cb67-7" tabindex="-1"></a><span class="fu">summary</span>(anova_result)</span></code></pre></div>
 <pre><code>##                 Df   Sum Sq  Mean Sq F value   Pr(&gt;F)    
-## ph               2 0.000937 0.000468   24.49 1.91e-10 ***
-## temperature      2 0.000509 0.000254   13.30 3.23e-06 ***
-## ph:temperature   4 0.016295 0.004074  213.02  &lt; 2e-16 ***
-## Residuals      252 0.004819 0.000019                     
+## ph               2 0.000957 0.000479   25.05 1.21e-10 ***
+## temperature      2 0.000490 0.000245   12.82 5.00e-06 ***
+## ph:temperature   4 0.016283 0.004071  213.10  &lt; 2e-16 ***
+## Residuals      250 0.004776 0.000019                     
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>And that’s it! You’ll notice that performing a two-way ANOVA in R is almost exactly the same as performing a one-way ANOVA. The critical difference is formula we use in the <code>aov()</code>: <code>activity ~ ph * temperature</code>. We’ve included both the factors (<code>ph</code> and <code>temperatures</code>) we’re interested in within the formula separated (confusingly perhaps!) with a <code>*</code> symbol.</p>
@@ -622,54 +630,54 @@ Figure 6.3: Heat map showing the interaction between temperature and pH on enzym
 ## 
 ## $ph
 ##              diff          lwr          upr     p adj
-## 7-5  0.0043888023  0.002797776 0.0059798281 0.0000000
-## 9-5  0.0036292220  0.002082080 0.0051763640 0.0000002
-## 9-7 -0.0007595803 -0.002316431 0.0007972703 0.4841348
+## 7-5  0.0044183644  0.002823274 0.0060134552 0.0000000
+## 9-5  0.0037190537  0.002168714 0.0052693932 0.0000001
+## 9-7 -0.0006993107 -0.002264321 0.0008657001 0.5438710
 ## 
 ## $temperature
 ##                diff          lwr         upr     p adj
-## 30-20 -0.0001161049 -0.001695190 0.001462980 0.9835710
-## 40-20  0.0028714726  0.001292388 0.004450557 0.0000763
-## 40-30  0.0029875775  0.001450609 0.004524546 0.0000215
+## 30-20 -0.0002284719 -0.001817209 0.001360265 0.9386138
+## 40-20  0.0027577790  0.001169042 0.004346516 0.0001698
+## 40-30  0.0029862509  0.001450088 0.004522414 0.0000215
 ## 
 ## $`ph:temperature`
 ##                    diff           lwr          upr     p adj
-## 7:20-5:20 -0.0104889946 -0.0142295559 -0.006748433 0.0000000
-## 9:20-5:20 -0.0250262542 -0.0289431479 -0.021109360 0.0000000
-## 5:30-5:20 -0.0169983696 -0.0207389309 -0.013257808 0.0000000
-## 7:30-5:20 -0.0091688696 -0.0131223631 -0.005215376 0.0000000
-## 9:30-5:20 -0.0110487484 -0.0147655336 -0.007331963 0.0000000
-## 5:40-5:20 -0.0218908696 -0.0256832136 -0.018098526 0.0000000
-## 7:40-5:20 -0.0093570234 -0.0132739171 -0.005440130 0.0000000
-## 9:40-5:20  0.0011508951 -0.0025433728  0.004845163 0.9878281
-## 9:20-7:20 -0.0145372596 -0.0181500825 -0.010924437 0.0000000
-## 5:30-7:20 -0.0065093750 -0.0099302275 -0.003088523 0.0000003
-## 7:30-7:20  0.0013201250 -0.0023323460  0.004972596 0.9690188
-## 9:30-7:20 -0.0005597538 -0.0039545918  0.002835084 0.9998702
-## 5:40-7:20 -0.0114018750 -0.0148792743 -0.007924476 0.0000000
-## 7:40-7:20  0.0011319712 -0.0024808518  0.004744794 0.9873673
-## 9:40-7:20  0.0116398897  0.0082697193  0.015010060 0.0000000
-## 5:30-9:20  0.0080278846  0.0044150617  0.011640708 0.0000000
-## 7:30-9:20  0.0158573846  0.0120245264  0.019690243 0.0000000
-## 9:30-9:20  0.0139775058  0.0103893053  0.017565706 0.0000000
-## 5:40-9:20  0.0031353846 -0.0005310256  0.006801795 0.1619036
-## 7:40-9:20  0.0156692308  0.0118741357  0.019464326 0.0000000
-## 9:40-9:20  0.0261771493  0.0226122782  0.029742020 0.0000000
-## 7:30-5:30  0.0078295000  0.0041770290  0.011481971 0.0000000
-## 9:30-5:30  0.0059496212  0.0025547832  0.009344459 0.0000036
-## 5:40-5:30 -0.0048925000 -0.0083698993 -0.001415101 0.0005311
-## 7:40-5:30  0.0076413462  0.0040285232  0.011254169 0.0000000
-## 9:40-5:30  0.0181492647  0.0147790943  0.021519435 0.0000000
-## 9:30-7:30 -0.0018798788 -0.0055079964  0.001748239 0.7924006
-## 5:40-7:30 -0.0127220000 -0.0164274849 -0.009016515 0.0000000
-## 7:40-7:30 -0.0001881538 -0.0040210120  0.003644704 1.0000000
-## 9:40-7:30  0.0103197647  0.0067147181  0.013924811 0.0000000
-## 5:40-9:30 -0.0108421212 -0.0142939323 -0.007390310 0.0000000
-## 7:40-9:30  0.0016917249 -0.0018964756  0.005279925 0.8660809
-## 9:40-9:30  0.0121996435  0.0088558818  0.015543405 0.0000000
-## 7:40-5:40  0.0125338462  0.0088674360  0.016200256 0.0000000
-## 9:40-5:40  0.0230417647  0.0196142112  0.026469318 0.0000000
-## 9:40-7:40  0.0105079186  0.0069430474  0.014072790 0.0000000</code></pre>
+## 7:20-5:20 -0.0104350631 -0.0141988811 -0.006671245 0.0000000
+## 9:20-5:20 -0.0252768696 -0.0292283805 -0.021325359 0.0000000
+## 5:30-5:20 -0.0169983696 -0.0207370550 -0.013259684 0.0000000
+## 7:30-5:20 -0.0091688696 -0.0131203805 -0.005217359 0.0000000
+## 9:30-5:20 -0.0110487484 -0.0147636697 -0.007333827 0.0000000
+## 5:40-5:20 -0.0218908696 -0.0256813118 -0.018100427 0.0000000
+## 7:40-5:20 -0.0093570234 -0.0132719529 -0.005442094 0.0000000
+## 9:40-5:20  0.0011508951 -0.0025415202  0.004843310 0.9877802
+## 9:20-7:20 -0.0148418065 -0.0185181802 -0.011165433 0.0000000
+## 5:30-7:20 -0.0065633065 -0.0100099068 -0.003116706 0.0000003
+## 7:30-7:20  0.0012661935 -0.0024101802  0.004942567 0.9769340
+## 9:30-7:20 -0.0006136852 -0.0040344930  0.002807122 0.9997549
+## 5:40-7:20 -0.0114558065 -0.0149584822 -0.007953131 0.0000000
+## 7:40-7:20  0.0010780397 -0.0025589863  0.004715066 0.9912213
+## 9:40-7:20  0.0115859583  0.0081896049  0.014982312 0.0000000
+## 5:30-9:20  0.0082785000  0.0046278607  0.011929139 0.0000000
+## 7:30-9:20  0.0161080000  0.0122396881  0.019976312 0.0000000
+## 9:30-9:20  0.0142281212  0.0106018230  0.017854419 0.0000000
+## 5:40-9:20  0.0033860000 -0.0003176267  0.007089627 0.1035482
+## 7:40-9:20  0.0159198462  0.0120889101  0.019750782 0.0000000
+## 9:40-9:20  0.0264277647  0.0228245260  0.030031003 0.0000000
+## 7:30-5:30  0.0078295000  0.0041788607  0.011480139 0.0000000
+## 9:30-5:30  0.0059496212  0.0025564856  0.009342757 0.0000036
+## 5:40-5:30 -0.0048925000 -0.0083681555 -0.001416845 0.0005270
+## 7:40-5:30  0.0076413462  0.0040303350  0.011252357 0.0000000
+## 9:40-5:30  0.0181492647  0.0147807844  0.021517745 0.0000000
+## 9:30-7:30 -0.0018798788 -0.0055061770  0.001746419 0.7918724
+## 5:40-7:30 -0.0127220000 -0.0164256267 -0.009018373 0.0000000
+## 7:40-7:30 -0.0001881538 -0.0040190899  0.003642782 1.0000000
+## 9:40-7:30  0.0103197647  0.0067165260  0.013923003 0.0000000
+## 5:40-9:30 -0.0108421212 -0.0142922013 -0.007392041 0.0000000
+## 7:40-9:30  0.0016917249 -0.0018946761  0.005278126 0.8656961
+## 9:40-9:30  0.0121996435  0.0088575587  0.015541728 0.0000000
+## 7:40-5:40  0.0125338462  0.0088692746  0.016198418 0.0000000
+## 9:40-5:40  0.0230417647  0.0196159301  0.026467599 0.0000000
+## 9:40-7:40  0.0105079186  0.0069448352  0.014071002 0.0000000</code></pre>
 <div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="statistics-in-r-part-i.html#cb71-1" tabindex="-1"></a><span class="co"># You&#39;ll need these last two lines to complete your summative test this week</span></span>
 <span id="cb71-2"><a href="statistics-in-r-part-i.html#cb71-2" tabindex="-1"></a></span>
 <span id="cb71-3"><a href="statistics-in-r-part-i.html#cb71-3" tabindex="-1"></a><span class="co"># Get the interaction effects table and conver to a dataframe</span></span>
@@ -711,7 +719,7 @@ Figure 6.3: Heat map showing the interaction between temperature and pH on enzym
         </div>
       </div>
 <a href="introduction-to-r-part-ii-visualisation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="appendix.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="statistics-in-r-part-ii.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

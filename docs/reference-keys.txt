@@ -79,3 +79,6 @@ importing-and-cleaning-the-data
 visualising-the-data
 conducting-a-two-way-anova
 post-hoc-tests-2
+statistics-in-r-part-ii
+linear-regression-in-r
+reading-and-inspecting-the-data

@@ -1,0 +1,58 @@
+# Statistics in R: Part II
+
+```{r, results='asis', echo=FALSE}
+if (knitr::is_html_output()) {
+  cat('<iframe width="100%" height="400" src="img/09/likertysplit_plot.html" title="LikertySplit" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
+}
+```
+
+If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover **all of this section's content** and complete this week's **formative and summative assessments** in the BIOS103 Canvas Course.
+
+We're going to revisit linear regression in this chapter. Our aim is to do what we were able to do with Excel in section \@ref(linear-regression), but with R. We'll also extend our knowledge by learning how to perform a multiple linear regression (MLR), i.e. regression involving more than one independent variables.
+
+The **key objectives** for this chapter are as follows:
+
+- Linearising data with logarithms.
+- Performing a linear regression in R.
+- Visualising linear relationships and adding trendlines in R.
+- Predicting values using your regression models.
+- Extending linear regression to multiple variables (MLR).
+
+You should have a quick scroll through section \@ref(linear-regression) again before you continue Yes, I mean right now.
+
+## Linear Regression in R
+
+To keep this week's QS relevant to what you've been doing in the lab this week I've contrived the following scenario:
+
+Because of your impressive data science skills, you’ve been invited to join a research team investigating how cells survive under stress. Your challenge is to uncover the survival secrets of two yeast strains: the wild-type (WT) and a genetically modified mutant strain (3KO).
+
+In the lab, both strains were exposed to increasing doses of hydrogen peroxide (H₂O₂)—a chemical that causes oxidative stress by damaging DNA and other essential cellular components. Your task is to help the team figure out the **LD50** for each strain — the dose that reduces survival by 50%.
+
+This isn’t just an academic exercise. Oxidative stress is a key factor in ageing and diseases like cancer, so understanding how cells respond to it could have far-reaching implications for science and medicine.
+
+Here's your <a href="https://raw.githubusercontent.com/rtreharne/qs/refs/heads/main/data/09/yeast_999.csv" target="_blank">dataset</a>. Containing the results of a **dose-response assay**. It contains the following headers:
+
+- `dose` (mM of H₂O₂): The level of oxidative stress applied.
+- `strain_type` (WT or 3KO): The two strains being tested.
+- `counts_per_plate`: The number of surviving colonies at each dose.
+
+Preliminary work has already established that at a **zero dose** (0 mM) of hydrogen peroxide, both yeast strains (WT and 3KO) have an average count of **300 colonies**.
+
+Your challenge is to use linear regression in R to model the relationship between H₂O₂ dose and survival. By calculating and comparing the LD50 values for each strain, you’ll help the team uncover how genetic differences impact a cell’s ability to withstand damage.
+
+So, let’s put your QS skills to work — time to dive into the data with R.
+
+### Reading and inspecting the data
+
+Create a new R project and start a new script file. Read your data to a new variable called `yeast_data`. Use the `head()` function on your data to have a sneak peak. This is what you should see.
+
+```{R eval=FALSE}
+yeast_data = read.csv("https://raw.githubusercontent.com/rtreharne/qs/refs/heads/main/data/09/yeast_999.csv")
+
+head(yeast_data)
+```
+
+
+
+
+
