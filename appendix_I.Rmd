@@ -5,7 +5,7 @@ date: "2024-10-07"
 output: html_document
 ---
 
-# Appendix: Teach yourself R. {.unnumbered #appendix}
+# Appendix I: Teach yourself R. {.unnumbered #appendix}
 
 ## LinkedIn Learning {.unnumbered}
 
