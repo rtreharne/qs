@@ -13,7 +13,7 @@ fig:logplot
 fig:histogram-vbc
 fig:grouped-boxplot
 fig:scatterplot
-fig:unnamed-chunk-59
+fig:plotly
 fig:boxplot
 fig:interactionplot
 fig:heatmap

@@ -538,7 +538,7 @@ install.packages("plotly")
 ```
 Hit enter and then wait while the Plotly package is installed. Then start a new script file, copy/past the script below and run it as source.
 
-```{R, warning=FALSE, message=FALSE, fig.cap="A 3D scatterplot showing Viable bacterial counts (VBC) vs both Temperature AND Moisture using the fantastic Plotly package.",  fig.label="fig:plotly"}
+```{R plotly, warning=FALSE, message=FALSE, fig.cap="A 3D scatterplot showing Viable bacterial counts (VBC) vs both Temperature AND Moisture using the fantastic Plotly package.",  fig.label="fig:plotly"}
 # Include the plotly library in your environment
 library(plotly)
 
