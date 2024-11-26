@@ -177,7 +177,7 @@ lm_WT <- lm(log_survival ~ dose, data = yeast_data[yeast_data$strain_type == "WT
 # View summary
 summary(lm_WT)
 ```
-Let's unpack these two lines and the summary output:
+Let's unpack these two lines and interpret the summary output:
 
 1. **Create a linear model**:
 

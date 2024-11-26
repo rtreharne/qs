@@ -92,3 +92,10 @@ calculating-ld50
 multiple-linear-regression-mlr-in-r.
 performing-an-mlr-in-r
 predicting-values-for-viable-counts
+loops-logic-and-functions-diving-deeper-into-r
+what-is-fasta
+extracting-sequences-from-a-fasta-file
+writing-functional-code
+counting-motifs
+thefunbit
+fasta-tools
