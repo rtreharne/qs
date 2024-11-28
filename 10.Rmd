@@ -8,7 +8,7 @@ This week, we’re stepping outside the lab’s core content to focus on key cod
 
 You might find this week challenging, and that’s okay! Growth happens when we push beyond our comfort zones. Remember, support is always available - engage with the workshop channel on Microsoft Teams. If you feel you want in-person support then the demo team and I will be in the Rendall Building PC Teaching Centre between 9 and 11am on Thursday. Drop-in whenever.
 
-So, take a deep breath. You’ve got this. Let’s unlock the true potential of coding together! Here are this weeks **learning objectives**:
+So, take a deep breath. You’ve got this. Let’s unlock the true potential of coding together! Here are this week's **learning objectives**:
 
 - Understand how to use **for loops** to repeat tasks efficiently.
 - Learn how to apply **if statements** to control the flow of your code with logical conditions.
@@ -412,6 +412,10 @@ Sounds fun right? Below is an example of a `main.R` script that implements the a
 - ChatGPTing.
 - Asking for help in the Workshop channel in Teams (it will always be given!).
 - Asking for help from your peers.
+
+>What is a Reverse Complement?
+>
+>A reverse complement is the sequence of DNA that pairs with another, read in the opposite direction. For example, the reverse complement of 'ATGC' is 'TACG'. It's important because DNA is double-stranded, and knowing the reverse complement helps in understanding how strands interact, designing primers, and analysing genetic data.
 
 Here's the partially written script:
 
