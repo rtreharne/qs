@@ -307,7 +307,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="the-doomscroller-virus-pandemic-scenario" class="section level2 hasAnchor" number="9.1">
 <h2><span class="header-section-number">9.1</span> The Doomscroller Virus Pandemic: Scenario<a href="image-analysis-in-r.html#the-doomscroller-virus-pandemic-scenario" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A new virus, dubbed the <em>Doomscroller</em> virus, is affecting young people worldwide, resulting in a drastic drop in productivity. One of the key symptoms of this virus is a reduction in viable red blood cell counts. Labs across the country are overwhelmed and short on costly autocounting equipment. Fortunately, they still have large supplies of hemocytometer slides and digital microscopes for manual cell counting.</p>
-<p>You’ve recently been hired as an expert bio-analyst to help solve this bottleneck. Your team has developed a short script called <a href="image-analysis-in-r.html#hemo-tools">hemo-tools.R”</a> that can analyse digital images of hemocytometer slides and automatically count viable red blood cells.</p>
+<p>You’ve recently been hired as an expert bio-analyst to help solve this bottleneck. Your team has developed a short script called <a href="image-analysis-in-r.html#hemo-tools">hemo-tools.R</a> that can analyse digital images of hemocytometer slides and automatically count viable red blood cells.</p>
 <p>To prove the viability of this solution, you are given a zip file containing 100 hemocytometer images: <a href="https://github.com/rtreharne/qs/raw/refs/heads/main/data/11/hemo_100.zip" target="_blank">hemo_100.zip</a>. Each file in the zip file represents a slide prepared from suspected infected blood samples.</p>
 <p><strong>Your initial task is to run the script on each image and calculate the average number of viable cells across all 100 images</strong>.</p>
 <div id="performing-a-manual-count" class="section level3 hasAnchor" number="9.1.1">
@@ -440,9 +440,9 @@ Figure 9.2: You’ll probably see this error in your console when trying to run 
 <span id="cb5-14"><a href="image-analysis-in-r.html#cb5-14" tabindex="-1"></a>))</span></code></pre></div>
 <pre><code>## [1] &quot;Total viable cell count:  78 ; Viable cells per big square:  8.67&quot;</code></pre>
 <div class="figure"><span style="display:block;" id="fig:hemo"></span>
-<img src="img/11/hemo.png" alt="The same image as in figure 9.1 but without the grid lines. This is a bit of a cheat - I've removed the grid lines from my images because my they interfere with my script's ability to automatically count viable cells. Please suspend your disbelief." width="100%" />
+<img src="img/11/hemo.png" alt="The same image as in figure 9.1 but without the grid lines. This is a bit of a cheat - I've removed the grid lines from my images because they interfere with my script's ability to automatically count viable cells. Please suspend your disbelief." width="100%" />
 <p class="caption">
-Figure 9.3: The same image as in figure 9.1 but without the grid lines. This is a bit of a cheat - I’ve removed the grid lines from my images because my they interfere with my script’s ability to automatically count viable cells. Please suspend your disbelief.
+Figure 9.3: The same image as in figure 9.1 but without the grid lines. This is a bit of a cheat - I’ve removed the grid lines from my images because they interfere with my script’s ability to automatically count viable cells. Please suspend your disbelief.
 </p>
 </div>
 <h3>

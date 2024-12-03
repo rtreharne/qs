@@ -20,7 +20,7 @@ All of the above will be delivered using the following, highly contrived (and ve
 
 A new virus, dubbed the *Doomscroller* virus, is affecting young people worldwide, resulting in a drastic drop in productivity. One of the key symptoms of this virus is a reduction in viable red blood cell counts. Labs across the country are overwhelmed and short on costly autocounting equipment. Fortunately, they still have large supplies of hemocytometer slides and digital microscopes for manual cell counting.
 
-You've recently been hired as an expert bio-analyst to help solve this bottleneck. Your team has developed a short script called <a href="#hemo-tools">hemo-tools.R"</a> that can analyse digital images of hemocytometer slides and automatically count viable red blood cells.
+You've recently been hired as an expert bio-analyst to help solve this bottleneck. Your team has developed a short script called <a href="#hemo-tools">hemo-tools.R</a> that can analyse digital images of hemocytometer slides and automatically count viable red blood cells.
 
 To prove the viability of this solution, you are given a zip file containing 100 hemocytometer images: <a href="https://github.com/rtreharne/qs/raw/refs/heads/main/data/11/hemo_100.zip" target="_blank">hemo_100.zip</a>. Each file in the zip file represents a slide prepared from suspected infected blood samples. 
 
@@ -172,7 +172,7 @@ print(paste(
   "; Viable cells per big square: ", sprintf("%.2f", cells_per_square)
 ))
 ```
-```{r hemo, echo=FALSE, fig.cap="The same image as in figure 9.1 but without the grid lines. This is a bit of a cheat - I've removed the grid lines from my images because my they interfere with my script's ability to automatically count viable cells. Please suspend your disbelief.", out.width="100%"}
+```{r hemo, echo=FALSE, fig.cap="The same image as in figure 9.1 but without the grid lines. This is a bit of a cheat - I've removed the grid lines from my images because they interfere with my script's ability to automatically count viable cells. Please suspend your disbelief.", out.width="100%"}
 knitr::include_graphics("img/11/hemo.png")
 ```
 
