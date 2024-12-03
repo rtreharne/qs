@@ -8,6 +8,7 @@ rmd_files: [
   "08.Rmd",
   "09.Rmd",
   "10.Rmd",
+  "11.Rmd",
   "appendix_I.Rmd",
   "appendix_II.Rmd"
 ]
