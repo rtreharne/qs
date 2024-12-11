@@ -1,0 +1,46 @@
+# Boss Fight
+
+If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you complete this week's **formative and summative assessments** in the BIOS103 Canvas Course. 
+
+**Wow**. You’ve made it to the end of the BIOS103 QS course! Congratulations. Over the semester, you’ve built an impressive toolbox of skills. By now, you should be able to:
+
+- Import data files in Excel and R.
+- Clean, subset, and filter data in Excel and R.
+- Generate tables of summary statistics in Excel and R.
+- Perform a one-way ANOVA in Excel and R, and interpret the results.
+- Conduct post-hoc tests using Bonferroni-corrected t-tests in Excel.
+- Perform post-hoc tests using Tukey’s HSD in R.
+- Conduct linear regression in Excel and R, and interpret the results.
+- Generate boxplots, scatterplots, and histograms in Excel and R.
+- Perform a two-way ANOVA in R.
+- Conduct multiple linear regression (MLR) in R.
+- Use pre-existing R code to parse FASTA files and perform basic bioinformatics on DNA sequences.
+- Leverage R code and packages to perform automated image analysis on multiple files.
+
+Phew! When you put it all together, that’s an incredible skill set.
+
+**But it’s not over just yet**. Are you ready for one last challenge? Enter the **Boss Fight**: 
+Four questions to test your mettle. Three have been adapted from the past four weeks (don’t worry, no yeast or mushrooms this time!). The final question is a fun one to wrap things up.
+
+This time, I’m not giving you any pre-written code. You’ll need to recycle and tweak what you’ve already encountered in Chapters 6, 8, and 9. Go attempt the final formative/summative assignments on Canvas now.
+
+And here’s your final **learning objective**:
+
+- Learn that it's OK to **forget everything** when it comes to code.
+
+Coding isn’t about memorising everything, it’s about knowing where to look and how to apply what you find. I’ve been coding for over a decade, and I still Google solutions regularly. The important thing is that you are now equipped with the tools and confidence to dive back into R next September, ready to tackle advanced quantitative skills with a solid foundation.
+
+A massive thank you to everyone who submitted feedback via the **Likerty Split** tool throughout the course. Your real-time ratings and comments have been instrumental in shaping and refining this course on the go. **This is your final opportunity to share any feedback**. Remember, it’s anonymous, so feel free to say what you think. Constructive criticism is always encouraged, and positive feedback is greatly appreciated. You can also view the feedback submitted by your peers <a href="https://canvaswizards.org.uk/likertysplit/qs/summary/" target="_blank">here</a>.
+
+```{r, results='asis', echo=FALSE}
+if (knitr::is_html_output()) {
+  cat('<iframe width="100%" height="400" src="https://canvaswizards.org.uk/likertysplit/qs/" title="LikertySplit" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>')
+}
+```
+
+As always, the demonstrator team will provide direct support in the Workshop channel on Microsoft Teams for this last formative and summative quiz. For those attending in person, I’ll be bringing a limited stock of mince pies to the Thursday 9–11 AM workshop session in the Randall Building. You’re all warmly invited to join us.
+
+**Merry Christmas and a Happy New Year!**
+
+Rob Treharne. 11/12/2024
+
