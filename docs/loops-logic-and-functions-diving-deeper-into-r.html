@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>8 Loops, Logic and Functions: Diving Deeper into R | Quantiative Skills in Biosciences I</title>
+  <meta name="description" content="8 Loops, Logic and Functions: Diving Deeper into R | Quantiative Skills in Biosciences I" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="8 Loops, Logic and Functions: Diving Deeper into R | Quantiative Skills in Biosciences I" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="8 Loops, Logic and Functions: Diving Deeper into R | Quantiative Skills in Biosciences I" />
+  
+  
+  
+
+<meta name="author" content="R. E. Treharne" />
+
+
+<meta name="date" content="2024-10-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="statistics-in-r-part-ii.html"/>
+<link rel="next" href="image-analysis-in-r.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Cover</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html"><i class="fa fa-check"></i><b>1</b> Introduction to Excel and R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#estimating-the-volume-of-a-snail"><i class="fa fa-check"></i><b>1.1</b> Estimating the Volume of a Snail</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#download-and-import-the-csv-file"><i class="fa fa-check"></i><b>1.1.1</b> Download and Import the CSV File</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#calculate-volume-v-in-excel"><i class="fa fa-check"></i><b>1.1.2</b> Calculate Volume <span class="math inline">\(V\)</span> in Excel</a></li>
+<li class="chapter" data-level="1.1.3" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#add-a-linear-trendline-and-equation"><i class="fa fa-check"></i><b>1.1.3</b> Add a Linear Trendline and Equation</a></li>
+<li class="chapter" data-level="1.1.4" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#estimation-of-volume-for-a-snail-with-mass-10g"><i class="fa fa-check"></i><b>1.1.4</b> Estimation of Volume for a Snail with Mass 10g</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#getting-ready-for-R"><i class="fa fa-check"></i><b>1.2</b> Getting Ready for R</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#download-and-install-windows-and-mac-only"><i class="fa fa-check"></i><b>1.2.1</b> Download and Install (Windows and Mac only)</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#creating-your-first-r-project-in-rstudio"><i class="fa fa-check"></i><b>1.2.2</b> Creating Your First R Project in RStudio</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#something-more-complicated"><i class="fa fa-check"></i><b>1.2.3</b> Something More Complicated</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#complete-your-weekly-assignments"><i class="fa fa-check"></i><b>1.3</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html"><i class="fa fa-check"></i><b>2</b> Summarising Data and ANOVA in Excel</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#summarising-data"><i class="fa fa-check"></i><b>2.1</b> Summarising Data</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#download-and-import-the-csv-file-1"><i class="fa fa-check"></i><b>2.1.1</b> Download and Import the CSV File</a></li>
+<li class="chapter" data-level="2.1.2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#generating-a-summary-table"><i class="fa fa-check"></i><b>2.1.2</b> Generating a Summary Table</a></li>
+<li class="chapter" data-level="2.1.3" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#presenting-your-summary-table"><i class="fa fa-check"></i><b>2.1.3</b> Presenting Your Summary Table</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#anova"><i class="fa fa-check"></i><b>2.2</b> Analysis of Variance (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#grouped-boxplots-in-excel"><i class="fa fa-check"></i><b>2.2.1</b> Grouped Boxplots in Excel</a></li>
+<li class="chapter" data-level="2.2.2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#constructing-testable-hypotheses"><i class="fa fa-check"></i><b>2.2.2</b> Constructing Testable Hypotheses</a></li>
+<li class="chapter" data-level="2.2.3" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#performing-a-one-way-anova-in-excel"><i class="fa fa-check"></i><b>2.2.3</b> Performing a One-Way Anova in Excel</a></li>
+<li class="chapter" data-level="2.2.4" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#post-hoc-tests"><i class="fa fa-check"></i><b>2.2.4</b> Performing Post-hoc Tests in Excel</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#complete-your-weekly-assignments-1"><i class="fa fa-check"></i><b>2.3</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html"><i class="fa fa-check"></i><b>3</b> Calibration Curves and Linear Regression in Excel</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#calibration-curves"><i class="fa fa-check"></i><b>3.1</b> Calibration Curves</a></li>
+<li class="chapter" data-level="3.2" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#linear-regression"><i class="fa fa-check"></i><b>3.2</b> Linear Regression</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#the-linear-regression-equation"><i class="fa fa-check"></i><b>3.2.1</b> The Linear Regression Equation</a></li>
+<li class="chapter" data-level="3.2.2" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#performing-a-linear-regression-in-excel"><i class="fa fa-check"></i><b>3.2.2</b> Performing a Linear Regression in Excel</a></li>
+<li class="chapter" data-level="3.2.3" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#interpreting-your-linear-regression"><i class="fa fa-check"></i><b>3.2.3</b> Interpreting Your Linear Regression</a></li>
+<li class="chapter" data-level="3.2.4" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#making-predictions-with-our-model"><i class="fa fa-check"></i><b>3.2.4</b> Making Predictions with Our Model</a></li>
+<li class="chapter" data-level="3.2.5" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#extending-to-multiple-variables"><i class="fa fa-check"></i><b>3.2.5</b> Extending to Multiple Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#complete-your-weekly-assignments-2"><i class="fa fa-check"></i><b>3.3</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html"><i class="fa fa-check"></i><b>4</b> Introduction to R: Part I</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#reading-and-inspecting-data"><i class="fa fa-check"></i><b>4.1</b> Reading and Inspecting Data</a></li>
+<li class="chapter" data-level="4.2" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#subsetting"><i class="fa fa-check"></i><b>4.2</b> Subsetting</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#slicing"><i class="fa fa-check"></i><b>4.2.1</b> Slicing</a></li>
+<li class="chapter" data-level="4.2.2" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#filtering"><i class="fa fa-check"></i><b>4.2.2</b> Filtering</a></li>
+<li class="chapter" data-level="4.2.3" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#so-what"><i class="fa fa-check"></i><b>4.2.3</b> So what?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#summarising-data-in-r"><i class="fa fa-check"></i><b>4.3</b> Summarising Data in R</a></li>
+<li class="chapter" data-level="4.4" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#complete-your-weekly-assignments-3"><i class="fa fa-check"></i><b>4.4</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html"><i class="fa fa-check"></i><b>5</b> Introduction to R part II: Visualisation</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#mushroom-compost-scenario"><i class="fa fa-check"></i><b>5.1</b> Mushroom Compost Scenario</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#the-dataset"><i class="fa fa-check"></i><b>5.1.1</b> The dataset</a></li>
+<li class="chapter" data-level="5.1.2" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#further-information"><i class="fa fa-check"></i><b>5.1.2</b> Further information</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#inspecting-and-summarising"><i class="fa fa-check"></i><b>5.2</b> Inspecting and Summarising</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#summary-table"><i class="fa fa-check"></i><b>5.2.1</b> Summary Table</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#histogram"><i class="fa fa-check"></i><b>5.3</b> Histogram</a></li>
+<li class="chapter" data-level="5.4" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#grouped-boxplot"><i class="fa fa-check"></i><b>5.4</b> Grouped Boxplot</a></li>
+<li class="chapter" data-level="5.5" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#scatterplot"><i class="fa fa-check"></i><b>5.5</b> Scatterplot</a></li>
+<li class="chapter" data-level="5.6" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#just-for-fun"><i class="fa fa-check"></i><b>5.6</b> Just for Fun</a></li>
+<li class="chapter" data-level="5.7" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#complete-your-weekly-assignments-4"><i class="fa fa-check"></i><b>5.7</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html"><i class="fa fa-check"></i><b>6</b> Statistics in R: Part I</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#one-way-anova-in-r"><i class="fa fa-check"></i><b>6.1</b> One-Way ANOVA in R</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#importing-data-from-an-online-source"><i class="fa fa-check"></i><b>6.1.1</b> Importing Data from an Online Source</a></li>
+<li class="chapter" data-level="6.1.2" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#summarising-descriptive-statistics"><i class="fa fa-check"></i><b>6.1.2</b> Summarising (Descriptive Statistics)</a></li>
+<li class="chapter" data-level="6.1.3" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#grouped-boxplots-in-r"><i class="fa fa-check"></i><b>6.1.3</b> Grouped Boxplots in R</a></li>
+<li class="chapter" data-level="6.1.4" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#conducting-a-one-way-anova"><i class="fa fa-check"></i><b>6.1.4</b> Conducting a One-Way ANOVA</a></li>
+<li class="chapter" data-level="6.1.5" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#post-hoc-tests-1"><i class="fa fa-check"></i><b>6.1.5</b> Post-Hoc Tests</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#two-way-anova-in-r"><i class="fa fa-check"></i><b>6.2</b> Two-way ANOVA in R</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#importing-and-cleaning-the-data"><i class="fa fa-check"></i><b>6.2.1</b> Importing and Cleaning the Data</a></li>
+<li class="chapter" data-level="6.2.2" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#visualising-the-data"><i class="fa fa-check"></i><b>6.2.2</b> Visualising the data</a></li>
+<li class="chapter" data-level="6.2.3" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#conducting-a-two-way-anova"><i class="fa fa-check"></i><b>6.2.3</b> Conducting a Two-Way ANOVA</a></li>
+<li class="chapter" data-level="6.2.4" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>6.2.4</b> Post-Hoc tests</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="statistics-in-r-part-ii.html"><a href="statistics-in-r-part-ii.html"><i class="fa fa-check"></i><b>7</b> Statistics in R: Part II</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="statistics-in-r-part-ii.html"><a href="statistics-in-r-part-ii.html#linear-regression-in-r"><i class="fa fa-check"></i><b>7.1</b> Linear Regression in R</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="statistics-in-r-part-ii.html"><a href="statistics-in-r-part-ii.html#reading-the-data-and-calculating-a-survival-column"><i class="fa fa-check"></i><b>7.1.1</b> Reading the data and calculating a survival column</a></li>
+<li class="chapter" data-level="7.1.2" data-path="statistics-in-r-part-ii.html"><a href="statistics-in-r-part-ii.html#visualising-the-data-1"><i class="fa fa-check"></i><b>7.1.2</b> Visualising the data</a></li>
+<li class="chapter" data-level="7.1.3" data-path="statistics-in-r-part-ii.html"><a href="statistics-in-r-part-ii.html#linearising-the-data"><i class="fa fa-check"></i><b>7.1.3</b> Linearising the data</a></li>
+<li class="chapter" data-level="7.1.4" data-path="statistics-in-r-part-ii.html"><a href="statistics-in-r-part-ii.html#performing-a-linear-regression-in-r"><i class="fa fa-check"></i><b>7.1.4</b> Performing a Linear Regression in R</a></li>
+<li class="chapter" data-level="7.1.5" data-path="statistics-in-r-part-ii.html"><a href="statistics-in-r-part-ii.html#calculating-ld50"><i class="fa fa-check"></i><b>7.1.5</b> Calculating LD50</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="statistics-in-r-part-ii.html"><a href="statistics-in-r-part-ii.html#multiple-linear-regression-mlr-in-r."><i class="fa fa-check"></i><b>7.2</b> Multiple Linear Regression (MLR) in R.</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="statistics-in-r-part-ii.html"><a href="statistics-in-r-part-ii.html#performing-an-mlr-in-r"><i class="fa fa-check"></i><b>7.2.1</b> Performing an MLR in R</a></li>
+<li class="chapter" data-level="7.2.2" data-path="statistics-in-r-part-ii.html"><a href="statistics-in-r-part-ii.html#predicting-values-for-viable-counts"><i class="fa fa-check"></i><b>7.2.2</b> Predicting values for Viable Counts</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="loops-logic-and-functions-diving-deeper-into-r.html"><a href="loops-logic-and-functions-diving-deeper-into-r.html"><i class="fa fa-check"></i><b>8</b> Loops, Logic and Functions: Diving Deeper into R</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="loops-logic-and-functions-diving-deeper-into-r.html"><a href="loops-logic-and-functions-diving-deeper-into-r.html#what-is-fasta"><i class="fa fa-check"></i><b>8.1</b> What is FASTA?</a></li>
+<li class="chapter" data-level="8.2" data-path="loops-logic-and-functions-diving-deeper-into-r.html"><a href="loops-logic-and-functions-diving-deeper-into-r.html#extracting-sequences-from-a-fasta-file"><i class="fa fa-check"></i><b>8.2</b> Extracting Sequences from a FASTA File</a></li>
+<li class="chapter" data-level="8.3" data-path="loops-logic-and-functions-diving-deeper-into-r.html"><a href="loops-logic-and-functions-diving-deeper-into-r.html#writing-functional-code"><i class="fa fa-check"></i><b>8.3</b> Writing Functional Code</a></li>
+<li class="chapter" data-level="8.4" data-path="loops-logic-and-functions-diving-deeper-into-r.html"><a href="loops-logic-and-functions-diving-deeper-into-r.html#counting-motifs"><i class="fa fa-check"></i><b>8.4</b> Counting Motifs</a></li>
+<li class="chapter" data-level="8.5" data-path="loops-logic-and-functions-diving-deeper-into-r.html"><a href="loops-logic-and-functions-diving-deeper-into-r.html#thefunbit"><i class="fa fa-check"></i><b>8.5</b> The Fun Bit (AKA - The Last Horrible Bit)</a></li>
+<li class="chapter" data-level="8.6" data-path="loops-logic-and-functions-diving-deeper-into-r.html"><a href="loops-logic-and-functions-diving-deeper-into-r.html#fasta-tools"><i class="fa fa-check"></i><b>8.6</b> <code>fasta-tools.R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="image-analysis-in-r.html"><a href="image-analysis-in-r.html"><i class="fa fa-check"></i><b>9</b> Image Analysis in R</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="image-analysis-in-r.html"><a href="image-analysis-in-r.html#the-doomscroller-virus-pandemic-scenario"><i class="fa fa-check"></i><b>9.1</b> The Doomscroller Virus Pandemic: Scenario</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="image-analysis-in-r.html"><a href="image-analysis-in-r.html#performing-a-manual-count"><i class="fa fa-check"></i><b>9.1.1</b> Performing a Manual Count</a></li>
+<li class="chapter" data-level="9.1.2" data-path="image-analysis-in-r.html"><a href="image-analysis-in-r.html#installing-packages-and-setting-up"><i class="fa fa-check"></i><b>9.1.2</b> Installing Packages and Setting Up</a></li>
+<li class="chapter" data-level="9.1.3" data-path="image-analysis-in-r.html"><a href="image-analysis-in-r.html#automating-the-count"><i class="fa fa-check"></i><b>9.1.3</b> Automating The Count</a></li>
+<li class="chapter" data-level="9.1.4" data-path="image-analysis-in-r.html"><a href="image-analysis-in-r.html#looping-over-all-files-in-a-.zip"><i class="fa fa-check"></i><b>9.1.4</b> Looping Over All Files in a .zip</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="image-analysis-in-r.html"><a href="image-analysis-in-r.html#scenario-extension"><i class="fa fa-check"></i><b>9.2</b> Scenario Extension</a></li>
+<li class="chapter" data-level="9.3" data-path="image-analysis-in-r.html"><a href="image-analysis-in-r.html#hemo-tools"><i class="fa fa-check"></i><b>9.3</b> <code>hemo-tools.R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="boss-fight.html"><a href="boss-fight.html"><i class="fa fa-check"></i><b>10</b> Boss Fight</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i>Appendix I: Teach yourself R.</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#linkedin-learning"><i class="fa fa-check"></i>LinkedIn Learning</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#youtube"><i class="fa fa-check"></i>YouTube</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#books"><i class="fa fa-check"></i>Books</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="feedback.html"><a href="feedback.html"><i class="fa fa-check"></i>Appendix II: Feedback</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Quantiative Skills in Biosciences I</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="loops-logic-and-functions-diving-deeper-into-r" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> Loops, Logic and Functions: Diving Deeper into R<a href="loops-logic-and-functions-diving-deeper-into-r.html#loops-logic-and-functions-diving-deeper-into-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover <strong>all of this section’s content</strong> and complete this week’s <strong>formative and summative assessments</strong> in the BIOS103 Canvas Course.</p>
+<p>By now, you can read files, generate summary tables, visualise data, and even perform some statistical tests in R. That’s an incredible foundation to build upon. When it comes to QS, you’ve come further and faster than any first year student before you. I salute you.</p>
+<p>This week, we’re stepping outside the lab’s core content to focus on key coding fundamentals. Why? These skills are vital for <strong>bioinformatics</strong>, a field you’ll explore in depth next semester. Our focus in this chapter on <strong>FASTA</strong> files - a universal format for genomic and proteomic data - will introduce you to the power of automating complex tasks with code.</p>
+<p>You might find this week challenging, and that’s okay! Growth happens when we push beyond our comfort zones. Remember, support is always available - engage with the workshop channel on Microsoft Teams. If you feel you want in-person support then the demo team and I will be in the Rendall Building PC Teaching Centre between 9 and 11am on Thursday. Drop-in whenever.</p>
+<p>So, take a deep breath. You’ve got this. Let’s unlock the true potential of coding together! Here are this week’s <strong>learning objectives</strong>:</p>
+<ul>
+<li>Understand how to use <strong>for loops</strong> to repeat tasks efficiently.</li>
+<li>Learn how to apply <strong>if statements</strong> to control the flow of your code with logical conditions.</li>
+<li>Gain skills in <strong>building functions</strong> to simplify complex tasks and increase code reusability.</li>
+<li>Learn how to organise your scripts effectively so you can call your pre-built functions whenever needed and <strong>minimise clutter</strong>.</li>
+<li>Build confidence in <strong>self-directed learning</strong> to solve coding challenges independently.</li>
+</ul>
+<h3>
+I Don’t Want to Read This Boring Chapter!
+</h3>
+<p>Fair enough. I understand that many of you will want to get stuck in immediately with your RStudio and complete your formative/summative tasks for this week. If this is the case then you should do the following first:</p>
+<ol style="list-style-type: decimal">
+<li>Start a new R project for this week.</li>
+<li>Download the <a href="https://raw.githubusercontent.com/rtreharne/qs/refs/heads/main/data/10/genomic_data_100.fasta">genomic_data_100.fasta</a> example sequence file and move it to your project directory.</li>
+<li>Watch video <a href="https://youtu.be/4RPhaisBE7Q" target="_blank">8.4 Counting Motifs</a> to learn how to complete question 1 on this week’s quizzes.</li>
+<li>Watch video <a href="https://youtu.be/wfT22axIDYY" target="_blank">8.5 The Challenge</a> to learn how to complete question 2.</li>
+</ol>
+<p>For those who have a bit more patience, I strongly recommend taking the time to read and understand the following sections. It will deepen your understanding of coding and help you build stronger problem-solving and analytical skills!</p>
+<div id="what-is-fasta" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> What is FASTA?<a href="loops-logic-and-functions-diving-deeper-into-r.html#what-is-fasta" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>FASTA is a standard file format used to store nucleotide or protein sequences, widely employed in bioinformatics and genomics. Each entry in a FASTA file begins with a header line, starting with a <code>&gt;</code> character, followed by a description or identifier for the sequence. The lines that follow contain the actual sequence, represented by letters corresponding to nucleotides(e.g. A, T, G, C for DNA) or amino acids (e.g., M, P, L, K for proteins).</p>
+<p>FASTA files are compact, easy to parse, and compatible with a wide range of bioinformatics tools, making them idea for sharing and analysing genomic or proteomic data. They can store single or multiple sequences in a simple, human-readable format.</p>
+</div>
+<div id="extracting-sequences-from-a-fasta-file" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Extracting Sequences from a FASTA File<a href="loops-logic-and-functions-diving-deeper-into-r.html#extracting-sequences-from-a-fasta-file" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If you haven’t done so already, <strong>start a new R project</strong> and <strong>create a new R script</strong> called <strong>“fasta-tools.R”</strong>. Download the <a href="">genomic_data_100.fasta</a> example file and move it to your project directory.</p>
+<p><strong>Copy and paste the code block below into your script</strong> and <strong>run each line</strong> in turn.</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-1" tabindex="-1"></a><span class="co"># FILE: fasta-tools.R</span></span>
+<span id="cb84-2"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-2" tabindex="-1"></a></span>
+<span id="cb84-3"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-3" tabindex="-1"></a><span class="co"># The following code will read the sequences from the example FASTA file</span></span>
+<span id="cb84-4"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-4" tabindex="-1"></a></span>
+<span id="cb84-5"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-5" tabindex="-1"></a><span class="co"># Specify filename of example FASTA file</span></span>
+<span id="cb84-6"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-6" tabindex="-1"></a>fasta_file <span class="ot">&lt;-</span> <span class="st">&quot;genomic_data_100.fasta&quot;</span></span>
+<span id="cb84-7"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-7" tabindex="-1"></a></span>
+<span id="cb84-8"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-8" tabindex="-1"></a><span class="co"># Read lines from file to a vector</span></span>
+<span id="cb84-9"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-9" tabindex="-1"></a>fasta_lines <span class="ot">&lt;-</span> <span class="fu">readLines</span>(fasta_file)</span>
+<span id="cb84-10"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-10" tabindex="-1"></a></span>
+<span id="cb84-11"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-11" tabindex="-1"></a><span class="co"># Define an empty vector to hold the sequences in the file</span></span>
+<span id="cb84-12"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-12" tabindex="-1"></a>sequences <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb84-13"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-13" tabindex="-1"></a></span>
+<span id="cb84-14"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-14" tabindex="-1"></a><span class="co"># Loop over every line in fasta_lines vector</span></span>
+<span id="cb84-15"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-15" tabindex="-1"></a><span class="cf">for</span> (line <span class="cf">in</span> fasta_lines) {</span>
+<span id="cb84-16"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-16" tabindex="-1"></a>  <span class="co"># Logic to ignore any line that starts with a &quot;&gt;&quot; character</span></span>
+<span id="cb84-17"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-17" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">startsWith</span>(line, <span class="st">&quot;&gt;&quot;</span>)) {</span>
+<span id="cb84-18"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-18" tabindex="-1"></a>    <span class="co"># If line doesn&#39;t start with &quot;&gt;&quot; then add it as an item to sequences vector</span></span>
+<span id="cb84-19"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-19" tabindex="-1"></a>    sequences <span class="ot">&lt;-</span> <span class="fu">c</span>(sequences, line)</span>
+<span id="cb84-20"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-20" tabindex="-1"></a>  }</span>
+<span id="cb84-21"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-21" tabindex="-1"></a>}</span>
+<span id="cb84-22"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-22" tabindex="-1"></a></span>
+<span id="cb84-23"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-23" tabindex="-1"></a><span class="co"># Inspect your sequences vector</span></span>
+<span id="cb84-24"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-24" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;Number of sequences in file: &quot;</span>, <span class="fu">length</span>(sequences), </span>
+<span id="cb84-25"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb84-25" tabindex="-1"></a>             <span class="st">&quot;; First sequence: &quot;</span>, sequences[<span class="dv">1</span>]))</span></code></pre></div>
+<pre><code>## [1] &quot;Number of sequences in file: 100; First sequence: TGGGATAAAAACGAACGACTCGAGTCAAACGACAACAGTTATAAAGCACCCTCGGGTCTACTGATACTTCTGCTTGTTGCTACCAAATCCCAACTTTGCGTAAAGATAGACTCTGCTACTACGAACGTGGGTTTTGTACAGTGTGCCAGAGACCTCAGGTAAGGCCAGTAACTGTGTGTGCCATAAGGGGGCTTCTAAGAACTACACCTGCGCGTTAACGGTATCATATTGCCTGACAAGACACTCAATCTACACCAACGAGGGGTAACTGATCAACGAATTTGTCTCGCGTATCGGGAGAGCATCCACCCCTATGGGCGAATAACTAGATAGAGATCCTCAGAAACCGTTCCATCCCACTAACGGACAACCGATCACGGATATCTAATGGGCGGATACCCTGGACTTCCCCTGTATGACGGTCTGGAGTCAGAGTGAAGCCGGGCGCTTGAGTTTCTCAGGTTGCTCGGGTATTGATGTCCGGGCCACAAGCACGTATAATGGAGTGATCGTGCTGTTCTCGCAACTACCAAACTTGATTTACTTCAGGAGTCTAACGATACCTCGCAGTCACTGGTATCAATGCTCCGTCTAAAACAGTCGTTTTCAACCCGAACGATAATCATATAGCGGACCTTCGCAGGTGTCCGACACCTTTATGAAGGGGTCTGCGACGGAATCTGGGACACTTGGAGTGCATCGAACGCATGATCATTCCAACAACCTTGCAGGCGGTGAGCCGGCCCGGGCATATCAGGTCAAGCTTTGCGCGATTGAAATAGCGCAGAAATCCACTATGGATGTTACCTCGATTCACCTTTTCCATGACCCATATTCCCATGAGGGTGGAGGCAAACCTGGACATCATAGCCCCACGGTTAGAGACCTGCTACCATAAATGATCTTCGAACGATCCTCTAAGAGGCCATTGAACCTATCAACTTCGCAGAGTAGTGCGGGCTTTCTGGTGCAAGCTTAACTCAGTCTTATTGGTAATAAT&quot;</code></pre>
+<p>Let’s break this code down in detail:</p>
+<p><strong>1. Specify the File Name</strong></p>
+<p>The script begins with <code>fasta_file &lt;- "genomic_data_100.fasta"</code>.</p>
+<ul>
+<li>This step defines the name of the file we want to work with. The variable <code>fasta_file</code> acts as a placeholder for the file name, so if the file name changes later, we only need to update it here.</li>
+<li>Keeping the file name as a variable makes the script more flexible and reusable.</li>
+</ul>
+<p><strong>2. Read the File into Memory</strong></p>
+<p>The line <code>fasta_lines &lt;- readLines(fasta_file)</code> reads the contents of the FASTA file into a vector called <code>fasta_lines</code>.</p>
+<ul>
+<li>The function <code>readLines()</code> reads each line of the file as a separate element in the vector. For example, the vector might look like this:
+<ul>
+<li>“&gt;sequence_1”</li>
+<li>“ATGCGTACGTA”</li>
+<li>“&gt;sequence_2”</li>
+<li>“GCTAGCTAGCT”</li>
+</ul></li>
+</ul>
+<p>This raw input includes both header lines (starting with <code>&gt;</code>) and sequence lines. At this point, nothing has been filtered yet.</p>
+<p><strong>3. Create a Place to Store Sequences</strong></p>
+<p>Next, we initialise an empty vector with <code>sequences &lt;- c()</code>.</p>
+<ul>
+<li>This step prepares a container to store the biological sequences. Since we only want the actual genetic data (not the headers), we need this separate vector.</li>
+<li>Starting with an empty vector ensures that we don’t accidentally mix in data from other parts of the script.</li>
+</ul>
+<p><strong>4. Process Each Line in the File</strong></p>
+<p>Now comes the heart of the script: a loop that processes every line of the file one by one. The loop starts with <code>for (line in fasta_lines)</code>.</p>
+<ul>
+<li><strong>What does this mean?</strong>
+<ul>
+<li>The for loop iterates through each element in <code>fasta_lines</code>.</li>
+<li>During each iteration, the current line is stored in the variable line.</li>
+</ul></li>
+<li>For example, on the first iteration, <code>line</code> might be <code>"&gt;sequence_1"</code>. On the second iteration, it might be <code>"ATGCGTACGTA"</code>, and so on.</li>
+</ul>
+<p><strong>5. Use an if Statement to Filter Lines</strong></p>
+<p>Inside the loop, the script uses if <code>(!startsWith(line, "&gt;"))</code> to decide whether to process the current line.</p>
+<ul>
+<li>The function <code>startsWith(line, "&gt;")</code> checks if the line begins with the <code>&gt;</code> character (indicating a header). If it does, the <code>if</code> condition evaluates to <code>FALSE</code>, and the line is ignored.</li>
+<li>The <code>!</code> symbol means “not.” So <code>!startsWith(line, "&gt;")</code> evaluates to <code>TRUE</code> if the line does not start with <code>&gt;</code>. These are the sequence lines we want.</li>
+</ul>
+<p><strong>6. Add Sequences to the Vector</strong></p>
+<p>When the condition is <code>TRUE</code> (i.e., the line is a sequence, not a header), the line is added to the sequences vector using <code>sequences &lt;- c(sequences, line)</code>.</p>
+<ul>
+<li>The <code>c()</code> function combines the existing <code>sequences</code> vector with the new line, effectively appending the sequence.</li>
+<li>This ensures that all sequence lines are collected in one place.</li>
+</ul>
+<p><strong>7. What’s With the Curly Brackets {}?</strong></p>
+<p>In the script, the block of code inside the loop and the <code>if</code> statement is enclosed in curly brackets <code>{}</code>. For example:</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb86-1" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">startsWith</span>(line, <span class="st">&quot;&gt;&quot;</span>)) {</span>
+<span id="cb86-2"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb86-2" tabindex="-1"></a>  sequences <span class="ot">&lt;-</span> <span class="fu">c</span>(sequences, line)</span>
+<span id="cb86-3"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb86-3" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li><strong>What do the curly brackets do?</strong>
+<ul>
+<li>They group the code together, indicating what should run when the <code>if</code> condition is <code>TRUE</code>. Without curly brackets, only the first line after if would execute, which can lead to errors in more complex scripts.</li>
+</ul></li>
+<li><strong>Why are they needed here?</strong>
+<ul>
+<li>Since we’re using both a condition (<code>if</code>) and a loop (<code>for</code>), the brackets ensure the script knows which pieces of code belong together and when they should run.</li>
+</ul></li>
+<li><strong>Do I need to indent my code inside the curly brackets?</strong>
+<ul>
+<li>While indentation is not strictly required for the code to run, <strong>it is highly recommended</strong>. Indentation helps improve readability, making it clear what code belongs inside the curly brackets. Proper indentation makes it easier for others (and for you) to understand the logic and flow of the script, especially as your code grows more complex. In some languages, e.g. Python, indentation and the use of white space is not optional!</li>
+</ul></li>
+</ul>
+<p><strong>8. Check the Results</strong>
+The script ends with a single line to check the results:
+<code>print(paste0("Number of sequences in file: ", length(sequences), "; First sequence: ", sequences[1]))</code></p>
+<ul>
+<li><strong>What does this do?</strong>
+<ul>
+<li><code>length(sequences)</code> counts the total number of sequences extracted.</li>
+<li><code>sequences[1]</code> retrieves the first sequence.</li>
+<li>The <code>paste0()</code> function combines these values into a single message for output.</li>
+</ul></li>
+</ul>
+<h3>
+<strong>Why is This Script Useful?</strong>
+</h3>
+<p>The script above serves as a foundational tool for working with FASTA files in R, efficiently extracting sequence data while ignoring headers. Using a <strong>loop</strong>, <strong>conditional statement</strong>, and <strong>vectors</strong> ensures it can scale to larger datasets. The final output provides a quick summary for easy verification.</p>
+</div>
+<div id="writing-functional-code" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Writing Functional Code<a href="loops-logic-and-functions-diving-deeper-into-r.html#writing-functional-code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In programming, a function is a reusable block of code that performs a specific task. Functions take inputs, process them, and return outputs. Using functions helps avoid repetitive code, making your scripts more modular and easier to maintain.</p>
+<p>For example, in previous sections, we’ve used functions like <code>print()</code> to display output. The <code>print()</code> function takes an argument (the thing you want to display) and prints it to the console. Functions can be as simple as this or as complex as needed, depending on the task.</p>
+<p>Now, let’s explore how to write your own functions by transforming the code we’ve been working with into a reusable function. <strong>Remove all the code in your exiting <code>fasta-tools.R</code> file, then copy and paste the following code</strong>.</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb87-1" tabindex="-1"></a><span class="co"># FILE: fasta-tools.R</span></span>
+<span id="cb87-2"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb87-2" tabindex="-1"></a></span>
+<span id="cb87-3"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb87-3" tabindex="-1"></a><span class="co"># Define a FUNCTION to extract all sequences from ANY FASTA file</span></span>
+<span id="cb87-4"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb87-4" tabindex="-1"></a>extract_sequences_from_fasta <span class="ot">&lt;-</span> <span class="cf">function</span>(fasta_file) {</span>
+<span id="cb87-5"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb87-5" tabindex="-1"></a></span>
+<span id="cb87-6"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb87-6" tabindex="-1"></a>  <span class="co"># Read lines from file to a vector</span></span>
+<span id="cb87-7"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb87-7" tabindex="-1"></a>  fasta_lines <span class="ot">&lt;-</span> <span class="fu">readLines</span>(fasta_file)</span>
+<span id="cb87-8"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb87-8" tabindex="-1"></a>  </span>
+<span id="cb87-9"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb87-9" tabindex="-1"></a>  <span class="co"># Define an empty vector to hold the sequences in the file</span></span>
+<span id="cb87-10"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb87-10" tabindex="-1"></a>  sequences <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb87-11"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb87-11" tabindex="-1"></a>  </span>
+<span id="cb87-12"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb87-12" tabindex="-1"></a>  <span class="co"># Loop over every line in fasta_lines vector</span></span>
+<span id="cb87-13"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb87-13" tabindex="-1"></a>  <span class="cf">for</span> (line <span class="cf">in</span> fasta_lines) {</span>
+<span id="cb87-14"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb87-14" tabindex="-1"></a>    <span class="co"># Logic to ignore any line that starts with a &quot;&gt;&quot; character</span></span>
+<span id="cb87-15"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb87-15" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">startsWith</span>(line, <span class="st">&quot;&gt;&quot;</span>)) {</span>
+<span id="cb87-16"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb87-16" tabindex="-1"></a>      <span class="co"># If line doesn&#39;t start with &quot;&gt;&quot; then add it as an item to sequences vector</span></span>
+<span id="cb87-17"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb87-17" tabindex="-1"></a>      sequences <span class="ot">&lt;-</span> <span class="fu">c</span>(sequences, line)</span>
+<span id="cb87-18"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb87-18" tabindex="-1"></a>    }</span>
+<span id="cb87-19"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb87-19" tabindex="-1"></a>  }</span>
+<span id="cb87-20"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb87-20" tabindex="-1"></a>  </span>
+<span id="cb87-21"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb87-21" tabindex="-1"></a>  <span class="fu">return</span>(sequences)</span>
+<span id="cb87-22"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb87-22" tabindex="-1"></a>}</span></code></pre></div>
+<p>Try running the code above by clicking the <strong>source</strong> button in the top-right of your script window. What happens? Anything?</p>
+<p>You’ll probably see some blue text in your console output, but you <strong>shouldn’t</strong> see any outputs in black. That’s because right now, you’re script isn’t actually doing anything. All you’re doing by running the script is storing the function into your computer’s memory fo use later. You should see the function <code>extract_sequences_from_data</code> appear in an area called <strong>Functions</strong> in your environment window in the top-right of R Studio.</p>
+<p>Here’s what we’ve done to <strong>“functionify”</strong> the code:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Encapsulation of Logic into a Function</strong></li>
+</ol>
+<p>The main change is that we’ve wrapped the entire process inside a function definition:</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb88-1" tabindex="-1"></a>extract_sequences_from_fasta <span class="ot">&lt;-</span> <span class="cf">function</span>(fasta_file) { ... }</span></code></pre></div>
+<p>This function now acts as a stand-alone unit, which can be used whenever we need to extract sequences from a FASTA file, with the <code>fasta_file</code> parameter acting as an input to specify which file to read.</p>
+<p><strong>2. Parameterisation</strong></p>
+<p>In the original script, the file path was hard-coded directly into the script (<code>fasta_file &lt;- "genomic_data_100.fasta"</code>). In the function, we’ve replaced this with a parameter:</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb89-1" tabindex="-1"></a><span class="cf">function</span>(fasta_file)</span></code></pre></div>
+<p>This allows us to pass in any file path when calling the function, making it much more flexible. Instead of being tied to a specific file, the function now works for any FASTA file. How cool is that?</p>
+<p><strong>3. Returning the Result</strong></p>
+<p>In the original code, the sequences were processed and printed directly within the script. In the function version, we use the <code>return(sequences)</code> statement at the end of the function to output the extracted sequences. This allows the function to be used in any context where we want to capture the output, such as storing it in a variable or processing it further.</p>
+<h3>
+So I’ve Functionified My Code. Now What?
+</h3>
+<p>In the example below, we’ll use the <code>extract_sequences_from_fasta()</code> function that we’ve just defined in our <code>fasta-tools.R</code> script file in a new script called <code>main.R</code>.</p>
+<p><strong>Create a new script called <code>main.R</code> and copy and paste the following block of code into it</strong>. Both <code>fasta-tools.R</code> and <code>main.R</code> scripts must sit next to each other in your project directory.</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb90-1" tabindex="-1"></a><span class="co"># FILE: main.R</span></span>
+<span id="cb90-2"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb90-2" tabindex="-1"></a></span>
+<span id="cb90-3"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb90-3" tabindex="-1"></a><span class="co"># Import your fasta-tools.R file</span></span>
+<span id="cb90-4"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb90-4" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;fasta-tools.R&quot;</span>)</span>
+<span id="cb90-5"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb90-5" tabindex="-1"></a></span>
+<span id="cb90-6"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb90-6" tabindex="-1"></a><span class="co"># Use the extract_sequences_from_data function that you have defined in your fasta-tools.R file</span></span>
+<span id="cb90-7"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb90-7" tabindex="-1"></a>sequences <span class="ot">&lt;-</span> <span class="fu">extract_sequences_from_fasta</span>(<span class="st">&quot;genomic_data_100.fasta&quot;</span>)</span>
+<span id="cb90-8"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb90-8" tabindex="-1"></a>  </span>
+<span id="cb90-9"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb90-9" tabindex="-1"></a><span class="co"># Inspect your sequences vector</span></span>
+<span id="cb90-10"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb90-10" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;Number of sequences in file: &quot;</span>, <span class="fu">length</span>(sequences)))</span></code></pre></div>
+<pre><code>## [1] &quot;Number of sequences in file: 100&quot;</code></pre>
+<h3>
+<strong>What’s Happening Here?</strong>
+</h3>
+<ul>
+<li><p><strong>Source Your Function</strong>: By using <code>source("fasta-tools.R")</code>, we bring in the <code>extract_sequences_from_fasta</code> function into the current script. <strong>This makes the function available for use without having to redefine it</strong>.</p></li>
+<li><p><strong>Calling the Function:</strong> The function is called with <code>extract_sequences_from_fasta("genomic_data_100.fasta")</code>. We pass in the FASTA file name, and the function does all the work of extracting the sequences. We then move on to inspect and analyse the results.</p></li>
+<li><p><strong>Keeping It Clean</strong>: The <code>main.R</code> script remains clean and uncluttered, focusing on high-level tasks like extracting and analysing the sequences. The function handles the details of working with the FASTA file.</p></li>
+</ul>
+<h3>
+<strong>Why Is This Useful?</strong>
+</h3>
+<ul>
+<li><p><strong>Reusability</strong>: We can reuse the <code>extract_sequences_from_fasta</code> function in any future script. Instead of repeating the code for sequence extraction each time, we simply call the function and pass in the file name. This reduces redundancy and saves time.</p></li>
+<li><p><strong>Clarity and Maintainability</strong>: By placing the logic for sequence extraction in its own file and function, the main script (<code>main.R</code>) is easier to read and understand. If something goes wrong with the sequence extraction, we’ll know exactly where to look—inside <code>fasta-tools.R</code> based on the error message that is output to our console.</p></li>
+<li><p><strong>Scalability</strong>: As your projects grow, you’ll often need to extract sequences from different FASTA files or perform additional processing. With functions, it’s easy to add new functionality without cluttering your main scripts.</p></li>
+</ul>
+</div>
+<div id="counting-motifs" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Counting Motifs<a href="loops-logic-and-functions-diving-deeper-into-r.html#counting-motifs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A motif is a recurring sequence pattern in DNA, often associated with important biological functions such as transcription factor binding or gene regulation. Counting motifs provides a foundation for understanding genomic organisation and function, revealing insights into regulatory mechanisms, evolutionary patterns, and functional elements. By analysing motif frequencies, researchers can uncover critical information about gene expression, epigenetics, and genetic variation, making it an essential step in exploring the complexity of genomes.</p>
+<p>With all that in mind, lets build on our <code>fasta-tools.R</code> script by adding functions that:</p>
+<ul>
+<li>Count the number of times a specific motif occurs in a sequence.</li>
+<li>Calculate the average frequency that a specific motif occurs in ALL sequences in our FASTA FILE.</li>
+</ul>
+<p>If we do that, then we can complete our first formative quiz question this week. Hooray!</p>
+<h3>
+Writing a <code>count_motif</code> function
+</h3>
+<p><strong>Update your <code>fasta-tools.R</code> script with the following function</strong>. Click the <strong>source</strong> button to update your computer’s memory with the additional function.</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-1" tabindex="-1"></a><span class="co"># FILE: fasta-tools.R</span></span>
+<span id="cb92-2"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-2" tabindex="-1"></a></span>
+<span id="cb92-3"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-3" tabindex="-1"></a><span class="co"># Extend the file above with the following ...</span></span>
+<span id="cb92-4"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-4" tabindex="-1"></a></span>
+<span id="cb92-5"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-5" tabindex="-1"></a><span class="co"># Define a function that can count the number of times a motif appears in a sequence</span></span>
+<span id="cb92-6"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-6" tabindex="-1"></a>count_motif <span class="ot">&lt;-</span> <span class="cf">function</span>(sequence, <span class="at">motif=</span><span class="st">&quot;AAA&quot;</span>) {</span>
+<span id="cb92-7"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-7" tabindex="-1"></a>  </span>
+<span id="cb92-8"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-8" tabindex="-1"></a>  <span class="co"># Set counter to zero</span></span>
+<span id="cb92-9"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-9" tabindex="-1"></a>  count <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb92-10"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-10" tabindex="-1"></a>  </span>
+<span id="cb92-11"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-11" tabindex="-1"></a>  <span class="co"># Loop through sequence character by character</span></span>
+<span id="cb92-12"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-12" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nchar</span>(sequence), <span class="at">by=</span><span class="fu">nchar</span>(motif))) {</span>
+<span id="cb92-13"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-13" tabindex="-1"></a>    </span>
+<span id="cb92-14"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-14" tabindex="-1"></a>    <span class="co"># Slice your sequence to create a substring that is the same size as your motif</span></span>
+<span id="cb92-15"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-15" tabindex="-1"></a>    chunk <span class="ot">&lt;-</span> <span class="fu">substr</span>(sequence, i, i <span class="sc">+</span> <span class="fu">nchar</span>(motif)<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb92-16"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-16" tabindex="-1"></a>    </span>
+<span id="cb92-17"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-17" tabindex="-1"></a>    <span class="co"># if your chunk and motif are the same add 1 to the count</span></span>
+<span id="cb92-18"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-18" tabindex="-1"></a>    <span class="cf">if</span> (motif <span class="sc">==</span> chunk) {</span>
+<span id="cb92-19"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-19" tabindex="-1"></a>      count <span class="ot">&lt;-</span> count <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb92-20"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-20" tabindex="-1"></a>    }</span>
+<span id="cb92-21"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-21" tabindex="-1"></a>    </span>
+<span id="cb92-22"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-22" tabindex="-1"></a>  }</span>
+<span id="cb92-23"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-23" tabindex="-1"></a>  <span class="co"># Return the final count value for further processing or storage to a variable</span></span>
+<span id="cb92-24"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-24" tabindex="-1"></a>  <span class="fu">return</span>(count)</span>
+<span id="cb92-25"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-25" tabindex="-1"></a>  </span>
+<span id="cb92-26"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb92-26" tabindex="-1"></a>}</span></code></pre></div>
+<p>Yikes! What an earth is going on here? Hold on, I’ll explain in detail very shortly. But first, let’s update your <code>main.R</code> to test the new function. <strong>Add the following code to <code>main.R</code></strong> and then click <strong>source</strong> to run all lines.</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb93-1" tabindex="-1"></a><span class="co"># FILE: main.R</span></span>
+<span id="cb93-2"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb93-2" tabindex="-1"></a></span>
+<span id="cb93-3"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb93-3" tabindex="-1"></a><span class="co"># Extend the file above with the following ...</span></span>
+<span id="cb93-4"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb93-4" tabindex="-1"></a></span>
+<span id="cb93-5"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb93-5" tabindex="-1"></a><span class="co"># Count the number of times &quot;ACG&quot; occurs in the first sequence</span></span>
+<span id="cb93-6"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb93-6" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">&quot;Number of times &#39;ACG&#39; occurs in the first sequence: &quot;</span>, <span class="fu">count_motif</span>(sequences[<span class="dv">1</span>], <span class="st">&quot;ACG&quot;</span>)))</span></code></pre></div>
+<pre><code>## [1] &quot;Number of times &#39;ACG&#39; occurs in the first sequence: 3&quot;</code></pre>
+<p>You should see the output above. If yes, well done! If no, check that you’ve not made any copy/paste mistakes and that you’ve definitely recompiled your <code>fast-tools.R</code> script first.</p>
+<p>Let’s now return to that <code>count_motif</code> function we added to <code>fasta-tools.R</code> and explain what is happening.</p>
+<p><strong>1. Function Definition</strong></p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb95-1" tabindex="-1"></a>count_motif <span class="ot">&lt;-</span> <span class="cf">function</span>(sequence, <span class="at">motif=</span><span class="st">&quot;AAA&quot;</span>) {</span></code></pre></div>
+<ul>
+<li><code>count_motif</code> is the name of the function</li>
+<li>It takes two <em>arguments</em>:
+<ul>
+<li><code>sequence</code>: a string representing the DAN sequence to search within.</li>
+<li><code>mofit</code>: a string representing the patter to count. If no motif is provided, it defaults to <code>"AAA</code>.</li>
+</ul></li>
+</ul>
+<p><strong>2. Initialise Counter</strong></p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb96-1" tabindex="-1"></a>count <span class="ot">&lt;-</span> <span class="dv">0</span></span></code></pre></div>
+<ul>
+<li>A variable <code>count</code> is set to <code>0</code> to keep track of how many times the motif is found.</li>
+</ul>
+<p><strong>3. Loop Through the Sequence</strong></p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb97-1" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nchar</span>(sequence), by <span class="fu">nchar</span>(motif))) {</span></code></pre></div>
+<ul>
+<li>A <code>for</code> loop iterates through the sequence.</li>
+<li><code>seq(1, nchar(sequence), by=nchar(motif))</code> generates a sequence of starting positions, advancing by the length of the motif each time.
+<ul>
+<li>The function <code>nchar</code> simply returns the number of characters in the sequence (which I know is 1000).</li>
+</ul></li>
+</ul>
+<p><strong>4. Extract a Substring</strong></p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb98-1" tabindex="-1"></a>chunk <span class="ot">&lt;-</span> <span class="fu">substr</span>(sequence, i, i<span class="sc">+</span><span class="fu">nchar</span>(motif) <span class="sc">-</span> <span class="dv">1</span>)</span></code></pre></div>
+<ul>
+<li><code>substr(sequence, i, i + nchar(motif) - 1)</code> extracts a substring from the sequence starting at position <code>i</code> and spanning the length of the motif. For example, if <code>i=1</code> to begin, <code>sequence = "ATGCTT ..." and motif="ACG":</code>subs(“ATGCTT …”, 1, 3) will return the substring “ATG” and save it as the first <code>chunk</code>.</li>
+</ul>
+<p><strong>5. Compare Substring to the Motif</strong></p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb99-1" tabindex="-1"></a><span class="cf">if</span> (motif <span class="sc">==</span> chunk) {</span>
+<span id="cb99-2"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb99-2" tabindex="-1"></a>  count <span class="ot">&lt;-</span> count <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb99-3"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb99-3" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li>The extracted substring (<code>chunk</code>) is compared to the motif.</li>
+<li>If they match, <code>count</code> is incremented by 1.</li>
+<li>Note: The <code>==</code> is very important! conditional statements like <code>if</code> and <code>while</code> rely and logical conditions (<code>TRUE</code> and <code>FALSE</code>) to determine the flow of a program. Using <code>==</code> ensures that the condition evaluates whether the two expressions are equal before deciding the next action. The use of a single <code>=</code> when making these conditional statements will throw an error - yuck!</li>
+</ul>
+<p><strong>6. Return the Result</strong>.</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb100-1" tabindex="-1"></a><span class="fu">return</span>(count)</span></code></pre></div>
+<ul>
+<li>The function returns the total count of motif occurrences for further use.</li>
+</ul>
+<p><strong>7. Using the <code>count_motif</code> Function</strong></p>
+<p>We call the <code>count_motif</code> in our <code>main.R</code> script within a <code>print</code> function:</p>
+<ul>
+<li><code>print(paste0("Number of times 'ACG' occurs in the first sequence: ", count_motif(sequences[1], "ACG")))</code></li>
+<li>This generates the output that you should see below the function definition code block above.</li>
+</ul>
+<p>We’ve now got nearly everything we need to answer this week’s first quiz question:</p>
+<p><strong>Calculate the average number of times that the motif “AAT” appears in each sequence within the FASTA file</strong>.</p>
+<p>Hmmm, how might you go about this? Here’s what I’d do:</p>
+<ul>
+<li>Write a new function, e.g. <code>calculate_mean_motif_freq</code> in your <code>fasta-tools.R</code> file.</li>
+<li>The function will take two arguments:
+<ul>
+<li><code>sequences</code>: a vector containing all of your extracted sequences.</li>
+<li><code>motif</code>: the string of characters you’re interested in searching for</li>
+</ul></li>
+<li>I’d start my function my creating an empty vector called <code>motif_freq</code> to store the number of times the motif is found in each sequence.</li>
+<li>Then, I’d create a loop that started like this:
+<ul>
+<li><code>for (sequence in sequences) {</code></li>
+<li>During the loop I can use my <code>count_motif</code> function on each sequence and append the returned value to my <code>motif_freq</code> vector.</li>
+</ul></li>
+<li>I’d finish my function by using use the <code>mean()</code> function on <code>motif_freq</code> vector and returning the value.</li>
+<li>Lastly, I’ll call this function in my <code>main.R</code> script and print the output.</li>
+</ul>
+<p>I’d really love you to have a go at this yourself. Go on! You can do it. Remember, you can ask for help in the Workshop channel on Microsoft Teams. I’m also extremely happy for you to collaborate with each other and share your solutions. So that you know that you’re correct, the answer you’re expecting for a <code>motif="AAT"</code> and using the example dataset above is <strong>5.16</strong> to 2 d.p.</p>
+<p>If you get really stuck, that’s OK. I’ve included a full <code>fasta-tools.R</code> file at the end of this chapter that includes a <code>calculate_mean_motif_freq</code> function that you can use. Also, here is a 10 min video on how to answer the first quiz question:</p>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/4RPhaisBE7Q?si=od7jT-8xUETvB13O" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+</div>
+<div id="thefunbit" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> The Fun Bit (AKA - The Last Horrible Bit)<a href="loops-logic-and-functions-diving-deeper-into-r.html#thefunbit" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>As mentioned above, you’ll find a complete <code>fasta-tools.R</code> script at the end of this chapter. The script contains some additional helper functions:</p>
+<ul>
+<li><code>reverse_complement</code>: generates the reverse complement of a DNA sequence.</li>
+<li><code>find_most_common_triplet</code>: identifies the most frequent three letter “triplet” in a given sequence.</li>
+</ul>
+<p>With these tools in hand, we can start building workflows in a <code>main.R</code> script to solve more complex problems. Here’s one for you to tackle:</p>
+<h3>
+The Challenge
+</h3>
+<p>You have a FASTA file full of DNA sequences. You need to:</p>
+<ol style="list-style-type: decimal">
+<li>Extract all the sequences from the file.</li>
+<li>Generate a reverse complement for every sequence.</li>
+<li>Combine all the reverse complements into a single string.</li>
+<li>Identify the most common three-letter “triplet” in that string.</li>
+</ol>
+<p>Sounds fun right? Below is an example of a <code>main.R</code> script that implements the above workflow. Here’s the twist: the script isn’t complete! It’s up to you to figure out the missing pieces! This is an exercise in <strong>self-directed learning</strong>. You should do whatever it takes to solve the problem. This may include doing things that you’re not comfortable with, including:</p>
+<ul>
+<li>Googling.</li>
+<li>ChatGPTing.</li>
+<li>Asking for help in the Workshop channel in Teams (it will always be given!).</li>
+<li>Asking for help from your peers.</li>
+</ul>
+<blockquote>
+<p>What is a Reverse Complement?</p>
+<p>A reverse complement is the sequence of DNA that pairs with another, read in the opposite direction. For example, the reverse complement of ‘ATGC’ is ‘TACG’. It’s important because DNA is double-stranded, and knowing the reverse complement helps in understanding how strands interact, designing primers, and analysing genetic data.</p>
+</blockquote>
+<p>Here’s the partially written script:</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb101-1" tabindex="-1"></a><span class="co"># Load in function from fasta-tools.R</span></span>
+<span id="cb101-2"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb101-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;fasta-tools.R&quot;</span>)</span>
+<span id="cb101-3"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb101-3" tabindex="-1"></a></span>
+<span id="cb101-4"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb101-4" tabindex="-1"></a><span class="co"># Define file_path variable</span></span>
+<span id="cb101-5"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb101-5" tabindex="-1"></a>file_path <span class="ot">&lt;-</span> <span class="st">&quot;genomic_data_100.fasta&quot;</span></span>
+<span id="cb101-6"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb101-6" tabindex="-1"></a></span>
+<span id="cb101-7"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb101-7" tabindex="-1"></a><span class="co"># Extract sequences from fasta file</span></span>
+<span id="cb101-8"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb101-8" tabindex="-1"></a>sequences <span class="ot">&lt;-</span> <span class="fu">extract_sequences_from_fasta</span>(file_path)</span>
+<span id="cb101-9"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb101-9" tabindex="-1"></a></span>
+<span id="cb101-10"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb101-10" tabindex="-1"></a><span class="co"># Generate vector of reverse_complements</span></span>
+<span id="cb101-11"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb101-11" tabindex="-1"></a>reverse_complements <span class="ot">&lt;-</span> </span>
+<span id="cb101-12"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb101-12" tabindex="-1"></a></span>
+<span id="cb101-13"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb101-13" tabindex="-1"></a><span class="co"># Join all reverse complements into a single string</span></span>
+<span id="cb101-14"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb101-14" tabindex="-1"></a>joined_sequence <span class="ot">&lt;-</span> </span>
+<span id="cb101-15"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb101-15" tabindex="-1"></a></span>
+<span id="cb101-16"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb101-16" tabindex="-1"></a><span class="co"># Get most common triplet</span></span>
+<span id="cb101-17"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb101-17" tabindex="-1"></a>most_common_triplet <span class="ot">&lt;-</span> <span class="fu">find_most_common_triplet</span>(joined_sequence)</span>
+<span id="cb101-18"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb101-18" tabindex="-1"></a></span>
+<span id="cb101-19"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb101-19" tabindex="-1"></a><span class="co"># Output the result</span></span>
+<span id="cb101-20"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb101-20" tabindex="-1"></a><span class="fu">print</span>(most_common_triplet)</span></code></pre></div>
+<p><strong>Hint</strong>: For the example dataset “genomic_data_100.fasta”, the most common triplet is <code>"GAT"</code>.</p>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/wfT22axIDYY?si=PdZSKCqsHpbxJyYp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<h3>
+Why This Challenge Matters
+</h3>
+<p>The real skill of coding isn’t just cutting and pasting little snippets that I feed you. It’s about learning how to problem-solve, think critically, and figure out how to bridge the gaps in a workflow.</p>
+<p>This challenge gives you the chance to:</p>
+<ul>
+<li>Develop problem-solving skills by working through an incomplete script.</li>
+<li>Collaborate with others to find solutions—you’re not in this alone!</li>
+<li>Practice researching and applying new concepts independently.</li>
+</ul>
+<p>Don’t be afraid to get stuck—it’s part of the learning process. Push through, and you’ll gain a deeper understanding of how to work with real-world data and scripts. The skills you build here will serve you far beyond this exercise.</p>
+</div>
+<div id="fasta-tools" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> <code>fasta-tools.R</code><a href="loops-logic-and-functions-diving-deeper-into-r.html#fasta-tools" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-1" tabindex="-1"></a><span class="co"># Define a function to extract sequences from a FASTA file</span></span>
+<span id="cb102-2"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-2" tabindex="-1"></a>extract_sequences_from_fasta <span class="ot">&lt;-</span> <span class="cf">function</span>(fasta_file) {</span>
+<span id="cb102-3"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-3" tabindex="-1"></a>  </span>
+<span id="cb102-4"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-4" tabindex="-1"></a>  <span class="co"># Read all lines from the specified FASTA file into a vector</span></span>
+<span id="cb102-5"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-5" tabindex="-1"></a>  fasta_lines <span class="ot">&lt;-</span> <span class="fu">readLines</span>(fasta_file)</span>
+<span id="cb102-6"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-6" tabindex="-1"></a>  </span>
+<span id="cb102-7"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-7" tabindex="-1"></a>  <span class="co"># Create an empty vector to store DNA sequences</span></span>
+<span id="cb102-8"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-8" tabindex="-1"></a>  sequences <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb102-9"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-9" tabindex="-1"></a>  </span>
+<span id="cb102-10"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-10" tabindex="-1"></a>  <span class="co"># Loop through each line in the file</span></span>
+<span id="cb102-11"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-11" tabindex="-1"></a>  <span class="cf">for</span> (line <span class="cf">in</span> fasta_lines) {</span>
+<span id="cb102-12"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-12" tabindex="-1"></a>    <span class="co"># Check if the line does NOT start with &#39;&gt;&#39;, which marks header lines in FASTA format</span></span>
+<span id="cb102-13"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-13" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">startsWith</span>(line, <span class="st">&quot;&gt;&quot;</span>)) {</span>
+<span id="cb102-14"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-14" tabindex="-1"></a>      <span class="co"># If it&#39;s a sequence line, add it to the &#39;sequences&#39; vector</span></span>
+<span id="cb102-15"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-15" tabindex="-1"></a>      sequences <span class="ot">&lt;-</span> <span class="fu">c</span>(sequences, line)</span>
+<span id="cb102-16"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-16" tabindex="-1"></a>    }</span>
+<span id="cb102-17"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-17" tabindex="-1"></a>  }</span>
+<span id="cb102-18"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-18" tabindex="-1"></a>  </span>
+<span id="cb102-19"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-19" tabindex="-1"></a>  <span class="co"># Return the vector of sequences</span></span>
+<span id="cb102-20"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-20" tabindex="-1"></a>  <span class="fu">return</span>(sequences)</span>
+<span id="cb102-21"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-21" tabindex="-1"></a>}</span>
+<span id="cb102-22"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-22" tabindex="-1"></a></span>
+<span id="cb102-23"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-23" tabindex="-1"></a><span class="co"># Define a function to count the occurrences of a motif in a sequence</span></span>
+<span id="cb102-24"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-24" tabindex="-1"></a>count_motif <span class="ot">&lt;-</span> <span class="cf">function</span>(sequence, <span class="at">motif=</span><span class="st">&quot;AAA&quot;</span>) {</span>
+<span id="cb102-25"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-25" tabindex="-1"></a>  </span>
+<span id="cb102-26"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-26" tabindex="-1"></a>  <span class="co"># Initialise a counter variable to track motif occurrences</span></span>
+<span id="cb102-27"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-27" tabindex="-1"></a>  count <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb102-28"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-28" tabindex="-1"></a>  </span>
+<span id="cb102-29"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-29" tabindex="-1"></a>  <span class="co"># Loop through the sequence in chunks matching the motif&#39;s length</span></span>
+<span id="cb102-30"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-30" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">nchar</span>(sequence), <span class="at">by=</span><span class="fu">nchar</span>(motif))) {</span>
+<span id="cb102-31"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-31" tabindex="-1"></a>    <span class="co"># Extract a substring (chunk) from the sequence starting at position &#39;i&#39;</span></span>
+<span id="cb102-32"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-32" tabindex="-1"></a>    chunk <span class="ot">&lt;-</span> <span class="fu">substr</span>(sequence, i, i<span class="sc">+</span><span class="fu">nchar</span>(motif)<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb102-33"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-33" tabindex="-1"></a>    <span class="co"># Compare the chunk to the motif; if they match, increment the counter</span></span>
+<span id="cb102-34"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-34" tabindex="-1"></a>    <span class="cf">if</span> (motif <span class="sc">==</span> chunk) {</span>
+<span id="cb102-35"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-35" tabindex="-1"></a>      count <span class="ot">&lt;-</span> count <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb102-36"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-36" tabindex="-1"></a>    }</span>
+<span id="cb102-37"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-37" tabindex="-1"></a>  }</span>
+<span id="cb102-38"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-38" tabindex="-1"></a>  </span>
+<span id="cb102-39"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-39" tabindex="-1"></a>  <span class="co"># Return the total count of motif occurrences</span></span>
+<span id="cb102-40"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-40" tabindex="-1"></a>  <span class="fu">return</span>(count)</span>
+<span id="cb102-41"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-41" tabindex="-1"></a>}</span>
+<span id="cb102-42"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-42" tabindex="-1"></a></span>
+<span id="cb102-43"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-43" tabindex="-1"></a><span class="co"># Define a function to calculate the mean frequency of a motif across multiple sequences</span></span>
+<span id="cb102-44"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-44" tabindex="-1"></a>calculate_mean_motif_freq <span class="ot">&lt;-</span> <span class="cf">function</span>(sequences, <span class="at">motif =</span> <span class="st">&quot;AAA&quot;</span>) {</span>
+<span id="cb102-45"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-45" tabindex="-1"></a>  </span>
+<span id="cb102-46"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-46" tabindex="-1"></a>  <span class="co"># Create an empty vector to store motif counts for each sequence</span></span>
+<span id="cb102-47"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-47" tabindex="-1"></a>  motif_frequency <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb102-48"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-48" tabindex="-1"></a>  </span>
+<span id="cb102-49"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-49" tabindex="-1"></a>  <span class="co"># Loop through each sequence in the input list</span></span>
+<span id="cb102-50"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-50" tabindex="-1"></a>  <span class="cf">for</span> (sequence <span class="cf">in</span> sequences) {</span>
+<span id="cb102-51"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-51" tabindex="-1"></a>    <span class="co"># Use the &#39;count_motif&#39; function to count occurrences of the motif in the current sequence</span></span>
+<span id="cb102-52"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-52" tabindex="-1"></a>    count <span class="ot">&lt;-</span> <span class="fu">count_motif</span>(sequence, motif)</span>
+<span id="cb102-53"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-53" tabindex="-1"></a>    <span class="co"># Append the count to the &#39;motif_frequency&#39; vector</span></span>
+<span id="cb102-54"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-54" tabindex="-1"></a>    motif_frequency <span class="ot">&lt;-</span> <span class="fu">c</span>(motif_frequency, count)</span>
+<span id="cb102-55"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-55" tabindex="-1"></a>  }</span>
+<span id="cb102-56"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-56" tabindex="-1"></a>  </span>
+<span id="cb102-57"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-57" tabindex="-1"></a>  <span class="co"># Calculate and return the mean (average) motif frequency</span></span>
+<span id="cb102-58"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-58" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">mean</span>(motif_frequency))</span>
+<span id="cb102-59"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-59" tabindex="-1"></a>}</span>
+<span id="cb102-60"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-60" tabindex="-1"></a></span>
+<span id="cb102-61"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-61" tabindex="-1"></a><span class="co"># Define a function to compute the reverse complement of a DNA sequence</span></span>
+<span id="cb102-62"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-62" tabindex="-1"></a>reverse_complement <span class="ot">&lt;-</span> <span class="cf">function</span>(sequence) {</span>
+<span id="cb102-63"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-63" tabindex="-1"></a>  <span class="co"># Create a named vector mapping each nucleotide to its complement</span></span>
+<span id="cb102-64"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-64" tabindex="-1"></a>  complement_map <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span> <span class="ot">=</span> <span class="st">&quot;T&quot;</span>, <span class="st">&quot;T&quot;</span> <span class="ot">=</span> <span class="st">&quot;A&quot;</span>, <span class="st">&quot;C&quot;</span> <span class="ot">=</span> <span class="st">&quot;G&quot;</span>, <span class="st">&quot;G&quot;</span> <span class="ot">=</span> <span class="st">&quot;C&quot;</span>)</span>
+<span id="cb102-65"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-65" tabindex="-1"></a>  </span>
+<span id="cb102-66"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-66" tabindex="-1"></a>  <span class="co"># Split the sequence into individual nucleotides (characters)</span></span>
+<span id="cb102-67"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-67" tabindex="-1"></a>  nucleotides <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(sequence, <span class="at">split =</span> <span class="st">&quot;&quot;</span>)[[<span class="dv">1</span>]]</span>
+<span id="cb102-68"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-68" tabindex="-1"></a>  </span>
+<span id="cb102-69"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-69" tabindex="-1"></a>  <span class="co"># Replace each nucleotide with its complement using the mapping vector</span></span>
+<span id="cb102-70"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-70" tabindex="-1"></a>  complement <span class="ot">&lt;-</span> complement_map[nucleotides]</span>
+<span id="cb102-71"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-71" tabindex="-1"></a>  </span>
+<span id="cb102-72"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-72" tabindex="-1"></a>  <span class="co"># Reverse the complemented sequence and join it back into a single string</span></span>
+<span id="cb102-73"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-73" tabindex="-1"></a>  reverse_complement_sequence <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">rev</span>(complement), <span class="at">collapse =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb102-74"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-74" tabindex="-1"></a>  </span>
+<span id="cb102-75"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-75" tabindex="-1"></a>  <span class="co"># Return the reverse complement sequence</span></span>
+<span id="cb102-76"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-76" tabindex="-1"></a>  <span class="fu">return</span>(reverse_complement_sequence)</span>
+<span id="cb102-77"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-77" tabindex="-1"></a>}</span>
+<span id="cb102-78"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-78" tabindex="-1"></a></span>
+<span id="cb102-79"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-79" tabindex="-1"></a><span class="co"># Define a function to find the most common triplet (3-nucleotide substring) in a sequence</span></span>
+<span id="cb102-80"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-80" tabindex="-1"></a>find_most_common_triplet <span class="ot">&lt;-</span> <span class="cf">function</span>(sequence) {</span>
+<span id="cb102-81"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-81" tabindex="-1"></a>  <span class="co"># Check if the input sequence is long enough to contain at least one triplet</span></span>
+<span id="cb102-82"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-82" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nchar</span>(sequence) <span class="sc">&lt;</span> <span class="dv">3</span>) {</span>
+<span id="cb102-83"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-83" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">&quot;Sequence must be at least 3 nucleotides long.&quot;</span>) <span class="co"># Stop with an error message if too short</span></span>
+<span id="cb102-84"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-84" tabindex="-1"></a>  }</span>
+<span id="cb102-85"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-85" tabindex="-1"></a>  </span>
+<span id="cb102-86"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-86" tabindex="-1"></a>  <span class="co"># Generate all triplets (3-character substrings) from the sequence</span></span>
+<span id="cb102-87"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-87" tabindex="-1"></a>  triplets <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span>(<span class="fu">nchar</span>(sequence) <span class="sc">-</span> <span class="dv">2</span>), <span class="cf">function</span>(i) {</span>
+<span id="cb102-88"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-88" tabindex="-1"></a>    <span class="fu">substr</span>(sequence, i, i <span class="sc">+</span> <span class="dv">2</span>) <span class="co"># Extract triplet starting at position &#39;i&#39;</span></span>
+<span id="cb102-89"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-89" tabindex="-1"></a>  })</span>
+<span id="cb102-90"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-90" tabindex="-1"></a>  </span>
+<span id="cb102-91"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-91" tabindex="-1"></a>  <span class="co"># Count the frequency of each unique triplet using the &#39;table&#39; function</span></span>
+<span id="cb102-92"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-92" tabindex="-1"></a>  triplet_counts <span class="ot">&lt;-</span> <span class="fu">table</span>(triplets)</span>
+<span id="cb102-93"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-93" tabindex="-1"></a>  </span>
+<span id="cb102-94"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-94" tabindex="-1"></a>  <span class="co"># Identify the most common triplet(s) by finding the maximum count</span></span>
+<span id="cb102-95"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-95" tabindex="-1"></a>  most_common <span class="ot">&lt;-</span> <span class="fu">names</span>(triplet_counts[triplet_counts <span class="sc">==</span> <span class="fu">max</span>(triplet_counts)])</span>
+<span id="cb102-96"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-96" tabindex="-1"></a>  </span>
+<span id="cb102-97"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-97" tabindex="-1"></a>  <span class="co"># Return the most common triplet(s) as a vector</span></span>
+<span id="cb102-98"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-98" tabindex="-1"></a>  <span class="fu">return</span>(most_common)</span>
+<span id="cb102-99"><a href="loops-logic-and-functions-diving-deeper-into-r.html#cb102-99" tabindex="-1"></a>}</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="statistics-in-r-part-ii.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="image-analysis-in-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

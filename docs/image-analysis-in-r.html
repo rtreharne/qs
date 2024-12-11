@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>9 Image Analysis in R | Quantiative Skills in Biosciences I</title>
+  <meta name="description" content="9 Image Analysis in R | Quantiative Skills in Biosciences I" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="9 Image Analysis in R | Quantiative Skills in Biosciences I" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="9 Image Analysis in R | Quantiative Skills in Biosciences I" />
+  
+  
+  
+
+<meta name="author" content="R. E. Treharne" />
+
+
+<meta name="date" content="2024-10-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="loops-logic-and-functions-diving-deeper-into-r.html"/>
+<link rel="next" href="boss-fight.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Cover</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i>Introduction</a></li>
+<li class="chapter" data-level="1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html"><i class="fa fa-check"></i><b>1</b> Introduction to Excel and R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#estimating-the-volume-of-a-snail"><i class="fa fa-check"></i><b>1.1</b> Estimating the Volume of a Snail</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#download-and-import-the-csv-file"><i class="fa fa-check"></i><b>1.1.1</b> Download and Import the CSV File</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#calculate-volume-v-in-excel"><i class="fa fa-check"></i><b>1.1.2</b> Calculate Volume <span class="math inline">\(V\)</span> in Excel</a></li>
+<li class="chapter" data-level="1.1.3" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#add-a-linear-trendline-and-equation"><i class="fa fa-check"></i><b>1.1.3</b> Add a Linear Trendline and Equation</a></li>
+<li class="chapter" data-level="1.1.4" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#estimation-of-volume-for-a-snail-with-mass-10g"><i class="fa fa-check"></i><b>1.1.4</b> Estimation of Volume for a Snail with Mass 10g</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#getting-ready-for-R"><i class="fa fa-check"></i><b>1.2</b> Getting Ready for R</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#download-and-install-windows-and-mac-only"><i class="fa fa-check"></i><b>1.2.1</b> Download and Install (Windows and Mac only)</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#creating-your-first-r-project-in-rstudio"><i class="fa fa-check"></i><b>1.2.2</b> Creating Your First R Project in RStudio</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#something-more-complicated"><i class="fa fa-check"></i><b>1.2.3</b> Something More Complicated</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction-to-excel-and-r.html"><a href="introduction-to-excel-and-r.html#complete-your-weekly-assignments"><i class="fa fa-check"></i><b>1.3</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html"><i class="fa fa-check"></i><b>2</b> Summarising Data and ANOVA in Excel</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#summarising-data"><i class="fa fa-check"></i><b>2.1</b> Summarising Data</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#download-and-import-the-csv-file-1"><i class="fa fa-check"></i><b>2.1.1</b> Download and Import the CSV File</a></li>
+<li class="chapter" data-level="2.1.2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#generating-a-summary-table"><i class="fa fa-check"></i><b>2.1.2</b> Generating a Summary Table</a></li>
+<li class="chapter" data-level="2.1.3" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#presenting-your-summary-table"><i class="fa fa-check"></i><b>2.1.3</b> Presenting Your Summary Table</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#anova"><i class="fa fa-check"></i><b>2.2</b> Analysis of Variance (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#grouped-boxplots-in-excel"><i class="fa fa-check"></i><b>2.2.1</b> Grouped Boxplots in Excel</a></li>
+<li class="chapter" data-level="2.2.2" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#constructing-testable-hypotheses"><i class="fa fa-check"></i><b>2.2.2</b> Constructing Testable Hypotheses</a></li>
+<li class="chapter" data-level="2.2.3" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#performing-a-one-way-anova-in-excel"><i class="fa fa-check"></i><b>2.2.3</b> Performing a One-Way Anova in Excel</a></li>
+<li class="chapter" data-level="2.2.4" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#post-hoc-tests"><i class="fa fa-check"></i><b>2.2.4</b> Performing Post-hoc Tests in Excel</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="summarising-data-and-anova-in-excel.html"><a href="summarising-data-and-anova-in-excel.html#complete-your-weekly-assignments-1"><i class="fa fa-check"></i><b>2.3</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html"><i class="fa fa-check"></i><b>3</b> Calibration Curves and Linear Regression in Excel</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#calibration-curves"><i class="fa fa-check"></i><b>3.1</b> Calibration Curves</a></li>
+<li class="chapter" data-level="3.2" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#linear-regression"><i class="fa fa-check"></i><b>3.2</b> Linear Regression</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#the-linear-regression-equation"><i class="fa fa-check"></i><b>3.2.1</b> The Linear Regression Equation</a></li>
+<li class="chapter" data-level="3.2.2" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#performing-a-linear-regression-in-excel"><i class="fa fa-check"></i><b>3.2.2</b> Performing a Linear Regression in Excel</a></li>
+<li class="chapter" data-level="3.2.3" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#interpreting-your-linear-regression"><i class="fa fa-check"></i><b>3.2.3</b> Interpreting Your Linear Regression</a></li>
+<li class="chapter" data-level="3.2.4" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#making-predictions-with-our-model"><i class="fa fa-check"></i><b>3.2.4</b> Making Predictions with Our Model</a></li>
+<li class="chapter" data-level="3.2.5" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#extending-to-multiple-variables"><i class="fa fa-check"></i><b>3.2.5</b> Extending to Multiple Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="calibration-curves-and-linear-regression-in-excel.html"><a href="calibration-curves-and-linear-regression-in-excel.html#complete-your-weekly-assignments-2"><i class="fa fa-check"></i><b>3.3</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html"><i class="fa fa-check"></i><b>4</b> Introduction to R: Part I</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#reading-and-inspecting-data"><i class="fa fa-check"></i><b>4.1</b> Reading and Inspecting Data</a></li>
+<li class="chapter" data-level="4.2" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#subsetting"><i class="fa fa-check"></i><b>4.2</b> Subsetting</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#slicing"><i class="fa fa-check"></i><b>4.2.1</b> Slicing</a></li>
+<li class="chapter" data-level="4.2.2" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#filtering"><i class="fa fa-check"></i><b>4.2.2</b> Filtering</a></li>
+<li class="chapter" data-level="4.2.3" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#so-what"><i class="fa fa-check"></i><b>4.2.3</b> So what?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#summarising-data-in-r"><i class="fa fa-check"></i><b>4.3</b> Summarising Data in R</a></li>
+<li class="chapter" data-level="4.4" data-path="introduction-to-r-part-i.html"><a href="introduction-to-r-part-i.html#complete-your-weekly-assignments-3"><i class="fa fa-check"></i><b>4.4</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html"><i class="fa fa-check"></i><b>5</b> Introduction to R part II: Visualisation</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#mushroom-compost-scenario"><i class="fa fa-check"></i><b>5.1</b> Mushroom Compost Scenario</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#the-dataset"><i class="fa fa-check"></i><b>5.1.1</b> The dataset</a></li>
+<li class="chapter" data-level="5.1.2" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#further-information"><i class="fa fa-check"></i><b>5.1.2</b> Further information</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#inspecting-and-summarising"><i class="fa fa-check"></i><b>5.2</b> Inspecting and Summarising</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#summary-table"><i class="fa fa-check"></i><b>5.2.1</b> Summary Table</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#histogram"><i class="fa fa-check"></i><b>5.3</b> Histogram</a></li>
+<li class="chapter" data-level="5.4" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#grouped-boxplot"><i class="fa fa-check"></i><b>5.4</b> Grouped Boxplot</a></li>
+<li class="chapter" data-level="5.5" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#scatterplot"><i class="fa fa-check"></i><b>5.5</b> Scatterplot</a></li>
+<li class="chapter" data-level="5.6" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#just-for-fun"><i class="fa fa-check"></i><b>5.6</b> Just for Fun</a></li>
+<li class="chapter" data-level="5.7" data-path="introduction-to-r-part-ii-visualisation.html"><a href="introduction-to-r-part-ii-visualisation.html#complete-your-weekly-assignments-4"><i class="fa fa-check"></i><b>5.7</b> Complete your Weekly Assignments</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html"><i class="fa fa-check"></i><b>6</b> Statistics in R: Part I</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#one-way-anova-in-r"><i class="fa fa-check"></i><b>6.1</b> One-Way ANOVA in R</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#importing-data-from-an-online-source"><i class="fa fa-check"></i><b>6.1.1</b> Importing Data from an Online Source</a></li>
+<li class="chapter" data-level="6.1.2" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#summarising-descriptive-statistics"><i class="fa fa-check"></i><b>6.1.2</b> Summarising (Descriptive Statistics)</a></li>
+<li class="chapter" data-level="6.1.3" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#grouped-boxplots-in-r"><i class="fa fa-check"></i><b>6.1.3</b> Grouped Boxplots in R</a></li>
+<li class="chapter" data-level="6.1.4" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#conducting-a-one-way-anova"><i class="fa fa-check"></i><b>6.1.4</b> Conducting a One-Way ANOVA</a></li>
+<li class="chapter" data-level="6.1.5" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#post-hoc-tests-1"><i class="fa fa-check"></i><b>6.1.5</b> Post-Hoc Tests</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#two-way-anova-in-r"><i class="fa fa-check"></i><b>6.2</b> Two-way ANOVA in R</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#importing-and-cleaning-the-data"><i class="fa fa-check"></i><b>6.2.1</b> Importing and Cleaning the Data</a></li>
+<li class="chapter" data-level="6.2.2" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#visualising-the-data"><i class="fa fa-check"></i><b>6.2.2</b> Visualising the data</a></li>
+<li class="chapter" data-level="6.2.3" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#conducting-a-two-way-anova"><i class="fa fa-check"></i><b>6.2.3</b> Conducting a Two-Way ANOVA</a></li>
+<li class="chapter" data-level="6.2.4" data-path="statistics-in-r-part-i.html"><a href="statistics-in-r-part-i.html#post-hoc-tests-2"><i class="fa fa-check"></i><b>6.2.4</b> Post-Hoc tests</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="statistics-in-r-part-ii.html"><a href="statistics-in-r-part-ii.html"><i class="fa fa-check"></i><b>7</b> Statistics in R: Part II</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="statistics-in-r-part-ii.html"><a href="statistics-in-r-part-ii.html#linear-regression-in-r"><i class="fa fa-check"></i><b>7.1</b> Linear Regression in R</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="statistics-in-r-part-ii.html"><a href="statistics-in-r-part-ii.html#reading-the-data-and-calculating-a-survival-column"><i class="fa fa-check"></i><b>7.1.1</b> Reading the data and calculating a survival column</a></li>
+<li class="chapter" data-level="7.1.2" data-path="statistics-in-r-part-ii.html"><a href="statistics-in-r-part-ii.html#visualising-the-data-1"><i class="fa fa-check"></i><b>7.1.2</b> Visualising the data</a></li>
+<li class="chapter" data-level="7.1.3" data-path="statistics-in-r-part-ii.html"><a href="statistics-in-r-part-ii.html#linearising-the-data"><i class="fa fa-check"></i><b>7.1.3</b> Linearising the data</a></li>
+<li class="chapter" data-level="7.1.4" data-path="statistics-in-r-part-ii.html"><a href="statistics-in-r-part-ii.html#performing-a-linear-regression-in-r"><i class="fa fa-check"></i><b>7.1.4</b> Performing a Linear Regression in R</a></li>
+<li class="chapter" data-level="7.1.5" data-path="statistics-in-r-part-ii.html"><a href="statistics-in-r-part-ii.html#calculating-ld50"><i class="fa fa-check"></i><b>7.1.5</b> Calculating LD50</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="statistics-in-r-part-ii.html"><a href="statistics-in-r-part-ii.html#multiple-linear-regression-mlr-in-r."><i class="fa fa-check"></i><b>7.2</b> Multiple Linear Regression (MLR) in R.</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="statistics-in-r-part-ii.html"><a href="statistics-in-r-part-ii.html#performing-an-mlr-in-r"><i class="fa fa-check"></i><b>7.2.1</b> Performing an MLR in R</a></li>
+<li class="chapter" data-level="7.2.2" data-path="statistics-in-r-part-ii.html"><a href="statistics-in-r-part-ii.html#predicting-values-for-viable-counts"><i class="fa fa-check"></i><b>7.2.2</b> Predicting values for Viable Counts</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="loops-logic-and-functions-diving-deeper-into-r.html"><a href="loops-logic-and-functions-diving-deeper-into-r.html"><i class="fa fa-check"></i><b>8</b> Loops, Logic and Functions: Diving Deeper into R</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="loops-logic-and-functions-diving-deeper-into-r.html"><a href="loops-logic-and-functions-diving-deeper-into-r.html#what-is-fasta"><i class="fa fa-check"></i><b>8.1</b> What is FASTA?</a></li>
+<li class="chapter" data-level="8.2" data-path="loops-logic-and-functions-diving-deeper-into-r.html"><a href="loops-logic-and-functions-diving-deeper-into-r.html#extracting-sequences-from-a-fasta-file"><i class="fa fa-check"></i><b>8.2</b> Extracting Sequences from a FASTA File</a></li>
+<li class="chapter" data-level="8.3" data-path="loops-logic-and-functions-diving-deeper-into-r.html"><a href="loops-logic-and-functions-diving-deeper-into-r.html#writing-functional-code"><i class="fa fa-check"></i><b>8.3</b> Writing Functional Code</a></li>
+<li class="chapter" data-level="8.4" data-path="loops-logic-and-functions-diving-deeper-into-r.html"><a href="loops-logic-and-functions-diving-deeper-into-r.html#counting-motifs"><i class="fa fa-check"></i><b>8.4</b> Counting Motifs</a></li>
+<li class="chapter" data-level="8.5" data-path="loops-logic-and-functions-diving-deeper-into-r.html"><a href="loops-logic-and-functions-diving-deeper-into-r.html#thefunbit"><i class="fa fa-check"></i><b>8.5</b> The Fun Bit (AKA - The Last Horrible Bit)</a></li>
+<li class="chapter" data-level="8.6" data-path="loops-logic-and-functions-diving-deeper-into-r.html"><a href="loops-logic-and-functions-diving-deeper-into-r.html#fasta-tools"><i class="fa fa-check"></i><b>8.6</b> <code>fasta-tools.R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="image-analysis-in-r.html"><a href="image-analysis-in-r.html"><i class="fa fa-check"></i><b>9</b> Image Analysis in R</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="image-analysis-in-r.html"><a href="image-analysis-in-r.html#the-doomscroller-virus-pandemic-scenario"><i class="fa fa-check"></i><b>9.1</b> The Doomscroller Virus Pandemic: Scenario</a>
+<ul>
+<li class="chapter" data-level="9.1.1" data-path="image-analysis-in-r.html"><a href="image-analysis-in-r.html#performing-a-manual-count"><i class="fa fa-check"></i><b>9.1.1</b> Performing a Manual Count</a></li>
+<li class="chapter" data-level="9.1.2" data-path="image-analysis-in-r.html"><a href="image-analysis-in-r.html#installing-packages-and-setting-up"><i class="fa fa-check"></i><b>9.1.2</b> Installing Packages and Setting Up</a></li>
+<li class="chapter" data-level="9.1.3" data-path="image-analysis-in-r.html"><a href="image-analysis-in-r.html#automating-the-count"><i class="fa fa-check"></i><b>9.1.3</b> Automating The Count</a></li>
+<li class="chapter" data-level="9.1.4" data-path="image-analysis-in-r.html"><a href="image-analysis-in-r.html#looping-over-all-files-in-a-.zip"><i class="fa fa-check"></i><b>9.1.4</b> Looping Over All Files in a .zip</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="image-analysis-in-r.html"><a href="image-analysis-in-r.html#scenario-extension"><i class="fa fa-check"></i><b>9.2</b> Scenario Extension</a></li>
+<li class="chapter" data-level="9.3" data-path="image-analysis-in-r.html"><a href="image-analysis-in-r.html#hemo-tools"><i class="fa fa-check"></i><b>9.3</b> <code>hemo-tools.R</code></a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="boss-fight.html"><a href="boss-fight.html"><i class="fa fa-check"></i><b>10</b> Boss Fight</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i>Appendix I: Teach yourself R.</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#linkedin-learning"><i class="fa fa-check"></i>LinkedIn Learning</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#youtube"><i class="fa fa-check"></i>YouTube</a></li>
+<li class="chapter" data-level="" data-path="appendix.html"><a href="appendix.html#books"><i class="fa fa-check"></i>Books</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="feedback.html"><a href="feedback.html"><i class="fa fa-check"></i>Appendix II: Feedback</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Quantiative Skills in Biosciences I</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="image-analysis-in-r" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">9</span> Image Analysis in R<a href="image-analysis-in-r.html#image-analysis-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover <strong>all of this section’s content</strong> and complete this week’s <strong>formative and summative assessments</strong> in the BIOS103 Canvas Course.</p>
+<p>In the last chapter, we explored how to use R for parsing FASTA files and performing some basic bioinformatics tasks. This chapter builds on that foundation by focusing on the power of R to automate repetitive tasks - a skill that is invaluable when working with large datasets or time-consuming processes.</p>
+<p>You’ve already had some experience with repetitive tasks in your lab work. For example, counting cells using a hemocytometer. While that exercise gave you a hands-on understanding of the process, imagine needing to count hundreds, or even thousands of hemocytometer grids. Doing it manually would take hours, if not days. This week, we’ll tackle that challenge by using R to automate the process.</p>
+<p>The <strong>key learning objectives</strong> for this chapter are:</p>
+<ol style="list-style-type: decimal">
+<li>Learn how to install and use R packages to extend your capabilities.</li>
+<li>Work with pre-written functions in an R script and apply them to real-world tasks.</li>
+<li>Manage .zip files by extracting their contents and applying functions in a loop.</li>
+</ol>
+<p>All of the above will be delivered using the following, highly contrived (and very tongue in cheek) scenario.</p>
+<div id="the-doomscroller-virus-pandemic-scenario" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> The Doomscroller Virus Pandemic: Scenario<a href="image-analysis-in-r.html#the-doomscroller-virus-pandemic-scenario" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A new virus, dubbed the <em>Doomscroller</em> virus, is affecting young people worldwide, resulting in a drastic drop in productivity. One of the key symptoms of this virus is a reduction in viable red blood cell counts. Labs across the country are overwhelmed and short on costly autocounting equipment. Fortunately, they still have large supplies of hemocytometer slides and digital microscopes for manual cell counting.</p>
+<p>You’ve recently been hired as an expert bio-analyst to help solve this bottleneck. Your team has developed a short script called <a href="image-analysis-in-r.html#hemo-tools">hemo-tools.R</a> that can analyse digital images of hemocytometer slides and automatically count viable red blood cells.</p>
+<p>To prove the viability of this solution, you are given a zip file containing 100 hemocytometer images: <a href="https://github.com/rtreharne/qs/raw/refs/heads/main/data/11/hemo_100.zip" target="_blank">hemo_100.zip</a>. Each file in the zip file represents a slide prepared from suspected infected blood samples.</p>
+<p><strong>Your initial task is to run the script on each image and calculate the average number of viable cells across all 100 images</strong>.</p>
+<div id="performing-a-manual-count" class="section level3 hasAnchor" number="9.1.1">
+<h3><span class="header-section-number">9.1.1</span> Performing a Manual Count<a href="image-analysis-in-r.html#performing-a-manual-count" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Before we dive into the code let’s make sure we’re still capable of doing things the old fashioned way. Figure <a href="image-analysis-in-r.html#fig:hemo-grid">9.1</a> shows a single example of the kind of images that we’re dealing with here. Each empty circle (no colour) in the image represents a <strong>viable</strong> blood cell, whereas every blue-filled circle represents a non-viable cell.</p>
+<p>Watch the following video to understand why the non-viable cells are blue and to remind yourself how to manually estimate the number of viable cells in figure <a href="image-analysis-in-r.html#fig:hemo-grid">9.1</a>.</p>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/pP0xERLUhyc?si=gt6Y3rTbXxzSKgeE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<div class="figure"><span style="display:block;" id="fig:hemo-grid"></span>
+<img src="img/11/hemo_grid.png" alt="Example of a single hemocytometer image taken using a digital microscope. Each large square (there are 9 in total) represents a volume of 1e-4 mL." width="100%" />
+<p class="caption">
+Figure 9.1: Example of a single hemocytometer image taken using a digital microscope. Each large square (there are 9 in total) represents a volume of 1e-4 mL.
+</p>
+</div>
+<p>By applying the methodology in the video, I hope we can agree on the set of counts shown in table 9.1.</p>
+<p>Table 9.1: Manual counts of viable and non-viable cells for figure <a href="image-analysis-in-r.html#fig:hemo-grid">9.1</a>.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Square</th>
+<th align="right">Viable.Cells</th>
+<th align="right">Non.Viable.Cells</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Top-left</td>
+<td align="right">9</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">Top-right</td>
+<td align="right">13</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Middle</td>
+<td align="right">8</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td align="left">Bottom-left</td>
+<td align="right">9</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="left">Bottom-right</td>
+<td align="right">7</td>
+<td align="right">2</td>
+</tr>
+</tbody>
+</table>
+<p>Our manual count allows us to calculate an estimate of <strong>9.2</strong> cells per big square (i.e. (9 + 13 + 8 + 9 + 7) / 5).</p>
+<p>I could go further and calculate the concentration of cells in my starting solution as follows:</p>
+<p><span class="math display">\[
+\text{Cell concentration} = (\text{count}) \times (\text{dilution factor}) \times \frac{1}{\text{volume of one large square}}
+\]</span></p>
+<p>where:</p>
+<ul>
+<li>The <strong>count</strong> is the average number of cells counted in the large squares (in this case, 9.2).</li>
+<li>The <strong>dilution factor</strong> accounts for the 2-fold dilution of the starting solution with Trypan blue (hence, multiply by 2).</li>
+<li>The <strong>volume of one large square</strong> is <span class="math inline">\(1 \times 10^{-4}\)</span> mL. To express the concentration in units of cells/mL, we divide by this volume, which is equivalent to multiplying by <span class="math inline">\(10,000\)</span>.</li>
+</ul>
+<p>Substituting the values:</p>
+<p><span class="math display">\[
+\text{Cell concentration} = 9.2 \times 2 \times 10,000 = 1.85 \times 10^5 \, \text{cells/mL}.
+\]</span></p>
+<p>OK. Now lets see if we can automate the counting of cells using R.</p>
+</div>
+<div id="installing-packages-and-setting-up" class="section level3 hasAnchor" number="9.1.2">
+<h3><span class="header-section-number">9.1.2</span> Installing Packages and Setting Up<a href="image-analysis-in-r.html#installing-packages-and-setting-up" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/BdHY-B3BXis?si=vd-J48dJvm_Vr6ux" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<blockquote>
+<p><strong>Posit Cloud Alternative</strong></p>
+<p>For anyone experiencing difficulty when installing packages I recommend the following altenative: <a href="https://youtu.be/TyIwbsyf1wg?si=bfWA7bRz_vIf1NI8" target="_blank">https://youtu.be/TyIwbsyf1wg?si=bfWA7bRz_vIf1NI8</a>.</p>
+</blockquote>
+<p>So far, in this course, we’ve relied exclusively on <strong>native R functionality</strong> — that is, everything pre-loaded into our environment when we start RStudio. Native R is powerful, but one of the reasons R is so widely used in science, data analysis, and beyond is its <strong>vast ecosystem of additional packages</strong>.</p>
+<p>In order to use our <code>hemo-tools.R</code> script we need to install a few additional packages. Most of you should be able to install the necessary packages by following the guidance below. However, some of you (especially those using Macs) may run into some trouble here. If you can’t install the necessary packages to proceed then use a University machine or <a href="https://posit.cloud" target="_blank">posit.cloud</a>.</p>
+<p><strong>Step 1: Create a New R Project</strong></p>
+<p>Start by creating a new R project. Inside this project, create two new script files:</p>
+<ul>
+<li><code>main.R</code>: Leave this file blank for now.</li>
+<li><code>hemo-tools.R</code>: Copy and paste the script from section <a href="image-analysis-in-r.html#hemo-tools">9.3</a> into this file.</li>
+</ul>
+<p><strong>Step 2: Load Your hemo-tools.R Script</strong></p>
+<p>Update your <code>main.R</code> file with the following code and source the file to load the functions from your <code>hemo-tools.R</code> script into your environment:</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="image-analysis-in-r.html#cb103-1" tabindex="-1"></a><span class="co"># File: main.R</span></span>
+<span id="cb103-2"><a href="image-analysis-in-r.html#cb103-2" tabindex="-1"></a></span>
+<span id="cb103-3"><a href="image-analysis-in-r.html#cb103-3" tabindex="-1"></a><span class="co"># Load the hemo-tools.R script</span></span>
+<span id="cb103-4"><a href="image-analysis-in-r.html#cb103-4" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;hemo-tools.R&quot;</span>)</span></code></pre></div>
+You should get the error shown in figure <a href="image-analysis-in-r.html#fig:error-1">9.2</a>. That’s expected.
+<div class="figure"><span style="display:block;" id="fig:error-1"></span>
+<img src="img/11/error-1.png" alt="You'll probably see this error in your console when trying to run `source('hemo-tools.R')` for the first time." width="100%" />
+<p class="caption">
+Figure 9.2: You’ll probably see this error in your console when trying to run <code>source('hemo-tools.R')</code> for the first time.
+</p>
+</div>
+<p><strong>Step 3: Install Additional Packages</strong></p>
+<p>Input the following line <strong>directly into your console</strong> and hit enter.</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="image-analysis-in-r.html#cb104-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;png&quot;</span>)</span></code></pre></div>
+<p>Once the <code>png</code> package has successfully installed (it takes a few seconds) hit the source button on your <code>main.R</code> script again. You should see another error, this time telling your that the <code>EBImage</code> package is not installed.</p>
+<p>Installing the <code>EBImage</code> package is a bit more complicated. Enter the following lines, one-by-one, into your console.</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="image-analysis-in-r.html#cb105-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="image-analysis-in-r.html#cb106-1" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">&quot;EBImage&quot;</span>)</span></code></pre></div>
+<p>That should do the trick. Now, when you run your <code>main.R</code> file again you shouldn’t see any errors and you should notice that your environment has been updated with three new functions:</p>
+<ul>
+<li><code>count_viable</code></li>
+<li><code>count_nonviable</code></li>
+<li><code>calculate_proportion_nonviable</code></li>
+</ul>
+<p>We are now ready to automate! Huzzah!</p>
+</div>
+<div id="automating-the-count" class="section level3 hasAnchor" number="9.1.3">
+<h3><span class="header-section-number">9.1.3</span> Automating The Count<a href="image-analysis-in-r.html#automating-the-count" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let’s update our <code>main.R</code> script to count the viable cells in our image. Actually I’m going to cheat a bit here and give you a new image without the gridlines. See figure <a href="image-analysis-in-r.html#fig:hemo">9.3</a>. Save this new figure to your project directory and call it <code>hemo.png</code>.</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="image-analysis-in-r.html#cb107-1" tabindex="-1"></a><span class="co"># Load my hemo-tools.R script</span></span>
+<span id="cb107-2"><a href="image-analysis-in-r.html#cb107-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;hemo-tools.R&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;EBImage&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:plotly&#39;:
+## 
+##     toRGB</code></pre>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="image-analysis-in-r.html#cb110-1" tabindex="-1"></a><span class="co"># Count the number of viable cells in the image</span></span>
+<span id="cb110-2"><a href="image-analysis-in-r.html#cb110-2" tabindex="-1"></a>count <span class="ot">&lt;-</span> <span class="fu">count_viable</span>(<span class="st">&quot;hemo.png&quot;</span>)</span>
+<span id="cb110-3"><a href="image-analysis-in-r.html#cb110-3" tabindex="-1"></a></span>
+<span id="cb110-4"><a href="image-analysis-in-r.html#cb110-4" tabindex="-1"></a><span class="co"># Calculate cell count per big square</span></span>
+<span id="cb110-5"><a href="image-analysis-in-r.html#cb110-5" tabindex="-1"></a>cells_per_square <span class="ot">&lt;-</span> count  <span class="sc">/</span> <span class="dv">9</span></span>
+<span id="cb110-6"><a href="image-analysis-in-r.html#cb110-6" tabindex="-1"></a></span>
+<span id="cb110-7"><a href="image-analysis-in-r.html#cb110-7" tabindex="-1"></a><span class="co"># Output the Viable Cell Count</span></span>
+<span id="cb110-8"><a href="image-analysis-in-r.html#cb110-8" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(</span>
+<span id="cb110-9"><a href="image-analysis-in-r.html#cb110-9" tabindex="-1"></a>  <span class="st">&quot;Total viable cell count: &quot;</span>, count,</span>
+<span id="cb110-10"><a href="image-analysis-in-r.html#cb110-10" tabindex="-1"></a>  <span class="st">&quot;; Viable cells per big square: &quot;</span>, <span class="fu">sprintf</span>(<span class="st">&quot;%.2f&quot;</span>, cells_per_square)</span>
+<span id="cb110-11"><a href="image-analysis-in-r.html#cb110-11" tabindex="-1"></a>))</span></code></pre></div>
+<pre><code>## [1] &quot;Total viable cell count:  78 ; Viable cells per big square:  8.67&quot;</code></pre>
+<div class="figure"><span style="display:block;" id="fig:hemo"></span>
+<img src="img/11/hemo.png" alt="The same image as in figure 9.1 but without the grid lines. This is a bit of a cheat - I've removed the grid lines from my images because they interfere with my script's ability to automatically count viable cells. Please suspend your disbelief." width="100%" />
+<p class="caption">
+Figure 9.3: The same image as in figure 9.1 but without the grid lines. This is a bit of a cheat - I’ve removed the grid lines from my images because they interfere with my script’s ability to automatically count viable cells. Please suspend your disbelief.
+</p>
+</div>
+<h3>
+Comparing the Manual and Automated Count Methods
+</h3>
+<p>The automated count method yields a value of <strong>8.67</strong> for the viable cell count.</p>
+<p>How does this compare with your manual estimate of 9.2? It’s a bit lower, but because the script has counted <strong>all</strong> viable cells in the image and then divided by 9 (instead of counting viable cells in 5 big squares and then dividing by 5) the value of 8.67 can be considered more accurate.</p>
+<p>I hope you’ll also agree that this method is also a heck of a lot faster than the manual count?!</p>
+</div>
+<div id="looping-over-all-files-in-a-.zip" class="section level3 hasAnchor" number="9.1.4">
+<h3><span class="header-section-number">9.1.4</span> Looping Over All Files in a .zip<a href="image-analysis-in-r.html#looping-over-all-files-in-a-.zip" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Here’s the fun bit. Now we can count the number of viable cells in a single file we can write a few extra lines of code to do the same for lots (hundreds!) of files.</p>
+<p>On this occasion, I’ve bundled 100 hemocytometer images into a single .zip file: <a href="https://github.com/rtreharne/qs/raw/refs/heads/main/data/11/hemo_100.zip" target="_blank">hemo_100.zip</a>. Download the zip file to your project directory. Update your <code>main.R</code> script file with the following code and then click <code>Source</code> to compile everything.</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="image-analysis-in-r.html#cb112-1" tabindex="-1"></a><span class="co"># Load my existing hemo-tools.R script</span></span>
+<span id="cb112-2"><a href="image-analysis-in-r.html#cb112-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;hemo-tools.R&quot;</span>)</span>
+<span id="cb112-3"><a href="image-analysis-in-r.html#cb112-3" tabindex="-1"></a></span>
+<span id="cb112-4"><a href="image-analysis-in-r.html#cb112-4" tabindex="-1"></a><span class="co"># Extract all images from hemo.zip to a new directory</span></span>
+<span id="cb112-5"><a href="image-analysis-in-r.html#cb112-5" tabindex="-1"></a><span class="fu">unzip</span>(<span class="st">&quot;hemo_100.zip&quot;</span>, <span class="at">exdir =</span> <span class="st">&quot;image_files&quot;</span>)</span>
+<span id="cb112-6"><a href="image-analysis-in-r.html#cb112-6" tabindex="-1"></a></span>
+<span id="cb112-7"><a href="image-analysis-in-r.html#cb112-7" tabindex="-1"></a><span class="co"># Get a list of all image files in the new directory</span></span>
+<span id="cb112-8"><a href="image-analysis-in-r.html#cb112-8" tabindex="-1"></a>image_files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;image_files&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;.png&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb112-9"><a href="image-analysis-in-r.html#cb112-9" tabindex="-1"></a></span>
+<span id="cb112-10"><a href="image-analysis-in-r.html#cb112-10" tabindex="-1"></a><span class="co"># Loop through all image files and count the number of cells in each</span></span>
+<span id="cb112-11"><a href="image-analysis-in-r.html#cb112-11" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb112-12"><a href="image-analysis-in-r.html#cb112-12" tabindex="-1"></a></span>
+<span id="cb112-13"><a href="image-analysis-in-r.html#cb112-13" tabindex="-1"></a><span class="co"># Loop over every file and count viable cells in each</span></span>
+<span id="cb112-14"><a href="image-analysis-in-r.html#cb112-14" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(image_files)) {</span>
+<span id="cb112-15"><a href="image-analysis-in-r.html#cb112-15" tabindex="-1"></a>  results[i] <span class="ot">&lt;-</span> <span class="fu">count_viable</span>(image_files[i])</span>
+<span id="cb112-16"><a href="image-analysis-in-r.html#cb112-16" tabindex="-1"></a>}</span>
+<span id="cb112-17"><a href="image-analysis-in-r.html#cb112-17" tabindex="-1"></a></span>
+<span id="cb112-18"><a href="image-analysis-in-r.html#cb112-18" tabindex="-1"></a><span class="co"># Clean up: delete the &quot;image_files&quot; directory and its contents</span></span>
+<span id="cb112-19"><a href="image-analysis-in-r.html#cb112-19" tabindex="-1"></a><span class="fu">unlink</span>(<span class="st">&quot;image_files&quot;</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb112-20"><a href="image-analysis-in-r.html#cb112-20" tabindex="-1"></a></span>
+<span id="cb112-21"><a href="image-analysis-in-r.html#cb112-21" tabindex="-1"></a></span>
+<span id="cb112-22"><a href="image-analysis-in-r.html#cb112-22" tabindex="-1"></a><span class="co"># Output mean number of counts over all images</span></span>
+<span id="cb112-23"><a href="image-analysis-in-r.html#cb112-23" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Mean number of viable counts in each image: &quot;</span>, </span>
+<span id="cb112-24"><a href="image-analysis-in-r.html#cb112-24" tabindex="-1"></a>    <span class="fu">sprintf</span>(<span class="st">&quot;%.2f&quot;</span>, <span class="fu">mean</span>(results)), <span class="st">&quot; viable cells.&quot;</span>))</span></code></pre></div>
+<pre><code>## [1] &quot;Mean number of viable counts in each image:  204.07  viable cells.&quot;</code></pre>
+<p>If all goes well, this script should output the average viable cell count into your console. Just stop for a second to consider what you’ve just done. You’ve effectively looked at every image (all 100 of them!) and every single viable cell with 100% accuracy in less than 20 seconds. Mind-blowing. How awesome are you?</p>
+<p>Here’s a detailed explanation of the code:</p>
+<p><strong>1. Loading the Predefined Tools</strong></p>
+<ul>
+<li>The <code>source("hemo-tools.R")</code> command loads a script containing the <code>count_viable</code> function, which is responsible for processing each image and counting viable cells.</li>
+</ul>
+<p><strong>2. Extracting the Files</strong></p>
+<ul>
+<li>The <code>unzip("hemo_100.zip", exdir = "image_files")</code> line extracts all images from the <code>hemo_100.zip</code> archive into a temporary directory named <code>image_files</code>. You should see the <code>image_files</code> pop-up in our files area in Rstudio.</li>
+</ul>
+<p><strong>3. Getting the List of Images</strong></p>
+<ul>
+<li><code>list.files("image_files", pattern = ".png", full.names = TRUE)</code> creates a list of the file paths for all <code>.png</code> images in the <code>image_files</code> directory.</li>
+<li>The <code>full.names = TRUE</code> argument ensures the file paths include the directory for accurate referencing when using the paths in further functions.</li>
+</ul>
+<p><strong>4. Initialising the Results Storage</strong></p>
+<ul>
+<li><code>results &lt;- c()</code> creates an empty vector to store the viable cell counts for each image.</li>
+</ul>
+<p><strong>5. Processing Each Image</strong></p>
+<ul>
+<li>A <code>for</code> loop (<code>for (i in 1:length(image_files))</code>) iterates over the list of images.</li>
+<li>Within the loop, <code>count_viable(image_files[i]) processes the current image and calculates the viable cell count, storing the result in</code>results[i]`.</li>
+</ul>
+<p><strong>6. Cleaning Up Temporary Files</strong></p>
+<ul>
+<li><code>unlink("image_files", recursive = TRUE)</code> deletes the <code>image_files</code> directory and its contents after processing is complete.</li>
+<li>The <code>recursive = TRUE</code> argument ensures the directory and all its sub-contents are removed.</li>
+<li>Removing files after extracting and processing them is good practice as it prevents your computer’s memory getting full when processing many files.</li>
+</ul>
+<p><strong>7. Calculating and Displaying the Mean</strong></p>
+<ul>
+<li>The mean of all cell counts is calculated using <code>mean(results)</code> and formatted to two decimal places with <code>sprintf("%.2f", ...)</code>.</li>
+<li>The final result is printed to the console with <code>print(paste("Mean number of viable counts ..."))</code>.</li>
+</ul>
+</div>
+</div>
+<div id="scenario-extension" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Scenario Extension<a href="image-analysis-in-r.html#scenario-extension" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>New evidence has come to light that the viable red blood cell count is less important than the proportion of non-viable cells. In fact, any sample in which there are more than 20% non-viable cells can be interpreted as a positive test for the virus.</p>
+<p>Your new task is to <strong>count the number of positive results identified by non-viable cell proportions greater than 20%</strong>.</p>
+<p>See if you can complete this task independently before watching my video guide below.</p>
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/4j--m5SMxBE?si=KW--_xjH8fzlMU9i" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+</iframe>
+<blockquote>
+<p><strong>Posit Cloud Alternative</strong></p>
+<p>For anyone experiencing difficulty when installing packages I recommend the following altenative: <a href="https://youtu.be/TyIwbsyf1wg?si=bfWA7bRz_vIf1NI8" target="_blank">https://youtu.be/TyIwbsyf1wg?si=ttaEfdOLkfbsBn5C&amp;t=662</a>.</p>
+</blockquote>
+</div>
+<div id="hemo-tools" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> <code>hemo-tools.R</code><a href="image-analysis-in-r.html#hemo-tools" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="image-analysis-in-r.html#cb114-1" tabindex="-1"></a><span class="co"># This script file was created by R. Treharne on 6/11/2024</span></span>
+<span id="cb114-2"><a href="image-analysis-in-r.html#cb114-2" tabindex="-1"></a></span>
+<span id="cb114-3"><a href="image-analysis-in-r.html#cb114-3" tabindex="-1"></a><span class="co"># Load necessary libraries</span></span>
+<span id="cb114-4"><a href="image-analysis-in-r.html#cb114-4" tabindex="-1"></a><span class="fu">library</span>(png)</span>
+<span id="cb114-5"><a href="image-analysis-in-r.html#cb114-5" tabindex="-1"></a><span class="fu">library</span>(EBImage)</span>
+<span id="cb114-6"><a href="image-analysis-in-r.html#cb114-6" tabindex="-1"></a></span>
+<span id="cb114-7"><a href="image-analysis-in-r.html#cb114-7" tabindex="-1"></a><span class="co"># Function to count the number of objects in an image</span></span>
+<span id="cb114-8"><a href="image-analysis-in-r.html#cb114-8" tabindex="-1"></a>count_viable <span class="ot">&lt;-</span> <span class="cf">function</span>(image_path, <span class="at">threshold =</span> <span class="fl">0.5</span>) {</span>
+<span id="cb114-9"><a href="image-analysis-in-r.html#cb114-9" tabindex="-1"></a>  <span class="co"># Read the image</span></span>
+<span id="cb114-10"><a href="image-analysis-in-r.html#cb114-10" tabindex="-1"></a>  img <span class="ot">&lt;-</span> <span class="fu">readPNG</span>(image_path)</span>
+<span id="cb114-11"><a href="image-analysis-in-r.html#cb114-11" tabindex="-1"></a>  </span>
+<span id="cb114-12"><a href="image-analysis-in-r.html#cb114-12" tabindex="-1"></a>  <span class="co"># Convert the image to grayscale</span></span>
+<span id="cb114-13"><a href="image-analysis-in-r.html#cb114-13" tabindex="-1"></a>  gray_img <span class="ot">&lt;-</span> <span class="fu">channel</span>(img, <span class="st">&quot;gray&quot;</span>)</span>
+<span id="cb114-14"><a href="image-analysis-in-r.html#cb114-14" tabindex="-1"></a>  </span>
+<span id="cb114-15"><a href="image-analysis-in-r.html#cb114-15" tabindex="-1"></a>  <span class="co"># Apply thresholding to create a binary image</span></span>
+<span id="cb114-16"><a href="image-analysis-in-r.html#cb114-16" tabindex="-1"></a>  binary_img <span class="ot">&lt;-</span> gray_img <span class="sc">&gt;</span> threshold</span>
+<span id="cb114-17"><a href="image-analysis-in-r.html#cb114-17" tabindex="-1"></a>  </span>
+<span id="cb114-18"><a href="image-analysis-in-r.html#cb114-18" tabindex="-1"></a>  <span class="co"># Find connected components</span></span>
+<span id="cb114-19"><a href="image-analysis-in-r.html#cb114-19" tabindex="-1"></a>  cc <span class="ot">&lt;-</span> <span class="fu">bwlabel</span>(binary_img)</span>
+<span id="cb114-20"><a href="image-analysis-in-r.html#cb114-20" tabindex="-1"></a>  </span>
+<span id="cb114-21"><a href="image-analysis-in-r.html#cb114-21" tabindex="-1"></a>  <span class="co"># Count the number of objects</span></span>
+<span id="cb114-22"><a href="image-analysis-in-r.html#cb114-22" tabindex="-1"></a>  num_objects <span class="ot">&lt;-</span> <span class="fu">max</span>(cc) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb114-23"><a href="image-analysis-in-r.html#cb114-23" tabindex="-1"></a>  </span>
+<span id="cb114-24"><a href="image-analysis-in-r.html#cb114-24" tabindex="-1"></a>  <span class="fu">return</span>(num_objects)</span>
+<span id="cb114-25"><a href="image-analysis-in-r.html#cb114-25" tabindex="-1"></a>}</span>
+<span id="cb114-26"><a href="image-analysis-in-r.html#cb114-26" tabindex="-1"></a></span>
+<span id="cb114-27"><a href="image-analysis-in-r.html#cb114-27" tabindex="-1"></a>count_nonviable <span class="ot">&lt;-</span> <span class="cf">function</span>(image_path, <span class="at">blue_threshold =</span> <span class="fl">0.5</span>) {</span>
+<span id="cb114-28"><a href="image-analysis-in-r.html#cb114-28" tabindex="-1"></a>  <span class="co"># Read the image</span></span>
+<span id="cb114-29"><a href="image-analysis-in-r.html#cb114-29" tabindex="-1"></a>  img <span class="ot">&lt;-</span> <span class="fu">readPNG</span>(image_path)</span>
+<span id="cb114-30"><a href="image-analysis-in-r.html#cb114-30" tabindex="-1"></a>  </span>
+<span id="cb114-31"><a href="image-analysis-in-r.html#cb114-31" tabindex="-1"></a>  <span class="co"># Split the image into R, G, B channels</span></span>
+<span id="cb114-32"><a href="image-analysis-in-r.html#cb114-32" tabindex="-1"></a>  red_channel <span class="ot">&lt;-</span> img[,,<span class="dv">1</span>]</span>
+<span id="cb114-33"><a href="image-analysis-in-r.html#cb114-33" tabindex="-1"></a>  green_channel <span class="ot">&lt;-</span> img[,,<span class="dv">2</span>]</span>
+<span id="cb114-34"><a href="image-analysis-in-r.html#cb114-34" tabindex="-1"></a>  blue_channel <span class="ot">&lt;-</span> img[,,<span class="dv">3</span>]</span>
+<span id="cb114-35"><a href="image-analysis-in-r.html#cb114-35" tabindex="-1"></a>  </span>
+<span id="cb114-36"><a href="image-analysis-in-r.html#cb114-36" tabindex="-1"></a>  <span class="co"># Create a binary mask for blue regions</span></span>
+<span id="cb114-37"><a href="image-analysis-in-r.html#cb114-37" tabindex="-1"></a>  <span class="co"># Only pixels where the blue channel is strong and dominates red and green will be counted</span></span>
+<span id="cb114-38"><a href="image-analysis-in-r.html#cb114-38" tabindex="-1"></a>  blue_mask <span class="ot">&lt;-</span> (blue_channel <span class="sc">&gt;</span> blue_threshold) <span class="sc">&amp;</span> (blue_channel <span class="sc">&gt;</span> red_channel) <span class="sc">&amp;</span> (blue_channel <span class="sc">&gt;</span> green_channel)</span>
+<span id="cb114-39"><a href="image-analysis-in-r.html#cb114-39" tabindex="-1"></a>  </span>
+<span id="cb114-40"><a href="image-analysis-in-r.html#cb114-40" tabindex="-1"></a>  <span class="co"># Find connected components in the blue mask</span></span>
+<span id="cb114-41"><a href="image-analysis-in-r.html#cb114-41" tabindex="-1"></a>  cc <span class="ot">&lt;-</span> <span class="fu">bwlabel</span>(blue_mask)</span>
+<span id="cb114-42"><a href="image-analysis-in-r.html#cb114-42" tabindex="-1"></a>  </span>
+<span id="cb114-43"><a href="image-analysis-in-r.html#cb114-43" tabindex="-1"></a>  <span class="co"># Count the number of blue objects</span></span>
+<span id="cb114-44"><a href="image-analysis-in-r.html#cb114-44" tabindex="-1"></a>  num_blue_objects <span class="ot">&lt;-</span> <span class="fu">max</span>(cc)</span>
+<span id="cb114-45"><a href="image-analysis-in-r.html#cb114-45" tabindex="-1"></a>  </span>
+<span id="cb114-46"><a href="image-analysis-in-r.html#cb114-46" tabindex="-1"></a>  <span class="fu">return</span>(num_blue_objects)</span>
+<span id="cb114-47"><a href="image-analysis-in-r.html#cb114-47" tabindex="-1"></a>}</span>
+<span id="cb114-48"><a href="image-analysis-in-r.html#cb114-48" tabindex="-1"></a></span>
+<span id="cb114-49"><a href="image-analysis-in-r.html#cb114-49" tabindex="-1"></a>proportion_nonviable <span class="ot">&lt;-</span> <span class="cf">function</span>(image_path) {</span>
+<span id="cb114-50"><a href="image-analysis-in-r.html#cb114-50" tabindex="-1"></a>  viable <span class="ot">&lt;-</span> <span class="fu">count_viable</span>(image_path)</span>
+<span id="cb114-51"><a href="image-analysis-in-r.html#cb114-51" tabindex="-1"></a>  nonviable <span class="ot">&lt;-</span> <span class="fu">count_nonviable</span>(image_path)</span>
+<span id="cb114-52"><a href="image-analysis-in-r.html#cb114-52" tabindex="-1"></a>  <span class="fu">return</span>(nonviable <span class="sc">*</span> <span class="dv">100</span> <span class="sc">/</span> (viable <span class="sc">+</span> nonviable))</span>
+<span id="cb114-53"><a href="image-analysis-in-r.html#cb114-53" tabindex="-1"></a>}</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="loops-logic-and-functions-diving-deeper-into-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="boss-fight.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
