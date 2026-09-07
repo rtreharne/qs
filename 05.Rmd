@@ -1,7 +1,5 @@
 # Introduction to R part II: Visualisation
 
-If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover **all of this section's content** and complete this week's **summative assessment** in the BIOS103 Canvas Course. There is no formative assessment this week.
-
 Our brains are hardwired to recognise patterns, which means we can understand information much more easily when it's presented visually rather than as raw numbers. In today’s data-driven world, the ability to visualise information effectively is more important than ever. Learning to visualise data will equip you with essential skills for analysing and interpreting information, allowing you to communicate insights clearly and persuasively.
 
 Effective visualisation also fosters critical thinking. It helps you identify trends, relationships, and anomalies within datasets, enhancing your analytical abilities and preparing you for future roles in research, industry, and beyond, where data-driven decision-making is key.
@@ -312,16 +310,6 @@ Honestly? Not very. If you were hoping for a nice bell-curve (normal) distributi
 
 Oh well, at least you now know how to make a histogram using R in the future. Perhaps we could learn a bit more from our second type of visualisation: The Grouped Boxplot.
 
-**Feedback Please!**
-
-I really value your feedback on these materials for quantitative skills. Please rate them below and then leave some feedback. It's completely anonymous and will help me improve things if necessary. Say what you like, I have a thick skin - but feel free to leave positive comments as well as negative ones. Thank you.
-
-```{r, results='asis', echo=FALSE}
-if (knitr::is_html_output()) {
-  cat('<iframe src="https://canvaswizards.org.uk/likertysplit/qs/" width="400" style="max-width: 100%" height="600"></iframe>')
-}
-```
-
 ## Grouped Boxplot
 
 ```{r, results='asis', echo=FALSE}
@@ -569,11 +557,3 @@ fig
 ```
 
 How cool is that? You have an interactive, 3D graph that you can fiddle with and investigate the relationship between VBC, Temperature and Moisture. 
-
-## Complete your Weekly Assignments
-
-In the BIOS103 Canvas course you will find this week's **summative** QS assignments. There is no **formative** assignment this week! You should aim to complete the summative assignment before the end of the online workshop that corresponds to this section's content.
-
- + You can attempt the **summative** assignment **only once**. This assignment **will** contribute to your overall score for this course. Failure to complete a summative test before the stated deadline will result in a zero score. You will not receive immediate feedback after submitting summative assignments. Typically, your scores will be posted within 7 days.
-   
-In **ALL** cases, when you click the button to "begin" a test you will have two hours to complete and submit the questions. If the test times out it will automatically submit.

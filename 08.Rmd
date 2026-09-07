@@ -1,7 +1,5 @@
 # Statistics in R: Part I
 
-If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover **all of this section's content** and complete this week's **formative and summative assessments** in the BIOS103 Canvas Course.
-
 The aim of this chapter is to show that there are often several ways to approach data analysis. Here, we’ll use R to perform tasks we’ve previously done in Excel. Why make the switch? While Excel is widely used (and is still extremely useful), R can greatly reduce the need for manual data transformations that Excel often requires, making data handling much easier and more efficient. Also, creating R scripts provides a clear, reproducible record of your analysis which is incredibly important for anyone who wishes to repeat your analysis and confirm your results.
 
 Key **learning objectives** for this chapter include:
@@ -343,17 +341,11 @@ heatmap(matrix, Rowv = NA, Colv = NA, scale = "none",
 knitr::include_graphics("img/08/heatmap.png")
 ```
 
-If you can't get this code to run then don't worry, it's not critically important (it won't affect your ability to complete this week's summative task). I just wanted to highlight that when it comes to visualisation in R, you've got lots of options. If you really want to understand what the code is doing then you can see what my good friend <a href="https://chatgpt.com/share/67325af3-993c-800a-9341-ade3d7194efb" target="_blank">ChatGPT</a> has to say about it.
+If you can't get this code to run then don't worry, it's not critically important. I just wanted to highlight that when it comes to visualisation in R, you've got lots of options. If you really want to understand what the code is doing then you can see what my good friend <a href="https://chatgpt.com/share/67325af3-993c-800a-9341-ade3d7194efb" target="_blank">ChatGPT</a> has to say about it.
 
 I'd interpret the heatmap in figure \@ref(fig:heatmap) in exactly the same way as the interaction plot. One big disadvantage however, is that it only shows the relative changes in activity - I'd need to spend a bit of time figuring out how to put a colorbar key at the side of the plot to indicate activity values with respect to colour. 
 
 Right now though, I think we'd really better getting to the important bit though: Finally! A Two-way ANOVA.
-
-```{r, results='asis', echo=FALSE}
-if (knitr::is_html_output()) {
-  cat('<iframe src="https://canvaswizards.org.uk/likertysplit/qs/" width="400" style="max-width: 100%" height="600"></iframe>')
-}
-```
 
 ### Conducting a Two-Way ANOVA
 
@@ -391,7 +383,7 @@ tukey_result <- TukeyHSD(anova_result)
 print(tukey_result)
 
 
-# You'll need these last two lines to complete your summative test this week
+# Extract and inspect the interaction effects
 
 # Get the interaction effects table and conver to a dataframe
 #tukey_df <- as.data.frame(tukey_result[["ph:temperature"]])

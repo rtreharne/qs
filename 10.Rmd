@@ -1,7 +1,5 @@
 # Loops, Logic and Functions: Diving Deeper into R
 
-If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover **all of this section's content** and complete this week's **formative and summative assessments** in the BIOS103 Canvas Course.
-
 By now, you can read files, generate summary tables, visualise data, and even perform some statistical tests in R. That’s an incredible foundation to build upon. When it comes to QS, you've come further and faster than any first year student before you. I salute you. 
 
 This week, we’re stepping outside the lab’s core content to focus on key coding fundamentals. Why? These skills are vital for **bioinformatics**, a field you’ll explore in depth next semester. Our focus in this chapter on **FASTA** files - a universal format for genomic and proteomic data - will introduce you to the power of automating complex tasks with code.
@@ -17,7 +15,7 @@ So, take a deep breath. You’ve got this. Let’s unlock the true potential of 
 - Build confidence in **self-directed learning** to solve coding challenges independently.
 
 <h3>I Don't Want to Read This Boring Chapter!</h3>
-Fair enough. I understand that many of you will want to get stuck in immediately with your RStudio and complete your formative/summative tasks for this week. If this is the case then you should do the following first:
+Fair enough. I understand that many of you will want to get stuck in immediately with RStudio and this week's exercises. If this is the case then you should do the following first:
 
 1. Start a new R project for this week.
 2. Download the <a href="https://raw.githubusercontent.com/rtreharne/qs/refs/heads/main/data/10/genomic_data_100.fasta">genomic_data_100.fasta</a> example sequence file and move it to your project directory.
@@ -254,7 +252,7 @@ With all that in mind, lets build on our `fasta-tools.R` script by adding functi
 - Count the number of times a specific motif occurs in a sequence.
 - Calculate the average frequency that a specific motif occurs in ALL sequences in our FASTA FILE.
 
-If we do that, then we can complete our first formative quiz question this week. Hooray!
+If we do that, then we can complete our first sequence-analysis exercise. Hooray!
 
 <h3>Writing a `count_motif` function</h3>
 
@@ -563,4 +561,3 @@ find_most_common_triplet <- function(sequence) {
   return(most_common)
 }
 ```
-

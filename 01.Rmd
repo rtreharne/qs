@@ -10,8 +10,6 @@ output:
 
 # Introduction to Excel and R
 
-If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover **all of this section's content** and complete this week's [**formative and summative assessments**](#complete-your-weekly-assignments-01) in the BIOS103 Canvas Course.
-
 ## Estimating the Volume of a Snail
 
 In this section, you will learn how to import data from a CSV file into Excel, perform basic calculations, create a scatterplot including a linear trendline to make predictions. The primary objective is to estimate the volume of a snail based on its mass using a provided dataset.
@@ -235,27 +233,3 @@ print(random_number)
 **Summary**
 
 This example script demonstrates a more complex task than the basic "Hello World" script. It introduces key concepts like variable assignment with <-, setting a seed for reproducibility using set.seed(), generating random numbers with runif(), and printing results using print(). As you continue learning R, these foundational concepts will become increasingly important, enabling you to build more advanced and meaningful analyses. Remember, comments (#) are your friends! They help explain what each part of your code does, making it easier for you and others to understand and maintain your scripts. Be liberal with your comments. You'll thank yourself later (trust me).
-
-**Give me feedback**
-
-I really value your feedback on these materials for quantitative skills. Please rate them below and then leave some feedback. It's completely anonymous and will help me improve things if necessary. Say what you like, I have a thick skin - but feel free to leave positive comments as well as negative ones. Thank you.
-
-```{r, results='asis', echo=FALSE}
-if (knitr::is_html_output()) {
-  cat('<iframe src="https://canvaswizards.org.uk/likertysplit/qs/" width="400" style="max-width: 100%" height="600"></iframe>')
-}
-```
-
-## Complete your Weekly Assignments {.complete-your-weekly-assignments-01}
-
-In the BIOS103 Canvas course you will find this week's **formative** and **summative** QS assignments. You should aim to complete both of these before the end of the online workshop that corresponds to this section's content. The assignments are identical in all but the following details:
-
-   + You can attempt the **formative assignment** as many times as you like. It will not contribute to your overall score for this course. You will receive immediate feedback after submitting formative assignments. Make sure you practice this assignment until you're confident that you can get the correct answer on your own.
-   + You can attempt the **summative** assignment **only once**. It will be identical to the formative assignment but will use different values and datasets. This assignment **will** contribute to your overall score for this course. Failure to complete a summative test before the stated deadline will result in a zero score. You will not receive immediate feedback after submitting summative assignments. Typically, your scores will be posted within 7 days.
-   
-In **ALL** cases, when you click the button to "begin" a test you will have two hours to complete and submit the questions. If the test times out it will automatically submit.
-
-
-
-
-

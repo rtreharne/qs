@@ -10,6 +10,5 @@ rmd_files: [
   "10.Rmd",
   "11.Rmd",
   "12.Rmd",
-  "appendix_I.Rmd",
-  "appendix_II.Rmd"
+  "appendix_I.Rmd"
 ]

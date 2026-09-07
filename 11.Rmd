@@ -1,8 +1,5 @@
 # Image Analysis in R
 
-If you are currently participating in a timetabled BIOS103 QS workshop, please ensure that you cover **all of this section's content** and complete this week's **formative and summative assessments** in the BIOS103 Canvas Course. 
-
-
 In the last chapter, we explored how to use R for parsing FASTA files and performing some basic bioinformatics tasks. This chapter builds on that foundation by focusing on the power of R to automate repetitive tasks - a skill that is invaluable when working with large datasets or time-consuming processes.
 
 You've already had some experience with repetitive tasks in your lab work. For example, counting cells using a hemocytometer. While that exercise gave you a hands-on understanding of the process, imagine needing to count hundreds, or even thousands of hemocytometer grids. Doing it manually would take hours, if not days. This week, we'll tackle that challenge by using R to automate the process.
