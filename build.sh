@@ -72,4 +72,12 @@ echo "Refreshing docs from _book..."
 rm -rf docs
 cp -R _book docs
 
-echo "Build complete: _book rendered and copied to docs."
+echo "Staging generated site in docs..."
+git add -A -- docs
+if ! git diff --cached --quiet -- docs; then
+  git commit -m "Build and publish book"
+else
+  echo "docs is already up to date; no commit needed."
+fi
+
+echo "Build complete: _book rendered, copied to docs, and committed."

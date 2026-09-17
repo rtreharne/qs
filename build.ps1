@@ -67,4 +67,23 @@ if (Test-Path "docs") {
 
 Copy-Item "_book" "docs" -Recurse
 
-Write-Host "Build complete: _book rendered and copied to docs."
+Write-Host "Staging generated site in docs..."
+git add -A -- docs
+if ($LASTEXITCODE -ne 0) {
+    exit $LASTEXITCODE
+}
+
+git diff --cached --quiet -- docs
+$DiffExitCode = $LASTEXITCODE
+if ($DiffExitCode -eq 1) {
+    git commit -m "Build and publish book"
+    if ($LASTEXITCODE -ne 0) {
+        exit $LASTEXITCODE
+    }
+} elseif ($DiffExitCode -eq 0) {
+    Write-Host "docs is already up to date; no commit needed."
+} else {
+    Write-Error "Could not inspect staged docs changes."
+}
+
+Write-Host "Build complete: _book rendered, copied to docs, and committed."
