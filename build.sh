@@ -37,6 +37,43 @@ if ! command -v "$RSCRIPT_BIN" >/dev/null 2>&1 && [ ! -x "$RSCRIPT_BIN" ]; then
   exit 1
 fi
 
+# Pick up user-local tools and R packages installed for this machine.
+if [ -x "$HOME/.local/bin/pandoc" ]; then
+  PATH="$HOME/.local/bin:$PATH"
+  export PATH
+fi
+
+LOCAL_R_LIBRARY="$HOME/.local/rpkgs/usr/lib/R/site-library"
+if [ -d "$LOCAL_R_LIBRARY" ]; then
+  DEFAULT_R_LIBRARY="$("$RSCRIPT_BIN" --vanilla -e 'cat(.libPaths()[1])')"
+  R_LIBS_USER="$LOCAL_R_LIBRARY${R_LIBS_USER:+:$R_LIBS_USER}"
+  case ":$R_LIBS_USER:" in
+    *":$DEFAULT_R_LIBRARY:"*) ;;
+    *) R_LIBS_USER="$R_LIBS_USER:$DEFAULT_R_LIBRARY" ;;
+  esac
+  export R_LIBS_USER
+fi
+
+LOCAL_RUNTIME_LIBRARIES=(
+  "$HOME/.local/fftw/usr/lib/x86_64-linux-gnu"
+  "$HOME/.local/usr/lib/x86_64-linux-gnu"
+  "$HOME/.local/lib"
+)
+for local_library in "${LOCAL_RUNTIME_LIBRARIES[@]}"; do
+  if [ -d "$local_library" ]; then
+    LD_LIBRARY_PATH="${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}$local_library"
+  fi
+done
+export LD_LIBRARY_PATH
+
+LOCAL_FFTW_PKG_CONFIG="$HOME/.local/fftw/usr/lib/pkgconfig"
+if [ -d "$LOCAL_FFTW_PKG_CONFIG" ]; then
+  PKG_CONFIG_PATH="$LOCAL_FFTW_PKG_CONFIG${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}"
+  CPPFLAGS="-I$HOME/.local/fftw/usr/include -I$HOME/.local/include${CPPFLAGS:+ $CPPFLAGS}"
+  LDFLAGS="-L$HOME/.local/fftw/usr/lib/x86_64-linux-gnu${LDFLAGS:+ $LDFLAGS}"
+  export PKG_CONFIG_PATH CPPFLAGS LDFLAGS
+fi
+
 echo "Installing required R packages..."
 "$RSCRIPT_BIN" --vanilla - <<'RSCRIPT'
 cran_packages <- c(

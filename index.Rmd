@@ -33,5 +33,3 @@ Quantitative skills are an essential part of studying biosciences. They help you
 Maths, statistics and coding can strike fear into the hearts of many students. In my experience, that fear often comes from difficult or discouraging experiences at school. If that sounds familiar, I encourage you to put those experiences aside as best you can. This course starts with the foundations and gives you time to practise and build your understanding.
 
 Approach QS with courage and determination. You can succeed, and you will. As you gain experience, you will find that working with data becomes more natural. By the end of your degree, the excitement you feel when you open a fresh dataset and begin to explore it will be palpable.
-
-All QS workshops will be delivered online via Teams. Access the meeting link from the BIOS103 Canvas course.
