@@ -2,9 +2,9 @@ import pandas as pd
 import sys
 
 def sample_dataset(filename, n, seed):
-    # Ensure the seed is a 3-digit integer
-    if not (100 <= seed <= 999):
-        raise ValueError("Seed must be a 3-digit integer (100-999).")
+    # Ensure the seed has either 3 or 9 digits
+    if not (100 <= seed <= 999 or 100000000 <= seed <= 999999999):
+        raise ValueError("Seed must be a 3-digit or 9-digit integer.")
     
     # Load the dataset
     df = pd.read_csv(filename)

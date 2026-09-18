@@ -1,10 +1,11 @@
 import pandas as pd
 import sys
+from pathlib import Path
 
 def sample_dataset(filename, n, seed):
-    # Ensure the seed is a 3-digit integer
-    if not (100 <= seed <= 999):
-        raise ValueError("Seed must be a 3-digit integer (100-999).")
+    # Ensure the seed has either 3 or 9 digits
+    if not (100 <= seed <= 999 or 100000000 <= seed <= 999999999):
+        raise ValueError("Seed must be a 3-digit or 9-digit integer.")
     
     # Load the dataset
     df = pd.read_csv(filename)
@@ -21,14 +22,21 @@ def generate_files(filename, n):
         df.to_csv(fname, index=False)
 
 if __name__ == "__main__":
-    # Check if the correct number of arguments is provided
-    if len(sys.argv) != 3:
-        print("Usage: python script_name.py <filename> <n>")
-        sys.exit(1)
+    if len(sys.argv) == 3:
+        filename = sys.argv[1]
+        n = int(sys.argv[2])
+        generate_files(filename, n)
+    elif len(sys.argv) == 4:
+        filename = sys.argv[1]
+        n = int(sys.argv[2])
+        output_filename = sys.argv[3]
+        seed = int(Path(output_filename).stem.rsplit("_", 1)[-1])
 
-    # Parse arguments
-    filename = sys.argv[1]
-    n = int(sys.argv[2])
-    
-    # Generate files
-    generate_files(filename, n)
+        sampled_df = sample_dataset(filename, n, seed)
+        sampled_df.to_csv(output_filename, index=False)
+    else:
+        print(
+            "Usage: python sample.py <input_filename> <n> "
+            "[<output_filename_with_seed>]"
+        )
+        sys.exit(1)
