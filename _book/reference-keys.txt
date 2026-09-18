@@ -1,3 +1,4 @@
+fig:dr-robert-treharne
 fig:zebrafish-data-snap
 fig:zebrafish-snap-2
 fig:zebrafish-summary

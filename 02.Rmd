@@ -27,7 +27,7 @@ Let's take a look at a Zebrafish dataset from an experiment that is uncannily si
 ### Download and Import the CSV File
 
 1. **Download the CSV File:** 
-   - Here is an [example dataset](https://canvaswizards.org.uk/dataspell/zebrafish/999999999). Download it to your local machine.
+   - Here is an [example dataset](https://raw.githubusercontent.com/rtreharne/qs/refs/heads/main/data/02/zebrafish_999.csv){target=_blank}. Click the link, then right click and save as to download it to your local machine.
 
 2. **Import into Excel:**
    - Open Excel (Use the desktop version - you won't be able to do this using the online version!).

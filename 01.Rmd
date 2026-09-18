@@ -26,8 +26,7 @@ if (knitr::is_html_output()) {
 ### Download and Import the CSV File
 
 1. **Download the CSV File:** 
-   - Here is an [example dataset](https://canvaswizards.org.uk/dataspell/snails/301). Download it to your local machine.
-   - If that link doesn't you can get the dataset in your browser [here](https://raw.githubusercontent.com/rtreharne/qs/refs/heads/main/data/01/snails_301.csv). Right click and Save as.
+   - Here is an [example dataset](https://raw.githubusercontent.com/rtreharne/qs/refs/heads/main/data/01/snails_301.csv){target="_blank"}. Click the link, then right click and save as to download it to your local machine.
 
 2. **Import into Excel:**
    - Open Excel (Use the desktop version - you won't be able to do this using the online version!).
