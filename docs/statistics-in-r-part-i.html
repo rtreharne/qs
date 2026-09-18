@@ -355,12 +355,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb50-11"><a href="statistics-in-r-part-i.html#cb50-11" tabindex="-1"></a><span class="fu">print</span>(zebrafish_summary)</span></code></pre></div>
 <pre><code>##   conc_pc length_micron.Mean length_micron.Median length_micron.Max
 ## 1       0           2410.874              2451.15            2890.1
-## 2     1.5           2405.318              2397.05            2975.6
+## 2     1.5           2409.877              2398.80            2975.6
 ## 3       2           2300.736              2279.50            2666.3
 ## 4     2.5           2105.539              2157.30            2692.1
 ##   length_micron.Min length_micron.SD
 ## 1            1859.5         251.2151
-## 2            1962.4         255.3249
+## 2            1962.4         253.5462
 ## 3            1746.3         206.8577
 ## 4            1548.2         266.6929</code></pre>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="statistics-in-r-part-i.html#cb52-1" tabindex="-1"></a><span class="co"># Save to file</span></span>
@@ -403,8 +403,8 @@ Figure 6.1: Distribution of Zebrafish embryo lengths organised by Alcohol treame
 <span id="cb54-6"><a href="statistics-in-r-part-i.html#cb54-6" tabindex="-1"></a><span class="co"># See the key results.</span></span>
 <span id="cb54-7"><a href="statistics-in-r-part-i.html#cb54-7" tabindex="-1"></a><span class="fu">summary</span>(zebrafish_aov)</span></code></pre></div>
 <pre><code>##              Df  Sum Sq Mean Sq F value   Pr(&gt;F)    
-## conc_pc       3 2485048  828349   13.64 5.97e-08 ***
-## Residuals   156 9470556   60709                     
+## conc_pc       3 2531407  843802   13.94 4.18e-08 ***
+## Residuals   157 9501351   60518                     
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>We use the <code>aov()</code> function in R, where <code>length_micron</code> is the dependent variable (embryo length) and <code>conc_pc</code> is the independent variable (alcohol concentration). The function generates an ANOVA table that summarises the results of the test.</p>
@@ -436,13 +436,13 @@ Since the p-value is extremely small (much less than 0.05), we reject the null h
 ## Fit: aov(formula = length_micron ~ conc_pc, data = zebrafish_data)
 ## 
 ## $conc_pc
-##                diff       lwr        upr     p adj
-## 1.5-0     -5.555388 -148.8123  137.70156 0.9996328
-## 2-0     -110.137912 -252.4274   32.15154 0.1886631
-## 2.5-0   -305.334785 -445.8132 -164.85636 0.0000005
-## 2-1.5   -104.582524 -250.4332   41.26814 0.2487027
-## 2.5-1.5 -299.779397 -443.8638 -155.69500 0.0000014
-## 2.5-2   -195.196873 -338.3194  -52.07438 0.0029202</code></pre>
+##                 diff       lwr        upr     p adj
+## 1.5-0     -0.9968864 -143.0531  141.05931 0.9999978
+## 2-0     -110.1379121 -252.1941   31.91828 0.1874742
+## 2.5-0   -305.3347851 -445.5829 -165.08665 0.0000004
+## 2-1.5   -109.1410256 -253.8040   35.52192 0.2080602
+## 2.5-1.5 -304.3378987 -447.2258 -161.45002 0.0000008
+## 2.5-2   -195.1968730 -338.0847  -52.30900 0.0028605</code></pre>
 <p><strong>Interpreting the Output</strong></p>
 <ul>
 <li><strong>Comparisons</strong>: Each row corresponds to a comparison between two groups (e.g., 2.5-0).</li>
