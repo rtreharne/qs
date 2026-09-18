@@ -30,7 +30,7 @@ Specifically, you have been asked to generate the following for incorporation in
 
 ### The dataset
 
-You can download the raw data [here](https://canvaswizards.org.uk/dataspell/compost/999) or from the [backup link](https://raw.githubusercontent.com/rtreharne/qs/main/data/05/compost_999.csv).
+You can download the raw data from [here](https://raw.githubusercontent.com/rtreharne/qs/main/data/05/compost_999.csv){target=_blank}.
 
 ### Further information
 

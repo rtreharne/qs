@@ -54,7 +54,7 @@ if (knitr::is_html_output()) {
 >3. Watch [this](https://youtu.be/pBcPJp-BdjE?si=GYw5sguCCM64Zcpl) video if you're still stuck.
 
 1. **Download the CSV File:** 
-   - Here is an [example dataset](https://canvaswizards.org.uk/dataspell/calibration/999999999). Download it to your local machine.
+   - Here is an [example dataset](https://raw.githubusercontent.com/rtreharne/qs/refs/heads/main/data/03/part_1/callibration_999999999.csv){target=_blank}. Download it to your local machine.
 
 2. **Import into Excel:**
    - Open Excel (Use the desktop version - you won't be able to do this using the online version!).
@@ -173,7 +173,8 @@ if (knitr::is_html_output()) {
 
 **1. Download the data**:
 
-   - Here is an [example sunflower dataset](https://canvaswizards.org.uk/dataspell/sunflowers/999999999). Download it to your local machine.
+   - Here is an [example sunflower dataset](https://raw.githubusercontent.com/rtreharne/qs/refs/heads/main/data/03/part_2/sunflowers_999999999.csv){target=_blank
+   }. Download it to your local machine.
 
 **2. Import the data**:
 
