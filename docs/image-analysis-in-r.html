@@ -52,7 +52,7 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<link href="libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
+<link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
 <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <script src="libs/plotly-binding-4.12.1/plotly.js"></script>
 <script src="libs/typedarray-0.1/typedarray.min.js"></script>
@@ -431,22 +431,23 @@ Figure 9.2: You’ll probably see this error in your console when trying to run 
 <p>Let’s update our <code>main.R</code> script to count the viable cells in our image. Actually I’m going to cheat a bit here and give you a new image without the gridlines. See figure <a href="image-analysis-in-r.html#fig:hemo">9.3</a>. Save this new figure to your project directory and call it <code>hemo.png</code>.</p>
 <div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="image-analysis-in-r.html#cb107-1" tabindex="-1"></a><span class="co"># Load my hemo-tools.R script</span></span>
 <span id="cb107-2"><a href="image-analysis-in-r.html#cb107-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;hemo-tools.R&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: package &#39;EBImage&#39; was built under R version 4.5.2</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;EBImage&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:plotly&#39;:
 ## 
 ##     toRGB</code></pre>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="image-analysis-in-r.html#cb110-1" tabindex="-1"></a><span class="co"># Count the number of viable cells in the image</span></span>
-<span id="cb110-2"><a href="image-analysis-in-r.html#cb110-2" tabindex="-1"></a>count <span class="ot">&lt;-</span> <span class="fu">count_viable</span>(<span class="st">&quot;hemo.png&quot;</span>)</span>
-<span id="cb110-3"><a href="image-analysis-in-r.html#cb110-3" tabindex="-1"></a></span>
-<span id="cb110-4"><a href="image-analysis-in-r.html#cb110-4" tabindex="-1"></a><span class="co"># Calculate cell count per big square</span></span>
-<span id="cb110-5"><a href="image-analysis-in-r.html#cb110-5" tabindex="-1"></a>cells_per_square <span class="ot">&lt;-</span> count  <span class="sc">/</span> <span class="dv">9</span></span>
-<span id="cb110-6"><a href="image-analysis-in-r.html#cb110-6" tabindex="-1"></a></span>
-<span id="cb110-7"><a href="image-analysis-in-r.html#cb110-7" tabindex="-1"></a><span class="co"># Output the Viable Cell Count</span></span>
-<span id="cb110-8"><a href="image-analysis-in-r.html#cb110-8" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(</span>
-<span id="cb110-9"><a href="image-analysis-in-r.html#cb110-9" tabindex="-1"></a>  <span class="st">&quot;Total viable cell count: &quot;</span>, count,</span>
-<span id="cb110-10"><a href="image-analysis-in-r.html#cb110-10" tabindex="-1"></a>  <span class="st">&quot;; Viable cells per big square: &quot;</span>, <span class="fu">sprintf</span>(<span class="st">&quot;%.2f&quot;</span>, cells_per_square)</span>
-<span id="cb110-11"><a href="image-analysis-in-r.html#cb110-11" tabindex="-1"></a>))</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="image-analysis-in-r.html#cb111-1" tabindex="-1"></a><span class="co"># Count the number of viable cells in the image</span></span>
+<span id="cb111-2"><a href="image-analysis-in-r.html#cb111-2" tabindex="-1"></a>count <span class="ot">&lt;-</span> <span class="fu">count_viable</span>(<span class="st">&quot;hemo.png&quot;</span>)</span>
+<span id="cb111-3"><a href="image-analysis-in-r.html#cb111-3" tabindex="-1"></a></span>
+<span id="cb111-4"><a href="image-analysis-in-r.html#cb111-4" tabindex="-1"></a><span class="co"># Calculate cell count per big square</span></span>
+<span id="cb111-5"><a href="image-analysis-in-r.html#cb111-5" tabindex="-1"></a>cells_per_square <span class="ot">&lt;-</span> count  <span class="sc">/</span> <span class="dv">9</span></span>
+<span id="cb111-6"><a href="image-analysis-in-r.html#cb111-6" tabindex="-1"></a></span>
+<span id="cb111-7"><a href="image-analysis-in-r.html#cb111-7" tabindex="-1"></a><span class="co"># Output the Viable Cell Count</span></span>
+<span id="cb111-8"><a href="image-analysis-in-r.html#cb111-8" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(</span>
+<span id="cb111-9"><a href="image-analysis-in-r.html#cb111-9" tabindex="-1"></a>  <span class="st">&quot;Total viable cell count: &quot;</span>, count,</span>
+<span id="cb111-10"><a href="image-analysis-in-r.html#cb111-10" tabindex="-1"></a>  <span class="st">&quot;; Viable cells per big square: &quot;</span>, <span class="fu">sprintf</span>(<span class="st">&quot;%.2f&quot;</span>, cells_per_square)</span>
+<span id="cb111-11"><a href="image-analysis-in-r.html#cb111-11" tabindex="-1"></a>))</span></code></pre></div>
 <pre><code>## [1] &quot;Total viable cell count:  78 ; Viable cells per big square:  8.67&quot;</code></pre>
 <div class="figure"><span style="display:block;" id="fig:hemo"></span>
 <img src="img/11/hemo.png" alt="The same image as in figure 9.1 but without the grid lines. This is a bit of a cheat - I've removed the grid lines from my images because they interfere with my script's ability to automatically count viable cells. Please suspend your disbelief." width="100%" />
@@ -465,30 +466,30 @@ Comparing the Manual and Automated Count Methods
 <h3><span class="header-section-number">9.1.4</span> Looping Over All Files in a .zip<a href="image-analysis-in-r.html#looping-over-all-files-in-a-.zip" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here’s the fun bit. Now we can count the number of viable cells in a single file we can write a few extra lines of code to do the same for lots (hundreds!) of files.</p>
 <p>On this occasion, I’ve bundled 100 hemocytometer images into a single .zip file: <a href="https://github.com/rtreharne/qs/raw/refs/heads/main/data/11/hemo_100.zip" target="_blank">hemo_100.zip</a>. Download the zip file to your project directory. Update your <code>main.R</code> script file with the following code and then click <code>Source</code> to compile everything.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="image-analysis-in-r.html#cb112-1" tabindex="-1"></a><span class="co"># Load my existing hemo-tools.R script</span></span>
-<span id="cb112-2"><a href="image-analysis-in-r.html#cb112-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;hemo-tools.R&quot;</span>)</span>
-<span id="cb112-3"><a href="image-analysis-in-r.html#cb112-3" tabindex="-1"></a></span>
-<span id="cb112-4"><a href="image-analysis-in-r.html#cb112-4" tabindex="-1"></a><span class="co"># Extract all images from hemo.zip to a new directory</span></span>
-<span id="cb112-5"><a href="image-analysis-in-r.html#cb112-5" tabindex="-1"></a><span class="fu">unzip</span>(<span class="st">&quot;hemo_100.zip&quot;</span>, <span class="at">exdir =</span> <span class="st">&quot;image_files&quot;</span>)</span>
-<span id="cb112-6"><a href="image-analysis-in-r.html#cb112-6" tabindex="-1"></a></span>
-<span id="cb112-7"><a href="image-analysis-in-r.html#cb112-7" tabindex="-1"></a><span class="co"># Get a list of all image files in the new directory</span></span>
-<span id="cb112-8"><a href="image-analysis-in-r.html#cb112-8" tabindex="-1"></a>image_files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;image_files&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;.png&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb112-9"><a href="image-analysis-in-r.html#cb112-9" tabindex="-1"></a></span>
-<span id="cb112-10"><a href="image-analysis-in-r.html#cb112-10" tabindex="-1"></a><span class="co"># Loop through all image files and count the number of cells in each</span></span>
-<span id="cb112-11"><a href="image-analysis-in-r.html#cb112-11" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb112-12"><a href="image-analysis-in-r.html#cb112-12" tabindex="-1"></a></span>
-<span id="cb112-13"><a href="image-analysis-in-r.html#cb112-13" tabindex="-1"></a><span class="co"># Loop over every file and count viable cells in each</span></span>
-<span id="cb112-14"><a href="image-analysis-in-r.html#cb112-14" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(image_files)) {</span>
-<span id="cb112-15"><a href="image-analysis-in-r.html#cb112-15" tabindex="-1"></a>  results[i] <span class="ot">&lt;-</span> <span class="fu">count_viable</span>(image_files[i])</span>
-<span id="cb112-16"><a href="image-analysis-in-r.html#cb112-16" tabindex="-1"></a>}</span>
-<span id="cb112-17"><a href="image-analysis-in-r.html#cb112-17" tabindex="-1"></a></span>
-<span id="cb112-18"><a href="image-analysis-in-r.html#cb112-18" tabindex="-1"></a><span class="co"># Clean up: delete the &quot;image_files&quot; directory and its contents</span></span>
-<span id="cb112-19"><a href="image-analysis-in-r.html#cb112-19" tabindex="-1"></a><span class="fu">unlink</span>(<span class="st">&quot;image_files&quot;</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb112-20"><a href="image-analysis-in-r.html#cb112-20" tabindex="-1"></a></span>
-<span id="cb112-21"><a href="image-analysis-in-r.html#cb112-21" tabindex="-1"></a></span>
-<span id="cb112-22"><a href="image-analysis-in-r.html#cb112-22" tabindex="-1"></a><span class="co"># Output mean number of counts over all images</span></span>
-<span id="cb112-23"><a href="image-analysis-in-r.html#cb112-23" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Mean number of viable counts in each image: &quot;</span>, </span>
-<span id="cb112-24"><a href="image-analysis-in-r.html#cb112-24" tabindex="-1"></a>    <span class="fu">sprintf</span>(<span class="st">&quot;%.2f&quot;</span>, <span class="fu">mean</span>(results)), <span class="st">&quot; viable cells.&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="image-analysis-in-r.html#cb113-1" tabindex="-1"></a><span class="co"># Load my existing hemo-tools.R script</span></span>
+<span id="cb113-2"><a href="image-analysis-in-r.html#cb113-2" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;hemo-tools.R&quot;</span>)</span>
+<span id="cb113-3"><a href="image-analysis-in-r.html#cb113-3" tabindex="-1"></a></span>
+<span id="cb113-4"><a href="image-analysis-in-r.html#cb113-4" tabindex="-1"></a><span class="co"># Extract all images from hemo.zip to a new directory</span></span>
+<span id="cb113-5"><a href="image-analysis-in-r.html#cb113-5" tabindex="-1"></a><span class="fu">unzip</span>(<span class="st">&quot;hemo_100.zip&quot;</span>, <span class="at">exdir =</span> <span class="st">&quot;image_files&quot;</span>)</span>
+<span id="cb113-6"><a href="image-analysis-in-r.html#cb113-6" tabindex="-1"></a></span>
+<span id="cb113-7"><a href="image-analysis-in-r.html#cb113-7" tabindex="-1"></a><span class="co"># Get a list of all image files in the new directory</span></span>
+<span id="cb113-8"><a href="image-analysis-in-r.html#cb113-8" tabindex="-1"></a>image_files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;image_files&quot;</span>, <span class="at">pattern =</span> <span class="st">&quot;.png&quot;</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb113-9"><a href="image-analysis-in-r.html#cb113-9" tabindex="-1"></a></span>
+<span id="cb113-10"><a href="image-analysis-in-r.html#cb113-10" tabindex="-1"></a><span class="co"># Loop through all image files and count the number of cells in each</span></span>
+<span id="cb113-11"><a href="image-analysis-in-r.html#cb113-11" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb113-12"><a href="image-analysis-in-r.html#cb113-12" tabindex="-1"></a></span>
+<span id="cb113-13"><a href="image-analysis-in-r.html#cb113-13" tabindex="-1"></a><span class="co"># Loop over every file and count viable cells in each</span></span>
+<span id="cb113-14"><a href="image-analysis-in-r.html#cb113-14" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(image_files)) {</span>
+<span id="cb113-15"><a href="image-analysis-in-r.html#cb113-15" tabindex="-1"></a>  results[i] <span class="ot">&lt;-</span> <span class="fu">count_viable</span>(image_files[i])</span>
+<span id="cb113-16"><a href="image-analysis-in-r.html#cb113-16" tabindex="-1"></a>}</span>
+<span id="cb113-17"><a href="image-analysis-in-r.html#cb113-17" tabindex="-1"></a></span>
+<span id="cb113-18"><a href="image-analysis-in-r.html#cb113-18" tabindex="-1"></a><span class="co"># Clean up: delete the &quot;image_files&quot; directory and its contents</span></span>
+<span id="cb113-19"><a href="image-analysis-in-r.html#cb113-19" tabindex="-1"></a><span class="fu">unlink</span>(<span class="st">&quot;image_files&quot;</span>, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb113-20"><a href="image-analysis-in-r.html#cb113-20" tabindex="-1"></a></span>
+<span id="cb113-21"><a href="image-analysis-in-r.html#cb113-21" tabindex="-1"></a></span>
+<span id="cb113-22"><a href="image-analysis-in-r.html#cb113-22" tabindex="-1"></a><span class="co"># Output mean number of counts over all images</span></span>
+<span id="cb113-23"><a href="image-analysis-in-r.html#cb113-23" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Mean number of viable counts in each image: &quot;</span>, </span>
+<span id="cb113-24"><a href="image-analysis-in-r.html#cb113-24" tabindex="-1"></a>    <span class="fu">sprintf</span>(<span class="st">&quot;%.2f&quot;</span>, <span class="fu">mean</span>(results)), <span class="st">&quot; viable cells.&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;Mean number of viable counts in each image:  204.07  viable cells.&quot;</code></pre>
 <p>If all goes well, this script should output the average viable cell count into your console. Just stop for a second to consider what you’ve just done. You’ve effectively looked at every image (all 100 of them!) and every single viable cell with 100% accuracy in less than 20 seconds. Mind-blowing. How awesome are you?</p>
 <p>Here’s a detailed explanation of the code:</p>
@@ -541,59 +542,59 @@ Comparing the Manual and Automated Count Methods
 </div>
 <div id="hemo-tools" class="section level2 hasAnchor" number="9.3">
 <h2><span class="header-section-number">9.3</span> <code>hemo-tools.R</code><a href="image-analysis-in-r.html#hemo-tools" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="image-analysis-in-r.html#cb114-1" tabindex="-1"></a><span class="co"># This script file was created by R. Treharne on 6/11/2024</span></span>
-<span id="cb114-2"><a href="image-analysis-in-r.html#cb114-2" tabindex="-1"></a></span>
-<span id="cb114-3"><a href="image-analysis-in-r.html#cb114-3" tabindex="-1"></a><span class="co"># Load necessary libraries</span></span>
-<span id="cb114-4"><a href="image-analysis-in-r.html#cb114-4" tabindex="-1"></a><span class="fu">library</span>(png)</span>
-<span id="cb114-5"><a href="image-analysis-in-r.html#cb114-5" tabindex="-1"></a><span class="fu">library</span>(EBImage)</span>
-<span id="cb114-6"><a href="image-analysis-in-r.html#cb114-6" tabindex="-1"></a></span>
-<span id="cb114-7"><a href="image-analysis-in-r.html#cb114-7" tabindex="-1"></a><span class="co"># Function to count the number of objects in an image</span></span>
-<span id="cb114-8"><a href="image-analysis-in-r.html#cb114-8" tabindex="-1"></a>count_viable <span class="ot">&lt;-</span> <span class="cf">function</span>(image_path, <span class="at">threshold =</span> <span class="fl">0.5</span>) {</span>
-<span id="cb114-9"><a href="image-analysis-in-r.html#cb114-9" tabindex="-1"></a>  <span class="co"># Read the image</span></span>
-<span id="cb114-10"><a href="image-analysis-in-r.html#cb114-10" tabindex="-1"></a>  img <span class="ot">&lt;-</span> <span class="fu">readPNG</span>(image_path)</span>
-<span id="cb114-11"><a href="image-analysis-in-r.html#cb114-11" tabindex="-1"></a>  </span>
-<span id="cb114-12"><a href="image-analysis-in-r.html#cb114-12" tabindex="-1"></a>  <span class="co"># Convert the image to grayscale</span></span>
-<span id="cb114-13"><a href="image-analysis-in-r.html#cb114-13" tabindex="-1"></a>  gray_img <span class="ot">&lt;-</span> <span class="fu">channel</span>(img, <span class="st">&quot;gray&quot;</span>)</span>
-<span id="cb114-14"><a href="image-analysis-in-r.html#cb114-14" tabindex="-1"></a>  </span>
-<span id="cb114-15"><a href="image-analysis-in-r.html#cb114-15" tabindex="-1"></a>  <span class="co"># Apply thresholding to create a binary image</span></span>
-<span id="cb114-16"><a href="image-analysis-in-r.html#cb114-16" tabindex="-1"></a>  binary_img <span class="ot">&lt;-</span> gray_img <span class="sc">&gt;</span> threshold</span>
-<span id="cb114-17"><a href="image-analysis-in-r.html#cb114-17" tabindex="-1"></a>  </span>
-<span id="cb114-18"><a href="image-analysis-in-r.html#cb114-18" tabindex="-1"></a>  <span class="co"># Find connected components</span></span>
-<span id="cb114-19"><a href="image-analysis-in-r.html#cb114-19" tabindex="-1"></a>  cc <span class="ot">&lt;-</span> <span class="fu">bwlabel</span>(binary_img)</span>
-<span id="cb114-20"><a href="image-analysis-in-r.html#cb114-20" tabindex="-1"></a>  </span>
-<span id="cb114-21"><a href="image-analysis-in-r.html#cb114-21" tabindex="-1"></a>  <span class="co"># Count the number of objects</span></span>
-<span id="cb114-22"><a href="image-analysis-in-r.html#cb114-22" tabindex="-1"></a>  num_objects <span class="ot">&lt;-</span> <span class="fu">max</span>(cc) <span class="sc">-</span> <span class="dv">1</span></span>
-<span id="cb114-23"><a href="image-analysis-in-r.html#cb114-23" tabindex="-1"></a>  </span>
-<span id="cb114-24"><a href="image-analysis-in-r.html#cb114-24" tabindex="-1"></a>  <span class="fu">return</span>(num_objects)</span>
-<span id="cb114-25"><a href="image-analysis-in-r.html#cb114-25" tabindex="-1"></a>}</span>
-<span id="cb114-26"><a href="image-analysis-in-r.html#cb114-26" tabindex="-1"></a></span>
-<span id="cb114-27"><a href="image-analysis-in-r.html#cb114-27" tabindex="-1"></a>count_nonviable <span class="ot">&lt;-</span> <span class="cf">function</span>(image_path, <span class="at">blue_threshold =</span> <span class="fl">0.5</span>) {</span>
-<span id="cb114-28"><a href="image-analysis-in-r.html#cb114-28" tabindex="-1"></a>  <span class="co"># Read the image</span></span>
-<span id="cb114-29"><a href="image-analysis-in-r.html#cb114-29" tabindex="-1"></a>  img <span class="ot">&lt;-</span> <span class="fu">readPNG</span>(image_path)</span>
-<span id="cb114-30"><a href="image-analysis-in-r.html#cb114-30" tabindex="-1"></a>  </span>
-<span id="cb114-31"><a href="image-analysis-in-r.html#cb114-31" tabindex="-1"></a>  <span class="co"># Split the image into R, G, B channels</span></span>
-<span id="cb114-32"><a href="image-analysis-in-r.html#cb114-32" tabindex="-1"></a>  red_channel <span class="ot">&lt;-</span> img[,,<span class="dv">1</span>]</span>
-<span id="cb114-33"><a href="image-analysis-in-r.html#cb114-33" tabindex="-1"></a>  green_channel <span class="ot">&lt;-</span> img[,,<span class="dv">2</span>]</span>
-<span id="cb114-34"><a href="image-analysis-in-r.html#cb114-34" tabindex="-1"></a>  blue_channel <span class="ot">&lt;-</span> img[,,<span class="dv">3</span>]</span>
-<span id="cb114-35"><a href="image-analysis-in-r.html#cb114-35" tabindex="-1"></a>  </span>
-<span id="cb114-36"><a href="image-analysis-in-r.html#cb114-36" tabindex="-1"></a>  <span class="co"># Create a binary mask for blue regions</span></span>
-<span id="cb114-37"><a href="image-analysis-in-r.html#cb114-37" tabindex="-1"></a>  <span class="co"># Only pixels where the blue channel is strong and dominates red and green will be counted</span></span>
-<span id="cb114-38"><a href="image-analysis-in-r.html#cb114-38" tabindex="-1"></a>  blue_mask <span class="ot">&lt;-</span> (blue_channel <span class="sc">&gt;</span> blue_threshold) <span class="sc">&amp;</span> (blue_channel <span class="sc">&gt;</span> red_channel) <span class="sc">&amp;</span> (blue_channel <span class="sc">&gt;</span> green_channel)</span>
-<span id="cb114-39"><a href="image-analysis-in-r.html#cb114-39" tabindex="-1"></a>  </span>
-<span id="cb114-40"><a href="image-analysis-in-r.html#cb114-40" tabindex="-1"></a>  <span class="co"># Find connected components in the blue mask</span></span>
-<span id="cb114-41"><a href="image-analysis-in-r.html#cb114-41" tabindex="-1"></a>  cc <span class="ot">&lt;-</span> <span class="fu">bwlabel</span>(blue_mask)</span>
-<span id="cb114-42"><a href="image-analysis-in-r.html#cb114-42" tabindex="-1"></a>  </span>
-<span id="cb114-43"><a href="image-analysis-in-r.html#cb114-43" tabindex="-1"></a>  <span class="co"># Count the number of blue objects</span></span>
-<span id="cb114-44"><a href="image-analysis-in-r.html#cb114-44" tabindex="-1"></a>  num_blue_objects <span class="ot">&lt;-</span> <span class="fu">max</span>(cc)</span>
-<span id="cb114-45"><a href="image-analysis-in-r.html#cb114-45" tabindex="-1"></a>  </span>
-<span id="cb114-46"><a href="image-analysis-in-r.html#cb114-46" tabindex="-1"></a>  <span class="fu">return</span>(num_blue_objects)</span>
-<span id="cb114-47"><a href="image-analysis-in-r.html#cb114-47" tabindex="-1"></a>}</span>
-<span id="cb114-48"><a href="image-analysis-in-r.html#cb114-48" tabindex="-1"></a></span>
-<span id="cb114-49"><a href="image-analysis-in-r.html#cb114-49" tabindex="-1"></a>proportion_nonviable <span class="ot">&lt;-</span> <span class="cf">function</span>(image_path) {</span>
-<span id="cb114-50"><a href="image-analysis-in-r.html#cb114-50" tabindex="-1"></a>  viable <span class="ot">&lt;-</span> <span class="fu">count_viable</span>(image_path)</span>
-<span id="cb114-51"><a href="image-analysis-in-r.html#cb114-51" tabindex="-1"></a>  nonviable <span class="ot">&lt;-</span> <span class="fu">count_nonviable</span>(image_path)</span>
-<span id="cb114-52"><a href="image-analysis-in-r.html#cb114-52" tabindex="-1"></a>  <span class="fu">return</span>(nonviable <span class="sc">*</span> <span class="dv">100</span> <span class="sc">/</span> (viable <span class="sc">+</span> nonviable))</span>
-<span id="cb114-53"><a href="image-analysis-in-r.html#cb114-53" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="image-analysis-in-r.html#cb115-1" tabindex="-1"></a><span class="co"># This script file was created by R. Treharne on 6/11/2024</span></span>
+<span id="cb115-2"><a href="image-analysis-in-r.html#cb115-2" tabindex="-1"></a></span>
+<span id="cb115-3"><a href="image-analysis-in-r.html#cb115-3" tabindex="-1"></a><span class="co"># Load necessary libraries</span></span>
+<span id="cb115-4"><a href="image-analysis-in-r.html#cb115-4" tabindex="-1"></a><span class="fu">library</span>(png)</span>
+<span id="cb115-5"><a href="image-analysis-in-r.html#cb115-5" tabindex="-1"></a><span class="fu">library</span>(EBImage)</span>
+<span id="cb115-6"><a href="image-analysis-in-r.html#cb115-6" tabindex="-1"></a></span>
+<span id="cb115-7"><a href="image-analysis-in-r.html#cb115-7" tabindex="-1"></a><span class="co"># Function to count the number of objects in an image</span></span>
+<span id="cb115-8"><a href="image-analysis-in-r.html#cb115-8" tabindex="-1"></a>count_viable <span class="ot">&lt;-</span> <span class="cf">function</span>(image_path, <span class="at">threshold =</span> <span class="fl">0.5</span>) {</span>
+<span id="cb115-9"><a href="image-analysis-in-r.html#cb115-9" tabindex="-1"></a>  <span class="co"># Read the image</span></span>
+<span id="cb115-10"><a href="image-analysis-in-r.html#cb115-10" tabindex="-1"></a>  img <span class="ot">&lt;-</span> <span class="fu">readPNG</span>(image_path)</span>
+<span id="cb115-11"><a href="image-analysis-in-r.html#cb115-11" tabindex="-1"></a>  </span>
+<span id="cb115-12"><a href="image-analysis-in-r.html#cb115-12" tabindex="-1"></a>  <span class="co"># Convert the image to grayscale</span></span>
+<span id="cb115-13"><a href="image-analysis-in-r.html#cb115-13" tabindex="-1"></a>  gray_img <span class="ot">&lt;-</span> <span class="fu">channel</span>(img, <span class="st">&quot;gray&quot;</span>)</span>
+<span id="cb115-14"><a href="image-analysis-in-r.html#cb115-14" tabindex="-1"></a>  </span>
+<span id="cb115-15"><a href="image-analysis-in-r.html#cb115-15" tabindex="-1"></a>  <span class="co"># Apply thresholding to create a binary image</span></span>
+<span id="cb115-16"><a href="image-analysis-in-r.html#cb115-16" tabindex="-1"></a>  binary_img <span class="ot">&lt;-</span> gray_img <span class="sc">&gt;</span> threshold</span>
+<span id="cb115-17"><a href="image-analysis-in-r.html#cb115-17" tabindex="-1"></a>  </span>
+<span id="cb115-18"><a href="image-analysis-in-r.html#cb115-18" tabindex="-1"></a>  <span class="co"># Find connected components</span></span>
+<span id="cb115-19"><a href="image-analysis-in-r.html#cb115-19" tabindex="-1"></a>  cc <span class="ot">&lt;-</span> <span class="fu">bwlabel</span>(binary_img)</span>
+<span id="cb115-20"><a href="image-analysis-in-r.html#cb115-20" tabindex="-1"></a>  </span>
+<span id="cb115-21"><a href="image-analysis-in-r.html#cb115-21" tabindex="-1"></a>  <span class="co"># Count the number of objects</span></span>
+<span id="cb115-22"><a href="image-analysis-in-r.html#cb115-22" tabindex="-1"></a>  num_objects <span class="ot">&lt;-</span> <span class="fu">max</span>(cc) <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb115-23"><a href="image-analysis-in-r.html#cb115-23" tabindex="-1"></a>  </span>
+<span id="cb115-24"><a href="image-analysis-in-r.html#cb115-24" tabindex="-1"></a>  <span class="fu">return</span>(num_objects)</span>
+<span id="cb115-25"><a href="image-analysis-in-r.html#cb115-25" tabindex="-1"></a>}</span>
+<span id="cb115-26"><a href="image-analysis-in-r.html#cb115-26" tabindex="-1"></a></span>
+<span id="cb115-27"><a href="image-analysis-in-r.html#cb115-27" tabindex="-1"></a>count_nonviable <span class="ot">&lt;-</span> <span class="cf">function</span>(image_path, <span class="at">blue_threshold =</span> <span class="fl">0.5</span>) {</span>
+<span id="cb115-28"><a href="image-analysis-in-r.html#cb115-28" tabindex="-1"></a>  <span class="co"># Read the image</span></span>
+<span id="cb115-29"><a href="image-analysis-in-r.html#cb115-29" tabindex="-1"></a>  img <span class="ot">&lt;-</span> <span class="fu">readPNG</span>(image_path)</span>
+<span id="cb115-30"><a href="image-analysis-in-r.html#cb115-30" tabindex="-1"></a>  </span>
+<span id="cb115-31"><a href="image-analysis-in-r.html#cb115-31" tabindex="-1"></a>  <span class="co"># Split the image into R, G, B channels</span></span>
+<span id="cb115-32"><a href="image-analysis-in-r.html#cb115-32" tabindex="-1"></a>  red_channel <span class="ot">&lt;-</span> img[,,<span class="dv">1</span>]</span>
+<span id="cb115-33"><a href="image-analysis-in-r.html#cb115-33" tabindex="-1"></a>  green_channel <span class="ot">&lt;-</span> img[,,<span class="dv">2</span>]</span>
+<span id="cb115-34"><a href="image-analysis-in-r.html#cb115-34" tabindex="-1"></a>  blue_channel <span class="ot">&lt;-</span> img[,,<span class="dv">3</span>]</span>
+<span id="cb115-35"><a href="image-analysis-in-r.html#cb115-35" tabindex="-1"></a>  </span>
+<span id="cb115-36"><a href="image-analysis-in-r.html#cb115-36" tabindex="-1"></a>  <span class="co"># Create a binary mask for blue regions</span></span>
+<span id="cb115-37"><a href="image-analysis-in-r.html#cb115-37" tabindex="-1"></a>  <span class="co"># Only pixels where the blue channel is strong and dominates red and green will be counted</span></span>
+<span id="cb115-38"><a href="image-analysis-in-r.html#cb115-38" tabindex="-1"></a>  blue_mask <span class="ot">&lt;-</span> (blue_channel <span class="sc">&gt;</span> blue_threshold) <span class="sc">&amp;</span> (blue_channel <span class="sc">&gt;</span> red_channel) <span class="sc">&amp;</span> (blue_channel <span class="sc">&gt;</span> green_channel)</span>
+<span id="cb115-39"><a href="image-analysis-in-r.html#cb115-39" tabindex="-1"></a>  </span>
+<span id="cb115-40"><a href="image-analysis-in-r.html#cb115-40" tabindex="-1"></a>  <span class="co"># Find connected components in the blue mask</span></span>
+<span id="cb115-41"><a href="image-analysis-in-r.html#cb115-41" tabindex="-1"></a>  cc <span class="ot">&lt;-</span> <span class="fu">bwlabel</span>(blue_mask)</span>
+<span id="cb115-42"><a href="image-analysis-in-r.html#cb115-42" tabindex="-1"></a>  </span>
+<span id="cb115-43"><a href="image-analysis-in-r.html#cb115-43" tabindex="-1"></a>  <span class="co"># Count the number of blue objects</span></span>
+<span id="cb115-44"><a href="image-analysis-in-r.html#cb115-44" tabindex="-1"></a>  num_blue_objects <span class="ot">&lt;-</span> <span class="fu">max</span>(cc)</span>
+<span id="cb115-45"><a href="image-analysis-in-r.html#cb115-45" tabindex="-1"></a>  </span>
+<span id="cb115-46"><a href="image-analysis-in-r.html#cb115-46" tabindex="-1"></a>  <span class="fu">return</span>(num_blue_objects)</span>
+<span id="cb115-47"><a href="image-analysis-in-r.html#cb115-47" tabindex="-1"></a>}</span>
+<span id="cb115-48"><a href="image-analysis-in-r.html#cb115-48" tabindex="-1"></a></span>
+<span id="cb115-49"><a href="image-analysis-in-r.html#cb115-49" tabindex="-1"></a>proportion_nonviable <span class="ot">&lt;-</span> <span class="cf">function</span>(image_path) {</span>
+<span id="cb115-50"><a href="image-analysis-in-r.html#cb115-50" tabindex="-1"></a>  viable <span class="ot">&lt;-</span> <span class="fu">count_viable</span>(image_path)</span>
+<span id="cb115-51"><a href="image-analysis-in-r.html#cb115-51" tabindex="-1"></a>  nonviable <span class="ot">&lt;-</span> <span class="fu">count_nonviable</span>(image_path)</span>
+<span id="cb115-52"><a href="image-analysis-in-r.html#cb115-52" tabindex="-1"></a>  <span class="fu">return</span>(nonviable <span class="sc">*</span> <span class="dv">100</span> <span class="sc">/</span> (viable <span class="sc">+</span> nonviable))</span>
+<span id="cb115-53"><a href="image-analysis-in-r.html#cb115-53" tabindex="-1"></a>}</span></code></pre></div>
 
 </div>
 </div>
