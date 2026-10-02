@@ -10,6 +10,8 @@ output:
 
 # Introduction to Excel and R
 
+This chapter is designed to be worked through in order. Read the explanations, watch the videos, and try the practical activities as you go; pausing to repeat a step or revisit a section is encouraged. Once you have worked through the chapter, complete this week's Knowledge Check and Data Task to test and apply your understanding.
+
 ## Estimating the Volume of a Snail
 
 In this section, you will learn how to import data from a CSV file into Excel, perform basic calculations, create a scatterplot including a linear trendline to make predictions. The primary objective is to estimate the volume of a snail based on its mass using a provided dataset.
