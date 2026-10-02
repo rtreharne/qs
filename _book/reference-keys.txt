@@ -34,6 +34,8 @@ getting-ready-for-R
 download-and-install-windows-and-mac-only
 creating-your-first-r-project-in-rstudio
 something-more-complicated
+knowledge-check
+data-tasks
 summarising-data-and-anova-in-excel
 summarising-data
 download-and-import-the-csv-file-1

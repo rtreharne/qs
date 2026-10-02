@@ -232,3 +232,17 @@ print(random_number)
 **Summary**
 
 This example script demonstrates a more complex task than the basic "Hello World" script. It introduces key concepts like variable assignment with <-, setting a seed for reproducibility using set.seed(), generating random numbers with runif(), and printing results using print(). As you continue learning R, these foundational concepts will become increasingly important, enabling you to build more advanced and meaningful analyses. Remember, comments (#) are your friends! They help explain what each part of your code does, making it easier for you and others to understand and maintain your scripts. Be liberal with your comments. You'll thank yourself later (trust me).
+
+## Knowledge Check
+
+Complete this week's [BioBoost Knowledge Check](https://canvas.liverpool.ac.uk/courses/93651/assignments/355713){target="_blank"}. You have until **11 January 2027** to complete each Knowledge Check, but we highly recommend engaging with them in the week that the topic is taught.
+
+Together, the Knowledge Checks are worth **30%** of the **60% QS Portfolio** assignment.
+
+## Data Tasks
+
+Have a go at this week's related Data Task quiz. The table on the [Quantitative Skills 2026/27 Canvas page](https://canvas.liverpool.ac.uk/courses/93651/pages/quantitative-skills-202627){target="_blank"} contains direct links to the correct quiz.
+
+You can attempt each quiz as many times as you like; the highest score achieved will be recorded. The dataset changes on every attempt, and you can review feedback after each attempt.
+
+All Data Task quizzes must be completed by **11 January 2027**. Together, they are worth **40%** of the **60% QS Portfolio** assignment.
