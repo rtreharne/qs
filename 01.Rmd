@@ -239,6 +239,10 @@ This example script demonstrates a more complex task than the basic "Hello World
 
 Complete this week's [BioBoost Knowledge Check](https://canvas.liverpool.ac.uk/courses/93651/assignments/355713){target="_blank"}. You have until **11 January 2027** to complete each Knowledge Check, but we highly recommend engaging with them in the week that the topic is taught.
 
+BioBoost awards mastery when you submit a correct answer. Your overall BioBoost score is calculated by multiplying your mastery percentage by your completion percentage. This means that you need both accurate answers and full participation for your score to reflect your progress.
+
+To make sure that a correct answer also counts towards your completion and coverage, stay on the BioBoost question page until you have submitted it. Switching tabs, windows or apps, hiding the page, or closing it before submitting may still earn mastery for a correct answer, but it will not increase your completion or coverage.
+
 Together, the Knowledge Checks are worth **30%** of the **60% QS Portfolio** assignment.
 
 ## Data Tasks
