@@ -46,6 +46,8 @@ grouped-boxplots-in-excel
 constructing-testable-hypotheses
 performing-a-one-way-anova-in-excel
 post-hoc-tests
+knowledge-check-1
+data-tasks-1
 calibration-curves-and-linear-regression-in-excel
 calibration-curves
 linear-regression
