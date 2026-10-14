@@ -312,7 +312,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Manipulating data (transposing)</li>
 <li>Making predictions from linear models.</li>
 </ul>
-<div id="calibration-curves" class="section level2 calibration-curves hasAnchor" number="3.1">
+<div id="calibration-curves" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Calibration Curves<a href="calibration-curves-and-linear-regression-in-excel.html#calibration-curves" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A <strong>calibration curve</strong> is a plot of a measurable quantity (in our case absorbance, as determined by spectrophotometry) against the concentration of known standards. This relationship, typically linear, allows for the determination of the concentration of unknown samples by interpolation.</p>
 <p>The Beer-Lambert Law provides the foundation for generating calibration curves in spectrophotometry. It describes the relationship between absorbance (A) and the concentration (C) of a substance in solution. The law is given by the equation:</p>
@@ -328,7 +328,7 @@ A = m \cdot C
 <p>There are a few <strong>key considerations</strong> to make when using this law to determine the concentrations of unknown solutions:</p>
 <ul>
 <li><strong>Linear range</strong>: the calibration curve is only valid within a certain concentration range. At very high concentrations, the relationship may no longer be linear (due to factors like light scattering). Extrapolating concentrations from our calibration curves that are beyond those of our known standards is very, very naughty. Don’t do it!</li>
-<li><strong>Reproducibility</strong>: It is critical that the same instrument (including scan settings and wavelength) be use for both the standards and unknowns.</li>
+<li><strong>Reproducibility</strong>: It is critical that the same instrument (including scan settings and wavelength) be used for both the standards and unknowns.</li>
 </ul>
 <p>Let’s take a look at an example dataset from an experiment designed to generate a calibration curve for hemoglobin. Assume that starting from a stock solution of concentration 1.5 mg/mL a set of seven protein solutions have been created using a 1:1 serial dilution and that the absorbance of each solution has been measured at a wavelength of 560nm (yellow-green light).</p>
 <iframe width="100%" height="400" src="https://www.youtube.com/embed/Dy6FmCDB2NQ?si=s9CWD0uGE14Fa1iP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
@@ -391,7 +391,7 @@ A = 0.3827 \cdot C - 0.0024
 C = \frac{0.50 + 0.0024}{0.3827} = 1.3 \, \text{mg/mL}
 \]</span></p>
 <p>Thus, the concentration of the unknown protein solution is 1.3 mg/mL.</p>
-<p>Note that I’ve expressed my answer to 2 significant figures to match the minimum level of precision available to me during the calculation (i.e. 2 s.f for both 0.5 and 0.0024).</p>
+<p>Note that I’ve expressed my answer to 2 significant figures to match the minimum level of precision available to me during the calculation (i.e. 2 s.f for both 0.50 and 0.0024).</p>
 <div class="figure"><span style="display:block;" id="fig:calibration-curve"></span>
 <img src="img/03/calibration_curve.png" alt="Calibration curve for Hemoglobin determined from a standard set generated from a 1:1 serial dilution from a starting 1.5 mg/mL solution. Values of m=0.3827 and b=0.0024 were extracted from the linear relationship A = m * C + b, where b is the systematic error associated with the measurement (most likely related pipetting inaccuracies)." width="100%" />
 <p class="caption">
@@ -521,7 +521,7 @@ Figure 3.2: This is what you should see after performing a regression on your ex
 <p>For example, to predict the daily growth of our sunflowers when they’ve received six hours of sunlight:</p>
 <p><span class="math display">\[ \hat{Y} = 2.449 + ( 0.898  \times 6 )= 7.836 \]</span></p>
 <p>So, the predicted value of <span class="math inline">\(\hat{Y}\)</span> for <span class="math inline">\(\hat{X} = 6\)</span> is <span class="math inline">\(7.836\)</span> <span class="math inline">\(mm\)</span>.</p>
-<p>But wait! Couldn’t I have achieved this by simply adding a trend line to a plot of <span class="math inline">\(X\)</span> vs. <span class="math inline">\(Y\)</span>, as discussed in section @ref{section:calibration-curves}? Yes, you could have extracted the coefficients <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> from the equation of the line, and even added the <span class="math inline">\(R^2\)</span> value to the plot. So why go through all this additional work?</p>
+<p>But wait! Couldn’t I have achieved this by simply adding a trend line to a plot of <span class="math inline">\(X\)</span> vs. <span class="math inline">\(Y\)</span>, as discussed in section <a href="calibration-curves-and-linear-regression-in-excel.html#calibration-curves">3.1</a>? Yes, you could have extracted the coefficients <span class="math inline">\(\beta_0\)</span> and <span class="math inline">\(\beta_1\)</span> from the equation of the line, and even added the <span class="math inline">\(R^2\)</span> value to the plot. So why go through all this additional work?</p>
 <p>The full regression analysis allows us to determine the <strong>standard error</strong> (<span class="math inline">\(SE\)</span>) of the model, which enables us to calculate the uncertainty associated with a predicted value <span class="math inline">\(\hat{Y}\)</span>. This is something we couldn’t do with a simple trend line!</p>
 <p>This uncertainty, often referred to as the <strong>margin of error</strong> (<span class="math inline">\(ME\)</span>), provides the range within which future individual observations are expected to fall.</p>
 <p>To calculate <span class="math inline">\(ME\)</span>:</p>
