@@ -432,6 +432,10 @@ if (knitr::is_html_output()) {
 }
 ```
 
+::: {.alert .alert-warning}
+**Warning:** I made a mistake in this video after 9:30 when calculating the p-values for t-tests of the last couple of pairwise comparisons. Your values **WILL** be different (and undoubtedly correct). The subsequent discussion in the video about the Bonferroni corrected alpha levels is still valid.
+:::
+
 **Step 1: Create a new table to list group comparisons**
 
  - In cell **A19**, underneath your ANOVA result table, Create a new column label called **Groups**.
