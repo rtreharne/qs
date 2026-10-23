@@ -65,6 +65,8 @@ slicing
 filtering
 so-what
 summarising-data-in-r
+knowledge-check-4
+data-tasks-4
 introduction-to-r-part-ii-visualisation
 mushroom-compost-scenario
 the-dataset
